@@ -1,0 +1,8 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+simon:
+  name: Simon Somlai
+  email: simon_somlai@hotmail.com
+  password_digest: <%= User.digest("password") %>
+  admin: true
+
+

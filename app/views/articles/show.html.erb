@@ -1,0 +1,152 @@
+<% content_for :title, meta_title + " | TrueTech - Webdesign Mechelen" %><% content_for :description, meta_description %>
+<% content_for :ogtitle, meta_title %>
+<% content_for :ogdescription, meta_description %>
+<% content_for :ogtype, "article" %>
+<% content_for :ogimage, image_url(@article.image) %>
+<% content_for :css do %><%=stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" %><%=stylesheet_link_tag "application", "flatsome.min" %><% end %><script type='text/javascript' data-cfasync='false' src='//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js' data-shr-siteid='78a00e326c876797bb56cf834491d702' async='async'></script>
+<body class="stretched">
+   <div id="wrapper" class="clearfix">
+   <header id="header" class="sticky-style-2">
+      <div class="container clearfix blog-single">
+      <%= link_to(home_path) do %>
+         <div id="logo" class="center-block text-center">
+            <h1 class="main-logo center-block text-center">TrueTech</h1>
+            <h2 class="logo-subtitle"><%= t "home.sub" %></h2>
+         </div>
+     <% end %>
+      </div>
+      <div id="header-wrap">
+         <% content_for :menu do %> 
+         <li> <%=link_to("Home", home_path) %> </li>
+         <li>
+        <% if I18n.locale == :nl %>
+            <%= link_to locale: "en", article: @article.slug_en do %>
+                <div class="locale locale-menu <%= I18n.locale %>"></div>
+            <% end %> 
+        <% else  %>
+            <%= link_to locale: "nl", article: @article.slug_nl do %>
+                <div class="locale locale-menu <%= I18n.locale %>"></div>
+            <% end %> 
+        <% end %>
+        </li>
+         <% end %> <%=render "shared/menu" %> 
+      </div>
+   </header>
+   <div id="blog-article" class="container blog-single-content">
+      <div class="row">
+         <div id="content" class="col-lg-9 col-centered" role="main">
+            <div class="page-inner">
+               <article id="post-<%=@article.id %>" class="post-<%=@article.id %> post type-post status-publish format-standard has-post-thumbnail hentry category-style tag-brooklyn tag-fashion tag-style-2 tag-women-3">
+                  <header class="entry-header text-center">
+                     <h1 class="entry-title">
+                     <% if I18n.locale == :en %>
+                     <%= @article.en_title %>
+                      <% else   %>
+                      <%=  @article.title %>
+                      <% end %>
+                     </h1>
+                     <div class="entry-meta center-block text-center"> <span class="posted-on"><%= t "articles.posted" %> <span><a class="contact-link" href="#<%=@article.category.downcase %>-cat"> <%=@article.category %></a><span class="byline"> <%= t "articles.by" %> <span class="meta-author vcard author"><%=author(@article) %></span></span> </div>
+                  </header>
+                  <div class="entry-image"> <%=image_tag @article.image.url, alt: "#{@article.title} - Webdesign Mechelen", class: "attachment-large size-large wp-post-image" %> </div>
+                  <div class="entry-content entry-content-blog-single"> 
+                  <% if I18n.locale == :en %>
+                      <%= raw @article.en_body %>
+                      <% else   %>
+                        <%= raw @article.body %>
+                      <% end %>
+                  </div>
+                  <div class="blog-share text-center">
+                     <br/> 
+                     <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='25483125'></div>
+                  </div>
+                  <div class="col-md-8 col-centered topmargin blog-single-subscribe subscribe" >
+                     <h5 class="text-center"><strong><%= t "articles.sub" %></strong></h5>
+                     <form action="//basicgrowth.us10.list-manage.com/subscribe/post?u=9977656e94f27f7aad886fc7d&amp;id=e4d5107bb1" method="post" id="widget-subscribe-form" name="mc-embedded-subscribe-form" class="nobottommargin subscribe" target="_blank" novalidate >
+                        <div class="input-group input-group-md divcenter" style="max-width:600px; margin-bottom: 15px;"> <span class="input-group-addon"><i class="icon-user4"></i></span> <input type="text" data-toggle="tooltip" data-placement="top" title="" data-original-title="<%= t 'footer.submessage' %>" placeholder="Jouw naam..*" value="" name="FNAME" class="form-control required email" id="mce-FNAME"> </div>
+                        <div class="input-group input-group-md divcenter" style="max-width:600px;"> <span class="input-group-addon"><i class="icon-email2"></i></span> <input type="email" value="" name="EMAIL" class="form-control required email" id="mce-EMAIL" placeholder="Jouw email..*"> <span class="input-group-btn"> <input type="submit" value="<%= t 'footer.subbutton' %>" name="subscribe" id="mc-embedded-subscribe" class="btn btn-default index-subscribe"> </span> </div>
+                        <div class="which-articles-wrapper col-hidden cf checkbox subscribe text-center">
+                           <h5><strong><%= t "footer.suboptions" %></strong></h5>
+                           <div class="col-md-12 subscribe checkbox text-center center-block"> <label for="mce-group[7933]-7933-0"><%= t "footer.option1" %></label> <input type="checkbox" value="1" name="group[7933][1]" id="mce-group[7933]-7933-0" class="flat inline checkbox"> </div>
+                           <div class="col-md-12 subscribe checkbox text-center center-block"> <label for="mce-group[7933]-7933-1"><%= t "footer.option2" %></label> <input type="checkbox" value="2" name="group[7933][2]" id="mce-group[7933]-7933-1" class="flat inline checkbox"> </div>
+                           <div class="col-md-12 subscribe checkbox text-center center-block"> <label for="mce-group[7933]-7933-2"><%= t "footer.option3" %></label> <input type="checkbox" value="4" name="group[7933][4]" id="mce-group[7933]-7933-2" class="flat inline checkbox"> </div>
+                           <div id="mce-responses" class="clear">
+                              <div class="response" id="mce-error-response" style="display:none"></div>
+                              <div class="response" id="mce-success-response" style="display:none"></div>
+                           </div>
+                           <div style="position: absolute; left: -5000px;" aria-hidden="true"> <input type="text" name="b_9977656e94f27f7aad886fc7d_e4d5107bb1" tabindex="-1" value=""> </div>
+                        </div>
+                     </form>
+                  </div>
+                  <div class="line"></div>
+               </article>
+               <div id="comments" class="clearfix">
+                  <h3 id="comments-title" class="bottommargin"><%= t "articles.comments" %></h3>
+                  <div id="disqus_thread"></div>
+                  <script>var disqus_config=function (){this.page.url='http://www.truetech.be/<%=@article.title.downcase.gsub(' ','-') %>'; this.page.identifier='<%=@article.title.downcase.gsub(' ','-') %>';}; (function(){var d=document, s=d.createElement('script'); s.src='//truetech-1.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s);})(); </script> 
+               </div>
+            </div>
+            <%= image_tag("unicorn.png", :class => "unicorn hidden-xs") %>
+            <div id="<%=@article.category.downcase %>-cat" class="line"></div>
+            <h3 class="center bottommargin"><%= t "articles.related" %><span><%= t "articles.articles" %></span></h3>
+            <div id="oc-posts" class="bottommargin owl-latest-news owl-carousel posts-carousel carousel-widget owl-loaded owl-drag" data-margin="15" data-loop="false" data-nav="true" data-pagi="false" data-items-xxs="1" data-items-xs="2" data-items-sm="3" data-items-md="3" data-items-lg="3">
+               <% @relatedarticles.each do |article| %> 
+               <div class="oc-item">
+                  <div class="ipost clearfix">
+                     <div class="entry-image"> 
+                        <a href="<%= articles_show_path(article) %>">
+                           <%= image_tag(article.image.small.url, alt: "#{article.title} - Webdesign Mechelen", class: "image-fade") %> 
+                        </a> 
+                     </div>
+                     <div class="entry-title">
+                        <h3>
+                        <a href="<%=articles_show_path(article) %>">
+                          <% if I18n.locale == :en %>
+                         <%= article.en_title %>
+                      <% else  %>
+                           <%=article.title %>
+                      <% end %>
+                        </a>
+                        </h3>
+                     </div>
+                     <div class="entry-content entry-content-blog-single">
+                        <p>
+                          <% if I18n.locale == :en %>
+                         <%= article.en_description %>
+                      <% else  %>
+                           <%=article.description %>
+                      <% end %>  
+                        </p>
+                     </div>
+                  </div>
+               </div>
+               <% end %> 
+            </div>
+            <div class="col-lg-12 col-hidden article-block">
+               <% @relatedarticles.each do |article| %> 
+               <a href="<%=articles_show_path(article) %>">
+                  <div class="article-div">
+                     <h3 class="article-title">
+                       <% if I18n.locale == :en %>
+                         <%= article.en_title %>
+                      <% else  %>
+                           <%=article.title %>
+                      <% end %>
+                     </h3>
+                     <p class="article-description">
+                       <% if I18n.locale == :en %>
+                        <%= article.en_description %>
+                      <% else %>
+                        <%= article.description %>
+                      <% end %>  
+                     </p>
+                  </div>
+               </a>
+               <% end %> 
+            </div>
+         </div>
+      </div>
+   </div>
+   <%=render "shared/footer" %> 
+   <div id="gotoTop" class="icon-angle-up"></div>
+   <% content_for :js do %> <%=javascript_include_tag "application" %> <script>autoScroll(); showOptions(); unleash_unicorn(); </script> <% end %>
+</body>

@@ -1,0 +1,170 @@
+<% content_for :title, t('starter.heading1') + " | Truetech - Webdesign Mechelen" %><% content_for :description, t('starter.descr') %><% content_for :css do %><%=stylesheet_link_tag "application" %><% end %>
+<% content_for :ogtitle, t('starter.ogtitle') %>
+<% content_for :ogdescription, t('starter.descr') %>
+<% content_for :ogtype, "article" %>
+<% content_for :ogimage, image_url("service-single-2-#{I18n.locale}") %>
+<body class="stretched">
+   <div id="wrapper" class="clearfix">
+   <header id="header" class="sticky-style-2">
+      <div class="container clearfix">
+         <%= link_to(home_path) do %>
+         <div id="logo" class="center-block text-center">
+            <h1 class="main-logo center-block text-center">TrueTech</h1>
+            <h2 class="logo-subtitle"><%= t "home.sub" %></h2>
+         </div>
+     <% end %>
+      </div>
+      <div id="header-wrap">
+         <% content_for :menu do %> 
+         <li> <%=link_to("Home", home_path) %> </li>
+         <li>
+            <%=link_to "#", class: "home-menu-item" do %> 
+            <div>Contact</div>
+            <% end %> 
+         </li>
+         <%= render "shared/locale" %>
+         <% end %> <%=render "shared/menu" %> 
+      </div>
+   </header>
+   <div class="container clear-bottommargin clearfix">
+      <div class="heading-block center">
+         <h2><i class="i-plain color col-hidden-md-down i-xlarge icon-line2-screen-desktop inline-block""></i><%= t "starter.heading1" %></h2>
+         <span><%= t "starter.heading1_descr" %></span> 
+      </div>
+      <div class="fancy-title title-border title-center bottommargin">
+         <h2><%= t "single.heading1_first" %><span> <%= t "single.heading1_span" %></span> <%= t "single.heading1_second" %></h2>
+      </div>
+      <div class="row">
+         <div class="col-md-4 bottommargin"> <%=image_tag("service-single-2-#{I18n.locale}", alt: "Starters Website - Webdesign Mechelen", class: "hidden-xs center-block fadeInLeftBig animated", :data=>{animate: "fadeInLeftBig"}) %> </div>
+         <div class="col-md-4 col-sm-6 topmargin bottommargin">
+            <div class="col_full">
+               <div class="feature-box fbox-plain fbox-small fbox-dark">
+                  <div class="fbox-icon"> <i class="icon-line2-trophy"></i> </div>
+                  <h3><%= t "starter.benefit1" %></h3>
+                  <p><%= t "starter.benefit1_descr" %><strong><%= t "starter.benefit1_span" %></strong></p>
+               </div>
+            </div>
+            <div class="col_full">
+               <div class="feature-box fbox-plain fbox-small fbox-dark">
+                  <div class="fbox-icon"> <i class="icon-time"></i> </div>
+                  <h3><%= t "starter.benefit2" %></h3>
+                  <p><%= t "single.benefit1_descr" %><a target="_blank" href="https://tools.pingdom.com/"><%= t "single.benefit1_link" %></a></p>
+               </div>
+            </div>
+            <div class="col_full nobottommargin">
+               <div class="feature-box fbox-plain fbox-small fbox-dark">
+                  <div class="fbox-icon"> <i class="icon-phone-portrait"></i> </div>
+                  <h3><%= t "single.benefit4" %></h3>
+                  <p><%= t "single.benefit4_descr" %><a target="_blank" href="https://www.google.com/webmasters/tools/mobile-friendly/"><%= t "single.benefit4_link" %></a></p>
+               </div>
+            </div>
+         </div>
+         <div class="col-md-4 col-sm-6 topmargin bottommargin">
+            <div class="col_full">
+               <div class="feature-box fbox-plain fbox-small fbox-dark">
+                  <div class="fbox-icon"> <i class="icon-google"></i> </div>
+                  <h3><%= t "single.benefit3" %></h3>
+                  <p><%= t "single.benefit3_descr" %><a target="_blank" href="http://www.seocentro.com/tools/seo/seo-analyzer.html"><%= t "single.benefit3_link" %></a> </p>
+               </div>
+            </div>
+            <div class="col_full">
+               <div class="feature-box fbox-plain fbox-small fbox-dark">
+                  <div class="fbox-icon"> <i class="icon-settings"></i> </div>
+                  <h3><%= t "starter.benefit3" %></h3>
+                  <p><%= t "starter.benefit3_descr1" %><span data-lightbox="gallery"> <a data-lightbox="gallery-item" href="<%=image_path('wordpress.png') %>"><%= t "starter.benefit3_gallery" %></a> <a data-lightbox="gallery-item" href="<%=image_path('wordpress2.png') %>"></a> </span><%= t "starter.benefit3_descr2" %></p>
+               </div>
+            </div>
+            <div class="col_full nobottommargin">
+               <div class="feature-box fbox-plain fbox-small fbox-dark">
+                  <div class="fbox-icon"> <i class="icon-measure"></i> </div>
+                  <h3><%= t "single.benefit6" %></h3>
+                  <p><%= t "single.benefit6_descr" %></p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="container text-center cf">
+      <%= link_to website_analyse_path, class: "bottommargin center-block button button-rounded button-reveal button-large button-red learn-more" do %>
+      <i class="icon-angle-right"></i><span><%= t "analyse.learn" %></span>
+      <% end %>
+      </div>
+      <div class="container cf">
+         <div class="fancy-title title-border title-center bottommargin">
+            <h2><%= t "single.heading2_first" %><span> <%= t "single.heading2_span" %></h2>
+         </div>
+      </div>
+      <div class="container cf">
+         <div class="col_one_third nobottommargin">
+            <div class="feature-box fbox-plain">
+               <div class="hidden-xs fbox-icon"> <i class="i-alt">1.</i> </div>
+               <h3><%= t "single.process1" %></h3>
+               <p><%= t "single.process1_descr" %></p>
+            </div>
+         </div>
+         <div class="col_one_third nobottommargin">
+            <div class="feature-box fbox-plain">
+               <div class="hidden-xs fbox-icon"> <i class="i-alt">2.</i> </div>
+               <h3><%= t "starter.process2" %></h3>
+               <p><%= t "starter.process2_descr1" %><span data-lightbox="gallery"> <a data-toggle="tooltip" data-placement="top" title="" data-original-title="<%= t 'starter.process2_message' %>" data-lightbox="gallery-item" href="<%=image_path('sydney') %>"> <%= t "starter.process2_descr2" %></a> <a data-lightbox="gallery-item" href="<%=image_path('ildy') %>"></a> <a data-lightbox="gallery-item" href="<%=image_path('intro') %>"></a> <a data-lightbox="gallery-item" href="<%=image_path('moesia') %>"></a> <a data-lightbox="gallery-item" href="<%=image_path('auberge') %>"></a> <a data-lightbox="gallery-item" href="<%=image_path('zerif') %>"></a> </span> <%= t "starter.process2_descr3" %><strong><%= t "single.process2_descr3" %></strong> <%= t "starter.process2_descr4" %></p>
+            </div>
+         </div>
+         <div class="col_one_third nobottommargin col_last">
+            <div class="feature-box fbox-plain">
+               <div class="hidden-xs fbox-icon"> <i class="i-alt">3.</i> </div>
+               <h3>Fine-tuning & Feedback</h3>
+               <p><%= t "starter.process3_descr" %></p>
+            </div>
+         </div>
+      </div>
+      <div class="fancy-title title-border title-center topmargin bottommargin">
+         <h2><%= t "single.heading3_first" %> <span><%= t "single.heading3_span" %></span> <%= t "single.heading3_second" %></h2>
+      </div>
+      <div class="pricing-box pricing-extended bottommargin clearfix">
+         <div class="pricing-desc">
+            <div class="pricing-title">
+               <h3><i class="icon-checkbox-checked"></i> <%= t "single.options" %></h3>
+            </div>
+            <div class="pricing-features bottommargin">
+               <ul class="clearfix page-selector">
+                  <li data-price="30" data-item="ssl" class="col_one_third nomargin cf"> <i class="icon-lock"></i> <%= t "starter.options1" %></li>
+                  <li data-price="125" data-toggle="tooltip" data-placement="top" title="" data-original-title="<%= t 'starter.options1_message' %>" data-item="webshop" class="col_one_third nomargin cf"> <i class="icon-cart"></i> Webshop</li>
+                  <li data-price="75" data-item="premium" class="col_one_third nomargin cf" data-placement="top" title="" data-toggle="tooltip" data-original-title="<%= t 'starter.options3_descr' %>"> <i class="icon-dollar"></i> <%= t "starter.options3" %></li>
+                  <li data-price="20" data-toggle="tooltip" data-placement="top" title="" data-original-title="<%= t 'single.email_descr' %>" data-item="email marketing" class="col_one_third nomargin cf"> <i class="icon-line-mail"></i> <%= t 'single.email' %></li>
+                  <li data-price="100" data-item="languages" class="col_one_third nomargin cf" title="" data-placement="top" title="" data-toggle="tooltip" data-original-title="<%= t 'starter.options5_message' %>"><i class="icon-flag-checkered"></i> <%= t 'starter.options5' %></li>
+                  <li data-price="100" data-item="plugins" class="col_one_third nomargin cf" data-placement="top" title="" data-toggle="tooltip" data-original-title="<%= t 'starter.options6_message' %>"> <i class="icon-plus-sign"></i> Premium Plugins</li>
+               </ul>
+            </div>
+            <div class="center-block text-center">
+               <h4><strong><%= t "starter.inclusive1" %></strong><%= t "starter.inclusive2" %>  <span><%= t "starter.inclusive3" %></span> <%= t "starter.inclusive4" %></h4>
+            </div>
+         </div>
+         <div class="pricing-action-area" data-toggle="tooltip" data-placement="top" title="" data-original-title="<%= t 'single.pricemessage' %>">
+            <div class="pricing-meta"> <%= t "starter.pricehead" %><i class="icon-question-sign"></i> </div>
+            <div class="pricing-price"> <span class="price-unit"><%= t 'single.pricevalue' %></span><span class="price price-special">249</span><span class="price-tenure"><%= t 'single.pricefooter' %></span> </div>
+            <div class="pricing-action"> <a href="#contact" class="button contact-link button-3d button-xlarge btn-block nomargin"><%= t 'single.pricebutton' %></a> </div>
+         </div>
+      </div>
+      <div id="contact" class="line"></div>
+      <div class="container cf">
+         <div class="fancy-title title-border title-center bottommargin">
+            <h2><%= t "contact.heading1" %><span> <%= t 'contact.heading1_span' %></span>!</h2>
+         </div>
+      </div>
+      <div class="col-sm-12 col-md-12 contactform">
+         <%=form_for(@contact, remote: true, :format=> 'js', :html=>{:class=> "nobottommargin", :name=> "template-contactform", :id=> "template-contactform", :multipart=> true}) do |f| %> <%=render "shared/error_messages", object: f.object %> 
+         <div class="col_half"> <%=f.label :name do %> <%= t 'contact.name' %><small>*</small> <% end %> <%=f.text_field :name, required: true, id: "template-contactform-name", :class=> "sm-form-control required" %> </div>
+         <div class="col_half col_last"> <%=f.label :email do %> Email<small>*</small> <% end %> <%=f.email_field :email, required: true, id: "template-contactform-email", :class=> "required email sm-form-control" %> </div>
+         <div class="clear"></div>
+         <div class="col_half"> <%=f.label :phone, t('contact.phone') %> <%=f.text_field :phone, id: "template-contactform-phone", :class=> "sm-form-control" %> </div>
+         <div class="col_half col_last"> <%=f.label :subject, t('contact.subject') %> <%=f.text_field :subject, id: "template-contactform-options", value: t('starter.heading1'), readonly: true, :class=> "sm-form-control required" %> </div>
+         <div class="clear"></div>
+         <div class="col_full"> <%=f.label :message do %> <%= t('contact.message') %><small>*</small> <% end %> <%=f.text_area :message, id: "template-contactform-message", :class=> "required sm-form-control", rows: 6, cols: 30 %> </div>
+         <div class="col_full hidden"> <%=f.text_field :botcheck, id: "template-contactform-botcheck", :class=> "sm-form-control" %> </div>
+         <div class="col_full"> <%=f.submit t('contact.send'), id: "template-contactform-submit", class: "button button-3d nomargin" %> </div>
+         <% end %> 
+      </div>
+   </div>
+   <%=render "shared/footer" %> 
+   <div id="gotoTop" class="icon-angle-up"></div>
+   <% content_for :js do %> <%=javascript_include_tag "application" %> <script>autoScroll(); selectionPicker2(); showOptions(); </script> <% end %>
+</body>

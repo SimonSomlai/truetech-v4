@@ -1,0 +1,60 @@
+<% content_for :title, "Login"  %>
+<% content_for :description, "No Description" %>
+<% content_for :css do %>
+<%= stylesheet_link_tag "agency-style", "agency", "responsive", "font-icons", "animate", "magnific-popup", "style"  %>
+<% end %>
+<body class="stretched">
+   <div id="wrapper" class="cf">
+   <header id="header" class="sticky-style-2">
+      <div class="container cf">
+         <div id="logo" class="center-block text-center">
+            <h1 class="main-logo center-block text-center">TrueTech</h1>
+            <h2 class="logo-subtitle">Webdesign Regio Mechelen</h2>
+         </div>
+      </div>
+      <div id="header-wrap">
+         <% content_for :menu do %>
+         <li>
+            <%= link_to("Home", home_path)  %>
+         </li>
+         <% end %>
+         <%= render "shared/menu" %>
+      </div>
+   </header>
+   <div class="container clearfix topmargin bottommargin">
+      <div class="tabs divcenter nobottommargin clearfix ui-tabs ui-widget ui-widget-content ui-corner-all" id="tab-login-register" style="max-width: 500px;">
+         <div class="tab-container">
+            <div class="tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom" id="tab-login" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="false">
+               <div class="panel panel-default nobottommargin">
+                  <div class="panel-body" style="padding: 40px;">
+                     <%= form_for(:session, url: login_path, html: { id: "login-form", class: "nobottommargin", name: "login-form"}) do |f| %>
+                     <h3>Welcome back, Simon</h3>
+                     <div class="col_ful">
+                        <%= f.label :email, "Email:" %>
+                        <%= f.text_field :email, :class => "form-control", id: "login-form-username" %>
+                     </div>
+                     <br/>
+                     <div class="col_ful">
+                        <%= f.label :password %>
+                        <%= f.password_field :password, class: "form-control", id: "login-form-password" %>
+                     </div>
+                     <br/>
+                     <div class="col_full nobottommargin">
+                        <%= f.submit "Login", class: "button button-3d nomargin", id: "login-form-submit" %>
+                     </div>
+                     <% end %>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <%= render "shared/footer" %>
+   <div id="gotoTop" class="icon-angle-up"></div>
+   <% content_for :js do %>
+   <%= javascript_include_tag "application" %>
+   <script>
+      autoScroll();
+   </script>
+   <% end %>
+</body>

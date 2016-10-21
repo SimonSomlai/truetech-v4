@@ -1,0 +1,32 @@
+$("#message-success").remove()
+<% if I18n.locale == :nl %>
+var topic = $(".heading-block.center h2").text()
+if(topic.length <= 1){
+  if($("h2.notopmargin").text().length >= 1){
+    sentence = " en gaan alvast aan de slag met '<%= @contact.subject %>' te analyseren! "
+} else {
+  sentence = "! "
+}
+  } else {
+  sentence = " over de " + topic + "! "
+}
+$(".contactform").prepend("<div id='message-success' class='alert alert-success col-hidden contactform-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><i class='icon-thumbs-up'></i><strong>Bedankt <%= @contact.name %></strong>, je mail is verstuurd! We antwoorden zo snel mogelijk op jouw berichtje" + sentence + "Alvast nog een fijne <%= l(Time.now, format: '%A') %> gewenst! :) </div>")
+$(".contactform-success").slideDown(500)
+$('input[type="text"], input[type="email"], input[type="file"], textarea').val("")
+ $('html,body').animate({
+            scrollTop: $("#message-success").offset().top - 55
+        }, 'slow');
+<% else %>
+var topic = $(".heading-block.center h2").text()
+if(topic.length <= 1){
+  sentence = "! "
+	} else {
+  sentence = " about the " + topic + "! "
+}
+$(".contactform").prepend("<div id='message-success' class='alert alert-success col-hidden contactform-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><i class='icon-thumbs-up'></i><strong>Thanks <%= @contact.name %></strong>, your email is sent! We'll respond as soon as possible to your message" + sentence + "Enjoy the rest of your <%= l(Time.now, format: '%A') %> :)!</div>") 
+$(".contactform-success").slideDown(500)
+$('input[type="text"], input[type="email"], input[type="file"], textarea').val("")
+ $('html,body').animate({
+            scrollTop: $("#message-success").offset().top - 55
+        }, 'slow');
+<% end %>

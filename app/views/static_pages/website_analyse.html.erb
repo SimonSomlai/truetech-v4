@@ -1,0 +1,158 @@
+<% content_for :title, t("analyse.heading1") + " | Truetech - Webdesign Mechelen" %><% content_for :description, t("analyse.meta") %><% content_for :css do %><%=stylesheet_link_tag "application" %><% end %>
+<% content_for :ogtitle, t("analyse.ogtitle") %>
+<% content_for :ogdescription, t("analyse.meta") %>
+<% content_for :ogtype, "article" %>
+<% content_for :ogimage, image_url("analyse.jpg") %>
+<body class="stretched">
+   <div id="wrapper" class="cf">
+   <header id="header" class="sticky-style-2">
+      <div class="container cf">
+         <%= link_to(home_path) do %>
+         <div id="logo" class="center-block text-center">
+            <h1 class="main-logo center-block text-center">TrueTech</h1>
+            <h2 class="logo-subtitle"><%= t('home.sub') %></h2>
+         </div>
+         <% end %>
+      </div>
+      <div id="header-wrap">
+         <% content_for :menu do %> 
+         <li> <%=link_to("Home", home_path) %> </li>
+         <li>
+            <%=link_to "#", class: "contact-special home-menu-item" do %> 
+            <div>Contact</div>
+            <% end %> 
+         </li>
+         <%= render "shared/locale" %>
+         <% end %> <%=render "shared/menu" %> 
+      </div>
+   </header>
+   <div class="container cf">
+      <div class="topmargin heading-block website-analyse">
+         <div class="col-md-6">
+            <h2 class="notopmargin"><i class="col-hidden-md-down inline-block"></i><span><%= t('analyse.heading1_span') %></span> <%= t('analyse.heading1') %>!</h2>
+            <span class="before-heading"><%= t('analyse.meta') %> </span>
+         </div>
+         <div class="col-md-6 bottommargin hidden-xs">
+            <%= image_tag("analyse.jpg", class: "center-block fadeInRightBig animated", alt: t('analyse.heading1') + " - Webdesign Mechelen") %>
+         </div>
+      </div>
+   </div>
+   <div class="nobottommargin container cf">
+      <div class="fancy-title title-border title-center bottommargin topmargin">
+         <h2><%= t('analyse.heading2') %> <span><%= t('analyse.heading2_span') %></h2>
+      </div>
+   </div>
+   <div class="container cf nobottommargin">
+      <div class="nobottommargin">
+         <div class="container clear-bottommargin clearfix">
+            <div class="row topmargin-sm clearfix">
+               <div class="col-md-4 bottommargin">
+                  <i class="i-plain color i-large icon-google inline-block" style="margin-bottom: 15px;"></i>
+                  <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
+                     <h4><%= t('analyse.benefit1') %> </h4>
+                     <span class="before-heading"><%= t('analyse.benefit1_sub') %></span>
+                  </div>
+                  <p><%= t('analyse.benefit1_descr') %></p>
+               </div>
+               <div class="col-md-4 bottommargin">
+                  <i class="i-plain color i-large icon-graph inline-block" style="margin-bottom: 15px;"></i>
+                  <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
+                     <h4><%= t('analyse.benefit2') %></h4>
+                     <span class="before-heading"><%= t('analyse.benefit2_sub') %></span>
+                  </div>
+                  <p><%= t('analyse.benefit2_descr1') %><strong><%= t('analyse.benefit2_descr1_span') %></strong> <%= t('analyse.benefit2_descr2') %></p>
+               </div>
+               <div class="col-md-4 bottommargin">
+                  <i class="i-plain color i-large icon-phone-portrait inline-block" style="margin-bottom: 15px;"></i>
+                  <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
+                     <h4><%= t('analyse.benefit3') %></h4>
+                     <span class="before-heading"><%= t('analyse.benefit3_sub') %></span>
+                  </div>
+                  <p><%= t('analyse.benefit3_descr') %>
+                  <p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="nobottommargin notopmargin container cf">
+      <div class="fancy-title title-border title-center bottommargin">
+         <h2><%= t('analyse.heading3') %> <span><%= t('analyse.heading3_span') %></span> <%= t('analyse.heading3_two') %></h2>
+      </div>
+      <div class="col_one_third website-analyse-get">
+         <div class="feature-box fbox-border fbox-light fbox-effect">
+            <div class="fbox-icon">
+               <a href="#"><i class="icon-ok"></i></a>
+            </div>
+            <h3><%= t('analyse.feature1') %></h3>
+            <p><%= t('analyse.feature1_descr') %><strong><%= t('analyse.feature1_strong') %></strong> <%= t('analyse.feature1_descr2') %></p>
+         </div>
+      </div>
+      <div class="col_one_third website-analyse-get">
+         <div class="feature-box fbox-border fbox-light fbox-effect">
+            <div class="fbox-icon">
+               <a href="#"><i class="icon-ok"></i></a>
+            </div>
+            <h3><%= t('analyse.feature2') %></h3>
+            <p><%= t('analyse.feature2_descr') %> <strong><%= t('analyse.feature2_strong') %></strong> <%= t('analyse.feature2_descr2') %></p>
+         </div>
+      </div>
+      <div class="col_one_third col_last website-analyse-get">
+         <div class="feature-box fbox-border fbox-light fbox-effect">
+            <div class="fbox-icon">
+               <a href="#"><i class="icon-ok"></i></a>
+            </div>
+            <h3><%= t('analyse.feature3') %></h3>
+            <p><%= t('analyse.feature3_descr') %> <strong><%= t('analyse.feature3_strong') %></strong> <%= t('analyse.feature3_descr2') %></p>
+         </div>
+      </div>
+   </div>
+   <div class="container cf">
+      <div id="contact" class="container cf">
+         <div class="fancy-title title-border title-center bottommargin topmargin">
+            <h2><%= t('analyse.heading4') %><span> <%= t('analyse.heading4_span') %></span> <%= t('analyse.heading4_second') %></h2>
+         </div>
+      </div>
+      <div class="col-md-8 col-sm-12 col-centered bottommargin contactform">
+               <%= form_for(@contact, remote: true, :html=>{:class=> "website-analyse nobottommargin col-centered", :name=> "template-contactform", :id=> "template-contactform", :multipart=> true }) do |f| %> <%=render "shared/error_messages", object: f.object %> 
+               <div class="col_full"> 
+                  <%=f.label :name do %> 
+                  <%= t "home.contact.namefield" %><small>*</small> <% end %> 
+                  <%=f.text_field :name, required: true, id: "template-contactform-name", placeholder: t('analyse.name'), :class=> "sm-form-control required" %> 
+               </div>
+               <div class="col_full"> 
+                  <%=f.label :subject do %> 
+                  <%= t "analyse.site" %><small>*</small>
+                  <% end %> 
+                  <%=f.text_field :subject, required: true, id: "template-contactform-company", placeholder: t('analyse.website'), :class=> "sm-form-control required" %> 
+               </div>
+               <div class="clear"></div>
+               <div class="col_full"> 
+                  <%=f.label :email do %> 
+                  <%= t "analyse.email" %><small>*</small> 
+                  <% end %> 
+                  <%=f.email_field :email, required: true, id: "template-contactform-email", placeholder: t('analyse.emaill'), :class=> "required email sm-form-control" %> 
+               </div>
+               <div class="clear"></div>
+               <div class="col_full"> 
+                  <%=f.label :phone do %> 
+                  <%= t "home.contact.phonefield" %><small>*</small>
+                  <% end %>
+                  <%=f.text_field :phone, required: true, id: "template-contactform-phone", placeholder: t('analyse.phone'), :class=> "sm-form-control" %> 
+               </div>
+               <div class="col_full hidden"> <%=f.label :message do %> <%= t("contact.message") %><small>*</small> <% end %> <%=f.text_area :message, id: "template-contactform-message", :class=> "required sm-form-control", rows: 6, cols: 30 %> </div>
+               <div class="col_full hidden"> <%=f.text_field :botcheck, id: "template-contactform-botcheck", :class=> "sm-form-control" %> </div>
+               <div class="col_full"> 
+               <%= f.submit t("analyse.send"), id: "template-contactform-submit", class: "button button-3d nomargin site-analyse" %> 
+                  </div>
+               <strong><span><%= t('analyse.conditions') %></span></strong><br/>
+               <span><%= t('analyse.condition1') %></span><br/>
+               <span><%= t('analyse.condition2') %></span>
+               <% end %> 
+            </div>
+   </div>
+   <%= render "shared/footer" %> 
+   <div id="gotoTop" class="icon-angle-up"></div>
+   <% content_for :js do %> <%= javascript_include_tag "application", "jquery.remotipart" %> 
+   <script>autoScroll(); showOptions(); </script> <% end %>
+</body>

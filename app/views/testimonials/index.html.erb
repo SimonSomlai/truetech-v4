@@ -1,0 +1,137 @@
+<% content_for :title, "Testimonials"  %>
+<% content_for :description, "This is the meta description" %>
+<% content_for :css do %>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<%= stylesheet_link_tag "admin", "magnific-popup", "style"  %>
+<% end %>
+<body class="nav-md">
+   <div class="container body admin-body">
+   <div class="main_container admin-body">
+      <%= render "shared/admin_menu" %>
+      <div class="right_col cf" role="main">
+         <div class="col-md-12 col-sm-12 col-xs-12 table-fade <%= table_hidden? %>">
+            <div class="x_panel">
+               <div class="x_title">
+                  <h2><i class="fa fa-comment-o"></i> Testimonials | <a onclick="createForm()" class="btn btn-sm btn-round btn-success"><i class="fa fa-plus"></i> <%= @action %> Testimonial</a></h2>
+                  <div class="clearfix"></div>
+               </div>
+               <div class="x_content">
+                  <table class="table table-hover table-striped">
+                     <thead>
+                        <tr>
+                           <th class="hidden-xs">#</th>
+                           <th>Name</th>
+                           <th class="hidden-xs">Company</th>
+                           <th class="hidden-xs">Quote</th>
+                           <th class="hidden-xs">Link</th>
+                           <th class="hidden-xs">Image</th>
+                           <th>Options</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <% @testimonials.each do |testimonial| %>
+                        <tr>
+                           <th class="hidden-xs"scope="row"><%= testimonial.id %></th>
+                           <td><%= testimonial.name %></td>
+                           <td class="hidden-xs"><%= testimonial.company %></td>
+                           <td class="hidden-xs"><%= testimonial.quote %></td>
+                           <td class="hidden-xs"><a target="_blank" href="<%= testimonial.link %>"><i class="fa fa-link"></i></a></td>
+                           <td class="hidden-xs">
+                              <% if !testimonial.image.nil? %>
+                              <span data-lightbox="gallery">
+                              <a data-lightbox="gallery-item" href="<%= testimonial.image.url %>"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+                              </span>
+                              <% end %>
+                           </td>
+                           <td>
+                              <%= link_to(edit_testimonial_path(testimonial), :class => "edit-link") do %>
+                              <i class="fa fa-pencil"></i> 
+                              edit
+                              <% end %> 
+                              | 
+                              <%= link_to testimonial_path(testimonial), :method => "delete", :data => {:confirm => 'Are you sure?'} do %>
+                              <i class="fa fa-trash"></i> 
+                              delete
+                              <% end %>
+                           </td>
+                        </tr>
+                        <% end %>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+         <div id="create-form" class="col-md-12 col-sm-12 col-xs-12 margin-top create-form <%= form_hidden? %>">
+            <div class="x_panel">
+               <div class="x_title">
+                  <h2><i class="fa fa-comment-o"></i> <%= @action %> Testimonial <span class="<%= form_hidden? %>">|</span> <%= link_to("All Testimonials", testimonials_path, class: "open-form btn btn-sm btn-round btn-success #{form_hidden?}", :data => {:confirm => 'Your changes will not be saved - proceed?'}) %></h2>
+                      <ul class="nav navbar-right panel_toolbox"><li>
+        <%= link_to "#", :class => "change-locale" do %>
+            <div class="locale locale-menu <%= I18n.locale %>"></div>
+            <% end %>
+            </li>
+                      </ul>
+                  <ul class="nav navbar-right panel_toolbox <%= table_hidden? %>">
+                     <li><a onclick="closeForm();" class="close-link"><i class="fa fa-close"></i></a>
+                     </li>
+                  </ul>
+                  <div class="clearfix"></div>
+               </div>
+               <div class="x_content">
+                  <br>
+                  <%= form_for(@testimonial, :html => {:class => "form-horizontal form-label-left", :id => "demo-form2", :multipart => true }) do |f| %>
+                  <%= render "shared/error_messages", object: f.object %>
+                  <div class="form-group">
+                     <%= f.label :name, "Name", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <%= f.text_field :name, required: true, :class => "form-control col-md-7 col-xs-12" %>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <%= f.label :company, "Company", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <%= f.text_field :company, required: true, :class => "form-control col-md-7 col-xs-12" %>
+                     </div>
+                  </div>
+                  <div class="form-group locale-field nl-description">
+                     <%= f.label :quote, "Quote", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <%= f.text_area :quote, :class => "form-control col-md-7 col-xs-12" %>
+                     </div>
+                  </div>
+                  <div class="form-group locale-field en-description col-hidden">
+                     <%= f.label :en_quote, "English Quote", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <%= f.text_area :en_quote, :class => "form-control col-md-7 col-xs-12" %>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <%= f.label :link, "Link", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <%= f.text_field :link, required: true, :class => "form-control col-md-7 col-xs-12" %>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <%= f.label :image, class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <%= f.file_field :image, :options => {:class => "form-control col-md-7 col-xs-12", accept: "image/jpeg,image/gif,image/png"} %>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <%= f.submit "#{@action} Testimonial", class: "text-center btn btn-success" %>
+                     </div>
+                  </div>
+                  <% end %>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <% content_for :js do %>
+   <%= javascript_include_tag "custom", "jquery", "jquery_ujs", "jquery.tagsinput", "plugins", "functions", "script" %> 
+   <script>
+   changeLocale();
+   </script>
+   <% end %>
+</body>

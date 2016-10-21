@@ -1,0 +1,263 @@
+<% content_for :title, "Admin"  %>
+<% content_for :description, "This is the meta description" %>
+<% content_for :css do %>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<%= stylesheet_link_tag "admin", "style"  %>
+<% end %>
+<body class="nav-md">
+   <div class="container body admin-body">
+      <div class="main_container admin-body">
+         <%= render "shared/admin_menu" %>
+         <div class="right_col cf" role="main">
+            <!-- top tiles -->
+            <div class="row tile_count">
+               <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                  <span class="count_top"><i class="fa fa-user"></i> Total Visitors</span>
+                  <div class="count"><%= visits(0, "days") %></div>
+                  <span>Today</span>
+               </div>
+               <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                  <span class="count_top"><i class="fa fa-eye"></i> Total Pageviews</span>
+                  <div class="count"><%= views(0, "days") %></div>
+                  <span>Today</span>
+               </div>
+               <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                  <span class="count_top"><i class="fa fa-pencil"></i> Total Articles</span>
+                  <div class="count"><%= Article.all.count %></div>
+               </div>
+               <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+                  <span class="count_top"><i class="fa fa-diamond"></i> Total Projects</span>
+                  <div class="count"><%= Project.all.count %></div>
+               </div>
+            </div>
+            <div class="row tile_count">
+               <div class="col-md-10 col-sm-10 col-xs-12">
+                  <div class="x_panel">
+                     <div class="clearfix"></div>
+                     <div class="x_content">
+                        <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                           <div class="panel">
+                              <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                 <h4 class="panel-title">Site Traffic</h4>
+                              </a>
+                              <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" aria-expanded="true">
+                                 <div class="panel-body">
+                                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                          <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Weekly <span class="hidden-xs">Stats</span></a>
+                                          </li>
+                                          <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Monthly <span class="hidden-xs">Stats</span></a>
+                                          </li>
+                                       </ul>
+                                       <div id="myTabContent" class="tab-content">
+                                          <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                                             <iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
+                                             <canvas id="mybarChart" width="484" height="242" style="width: 484px; height: 242px;"></canvas>
+                                          </div>
+                                          <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                                             <iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
+                                             <canvas id="mybarChart2" width="484" height="242" style="width: 484px; height: 242px;"></canvas>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="panel">
+                              <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                 <h4 class="panel-title">Site Referrals</h4>
+                              </a>
+                              <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false">
+                                 <div class="panel-body">
+                                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                          <li role="presentation" class="active"><a href="#tab_content3" id="weekly-referral-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="hidden-xs">Referrals</span> Today</a>
+                                          </li>
+                                          <li role="presentation" class=""><a href="#tab_content4" role="tab" id="monthly-referral-tab" data-toggle="tab" aria-expanded="false">Weekly <span class="hidden-xs">Referrals</span></a>
+                                          </li>
+                                          <li role="presentation" class=""><a href="#tab_contentfive" role="tab" id="keyword-tab" data-toggle="tab" aria-expanded="false">Keywords</a>
+                                          </li>
+                                       </ul>
+                                       <div id="myTabContent2" class="tab-content">
+                                          <div role="tabpanel" class="tab-pane active in" id="tab_content3" aria-labelledby="weekly-referral-tab">
+                                             <table class="table table-hover table-striped">
+                                                <thead>
+                                                   <tr>
+                                                      <th>Referrer</th>
+                                                   </tr>
+                                                </thead>
+                                                <tbody>
+                                                   <% @daily_hash.each do |k, v| %>
+                                                            <tr>
+                                                            <td><%= k %></td>
+                                                            <td><%= v %></td>
+                                                            </td>
+                                                            <% end %>
+                                                </tbody>
+                                             </table>
+                                          </div>
+                                          <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="monthly-referral-tab">
+                                             <table class="table table-hover table-striped">
+                                                <thead>
+                                                   <tr>
+                                                      <th>Referrer</th>
+                                                   </tr>
+                                                </thead>
+                                                <tbody>
+                                                   <% @weekly_hash.each do |k, v| %>
+                                                            <tr>
+                                                            <td><%= k %></td>
+                                                            <td><%= v %></td>
+                                                            </td>
+                                                            <% end %>
+                                                </tbody>
+                                             </table>
+                                          </div>
+                                          <div role="tabpanel" class="tab-pane fade" id="tab_contentfive" aria-labelledby="keyword-tab">
+                                             <table class="table table-hover table-striped">
+                                                <thead>
+                                                   <tr>
+                                                      <th>Keywords</th>
+                                                   </tr>
+                                                </thead>
+                                                <tbody>
+                                                   <% @keyword_hash.each do |k, v| %>
+                                                            <tr>
+                                                            <td><%= k %></td>
+                                                            <td><%= v %></td>
+                                                            </td>
+                                                            <% end %>
+                                                </tbody>
+                                             </table>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="panel">
+                              <a class="panel-heading collapsed" role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                 <h4 class="panel-title">Top Content</h4>
+                              </a>
+                              <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
+                                 <div class="panel-body">
+                                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                       <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                          <li role="presentation" class="active"><a href="#tab_content5" id="weekly-referral-tab" role="tab" data-toggle="tab" aria-expanded="true">Today</a>
+                                          </li>
+                                          <li role="presentation" class=""><a href="#tab_content6" role="tab" id="monthly-referral-tab" data-toggle="tab" aria-expanded="false">All Time</a>
+                                          </li>
+                                       </ul>
+                                       <div id="myTabContent2" class="tab-content">
+                                          <div role="tabpanel" class="tab-pane active in" id="tab_content5" aria-labelledby="weekly-referral-tab">
+                                             <table class="table table-hover table-striped">
+                                                <thead>
+                                                   <tr>
+                                                      <th>Page name</th>
+                                                      <th># Views</th>
+                                                   </tr>
+                                                </thead>
+                                                <tbody>
+                                                   <% @pageviews.each do |k, v| %>
+                                                            <tr>
+                                                            <td><%= k %></td>
+                                                            <td><%= v %></td>
+                                                            </td>
+                                                            <% end %>
+                                                </tbody>
+                                             </table>
+                                          </div>
+                                          <div role="tabpanel" class="tab-pane fade" id="tab_content6" aria-labelledby="monthly-referral-tab">
+                                             <table class="table table-hover table-striped">
+                                                <thead>
+                                                   <tr>
+                                                      <th>Page name</th>
+                                                      <th># Views</th>
+                                                   </tr>
+                                                </thead>
+                                                <tbody>
+                                                   <% @totalpageviews.each do |k, v| %>
+                                                            <tr>
+                                                            <td><%= k %></td>
+                                                            <td><%= v %></td>
+                                                            </td>
+                                                            <% end %>
+                                                </tbody>
+                                             </table>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <% content_for :js do %>
+   <%= javascript_include_tag "Chart.min", "custom", "script" %> 
+   <script>
+      Chart.defaults.global.legend = {
+          enabled: false
+      };
+      // Bar chart
+      var ctx = document.getElementById("mybarChart");
+      var mybarChart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: ["<%= days_ago(6) %>", "<%= days_ago(5) %>", "<%= days_ago(4) %>", "<%= days_ago(3) %>", "<%= days_ago(2) %>", "Yesterday", "Today"],
+              datasets: [{
+                  label: 'Visitors',
+                  backgroundColor: "#26B99A",
+                  data: ["<%= visits(6, 'days') %>", "<%= visits(5, 'days') %>", "<%= visits(4, 'days') %>", "<%= visits(3, 'days') %>", "<%= visits(2, 'days') %>", "<%= visits(1, 'days') %>", "<%= visits(0, 'days') %>"]
+              }, {
+                  label: 'Pageviews',
+                  backgroundColor: "#03586A",
+                  data: ["<%= views(6, 'days') %>", "<%= views(5, 'days') %>", "<%= views(4, 'days') %>", "<%= views(3, 'days') %>", "<%= views(2, 'days') %>", "<%= views(1, 'days') %>", "<%= views(0, 'days') %>"]
+              }]
+          },
+      
+          options: {
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+              }
+          }
+      });
+      
+      var ctx2 = document.getElementById("mybarChart2");
+      var mybarChart2 = new Chart(ctx2, {
+          type: 'bar',
+          data: {
+              labels: ["<%= months_ago(11) %>", "<%= months_ago(10) %>", "<%= months_ago(9) %>", "<%= months_ago(8) %>", "<%= months_ago(7) %>", "<%= months_ago(6) %>", "<%= months_ago(5) %>", "<%= months_ago(4) %>", "<%= months_ago(3) %>", "<%= months_ago(2) %>" ,"<%= months_ago(1) %>", "<%= months_ago(0) %>"],
+              datasets: [{
+                  label: 'Visitors',
+                  backgroundColor: "#26B99A",
+                  data:  ["<%= visits(11, 'months') %>", "<%= visits(10, 'months') %>", "<%= visits(9, 'months') %>", "<%= visits(8, 'months') %>", "<%= visits(7, 'months') %>", "<%= visits(6, 'months') %>", "<%= visits(5, 'months') %>", "<%= visits(4, 'months') %>", "<%= visits(3, 'months') %>", "<%= visits(2, 'months') %>", "<%= visits(1, 'months') %>", "<%= visits(0, 'months') %>"]
+              }, {
+                  label: 'Pageviews',
+                  backgroundColor: "#03586A",
+                  data: ["<%= views(11, 'months') %>", "<%= views(10, 'months') %>", "<%= views(9, 'months') %>", "<%= views(8, 'months') %>", "<%= views(7, 'months') %>", "<%= views(6, 'months') %>", "<%= views(5, 'months') %>", "<%= views(4, 'months') %>", "<%= views(3, 'months') %>", "<%= views(2, 'months') %>", "<%= views(1, 'months') %>", "<%= views(0, 'months') %>"]
+              }]
+          },
+      
+          options: {
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+              }
+          }
+      });
+   </script>
+   <% end %>
+</body>

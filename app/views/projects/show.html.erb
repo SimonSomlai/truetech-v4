@@ -1,0 +1,88 @@
+<% content_for :title, "#{@project.title} | TrueTech - Webdesign Mechelen " %><% content_for :description, "#{@project.description}" %><% content_for :css do %><%=stylesheet_link_tag "application" %><% end %>
+<% content_for :ogtitle, @project.title %>
+<% content_for :ogdescription, @project.description %>
+<% content_for :ogtype, "article" %>
+<% content_for :ogimage, image_url(@project.project_images.first.images_url) %>
+<body class="stretched">
+   <div id="wrapper" class="clearfix">
+   <header id="header" class="sticky-style-2">
+      <div class="container clearfix">
+         <%= link_to(home_path) do %>
+         <div id="logo" class="center-block text-center">
+            <h1 class="main-logo center-block text-center">TrueTech</h1>
+            <h2 class="logo-subtitle"><%= t "home.sub" %></h2>
+         </div>
+     <% end %>
+      </div>
+      <div id="header-wrap">
+         <% content_for :menu do %> 
+         <li> <%=link_to("Home", home_path) %> </li>
+         <%= render "shared/locale" %>
+         <% end %> <%=render "shared/menu" %> 
+      </div>
+   </header>
+   <div class="container clearfix">
+      <div class="col_three_fifth portfolio-single-image nobottommargin" data-lightbox="gallery">
+         <a href="#"><%=image_tag @project.project_images.first.images_url, alt: "#{@project.title} - Webdesign Mechelen", class: "main" %></a> 
+         <ol class="flex-control-nav hidden-xs">
+            <% @project.project_images.each do |image| %> 
+            <li> <a href="<%=image.images_url %>" data-lightbox="gallery-item"> <%=image_tag image.images_url, alt: "#{@project.title} - Webdesign Mechelen" %> </a> </li>
+            <% end %> 
+         </ol>
+      </div>
+      <div class="col_two_fifth portfolio-single-content col_last nobottommargin">
+         <div class="fancy-title title-bottom-border">
+            <h2 class="portfolio-single-title"><%= t("projects.info") %></h2>
+         </div>
+         <% if I18n.locale == :en %>
+         <p><%=raw @project.en_description %></p>
+         <% else %>
+         <p><%=raw @project.description %> </p>
+         <% end %>
+         <ul class="portfolio-meta bottommargin">
+            <li><span><i class="icon-user"></i><%= t("projects.author") %></span> <%=@user %></li>
+            <li><span><i class="icon-calendar3"></i><%= t("projects.date") %></span> <%=@project.created_at.strftime("%d/%m/%Y") %></li>
+            <li><span><i class="icon-lightbulb"></i><%= t("projects.skills") %></span> <%=@project.skills %></li>
+            <li><span><i class="icon-link"></i>Client:</span> <a target="_blank" href="<%=@project.link %>"><%=@project.title %></a></li>
+         </ul>
+         <div class="fancy-title title-bottom-border">
+            <h2 class="portfolio-single-title"><%= t("projects.descr") %></h2>
+         </div>
+         <ul class="portfolio-meta portfolio-features bottommargin">
+            <% features.each_slice(3).each do |group| %> 
+            <li class="cf">
+               <% group.each do |key, value| %> 
+               <div class="col_one_third nomargin cf"><span class="<%=key.gsub(/[_]/, ' ') %>"><i class="<%=value %>"></i><%=key.gsub(/[_]/, ' ') %></span> </div>
+               <% end %> 
+            </li>
+            <% end %> 
+         </ul>
+         <div class="si-share cf">
+            <span><%= t("projects.share") %></span> 
+            <div> <a target="_blank" href="http://www.facebook.com/sharer.php?u=<%=request.original_url %>" class="social-icon si-borderless si-facebook"> <i class="icon-facebook"></i> <i class="icon-facebook"></i> </a> <a href="https://twitter.com/share?url=<%=request.original_url %>&text=Found%20a%20cool%20project!&hashtags=truetech" class="social-icon si-borderless si-twitter"> <i class="icon-twitter"></i> <i class="icon-twitter"></i> </a> <a href="http://www.linkedin.com/shareArticle?url=<%=request.original_url %>&mini=true&text=Found%20a%20cool%20project!%20-->%20<%=request.original_url %>" class="social-icon si-borderless si-linkedin"> <i class="icon-linkedin"></i> <i class="icon-linkedin"></i> </a> <a href="mailto:?Subject=Found%20a%20cool%20project!&Body=I%20saw%20this%20and%20thought%20of%20you!%20%20<%=request.original_url %>" class="social-icon si-borderless si-pinterest"> <i class="icon-mail"></i> <i class="icon-mail"></i> </a> </div>
+         </div>
+      </div>
+      <div class="clear"></div>
+      <div class="divider divider-center"><i class="icon-circle"></i></div>
+      <h4><%= t("projects.related") %></h4>
+      <div class="owl-carousel portfolio-carousel carousel-widget" data-margin="1" data-loop="false" data-nav="true" data-pagi="false" data-items-xxs="1" data-items-xs="2" data-items-sm="3" data-items-md="4" data-items-lg="4">
+         <% @relatedprojects.each do |project| %> 
+         <div class="oc-item">
+            <div class="iportfolio">
+               <div class="portfolio-image">
+                  <%=link_to(project_path(project)) do %> <%=image_tag headerimage(project), alt: "#{project.title} - Webdesign Mechelen" %> <% end %> 
+                  <div class="portfolio-overlay"> <%=link_to(headerimage(project), class: "left-icon", data:{lightbox: "image"}) do %> <i class="icon-line-plus"></i> <% end %> <%=link_to(project_path(project), class: "right-icon") do %> <i class="icon-line-ellipsis"></i> <% end %> </div>
+               </div>
+               <div class="portfolio-desc">
+                  <h3> <%=link_to(project.title, project_path(project)) %> </h3>
+                  <a class="portfolio-features" href="/<%=project.service.gsub(/ /, '-') %>"> <span><%= category(project) %> </span> </a> 
+               </div>
+            </div>
+         </div>
+         <% end %> 
+      </div>
+   </div>
+   <%=render "shared/footer" %> 
+   <div id="gotoTop" class="icon-angle-up"></div>
+   <% content_for :js do %> <%=javascript_include_tag "application" %> <script>autoScroll(); showOptions(); </script> <% end %>
+</body>

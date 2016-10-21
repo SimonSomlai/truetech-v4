@@ -1,0 +1,132 @@
+<% content_for :title, "Users"  %>
+<% content_for :description, "This is the meta description" %>
+<% content_for :css do %>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<%= stylesheet_link_tag "admin", "magnific-popup", "style"  %>
+<% end %>
+<body class="nav-md">
+   <div class="container body admin-body">
+   <div class="main_container admin-body">
+      <%= render "shared/admin_menu" %>
+      <div class="right_col cf" role="main">
+         <div class="col-md-12 col-sm-12 col-xs-12 table-fade <%= table_hidden? %>">
+            <div class="x_panel">
+               <div class="x_title">
+                  <h2><i class="fa fa-user"></i> Users | <a onclick="createForm()" href="#" class="open-form btn btn-sm btn-round btn-success"><i class="fa fa-plus"></i> <%= @action %> User</a></h2>
+                  <div class="clearfix"></div>
+               </div>
+               <div class="x_content">
+                  <table class="table table-hover table-striped">
+                     <thead>
+                        <tr>
+                           <th class="hidden-xs">#</th>
+                           <th>Name</th>
+                           <th class="hidden-xs">Email</th>
+                           <th class="hidden-xs">Admin</th>
+                           <th class="hidden-xs">Image</th>
+                           <th>Options</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                     <% @users.each do |user| %>
+                        <tr>
+                           <th class="hidden-xs" scope="row"><%= user.id %></th>
+                           <td><%= user.name %></td>
+                           <td class="hidden-xs"><%= user.email %></td>
+                           <td class="hidden-xs"><%= user.admin? %></td>
+                           <td class="hidden-xs">
+                           <% if !user.profile_picture.nil? %>
+                           <span data-lightbox="gallery">
+                              <a data-lightbox="gallery-item" href="<%= user.profile_picture.url %>"><i class="fa fa-picture-o" aria-hidden="true"></i></a>
+                           </span>
+                           <% end %>
+                           </td>
+                           <td>
+                               <%= link_to(edit_user_path(user), :class => "edit-link") do %>
+                               <i class="fa fa-pencil"></i> 
+                               edit
+                               <% end %> 
+                               | 
+                               <%= link_to user_path(user), :method => "delete", :data => {:confirm => 'Are you sure?'} do %>
+                               <i class="fa fa-trash"></i> 
+                               delete
+                               <% end %>
+                           </td>
+                        </tr>
+                    <% end %>
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+         <div id="create-form" class="col-md-12 col-sm-12 col-xs-12 margin-top create-form <%= form_hidden? %>">
+            <div class="x_panel">
+               <div class="x_title">
+                  <h2><i class="fa fa-user"></i> <%= @action %> User <span class="<%= form_hidden? %>">|</span> <%= link_to("All Users", users_path, class: "open-form btn btn-sm btn-round btn-success #{form_hidden?}", :data => {:confirm => 'Your changes will not be saved - proceed?'}) %></h2>
+                  <ul class="nav navbar-right panel_toolbox <%= table_hidden? %>">
+                     <li><a onclick="closeForm();" class="close-link"><i class="fa fa-close"></i></a>
+                     </li>
+                  </ul>
+                  <div class="clearfix"></div>
+               </div>
+               <div class="x_content">
+                  <br>
+                  <%= form_for(@user, :html => {:class => "form-horizontal form-label-left", :id => "demo-form2", :multipart => true }) do |f| %>
+                  <%= render "shared/error_messages", object: f.object %>
+                  <div class="form-group">
+                     <%= f.label :name, "Name", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <%= f.text_field :name, required: true, :class => "form-control col-md-7 col-xs-12" %>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <%= f.label :email, "Email Adress", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <%= f.email_field :email, required: true, :class => "form-control col-md-7 col-xs-12" %>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <%= f.label :password, class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <%= f.password_field :password, :class => "form-control col-md-7 col-xs-12" %>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <%= f.label :password_confirmation, class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <%= f.password_field :password_confirmation, :class => "form-control col-md-7 col-xs-12" %>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <%= f.label :admin, class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="checkbox">
+                           <label class="">
+                              <div class="icheckbox_flat-green" style="position: relative;">
+                                 <%= f.check_box :admin, :class => "flat" %>
+                              </div>
+                           </label>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <%= f.label :profile_picture, class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                     <div class="col-md-6 col-sm-6 col-xs-12">
+                        <%= f.file_field :profile_picture, :options => {:class => "form-control col-md-7 col-xs-12", accept: "image/jpeg,image/gif,image/png"} %>
+                     </div>
+                  </div>
+                  <div class="form-group">
+                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                        <%= f.submit "#{@action} User", class: "text-center btn btn-success" %>
+                     </div>
+                  </div>
+                  <% end %>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <% content_for :js do %>
+   <%= javascript_include_tag "custom", "jquery", "jquery_ujs", "plugins", "functions", "script"  %> 
+   <% end %>
+</body>

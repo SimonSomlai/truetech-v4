@@ -1,0 +1,172 @@
+<% content_for :title, t("app.heading1") + " | Truetech - Webdesign Mechelen" %><% content_for :description, t("app.meta") %><% content_for :css do %><%=stylesheet_link_tag "application" %><% end %>
+<% content_for :ogtitle, t("app.ogtitle") %>
+<% content_for :ogdescription, t("app.meta") %>
+<% content_for :ogtype, "article" %>
+<% content_for :ogimage, image_url("service-single-4-#{I18n.locale}") %>
+<body class="stretched">
+   <div id="wrapper" class="cf">
+   <header id="header" class="sticky-style-2">
+      <div class="container cf">
+         <%= link_to(home_path) do %>
+         <div id="logo" class="center-block text-center">
+            <h1 class="main-logo center-block text-center">TrueTech</h1>
+            <h2 class="logo-subtitle"><%= t('home.sub') %></h2>
+         </div>
+     <% end %>
+      </div>
+      <div id="header-wrap">
+         <% content_for :menu do %> 
+         <li> <%=link_to("Home", home_path) %> </li>
+         <li>
+            <%=link_to "#", class: "contact-special home-menu-item" do %> 
+            <div>Contact</div>
+            <% end %> 
+         </li>
+         <%= render "shared/locale" %>
+         <% end %> <%=render "shared/menu" %> 
+      </div>
+   </header>
+   <div class="container cf">
+      <div class="heading-block center">
+         <h2><i class="col-hidden-md-down i-plain color i-xlarge icon-diamond inline-block"></i><%= t('app.heading1') %></h2>
+         <span><%= t('app.heading1_descr') %></span> 
+      </div>
+   </div>
+   <div class="container cf">
+      <div class="col_half bottommargin hidden-xs"> <%=image_tag("application.png", alt: "Webapplicatie - Webdesign Mechelen", class: "center-block fadeInLeftBig animated hidden-xs", :data=>{animate: "fadeInLeftBig"}) %> </div>
+      <div class="col_half nobottommargin col_last">
+         <div class="heading-block">
+            <h3><%= t('app.heading2') %> <span><%= t('app.heading2_span') %></span> <%= t('app.heading2_second') %></h3>
+         </div>
+         <p><%= t('app.heading2_descr') %><strong> <%= t('app.heading2_strong') %></strong> <%= t('app.heading2_descr2') %></p>
+         <p><%= t('app.heading2_descr3') %></p>
+         <p><a class="contact-link" href="#learn"><%= t('app.learn') %></a></p>
+      </div>
+   </div>
+   <div class="container cf">
+      <div class="col_half nobottommargin col_last">
+         <div class="heading-block">
+            <h3><%= t('app.heading3') %> <span><%= t('app.heading3_span') %></span></h3>
+         </div>
+         <p><%= t('app.heading3_descr') %> <strong><%= t('app.heading3_strong') %></strong> <%= t('app.heading3_descr2') %></p>
+         <p><%= t('app.heading3_descr3') %></p>
+         <p><a class="contact-link" href="#learn"><%= t('app.learn') %></a></p>
+      </div>
+      <div class="col_half bottommargin hidden-xs"> <%=image_tag("service-single-4-#{I18n.locale}", class: "center-block fadeInRightBig animated hidden-xs", :data=>{animate: "fadeInRightBig"}) %> </div>
+   </div>
+   <div class="container cf">
+      <div class="fancy-title title-border title-center bottommargin">
+         <h2 id="learn"><%= t('single.heading1_first') %><span> <%= t('single.heading1_span') %></span> <%= t('single.heading1_second') %></h2>
+      </div>
+   </div>
+   <div class="container cf">
+      <div class="col_one_third">
+         <div class="feature-box fbox-effect">
+            <div class="fbox-icon"> <a class="contact-link" href="learn"><i class="icon-phone-portrait"></i></a> </div>
+            <h3><%= t('single.benefit4') %></h3>
+            <p><%= t('single.benefit4_descr') %></p>
+         </div>
+      </div>
+      <div class="col_one_third">
+         <div class="feature-box fbox-effect">
+            <div class="fbox-icon"> <a href="#"><i class="icon-like"></i></a> </div>
+            <h3><%= t('app.benefit2') %> </h3>
+            <p><%= t('app.benefit2_descr') %> <span data-lightbox="gallery"> <a data-lightbox="gallery-item" href="<%=asset_path('gentella1') %>"><%= t('app.benefit2_span') %> </a> <a data-lightbox="gallery-item" href="<%=asset_path('gentella2') %>"></a> </span> <%= t('app.benefit2_descr2') %> </p>
+         </div>
+      </div>
+      <div class="col_one_third col_last">
+         <div class="feature-box fbox-effect">
+            <div class="fbox-icon"> <a href="#"><i class="icon-line2-speedometer"></i></a> </div>
+            <h3><%= t('single.benefit1') %></h3>
+            <p><%= t('app.benefit3_descr') %></p>
+         </div>
+      </div>
+      <div class="col_one_third">
+         <div class="feature-box fbox-effect">
+            <div class="fbox-icon"> <a href="#"><i class="icon-google-plus"></i></a> </div>
+            <h3><%= t('single.benefit3') %></h3>
+            <p><%= t('app.benefit4_descr') %></p>
+         </div>
+      </div>
+      <div class="col_one_third">
+         <div class="feature-box fbox-effect">
+            <div class="fbox-icon"> <a href="#"><i class="icon-eye i-alt"></i></a> </div>
+            <h3><%= t('single.benefit6') %></h3>
+            <p><%= t('app.benefit5_descr') %></p>
+         </div>
+      </div>
+      <div class="col_one_third col_last">
+         <div class="feature-box fbox-effect">
+            <div class="fbox-icon"> <a href="#"><i class="icon-dollar"></i></a> </div>
+            <h3><%= t('app.benefit6') %></h3>
+            <p><%= t('app.benefit6_descr') %></p>
+         </div>
+      </div>
+   </div>
+   <div class="container cf">
+      <div class="fancy-title title-border title-center bottommargin">
+         <h2><%= t('single.heading2_first') %><span> <%= t('single.heading2_span') %></h2>
+      </div>
+   </div>
+   <div class="container cf">
+      <div class="col_one_fourth nobottommargin">
+         <div class="feature-box fbox-plain">
+            <div class="hidden-xs fbox-icon"> <a href="#"><i class="i-alt">1.</i></a> </div>
+            <h3><%= t('single.process1') %></h3>
+            <p><%= t('app.process1_descr') %></p>
+         </div>
+      </div>
+      <div class="col_one_fourth nobottommargin">
+         <div class="feature-box fbox-plain">
+            <div class="hidden-xs fbox-icon"> <a href="#"><i class="i-alt">2.</i></a> </div>
+            <h3><%= t('app.process2') %></h3>
+            <p><%= t('app.process2_descr') %><span data-lightbox="gallery"> <a data-lightbox="gallery-item" href="<%=asset_path('flowchart') %>"><%= t('app.process2_span') %> </a> </span> <%= t('app.process2_descr2') %> </p>
+         </div>
+      </div>
+      <div class="col_one_fourth nobottommargin">
+         <div class="feature-box fbox-plain">
+            <div class="hidden-xs fbox-icon"> <a href="#"><i class="i-alt">3.</i></a> </div>
+            <h3><%= t('app.process3') %></h3>
+            <p><%= t('app.process3_descr') %> <strong><%= t('single.process2_descr3') %></strong> <%= t('app.process3_descr2') %>
+         </div>
+      </div>
+      <div class="col_one_fourth nobottommargin col_last">
+         <div class="feature-box fbox-plain">
+            <div class="hidden-xs fbox-icon"> <a href="#"><i class="i-alt">4.</i></a> </div>
+            <h3><%= t('app.process4') %></h3>
+            <p><%= t('app.process4_descr') %></p>
+         </div>
+      </div>
+   </div>
+   <div class="container cf">
+      <a class="button button-full center tright topmargin contact-special">
+         <div class="container cf"><%= t('app.click') %>  <strong>Let's Do This!</strong> <i class="icon-caret-right" style="top:4px;"></i> </div>
+      </a>
+   </div>
+   <div class="container cf col-hidden">
+   <div class="container cf">
+         <div id="contact" class="fancy-title title-border title-center topmargin bottommargin">
+            <h2><%= t "contact.heading1" %><span> <%= t "contact.heading1_span" %></span>!</h2>
+         </div>
+      </div>
+      <div class="col-sm-12 col-md-12 contactform">
+         <%=form_for(@contact, remote: true, :format=> 'js', :html=>{:class=> "nobottommargin", :name=> "template-contactform", :id=> "template-contactform", :multipart=> true}) do |f| %> <%=render "shared/error_messages", object: f.object %> 
+         <div class="col_half"> <%=f.label :name do %><%= t "contact.name" %><small>*</small> <% end %> <%=f.text_field :name, required: true, id: "template-contactform-name", :class=> "sm-form-control required" %> </div>
+         <div class="col_half col_last"> <%=f.label :email do %> Email<small>*</small> <% end %> <%=f.email_field :email, required: true, id: "template-contactform-email", :class=> "required email sm-form-control" %> </div>
+         <div class="clear"></div>
+         <div class="col_half"> <%=f.label :phone, t("contact.phone") %> <%=f.text_field :phone, id: "template-contactform-phone", :class=> "sm-form-control" %> </div>
+         <div class="col_half col_last"> <%=f.label :subject, t("contact.subject")  %> <%= f.text_field :subject, id: "template-contactform-options", readonly: true, :class=> "sm-form-control required", value: t("app.heading1") %> </div>
+         <div class="clear"></div>
+         <div class="col_full"> <%=f.label :message do %> <%= t("contact.message") %><small>*</small> <% end %> <%=f.text_area :message, id: "template-contactform-message", :class=> "required sm-form-control", rows: 6, cols: 30 %> </div>
+         <div class="col_full"> <%=f.label :file, t("contact.file")  %> <%=f.file_field :file, id: "template-contactform-file", :class=> "sm-form-control" %> </div>
+         <div class="col_full hidden"> <%=f.text_field :botcheck, id: "template-contactform-botcheck", :class=> "sm-form-control" %> </div>
+         <div class="col_full"> <%=f.submit t("contact.send") , id: "template-contactform-submit", class: "button button-3d nomargin" %> </div>
+         <% end %> 
+      </div>
+   </div>
+   </div>
+   <%=render "shared/footer" %> 
+   <div id="gotoTop" class="icon-angle-up"></div>
+   <% content_for :js do %> <%=javascript_include_tag "application", "jquery.remotipart"%> 
+   <script>autoScroll(); fancyFade(); showOptions(); </script> <% end %>
+</body>

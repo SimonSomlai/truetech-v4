@@ -1,0 +1,41 @@
+<div class="col-md-3 left_col">
+   <div class="left_col scroll-view">
+      <div class="navbar nav_title"> <%=link_to(home_path , class: "site_title") do %> <i class="fa fa-diamond"></i> <span>TrueTech</span></a> <% end %> </div>
+      <div class="cf"></div>
+      <div class="profile cf">
+         <div class="profile_pic"> <% if logged_in? %> <%=image_tag(current_user.profile_picture.url, class: "img-circle profile_img") %> <% else %> <%=image_tag("user", class: "img-circle profile_img") %> <% end %> </div>
+         <div class="profile_info">
+            <span>Welcome,</span> <% if logged_in? %> 
+            <h2><%=current_user.name %></h2>
+            <% else %> 
+            <h2>Anonymous</h2>
+            <% end %> 
+         </div>
+      </div>
+      <br/> 
+      <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+         <div class="menu_section">
+            <div><% Time.zone.now %></div>
+            <ul class="nav side-menu">
+               <li class="<%=active?('admin') %>"> <%=link_to(admin_path) do %> <i class="fa fa-home"></i> Home <span></span> <% end %> </li>
+               <li class="<%=active?('users') %>"> <%=link_to(users_path) do %> <i class="fa fa-user"></i> Users <span ></span> <% end %> </li>
+               <li class="<%=active?('projects') %>"> <%=link_to(projects_path) do %> <i class="fa fa-diamond"></i>Projects <span ></span> <% end %> </li>
+               <li class="<%=active?('testimonials') %>"> <%=link_to(testimonials_path) do %> <i class="fa fa-comment-o"></i>Testimonials <span></span> <% end %> </li>
+               <li class="<%=active?('articles') %>"> <%=link_to(articles_path) do %> <i class="fa fa-pencil"></i> Articles <span ></span> <% end %> </li>
+                <li class="<%=active?('pages') %>"> <%=link_to(pages_path) do %> <i class="fa fa-file-text-o"></i> Pages <span ></span> <% end %> </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="top_nav">
+   <div class="nav_menu">
+      <nav>
+         <div class="nav toggle"> <a id="menu_toggle"><i class="fa fa-bars"></i></a> </div>
+         <ul class="nav navbar-nav navbar-right">
+            <li class=""> <%= link_to(logout_path, method: :delete) do %> <i class=" fa fa-md fa-power-off"></i> Logout <% end %> </li>
+         </ul>
+         </li></ul> 
+      </nav>
+   </div>
+</div>

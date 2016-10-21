@@ -1,0 +1,12 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+project1:
+  title: Title
+  description: MyString
+  features: MyText
+  link: MyString
+  service: MyString
+  skills: MyString
+  user_id: users(:simon)
+
+ 
