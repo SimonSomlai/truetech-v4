@@ -92,7 +92,7 @@ Rails.application.configure do
     :metastore    => client,
     :entitystore  => client
   }
-  config.static_cache_control = "public, max-age=2592000"
+  config.public_file_server.headers = { 'Cache-Control' => 'public, max-age=2592000' }
 
   config.action_dispatch.default_headers = {
     'X-Frame-Options' => 'ALLOWALL'
