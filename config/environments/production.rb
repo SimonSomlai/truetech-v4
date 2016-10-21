@@ -22,7 +22,7 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.serve_static_files = true
+  config.public_file_server.enabled = true
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -60,9 +60,9 @@ Rails.application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
 
-config.action_mailer.default_url_options = { host: "https://truetech.herokuapp.com/"  }
-    config.action_mailer.delivery_method = :smtp
-    ActionMailer::Base.smtp_settings = {
+  config.action_mailer.default_url_options = { host: "https://truetech.herokuapp.com/"  }
+  config.action_mailer.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
     :user_name => ENV['SENDGRID_USERNAME'],
     :password =>  ENV['SENDGRID_PASSWORD'],
     :domain =>    'heroku.com',
@@ -70,7 +70,7 @@ config.action_mailer.default_url_options = { host: "https://truetech.herokuapp.c
     :port =>      587,
     :authentication => :plain,
     :enable_starttls_auto => true
-}
+  }
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
@@ -82,21 +82,21 @@ config.action_mailer.default_url_options = { host: "https://truetech.herokuapp.c
   config.log_formatter = ::Logger::Formatter.new
 
   client = Dalli::Client.new((ENV["MEMCACHIER_SERVERS"] || "").split(","),
-                           :username => ENV["MEMCACHIER_USERNAME"],
-                           :password => ENV["MEMCACHIER_PASSWORD"],
-                           :failover => true,
-                           :socket_timeout => 1.5,
-                           :socket_failure_delay => 0.2,
-                           :value_max_bytes => 10485760)
-config.action_dispatch.rack_cache = {
-  :metastore    => client,
-  :entitystore  => client
-}
-config.static_cache_control = "public, max-age=2592000"
+                             :username => ENV["MEMCACHIER_USERNAME"],
+                             :password => ENV["MEMCACHIER_PASSWORD"],
+                             :failover => true,
+                             :socket_timeout => 1.5,
+                             :socket_failure_delay => 0.2,
+                             :value_max_bytes => 10485760)
+  config.action_dispatch.rack_cache = {
+    :metastore    => client,
+    :entitystore  => client
+  }
+  config.static_cache_control = "public, max-age=2592000"
 
   config.action_dispatch.default_headers = {
-      'X-Frame-Options' => 'ALLOWALL'
-    }
+    'X-Frame-Options' => 'ALLOWALL'
+  }
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
