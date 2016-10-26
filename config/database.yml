@@ -15,6 +15,6 @@ test:
 
 production:
   <<: *default
-  database: d895nv15ot6i3o
-  username: gsioypuifaefqp
+  database: d9oe24e5k3tnll
+  username: cbattgdkindgrz
   password: <%= ENV['TRUETECH-V4_DATABASE_PASSWORD'] %>
