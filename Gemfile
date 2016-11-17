@@ -25,6 +25,7 @@ gem 'mail_form'
 gem 'remotipart', '~> 1.2'
 gem 'ahoy_matey'
 gem "rails-i18n"
+gem 'htmlbeautifier'
 
 # Caching
 gem 'rack-cache'

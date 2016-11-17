@@ -18,7 +18,13 @@ Rails.application.routes.draw do
   get "website-analyse" => "static_pages#website_analyse"
   get "admin" => "static_pages#admin"
 
-  # Standard routing
+=begin
+This routes pages and articles. First it searches for a matching article by slug (friendly id), then
+falls down to pages. Ex;
+www.mysite.com/this-is-the-title-of-the-article  (articles#show)
+www.mysite.com/about-me (pages#show)
+=end
+
   resources :users, :projects, :testimonials, :articles, :pages
   class ArticleUrlConstrainer
     def matches?(request)

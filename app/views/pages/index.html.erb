@@ -1,117 +1,117 @@
 <% content_for :title, "Pages"  %>
 <% content_for :description, "This is the meta description for the page-admin menu" %>
 <% content_for :css do %>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<%= stylesheet_link_tag "admin", "magnific-popup", "font-icons", "trumbowyg.min", "style"  %>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+  <%= stylesheet_link_tag "admin", "magnific-popup", "font-icons", "trumbowyg.min", "style"  %>
 <% end %>
-
 <body class="nav-md">
-   <div class="container body admin-body">
-      <div class="main_container admin-body">
-         <%= render "shared/admin_menu" %>
-         <div class="right_col cf" role="main">
-            <div class="col-md-12 col-sm-12 col-xs-12 table-fade <%= table_hidden? %>">
-               <div class="x_panel">
-                  <div class="x_title">
-                     <h2><i class="fa fa-file-text-o"></i> Pages | <a onclick="createForm()" class="btn btn-sm btn-round btn-success"><i class="fa fa-plus"></i> <%= @action %> Page</a></h2>
-                     <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                     <table class="table table-hover table-striped">
-                        <thead>
-                           <tr>
-                              <th class="hidden-xs">#</th>
-                              <th>Title</th>
-                              <th class="hidden-xs">Description</th>
-                              <th>Options</th>
-                           </tr>
-                        </thead>
-                        <tbody>
-                           <% @pages.each do |page| %>
-                           <tr>
-                              <td scope="row" class="hidden-xs"><%= page.id %></td>
-                              <td><a target="_blank" href="<%= pages_show_path(page) %>"><i class="fa fa-search"></i> <%= page.title %></a></td>
-                              <td class="hidden-xs"><%= page.description %></td>
-                              <td>
-                                 <%= link_to(edit_page_path(page), :class => "edit-link") do %>
-                                 <i class="fa fa-pencil"></i> 
-                                 edit
-                                 <% end %> 
-                                 | 
-                                 <%= link_to page_path(page), :method => "delete", :data => {:confirm => 'Are you sure?'} do %>
-                                 <i class="fa fa-trash"></i> 
-                                 delete
+  <div class="container body admin-body">
+    <div class="main_container admin-body">
+      <%= render "shared/admin_menu" %>
+      <div class="right_col cf" role="main">
+        <div class="col-md-12 col-sm-12 col-xs-12 table-fade <%= table_hidden? %>">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2><i class="fa fa-file-text-o"></i> Pages | <a onclick="createForm()" class="btn btn-sm btn-round btn-success"><i class="fa fa-plus"></i> <%= @action %> Page</a></h2>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <table class="table table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th class="hidden-xs">#</th>
+                    <th>Title</th>
+                    <th class="hidden-xs">Description</th>
+                    <th>Options</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @pages.each do |page| %>
+                    <tr>
+                      <td scope="row" class="hidden-xs"><%= page.id %></td>
+                      <td><a target="_blank" href="<%= pages_show_path(page) %>"><i class="fa fa-search"></i> <%= page.title %></a></td>
+                      <td class="hidden-xs"><%= page.description %></td>
+                      <td>
+                        <%= link_to(edit_page_path(page), :class => "edit-link") do %>
+                          <i class="fa fa-pencil"></i>
+                          edit
                                  <% end %>
-                              </td>
-                           </tr>
-                           <% end %>
-                        </tbody>
-                     </table>
-                  </div>
-               </div>
+                        | 
+                                 <%= link_to page_path(page), :method => "delete", :data => {:confirm => 'Are you sure?'} do %>
+                          <i class="fa fa-trash"></i>
+                          delete
+                                 <% end %>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
             </div>
-            <div id="create-form" class="col-md-12 col-sm-12 col-xs-12 margin-top create-form <%= form_hidden? %>">
-               <div class="x_panel">
-                  <div class="x_title">
-                    <h2><i class="fa fa-file-text-o"></i> <%= @action %> Page <span class="<%= form_hidden? %>">|</span> <%= link_to("All Pages", pages_path, class: "open-form btn btn-sm btn-round btn-success #{form_hidden?}", :data => {:confirm => 'Your changes will not be saved - proceed?'}) %></h2>
-                 <ul class="nav navbar-right panel_toolbox"><li>
-        <%= link_to "#", :class => "change-locale" do %>
-            <div class="locale locale-menu <%= I18n.locale %>"></div>
-            <% end %>
-                      </li>
-                      </ul>
-                  <ul class="nav navbar-right panel_toolbox <%= table_hidden? %>">
-                     <li><a onclick="closeForm();" class="close-link"><i class="fa fa-close"></i></a>
-                     </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                     <br>
-                     <%= form_for(@page, :html => {:class => "form-horizontal form-label-left", :id => "demo-form2", :multipart => true }) do |f| %>
-                     <%= render "shared/error_messages", object: f.object %>
-                     <div class="form-group locale-field">
-                        <%= f.label :title, "Title", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                           <%= f.text_field :title, required: true, :class => "form-control col-md-7 col-xs-12" %>
-                        </div>
-                     </div>
-                     <div class="form-group locale-field">
-                        <%= f.label :description, "Description", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                           <%= f.text_area :description, required: true, :class => "form-control col-md-7 col-xs-12" %>
-                        </div>
-                     </div>
-                     <div class="form-group locale-field locale-nl">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
-                           <textarea id="editor"></textarea>
-                        </div>
-                     </div>
-                      <div class="form-group form-nl">
-                        <%= f.hidden_field :body, html: {:class => "form-control col-md-7 col-xs-12", :id => "editorcontent"} %>
-                     </div>
-                     <div class="form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                           <%= f.submit "#{@action} Page", class: "text-center btn btn-success" %>
-                        </div>
-                     </div>
-                     <% end %>
-                  </div>
-               </div>
+          </div>
+        </div>
+        <div id="create-form" class="col-md-12 col-sm-12 col-xs-12 margin-top create-form <%= form_hidden? %>">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2><i class="fa fa-file-text-o"></i> <%= @action %> Page <span class="<%= form_hidden? %>">|</span> <%= link_to("All Pages", pages_path, class: "open-form btn btn-sm btn-round btn-success #{form_hidden?}", :data => {:confirm => 'Your changes will not be saved - proceed?'}) %></h2>
+              <ul class="nav navbar-right panel_toolbox">
+                <li>
+                  <%= link_to "#", :class => "change-locale" do %>
+                    <div class="locale locale-menu <%= I18n.locale %>"></div>
+                  <% end %>
+                </li>
+              </ul>
+              <ul class="nav navbar-right panel_toolbox <%= table_hidden? %>">
+                <li><a onclick="closeForm();" class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+              </ul>
+              <div class="clearfix"></div>
             </div>
-         </div>
+            <div class="x_content">
+              <br>
+              <%= form_for(@page, :html => {:class => "form-horizontal form-label-left", :id => "demo-form2", :multipart => true }) do |f| %>
+                <%= render "shared/error_messages", object: f.object %>
+                <div class="form-group locale-field">
+                  <%= f.label :title, "Title", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <%= f.text_field :title, required: true, :class => "form-control col-md-7 col-xs-12" %>
+                  </div>
+                </div>
+                <div class="form-group locale-field">
+                  <%= f.label :description, "Description", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <%= f.text_area :description, required: true, :class => "form-control col-md-7 col-xs-12" %>
+                  </div>
+                </div>
+                <div class="form-group locale-field locale-nl">
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                    <textarea id="editor"></textarea>
+                  </div>
+                </div>
+                <div class="form-group form-nl">
+                  <%= f.hidden_field :body, html: {:class => "form-control col-md-7 col-xs-12", :id => "editorcontent"} %>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                    <%= f.submit "#{@action} Page", class: "text-center btn btn-success" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
-   </div>
-   <% content_for :js do %>
-   <%= javascript_include_tag "custom", "jquery", "jquery_ujs", "plugins", "functions","trumbowyg.min", "script" %> 
-   <script>
+    </div>
+  </div>
+  <% content_for :js do %>
+    <%= javascript_include_tag "custom", "jquery", "jquery_ujs", "plugins", "functions","trumbowyg.min", "script" %>
+    <script>
       $('#editor').trumbowyg({
-            semantic: false,
-          removeformatPasted: true
-      });
-      getText3();
-      changeLocale();
-      loadPage()
-   </script>
-   <% end %>
+                  semantic: false,
+                removeformatPasted: true
+            });
+            getText3();
+            changeLocale();
+            loadPage()
+    </script>
+  <% end %>
 </body>

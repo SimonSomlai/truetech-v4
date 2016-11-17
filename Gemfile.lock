@@ -219,6 +219,7 @@ GEM
     geocoder (1.4.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    htmlbeautifier (1.2.0)
     i18n (0.7.0)
     inflecto (0.0.2)
     ipaddress (0.8.3)
@@ -384,6 +385,7 @@ DEPENDENCIES
   faker (~> 1.6, >= 1.6.5)
   fog (~> 1.38)
   friendly_id (~> 5.1)
+  htmlbeautifier
   jbuilder (~> 2.0)
   jquery-rails
   listen (~> 3.0.5)
@@ -414,4 +416,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.13.5
+   1.13.6
