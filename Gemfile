@@ -30,7 +30,7 @@ gem 'htmlbeautifier'
 # Caching
 gem 'rack-cache'
 gem "memcachier"
-gem 'dalli'	
+gem 'dalli'
 
 group :production do
   gem "rails_12factor"
@@ -47,5 +47,3 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-

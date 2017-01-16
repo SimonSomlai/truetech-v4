@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<!-- 
-  _____               _____         _     
- |_   _| __ _   _  __|_   _|__  ___| |__  
-   | || '__| | | |/ _ \| |/ _ \/ __| '_ \ 
+<!--
+  _____               _____         _
+ |_   _| __ _   _  __|_   _|__  ___| |__
+   | || '__| | | |/ _ \| |/ _ \/ __| '_ \
    | || |  | |_| |  __/| |  __/ (__| | | |
    |_||_|   \__,_|\___||_|\___|\___|_| |_|
-  
+
    -->
 <html>
 	<head>
@@ -22,22 +22,23 @@
 		<meta property="og:type" content="<%= yield :ogtype %>" />
 		<meta property="og:url" content="<%= request.original_url %>" />
 		<meta property="og:image" content="<%= yield :ogimage %>" />
-		<%= csrf_meta_tags %> 
-		<%=stylesheet_link_tag "reset" %> 
+		<%= csrf_meta_tags %>
+		<%=stylesheet_link_tag "reset" %>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css"/>
-		<%=yield :css %><!--[if lt IE 9]> <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]--> 
+		<%= yield :css %>
+		<!--[if lt IE 9]> <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
 	</head>
-	
-	<% flash.each do |message_type, message| %> 
+
+	<% flash.each do |message_type, message| %>
 	<div class="alert alert-<%=message_type %>"><%=message %></div>
-	<% end %> 
+	<% end %>
 
-	<%=yield %> 
+	<%=yield %>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> 
-	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 
-	<%=javascript_include_tag "ahoy" %> 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<%=javascript_include_tag "ahoy" %>
 	<%=yield :js %>
 </html>

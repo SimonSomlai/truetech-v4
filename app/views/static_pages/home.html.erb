@@ -8,37 +8,37 @@
     <header id="header" class="sticky-style-2">
       <div class="container clearfix">
         <%= link_to(home_path) do %>
-          <div id="logo" class="center-block text-center">
-            <h1 class="main-logo center-block text-center">TrueTech</h1>
-            <h2 class="logo-subtitle"><%= t "home.sub"%></h2>
-          </div>
+        <div id="logo" class="center-block text-center">
+          <h1 class="main-logo center-block text-center">TrueTech</h1>
+          <h2 class="logo-subtitle"><%= t "home.sub"%></h2>
+        </div>
         <% end %>
       </div>
       <div id="header-wrap">
         <% content_for :menu do %>
-          <li> <% if logged_in?%> <%=link_to(admin_path) do %> <i class="icon-lg icon-cogs" aria-hidden="true"></i> <% end %> <% end %> </li>
-          <li>
-            <%=link_to "#", class: "no-transition home-menu-item" do %>
-              <div><%= t "home.nav.diensten"%></div>
-            <% end %>
-          </li>
-          <li>
-            <%=link_to "#", class: "no-transition home-menu-item" do %>
-              <div>Portfolio</div>
-            <% end %>
-          </li>
-          <li>
-            <%=link_to "#", class: "no-transition home-menu-item" do %>
-              <div><%= t "home.nav.nieuws"%></div>
-            <% end %>
-          </li>
-          <li>
-            <%=link_to "#", class: "no-transition home-menu-item" do %>
-              <div>Contact</div>
-            <% end %>
-          </li>
-          <%= render "shared/locale" %>
-          <li> <% if logged_in? %> <%=link_to(logout_path, method: :delete) do %> <i class="icon-lg icon-line-power" aria-hidden="true"></i> <% end %> <% end %> </li>
+        <li> <% if logged_in?%> <%=link_to(admin_path) do %> <i class="icon-lg icon-cogs" aria-hidden="true"></i> <% end %> <% end %> </li>
+        <li>
+          <%=link_to "#", class: "no-transition home-menu-item" do %>
+          <div><%= t "home.nav.diensten"%></div>
+          <% end %>
+        </li>
+        <li>
+          <%=link_to "#", class: "no-transition home-menu-item" do %>
+          <div>Portfolio</div>
+          <% end %>
+        </li>
+        <li>
+          <%=link_to "#", class: "no-transition home-menu-item" do %>
+          <div><%= t "home.nav.nieuws"%></div>
+          <% end %>
+        </li>
+        <li>
+          <%=link_to "#", class: "no-transition home-menu-item" do %>
+          <div>Contact</div>
+          <% end %>
+        </li>
+        <%= render "shared/locale" %>
+        <li> <% if logged_in? %> <%=link_to(logout_path, method: :delete) do %> <i class="icon-lg icon-line-power" aria-hidden="true"></i> <% end %> <% end %> </li>
         <% end %> <%=render "shared/menu" %>
       </div>
     </header>
@@ -58,71 +58,71 @@
             <div id="<%= t 'home.nav.diensten' %>" class="line notopmargin"></div>
             <h3 class="services-heading center"><%= t "home.services.title1"%> <span><%= t "home.services.title1_span"%></span></h3>
             <%=link_to(single_page_path , class: "bob service-item-link", id: "last") do %>
-              <div class="col-md-3 center bottommargin">
-                <i class="i-plain color i-large icon-line2-energy inline-block" style="margin-bottom: 20px;"></i>
-                <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
-                  <span class="before-heading"><%= t "home.services.service1_pretitle"%></span>
-                  <h4><%= t "home.services.service1_title"%></h4>
-                </div>
-                <p><%= t "home.services.service1_descr"%></p>
+            <div class="col-md-3 center bottommargin">
+              <i class="i-plain color i-large icon-line2-energy inline-block" style="margin-bottom: 20px;"></i>
+              <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
+                <span class="before-heading"><%= t "home.services.service1_pretitle"%></span>
+                <h4><%= t "home.services.service1_title"%></h4>
               </div>
+              <p><%= t "home.services.service1_descr"%></p>
+            </div>
             <% end %> <%=link_to(starters_website_path , class: "bob service-item-link" ) do %>
-              <div class="col-md-3 center bottommargin">
-                <i class="i-plain color i-large icon-line2-screen-desktop inline-block" style="margin-bottom: 20px;"></i>
-                <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
-                  <span class="before-heading"><%= t "home.services.service2_pretitle"%></span>
-                  <h4><%= t "home.services.service2_title"%></h4>
-                </div>
-                <p><%= t "home.services.service2_descr"%></p>
+            <div class="col-md-3 center bottommargin">
+              <i class="i-plain color i-large icon-line2-screen-desktop inline-block" style="margin-bottom: 20px;"></i>
+              <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
+                <span class="before-heading"><%= t "home.services.service2_pretitle"%></span>
+                <h4><%= t "home.services.service2_title"%></h4>
               </div>
+              <p><%= t "home.services.service2_descr"%></p>
+            </div>
             <% end %> <%=link_to(website_op_maat_path , class: "bob service-item-link" ) do %>
-              <div class="col-md-3 center bottommargin">
-                <i class="i-plain color i-large icon-line2-rocket inline-block" style="margin-bottom: 20px;"></i>
-                <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
-                  <span class="before-heading"><%= t "home.services.service3_pretitle"%></span>
-                  <h4><%= t "home.services.service3_title"%></h4>
-                </div>
-                <p><%= t "home.services.service3_descr"%></p>
+            <div class="col-md-3 center bottommargin">
+              <i class="i-plain color i-large icon-line2-rocket inline-block" style="margin-bottom: 20px;"></i>
+              <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
+                <span class="before-heading"><%= t "home.services.service3_pretitle"%></span>
+                <h4><%= t "home.services.service3_title"%></h4>
               </div>
+              <p><%= t "home.services.service3_descr"%></p>
+            </div>
             <% end %> <%=link_to(webapplicatie_path , class: "bob service-item-link" ) do %>
-              <div class="col-md-3 center bottommargin">
-                <i class="i-plain color i-large icon-diamond inline-block" style="margin-bottom: 20px;"></i>
-                <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
-                  <span class="before-heading"><%= t "home.services.service4_pretitle"%></span>
-                  <h4><%= t "home.services.service4_title"%></h4>
-                </div>
-                <p><%= t "home.services.service4_descr"%></p>
+            <div class="col-md-3 center bottommargin">
+              <i class="i-plain color i-large icon-diamond inline-block" style="margin-bottom: 20px;"></i>
+              <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
+                <span class="before-heading"><%= t "home.services.service4_pretitle"%></span>
+                <h4><%= t "home.services.service4_title"%></h4>
               </div>
+              <p><%= t "home.services.service4_descr"%></p>
+            </div>
             <% end %>
           </div>
           <div class="promo promo-border promo-center bottommargin">
             <h3><%= t "analyse.promo1" %> <span><%= t "analyse.promo_span" %></span> <%= t "analyse.promo1_second" %></h3>
             <span><%= t "analyse.promo1_third" %></span>
             <%= link_to(website_analyse_path, class: "button button-large button-circle") do %>
-              <i class="hidden-xs icon-cogs"></i> <%= t "analyse.button" %>
+            <i class="hidden-xs icon-cogs"></i> <%= t "analyse.button" %>
             <% end %>
           </div>
           <div id="portfolio" class="line notopmargin"></div>
           <h3 class="center"><%= t "home.projects.title1"%> <span><%= t "home.projects.title1_span"%></span></h3>
           <div class="owl-carousel portfolio-carousel carousel-widget" data-margin="1" data-loop="false" data-nav="true" data-pagi="false" data-items-xxs="1" data-items-xs="2" data-items-sm="3" data-items-md="4" data-items-lg="4">
             <% @projects.each do |project| %>
-              <div class="oc-item">
-                <div class="iportfolio">
-                  <div class="portfolio-image">
-                    <%=link_to(project_path(project)) do %>
-                      <%=image_tag headerimage(project), alt: "Webdesign Mechelen - Portfolio" %>
-                    <% end %>
-                    <div class="portfolio-overlay">
-                      <%=link_to(project.project_images.first.images_url, class: "left-icon", data:{lightbox: "image"}) do %> <i class="icon-line-plus"></i> <% end %> <%=link_to(project_path(project), class: "right-icon") do %> <i class="icon-line-ellipsis"></i> <% end %> </div>
-                  </div>
-                  <div class="portfolio-desc">
-                    <h3> <%=link_to(project.title, project_path(project)) %> </h3>
-                    <a class="portfolio-features" href="/<%=project.service.gsub(/ /, '-') %>">
-                      <span><%= category(project) %> </span>
-                    </a>
-                  </div>
+            <div class="oc-item">
+              <div class="iportfolio">
+                <div class="portfolio-image">
+                  <%=link_to(project_path(project)) do %>
+                  <%=image_tag headerimage(project), alt: "Webdesign Mechelen - Portfolio" %>
+                  <% end %>
+                  <div class="portfolio-overlay">
+                  <%=link_to(project.project_images.first.images_url, class: "left-icon", data:{lightbox: "image"}) do %> <i class="icon-line-plus"></i> <% end %> <%=link_to(project_path(project), class: "right-icon") do %> <i class="icon-line-ellipsis"></i> <% end %> </div>
+                </div>
+                <div class="portfolio-desc">
+                  <h3> <%=link_to(project.title, project_path(project)) %> </h3>
+                  <a class="portfolio-features" href="/<%=project.service.gsub(/ /, '-') %>">
+                    <span><%= category(project) %> </span>
+                  </a>
                 </div>
               </div>
+            </div>
             <% end %>
           </div>
           <div class="line"></div>
@@ -131,17 +131,17 @@
             <div class="flexslider">
               <div class="slider-wrap">
                 <% @testimonials.each do |testimonial| %>
-                  <div class="slide">
-                    <div class="testi-image"> <a href="<%= testimonial.link || no-target %>"><%=image_tag testimonial.image.url, alt: "Webdesign Mechelen - Getuigenissen" %></a> </div>
-                    <div class="testi-content">
-                      <% if I18n.locale == :nl %>
-                        <p><%=testimonial.quote %></p>
-                      <% else %>
-                        <p><%=  testimonial.en_quote %></p>
-                      <% end %>
-                      <div class="testi-meta"> <%=testimonial.name %> <span><%=testimonial.company %></span> </div>
-                    </div>
+                <div class="slide">
+                  <div class="testi-image"> <a href="<%= testimonial.link || no-target %>"><%=image_tag testimonial.image.url, alt: "Webdesign Mechelen - Getuigenissen" %></a> </div>
+                  <div class="testi-content">
+                    <% if I18n.locale == :nl %>
+                    <p><%= testimonial.quote %></p>
+                    <% else %>
+                    <p><%=  testimonial.en_quote %></p>
+                    <% end %>
+                    <div class="testi-meta"> <%=testimonial.name %> <span><%=testimonial.company %></span> </div>
                   </div>
+                </div>
                 <% end %>
               </div>
             </div>
@@ -150,35 +150,35 @@
           <h3 class="center"><%= t "home.news.title1"%> <span> <%= t "home.news.title1_span"%></span></h3>
           <div id="oc-posts" class="owl-latest-news owl-carousel posts-carousel carousel-widget owl-loaded owl-drag" data-margin="15" data-loop="false" data-nav="true" data-pagi="false" data-items-xxs="1" data-items-xs="2" data-items-sm="3" data-items-md="4" data-items-lg="4">
             <% @articles.each do |article| %>
-              <div class="oc-item">
-                <div class="ipost clearfix">
-                  <div class="entry-image"> <a href="<%= articles_show_path(article) %>"> <%= image_tag article.image.small.url, alt: "Webdesign Mechelen - Nieuws", class: "image_fade" %> </a> </div>
-                  <div class="entry-title">
-                    <% if I18n.locale == :en %>
-                      <h3><%=link_to(article.en_title, articles_show_path(article)) %></h3>
-                    <% else  %>
-                      <h3><%=link_to(article.title, articles_show_path(article)) %></h3>
-                    <% end %>
-                  </div>
-                  <div class="entry-content">
-                    <% if I18n.locale == :en %>
-                      <p><%=article.en_description %></p>
-                    <% else  %>
-                      <p><%=article.description %></p>
-                    <% end %>
-                  </div>
+            <div class="oc-item">
+              <div class="ipost clearfix">
+                <div class="entry-image"> <a href="<%= articles_show_path(article) %>"> <%= image_tag article.image.small.url, alt: "Webdesign Mechelen - Nieuws", class: "image_fade" %> </a> </div>
+                <div class="entry-title">
+                  <% if I18n.locale == :en %>
+                  <h3><%=link_to(article.en_title, articles_show_path(article)) %></h3>
+                  <% else  %>
+                  <h3><%=link_to(article.title, articles_show_path(article)) %></h3>
+                  <% end %>
+                </div>
+                <div class="entry-content">
+                  <% if I18n.locale == :en %>
+                  <p><%=article.en_description %></p>
+                  <% else  %>
+                  <p><%=article.description %></p>
+                  <% end %>
                 </div>
               </div>
+            </div>
             <% end %>
           </div>
           <div class="col-lg-12 col-hidden article-block">
             <% @articles.each do |article| %>
-              <a href="<%=articles_show_path(article) %>">
-                <div class="article-div">
-                  <h3 class="article-title"><%=article.title %></h3>
-                  <p class="article-description"><%=article.description %></p>
-                </div>
-              </a>
+            <a href="<%=articles_show_path(article) %>">
+              <div class="article-div">
+                <h3 class="article-title"><%=article.title %></h3>
+                <p class="article-description"><%=article.description %></p>
+              </div>
+            </a>
             <% end %>
           </div>
           <div id="contact" class="line"></div>
@@ -211,48 +211,48 @@
                   2861, Onze-Lieve-Vrouw-Waver <br>
                   <a target="_blank" href="https://maps.google.com?saddr=Current+Location&daddr=Kerkhoflei+5-1,+2861+Sint-Katelijne-Waver,+Belgium"><%= t "home.contact.route"%></a> <br>
                 </address>
-                <abbr title="Phone Number"><strong>GSM:</strong></abbr> +32 496 42 75 59 <br>
-                <abbr title="Email Address"><strong>Email:</strong></abbr> <a href="mailto:info@truetech.be">info@truetech.be</a> <br>
-                <abbr title="Skype"><strong>Skype:</strong></abbr> SimonSomlai 
-                  </div>
-              <div class="col_three_fifth col_last hidden-sm hidden-xs hidden-md"> <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FTrueTech-1502842360023086%2F%3Ffref%3Dts&tabs=timeline&width=340&height=467&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=171450563274574" width="340" height="350" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe> </div>
-            </div>
-            <div class="col-sm-12 col-md-12 contactform">
-              <%=form_for(@contact, remote: true, :format=> 'js', :html=>{:class=> "nobottommargin", :name=> "template-contactform", :id=> "template-contactform", :multipart=> true}) do |f| %> <%=render "shared/error_messages", object: f.object %>
-                <div class="col_half"> <%=f.label :name do %> <%= t "home.contact.namefield" %><small>*</small> <% end %> <%=f.text_field :name, required: true, id: "template-contactform-name", :class=> "sm-form-control required" %> </div>
-                <div class="col_half col_last"> <%=f.label :email do %> Email<small>*</small> <% end %> <%=f.email_field :email, required: true, id: "template-contactform-email", :class=> "required email sm-form-control" %> </div>
-                <div class="clear"></div>
-                <div class="col_half"> <%=f.label :phone, t("home.contact.phonefield") %> <%=f.text_field :phone, id: "template-contactform-phone", :class=> "sm-form-control" %> </div>
-                <div class="col_half col_last subject-home"> <%=f.label :subject, t("home.contact.subjectfield") %> <%=f.text_field :subject, id: "template-contactform-subject", :class=> "sm-form-control required" %> </div>
-                <div class="clear"></div>
-                <div class="col_full"> <%=f.label :message do %> <%= t "home.contact.messagefield"%><small>*</small> <% end %> <%=f.text_area :message, id: "template-contactform-message", :class=> "required sm-form-control", rows: 6, cols: 30 %> </div>
-                <div class="col_full hidden"> <%=f.text_field :botcheck, id: "template-contactform-botcheck", :class=> "sm-form-control" %> </div>
-                <div class="col_full"> <%=f.submit t("home.contact.sendbutton"), id: "template-contactform-submit", class: "button button-3d nomargin" %> </div>
-              <% end %>
-            </div>
-            <div class="col-md-12 bottommargin">
-              <section id="google-map" class="gmap" style="height: 240px; position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);">
-                <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCaWCpVtwDpwN-5Lm5zu0xx9FBMrfjuZ7M'></script>
-                <div style='overflow:hidden;height:240px;width:px;'>
-                  <div id='gmap_canvas' style='height:240px;width:px;'></div>
-                  <div><small><a href="http://embedgooglemaps.com"> embed google maps </a></small></div>
-                  <div><small><a href="https://privacypolicytemplate.net">privacy policy example</a></small></div>
-                  <style>
-                    #gmap_canvas img{max-width: none!important; background: none!important}
-                  </style>
-                </div>
-                <script type='text/javascript'>
-                  function init_map(){var myOptions={draggable: false, zoomControl: false, scrollwheel: false, zoom: 10, center: new google.maps.LatLng(51.06415080000001, 4.572420500000021), mapTypeId: google.maps.MapTypeId.ROADMAP}; map=new google.maps.Map(document.getElementById('gmap_canvas'), myOptions); marker=new google.maps.Marker({map: map, position: new google.maps.LatLng(51.06415080000001, 4.572420500000021)}); infowindow=new google.maps.InfoWindow({content: '<strong>TrueTech</strong><br>kerkhoflei 5, 2861<br>'}); google.maps.event.addListener(marker, 'click', function(){infowindow.open(map, marker);}); infowindow.open(map, marker);}google.maps.event.addDomListener(window, 'load', init_map);
-                </script>
-              </section>
-            </div>
+              <abbr title="Phone Number"><strong>GSM:</strong></abbr> +32 496 42 75 59 <br>
+              <abbr title="Email Address"><strong>Email:</strong></abbr> <a href="mailto:info@truetech.be">info@truetech.be</a> <br>
+            <abbr title="Skype"><strong>Skype:</strong></abbr> SimonSomlai
           </div>
+          <div class="col_three_fifth col_last hidden-sm hidden-xs hidden-md"> <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FTrueTech-1502842360023086%2F%3Ffref%3Dts&tabs=timeline&width=340&height=467&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=171450563274574" width="340" height="350" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe> </div>
+        </div>
+        <div class="col-sm-12 col-md-12 contactform">
+          <%=form_for(@contact, remote: true, :format=> 'js', :html=>{:class=> "nobottommargin", :name=> "template-contactform", :id=> "template-contactform", :multipart=> true}) do |f| %> <%=render "shared/error_messages", object: f.object %>
+          <div class="col_half"> <%=f.label :name do %> <%= t "home.contact.namefield" %><small>*</small> <% end %> <%=f.text_field :name, required: true, id: "template-contactform-name", :class=> "sm-form-control required" %> </div>
+          <div class="col_half col_last"> <%=f.label :email do %> Email<small>*</small> <% end %> <%=f.email_field :email, required: true, id: "template-contactform-email", :class=> "required email sm-form-control" %> </div>
+          <div class="clear"></div>
+          <div class="col_half"> <%=f.label :phone, t("home.contact.phonefield") %> <%=f.text_field :phone, id: "template-contactform-phone", :class=> "sm-form-control" %> </div>
+          <div class="col_half col_last subject-home"> <%=f.label :subject, t("home.contact.subjectfield") %> <%=f.text_field :subject, id: "template-contactform-subject", :class=> "sm-form-control required" %> </div>
+          <div class="clear"></div>
+          <div class="col_full"> <%=f.label :message do %> <%= t "home.contact.messagefield"%><small>*</small> <% end %> <%=f.text_area :message, id: "template-contactform-message", :class=> "required sm-form-control", rows: 6, cols: 30 %> </div>
+          <div class="col_full hidden"> <%=f.text_field :botcheck, id: "template-contactform-botcheck", :class=> "sm-form-control" %> </div>
+          <div class="col_full"> <%=f.submit t("home.contact.sendbutton"), id: "template-contactform-submit", class: "button button-3d nomargin" %> </div>
+          <% end %>
+        </div>
+        <div class="col-md-12 bottommargin">
+          <section id="google-map" class="gmap" style="height: 240px; position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);">
+            <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCaWCpVtwDpwN-5Lm5zu0xx9FBMrfjuZ7M'></script>
+            <div style='overflow:hidden;height:240px;width:px;'>
+              <div id='gmap_canvas' style='height:240px;width:px;'></div>
+              <div><small><a href="http://embedgooglemaps.com"> embed google maps </a></small></div>
+              <div><small><a href="https://privacypolicytemplate.net">privacy policy example</a></small></div>
+              <style>
+              #gmap_canvas img{max-width: none!important; background: none!important}
+              </style>
+            </div>
+            <script type='text/javascript'>
+            function init_map(){var myOptions={draggable: false, zoomControl: false, scrollwheel: false, zoom: 10, center: new google.maps.LatLng(51.06415080000001, 4.572420500000021), mapTypeId: google.maps.MapTypeId.ROADMAP}; map=new google.maps.Map(document.getElementById('gmap_canvas'), myOptions); marker=new google.maps.Marker({map: map, position: new google.maps.LatLng(51.06415080000001, 4.572420500000021)}); infowindow=new google.maps.InfoWindow({content: '<strong>TrueTech</strong><br>kerkhoflei 5, 2861<br>'}); google.maps.event.addListener(marker, 'click', function(){infowindow.open(map, marker);}); infowindow.open(map, marker);}google.maps.event.addDomListener(window, 'load', init_map);
+            </script>
+          </section>
         </div>
       </div>
-    </section>
-    <%=render "shared/footer" %>
-    <div id="gotoTop" class="icon-angle-up"></div>
-    <% content_for :js do %> <%=javascript_include_tag "application" %> <script>
-        autoScroll(); showOptions();
-      </script> <% end %>
-  </body>
+    </div>
+  </div>
+</section>
+<%=render "shared/footer" %>
+<div id="gotoTop" class="icon-angle-up"></div>
+<% content_for :js do %> <%=javascript_include_tag "application" %> <script>
+autoScroll(); showOptions();
+</script> <% end %>
+</body>

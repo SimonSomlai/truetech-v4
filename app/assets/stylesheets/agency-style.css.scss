@@ -5655,6 +5655,12 @@ body.device-touch.device-xxs .portfolio-notitle .portfolio-overlay {
     color: #666;
 }
 
+@media only screen and (max-width: 768px){  
+    .portfolio-meta li{
+        margin: 0;
+      }
+    }
+
 .portfolio-meta li:first-child {
     margin-top: 0;
 }

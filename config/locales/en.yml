@@ -1,8 +1,8 @@
 en:
-  home: 
-    meta:  "Welcome to TrueTech – We’re a creative and modern webdesign company and offer business owners custom webdesign to attract and convert more visitors. "
-    ogtitle: "Professional Webdesign - TrueTech"
-    sub: "Professional Webdesign"
+  home:
+    meta:  "Welcome to TrueTech – We’re a creative and modern web development company and offer business owners custom webdesign to attract and convert more visitors. "
+    ogtitle: "Professional Web Development - TrueTech"
+    sub: "Professional Web Development"
     nav:
       diensten: "services"
       nieuws: "news"
@@ -32,7 +32,7 @@ en:
     news:
       title1: "Latest"
       title1_span: "News"
-    # Contact sectie  
+    # Contact sectie
     contact:
       title1_span: "Contact"
       title1: "Me"
@@ -96,7 +96,7 @@ en:
     responsive_descr: "Do you want this page to look good across all devices? (recommended)"
     optimized: "Mobile Optimized"
     optimized_descr: "Do you want to dislay or hide specific elements according to the users' device?"
-    email: "Email Marketing" 
+    email: "Email Marketing"
     email_descr: "Would you like to collect emails for marketing purposes later?"
     images: "Image Slider"
     video: "Background Video"
@@ -115,7 +115,7 @@ en:
     meta: "Looking for a professional landing page, sales page or the conversion of your design into HTML? Look no further!"
     ogtitle: "Looking for a webpage?"
    # Starter Website
-  starter: 
+  starter:
     descr: "Looking for a professional budget website? Or otherwise looking to update your current one? We can help!"
     ogtitle: "Need A New Website?"
     heading1: "Starter Website"
@@ -146,7 +146,7 @@ en:
     inclusive2: " 1 Domain name, professional email adresses, 1 year free hosting &"
     inclusive3:  " 60 days"
     inclusive4: " money-back guarantee!"
-    pricehead: "Your Website For About " 
+    pricehead: "Your Website For About "
   # Custom Website
   custom:
     heading1: "Custom Website"
@@ -192,7 +192,7 @@ en:
     process1_descr: "We’ll arrange an informal one-on-one conversation or we meet up through skype to clarify what your specific needs are. Based on that analysis, I’ll propose the options best suited to what you need. If we find an agreement that works for the both of us, we proceed to the next step!"
     process2: "PAGES & FUNCTIONALITY"
     process2_descr: "We'll clarify together how the application will look from the perspective of the user and how he interacts with it. We visualize this by making a"
-    process2_span:  " 'user-flow' diagram." 
+    process2_span:  " 'user-flow' diagram."
     process2_descr2: " This way we can clearly see what pages and functionality are required."
     process3: "Design"
     process3_descr: "Based on this diagram, we start working on developing the individual pages offline"
@@ -214,7 +214,7 @@ en:
     posted: "Posted in"
     by: "by"
     sub: "Shall we keep you posted on interesting articles?"
-    comments: "Comments"
+    comments: "Questions/Suggestions?"
     related: "Related"
     articles: " Articles"
   analyse:
@@ -234,7 +234,7 @@ en:
     benefit3_sub: "Is your website optimized for mobile devices?"
     benefit3_descr: "50% of Google searches are coming from mobile devices, don't lose out on this traffic! We'll analyze how your website displays on different screen sizes and make a few suggestions to improve this!"
     heading3: "What Do"
-    heading3_span: " You "  
+    heading3_span: " You "
     heading3_two: "Get?"
     feature1: "Free PDF Report"
     feature1_descr: "An overview (PDF) of the "
@@ -273,12 +273,12 @@ en:
   footer:
     disclaimer: "TrueTech - Copyright © 2016, All Rights Reserved."
     faq: "FAQ"
-    subheader: "Stay updated about new articles & discounts!"
+    subheader: "Stay updated about new articles!"
     submessage: "Your time and attention are valuable. Therefore we only send out practical and relevant information you can choose yourself!"
     subname: 'Your name..*'
     subemail: "Your email..*"
     subbutton: "Send!"
     suboptions: "What would you like to stay updated about?"
-    option1: "Business Articles" 
+    option1: "Business Articles"
     option2: "Technology Articles"
     option3: "TrueTech Discounts/Updates"

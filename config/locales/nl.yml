@@ -1,6 +1,6 @@
 nl:
   # Homepagina
-  home: 
+  home:
     meta:  "Welkom bij TrueTech! - Wij zijn een creatief webdesign bedrijf uit regio Mechelen en bieden zaakvoerders webdesign op maat aan om meer klanten te genereren"
     ogtitle: "Webdesign Mechelen - TrueTech"
     sub: "Webdesign Regio Mechelen"
@@ -34,7 +34,7 @@ nl:
     news:
       title1: "Laatste"
       title1_span: "Nieuws"
-    # Contact sectie  
+    # Contact sectie
     contact:
       title1_span: "Contacteer"
       title1: "Mij!"
@@ -100,7 +100,7 @@ nl:
     responsive_descr: "Wil je dat jouw pagina op mobiel/tablets er goed uitziet? (aangeraden)"
     optimized: "Mobile Optimized"
     optimized_descr: "Wil je dat jouw pagina andere elementen bevat of sommige elementen verbergt op mobiel/tablets?"
-    email: "Email Marketing" 
+    email: "Email Marketing"
     email_descr: "Wil je emails verzamelen van je gebruikers voor email marketing later?"
     images: "Afbeeldingen Slider"
     video: "Achtergrond Video"
@@ -119,7 +119,7 @@ nl:
     meta: "Op zoek naar een professionele landingspagina, salespage of het omzetten van jouw design naar HTML? Kijk niet verder!"
     ogtitle: "Een Webpagina Nodig?"
   # Starter Website
-  starter: 
+  starter:
     descr: "Op zoek naar een professionele starterswebsite aan een budgetprijs of het webdesign van je verouderde website bijschaven?"
     ogtitle: "Een Nieuwe Website Nodig?"
     heading1: "Starters Website"
@@ -194,7 +194,7 @@ nl:
     process1_descr: "We overlopen samen via een vrijblijvend 1-op-1 gesprek of via skype wat concreet jouw behoeften zijn en op basis daarvan kijken welke opties mogelijk zijn. Als we een akkoord vinden dat werkt voor ons beiden, gaan we verder naar de volgende stap!"
     process2: "PAGINA'S & FUNCTIONALITEIT"
     process2_descr: "We overlopen samen hoe de applicatie er voor de gebruiker zal uitzien en hoe hij hiermee omgaat. Dit doen we door een"
-    process2_span:  " 'user-flow' schema" 
+    process2_span:  " 'user-flow' schema"
     process2_descr2: " uit te tekenen zodat we duidelijk kunnen visualiseren welke pagina's en functionaliteit noodzakelijk zijn."
     process3: "Ontwerp"
     process3_descr: "We maken op basis van het schema een uitgewerkte versie van de verschillende pagina's "
@@ -216,7 +216,7 @@ nl:
     posted: "Gepost in"
     by: "door"
     sub: "Houden we je op de hoogte van relevante artikels?"
-    comments: "Commentaar"
+    comments: "Vragen/Aanvullingen?"
     related: "Gerelateerde "
     articles: " Artikels"
   analyse:
@@ -236,7 +236,7 @@ nl:
     benefit3_sub: "Is jouw website geoptimaliseerd voor mobiele apparaten?"
     benefit3_descr: "50% van Google zoekresultaten komen via mobiele apparaten - Welke elementen kan je eventueel nog verbeteren? We gaan kijken hoe jouw website toont op verschillende apparaten en maken een aantal suggesties van de elementen die je zou kunnen toevoegen of weglaten."
     heading3: "Wat "
-    heading3_span: " Krijg "  
+    heading3_span: " Krijg "
     heading3_two: "Je?"
     feature1: "Gratis PDF Rapport"
     feature1_descr: "Een overzichtsrapport (PDF) van de "
@@ -275,17 +275,17 @@ nl:
   footer:
     disclaimer: "TrueTech - Copyright © 2016, Alle Rechten Voorbehouden."
     faq: "Frequente vragen"
-    subheader: "Blijf op de hoogte van nieuwe artikels & promoties!"
+    subheader: "Blijf op de hoogte van nieuwe artikels!"
     submessage: "Jouw tijd en aandacht zijn kostbaar. Daarom sturen we jou enkel relevante en praktische informatie die je zelf kan selecteren."
     subname: 'Jouw naam..*'
     subemail: "Jouw email..*"
     subbutton: "Inschrijven!"
     suboptions: "Van wat zou je graag op de hoogte blijven?"
-    option1: "Business Artikels" 
+    option1: "Business Artikels"
     option2: "Technology Artikels"
     option3: "TrueTech Kortingen/Updates"
-  date:    
-    day_names: 
+  date:
+    day_names:
       - zondag
       - maandag
       - dinsdag
@@ -301,11 +301,8 @@ nl:
       - April
       - Mei
       - Juni
-      - Juli 
+      - Juli
       - Augustus
-      - September 
+      - September
       - Oktober
       - November
-
-
-
