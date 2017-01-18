@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://www.truetech.be"
+SitemapGenerator::Sitemap.default_host = "http://www.truetech.be/nl"
 
 SitemapGenerator::Sitemap.create do
     Article.find_each do |article|
