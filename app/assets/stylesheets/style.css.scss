@@ -1,9 +1,9 @@
-/*---- 
+/*----
 @extend .message; - copies css from .message element
 @include transition(3s); - include transition from mixin
-&:hover - nested action on hover of the element 
+&:hover - nested action on hover of the element
 @import 'reset'; - includes the reset.scss in current sheet
-%bg-image{CODE}; - includes an element that can be extended from, but will not be included in final css 
+%bg-image{CODE}; - includes an element that can be extended from, but will not be included in final css
 background-color:lighten($color,10%); - Lightens color (good for hovers!)
 -----*/
 /* Mixin Functions */
@@ -59,7 +59,7 @@ background-color:lighten($color,10%); - Lightens color (good for hovers!)
 .cf:before, .cf:after{
   content: "";
   display: table; }
-  
+
 .cf:after {
   clear: both; }
 
@@ -75,7 +75,7 @@ background-color:lighten($color,10%); - Lightens color (good for hovers!)
   display: none !important;
 }}
 
-a { 
+a {
  @include transition(0.35s);}
 
 .margin-top{
@@ -86,7 +86,7 @@ a {
   @include transition(0.35s);
   height: 25px;
   width: 25px;
-  background-image: url(asset_path("locale.png")); 
+  background-image: url(asset_path("locale.png"));
   background-size: cover;}
   .locale-top{
     top: 15px;
@@ -102,7 +102,11 @@ a {
 .en{
   background-position: 0 -100%;}
 
-//  General responsiveness 
+.coding-article{
+  display: none;
+}
+
+//  General responsiveness
 @media only screen and (max-width: 992px){
   .locale-menu{
     position: static;}}
@@ -137,7 +141,7 @@ body > div > div > div.right_col{
 .tile_count, .x_panel{
   margin-bottom: 0;}
 
-  // responsiveness admin panel 
+  // responsiveness admin panel
 @media only screen and (max-width: 765px){
 .admin-body, .main_container{
   width: 100% !important;
@@ -456,12 +460,12 @@ $high3: 7deg;
 70% {margin-left: 125%; opacity: 0;}
 99%{ bottom: -100%;}
 }
- 
-//  Blog single resonsiveness 
+
+//  Blog single resonsiveness
 @media only screen and (max-width: 560px){
   .container.clearfix.blog-single{
     height: 7.7rem !important;
-    } 
+    }
     #content, #blog-article.blog-single-content{
       width: 100% !important;
     }
@@ -528,7 +532,7 @@ $high3: 7deg;
   .pricing-features .page-selector li{
     margin-bottom: 0 !important;
     width: 100% !important;
-    } 
+    }
   }
 
 /*/ ------------------------------ SERVICES SINGLE 4 ------------------------------------/*/
@@ -549,7 +553,7 @@ $high3: 7deg;
   padding: 50px 50px 25px;
   border-radius: 7px;
   float: none;
-  margin: 0 auto; 
+  margin: 0 auto;
 -webkit-box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
     box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);}

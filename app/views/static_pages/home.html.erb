@@ -149,6 +149,7 @@
           <div id="<%= t 'home.nav.nieuws'%>" class="line"></div>
           <h3 class="center"><%= t "home.news.title1"%> <span> <%= t "home.news.title1_span"%></span></h3>
           <div id="oc-posts" class="owl-latest-news owl-carousel posts-carousel carousel-widget owl-loaded owl-drag" data-margin="15" data-loop="false" data-nav="true" data-pagi="false" data-items-xxs="1" data-items-xs="2" data-items-sm="3" data-items-md="4" data-items-lg="4">
+            <% I18n.locale == :nl ? (@articles = @nl_articles) : (@articles = @en_articles) %>
             <% @articles.each do |article| %>
             <div class="oc-item">
               <div class="ipost clearfix">

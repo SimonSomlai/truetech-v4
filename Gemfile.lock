@@ -215,8 +215,6 @@ GEM
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
     formatador (0.2.5)
-    friendly_id (5.2.0)
-      activerecord (>= 4.0.0)
     geocoder (1.4.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -387,7 +385,7 @@ DEPENDENCIES
   dalli
   faker (~> 1.6, >= 1.6.5)
   fog (~> 1.38)
-  friendly_id (~> 5.1)
+  friendly_id (~> 5.1.0)
   htmlbeautifier
   jbuilder (~> 2.0)
   jquery-rails

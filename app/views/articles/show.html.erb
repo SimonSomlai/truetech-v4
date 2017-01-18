@@ -3,7 +3,14 @@
 <% content_for :ogdescription, meta_description %>
 <% content_for :ogtype, "article" %>
 <% content_for :ogimage, image_url(@article.image) %>
-<% content_for :css do %><%=stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" %><%=stylesheet_link_tag "application", "flatsome.min" %><% end %><script type='text/javascript' data-cfasync='false' src='//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js' data-shr-siteid='78a00e326c876797bb56cf834491d702' async='async'></script>
+<% content_for :css do %>
+  <% if @article.category.downcase == "coding" %>
+    <%= stylesheet_link_tag "highlight.min" %>
+  <% end %>
+  <%=stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" %>
+  <%=stylesheet_link_tag "application", "flatsome.min" %>
+<% end %>
+<script type='text/javascript' data-cfasync='false' src='//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js' data-shr-siteid='78a00e326c876797bb56cf834491d702' async='async'></script>
 <body class="stretched">
    <div id="wrapper" class="clearfix">
    <header id="header" class="sticky-style-2">
@@ -16,20 +23,20 @@
      <% end %>
       </div>
       <div id="header-wrap">
-         <% content_for :menu do %> 
+         <% content_for :menu do %>
          <li> <%=link_to("Home", home_path) %> </li>
-         <li>
+         <li class="<%= @article.category.downcase %>-article">
         <% if I18n.locale == :nl %>
             <%= link_to locale: "en", article: @article.slug_en do %>
                 <div class="locale locale-menu <%= I18n.locale %>"></div>
-            <% end %> 
+            <% end %>
         <% else  %>
             <%= link_to locale: "nl", article: @article.slug_nl do %>
                 <div class="locale locale-menu <%= I18n.locale %>"></div>
-            <% end %> 
+            <% end %>
         <% end %>
         </li>
-         <% end %> <%=render "shared/menu" %> 
+         <% end %> <%=render "shared/menu" %>
       </div>
    </header>
    <div id="blog-article" class="container blog-single-content">
@@ -48,7 +55,7 @@
                      <div class="entry-meta center-block text-center"> <span class="posted-on"><%= t "articles.posted" %> <span><a class="contact-link" href="#<%=@article.category.downcase %>-cat"> <%=@article.category %></a><span class="byline"> <%= t "articles.by" %> <span class="meta-author vcard author"><%=author(@article) %></span></span> </div>
                   </header>
                   <div class="entry-image"> <%=image_tag @article.image.url, alt: "#{@article.title} - Webdesign Mechelen", class: "attachment-large size-large wp-post-image" %> </div>
-                  <div class="entry-content entry-content-blog-single"> 
+                  <div class="entry-content entry-content-blog-single">
                   <% if I18n.locale == :en %>
                       <%= raw @article.en_body %>
                       <% else   %>
@@ -56,7 +63,7 @@
                       <% end %>
                   </div>
                   <div class="blog-share text-center">
-                     <br/> 
+                     <br/>
                      <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='25483125'></div>
                   </div>
                   <div class="col-md-8 col-centered topmargin blog-single-subscribe subscribe" >
@@ -82,20 +89,20 @@
                <div id="comments" class="clearfix">
                   <h3 id="comments-title" class="bottommargin"><%= t "articles.comments" %></h3>
                   <div id="disqus_thread"></div>
-                  <script>var disqus_config=function (){this.page.url='http://www.truetech.be/<%=@article.title.downcase.gsub(' ','-') %>'; this.page.identifier='<%=@article.title.downcase.gsub(' ','-') %>';}; (function(){var d=document, s=d.createElement('script'); s.src='//truetech-1.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s);})(); </script> 
+                  <script>var disqus_config=function (){this.page.url='http://www.truetech.be/<%=@article.title.downcase.gsub(' ','-') %>'; this.page.identifier='<%=@article.title.downcase.gsub(' ','-') %>';}; (function(){var d=document, s=d.createElement('script'); s.src='//truetech-1.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s);})(); </script>
                </div>
             </div>
             <%= image_tag("unicorn.png", :class => "unicorn hidden-xs") %>
             <div id="<%=@article.category.downcase %>-cat" class="line"></div>
             <h3 class="center bottommargin"><%= t "articles.related" %><span><%= t "articles.articles" %></span></h3>
             <div id="oc-posts" class="bottommargin owl-latest-news owl-carousel posts-carousel carousel-widget owl-loaded owl-drag" data-margin="15" data-loop="false" data-nav="true" data-pagi="false" data-items-xxs="1" data-items-xs="2" data-items-sm="3" data-items-md="3" data-items-lg="3">
-               <% @relatedarticles.each do |article| %> 
+               <% @relatedarticles.each do |article| %>
                <div class="oc-item">
                   <div class="ipost clearfix">
-                     <div class="entry-image"> 
+                     <div class="entry-image">
                         <a href="<%= articles_show_path(article) %>">
-                           <%= image_tag(article.image.small.url, alt: "#{article.title} - Webdesign Mechelen", class: "image-fade") %> 
-                        </a> 
+                           <%= image_tag(article.image.small.url, alt: "#{article.title} - Webdesign Mechelen", class: "image-fade") %>
+                        </a>
                      </div>
                      <div class="entry-title">
                         <h3>
@@ -114,15 +121,15 @@
                          <%= article.en_description %>
                       <% else  %>
                            <%=article.description %>
-                      <% end %>  
+                      <% end %>
                         </p>
                      </div>
                   </div>
                </div>
-               <% end %> 
+               <% end %>
             </div>
             <div class="col-lg-12 col-hidden article-block">
-               <% @relatedarticles.each do |article| %> 
+               <% @relatedarticles.each do |article| %>
                <a href="<%=articles_show_path(article) %>">
                   <div class="article-div">
                      <h3 class="article-title">
@@ -137,16 +144,27 @@
                         <%= article.en_description %>
                       <% else %>
                         <%= article.description %>
-                      <% end %>  
+                      <% end %>
                      </p>
                   </div>
                </a>
-               <% end %> 
+               <% end %>
             </div>
          </div>
       </div>
    </div>
-   <%=render "shared/footer" %> 
+   <%=render "shared/footer" %>
    <div id="gotoTop" class="icon-angle-up"></div>
-   <% content_for :js do %> <%=javascript_include_tag "application" %> <script>autoScroll(); showOptions(); unleash_unicorn(); </script> <% end %>
+   <% content_for :js do %>
+   <%=javascript_include_tag "application" %>
+   <% content_for :js do %>
+     <% if @article.category.downcase == "coding" %>
+     <%=javascript_include_tag "highlight.min" %> 
+    <% end %>
+   <% end %>
+   <script>autoScroll(); showOptions(); unleash_unicorn();
+   $('pre code').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+   </script> <% end %>
 </body>
