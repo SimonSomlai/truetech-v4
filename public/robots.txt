@@ -3,8 +3,6 @@
 # To ban all spiders from the entire site uncomment the next two lines:
 # User-agent: *
 # Disallow: /
-Sitemap: http://www.truetech.be/nl/sitemap.xml.gz
 Disallow: /admin
 Disallow: /admin/*
 Disallow: /login
-Disallow: /learn
