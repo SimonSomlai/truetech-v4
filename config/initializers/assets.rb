@@ -36,4 +36,3 @@ Rails.application.config.assets.precompile += %w( jquery_ujs.js )
 Rails.application.config.assets.precompile += %w( jquery.remotipart.js )
 Rails.application.config.assets.precompile += %w( script.js )
 Rails.application.config.assets.precompile += %w( ahoy.js )
-

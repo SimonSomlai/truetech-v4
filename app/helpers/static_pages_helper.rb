@@ -73,13 +73,13 @@ module StaticPagesHelper
       @totalpageviews = Hash[@totalpageviews.sort_by{|k, v| -v }[0..9]]
     end
   end
-  
+
   def homepage_sql_caching
     @projects ||= Rails.cache.fetch("homepage_project_queries", :expires_in => 10.minutes) do
       Project.includes(:project_images).limit(6).order("created_at DESC")
     end
     @testimonials ||= Rails.cache.fetch("homepage_testimonial_queries", :expires_in => 10.minutes) do
-      Testimonial.limit(3)
+      Testimonial.limit(5)
     end
     @articles ||= Rails.cache.fetch("homepage_article_queries", :expires_in => 10.minutes) do
       Article.where(posted: true).limit(6).order("created_at DESC")
