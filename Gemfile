@@ -26,6 +26,8 @@ gem 'remotipart', '~> 1.2'
 gem 'ahoy_matey'
 gem "rails-i18n"
 gem 'htmlbeautifier'
+gem 'sitemap_generator'
+gem 'whenever', :require => false
 
 # Caching
 gem 'rack-cache'
