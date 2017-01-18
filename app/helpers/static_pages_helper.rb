@@ -78,7 +78,7 @@ module StaticPagesHelper
     end
     @testimonials ||= Rails.cache.fetch("homepage_testimonial_queries", :expires_in => 10.minutes) do
       Testimonial.limit(5)
-
+    end
     # Seperate normal articles from technical articles (latter only shows on en locale)
     @nl_articles ||= Rails.cache.fetch('homepage_nl_article_queries', expires_in: 10.minutes) do
       Article.where.not(category: 'Coding').where(posted: true).limit(6).order('created_at DESC')
