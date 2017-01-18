@@ -159,12 +159,10 @@
    <%=javascript_include_tag "application" %>
    <% content_for :js do %>
      <% if @article.category.downcase == "coding" %>
-     <%=javascript_include_tag "highlight.min" %> 
+     <%=javascript_include_tag "highlight.min" %>
     <% end %>
    <% end %>
    <script>autoScroll(); showOptions(); unleash_unicorn();
-   $('pre code').each(function(i, block) {
-    hljs.highlightBlock(block);
-  });
+   Prism.highlightElement($('#code')[0]);
    </script> <% end %>
 </body>
