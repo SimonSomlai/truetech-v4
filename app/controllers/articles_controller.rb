@@ -11,15 +11,14 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    if params[:article]
-      if I18n.locale == :en
+    if params[:article] # Switching between locales on show page
+      if I18n.locale == :en # If locale passed in is en, the slug_en is also passed in..
         @article = Article.find_by(slug_en: params[:article])
-        redirect_to articles_show_path(@article)
-      else
+      else  # If locale passed in is nl, find article by slug_nl ..
         @article = Article.find_by(slug_nl: params[:article])
-        redirect_to articles_show_path(@article)
       end
-    else
+      redirect_to articles_show_path(@article)
+    else # Just for normal clicks on the homepage
       @article = Article.friendly.find(params[:id])
     end
     @relatedarticles = Article.where(category: @article.category).uniq.limit(6).where.not(id: @article)
@@ -30,6 +29,7 @@ class ArticlesController < ApplicationController
     @articles = Article.all
     @article = Article.new(article_params)
     @article.update_attribute(:user_id, current_user.id)
+    set_slugs_for_article # Sets slug_en & slug_nl for article
     if @article.save
       if @article.posted?
         flash[:success] = "Article succesfully posted!"
@@ -53,10 +53,9 @@ class ArticlesController < ApplicationController
   def update
     @action = "Edit"
     @articles = Article.all
+    # Add new, updated slugs to article_params
     updated_article_params = update_slugs_for_article(article_params)
-    binding.pry
     if @article.update(updated_article_params)
-      binding.pry
       flash[:success] = "Article succesfully updated!"
       render :index
     else

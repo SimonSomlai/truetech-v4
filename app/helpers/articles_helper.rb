@@ -26,7 +26,7 @@ module ArticlesHelper
     @article.set_friendly_id(article_params[:en_title], :en)
   end
 
-  def update_slugs_for_article(article_params)
+  def update_slugs_for_article(article_params) # Add updated slugs to params (not passed through form)
     article_params.merge! slug_nl: article_params[:title].gsub("\'", "").parameterize
     article_params.merge! slug_en: article_params[:en_title].gsub("\'", "").parameterize
     article_params
