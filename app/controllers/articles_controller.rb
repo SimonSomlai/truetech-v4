@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
     @articles = Article.all
     @article  = Article.new
   end
-  
+
   def show
     if params[:article]
       if I18n.locale == :en
@@ -29,13 +29,8 @@ class ArticlesController < ApplicationController
   def create
     @articles = Article.all
     @article = Article.new(article_params)
+    @article.update_attribute(:user_id, current_user.id)
     if @article.save
-      if I18n.locale == :en
-        @article.set_friendly_id(article_params[:title], :nl)
-      elsif I18n.locale == :nl
-        @article.set_friendly_id(article_params[:en_title], :en)
-      end
-      @article.update_attribute(:user_id, current_user.id)
       if @article.posted?
         flash[:success] = "Article succesfully posted!"
         redirect_to articles_path
@@ -58,7 +53,10 @@ class ArticlesController < ApplicationController
   def update
     @action = "Edit"
     @articles = Article.all
-    if @article.update(article_params)
+    updated_article_params = update_slugs_for_article(article_params)
+    binding.pry
+    if @article.update(updated_article_params)
+      binding.pry
       flash[:success] = "Article succesfully updated!"
       render :index
     else
