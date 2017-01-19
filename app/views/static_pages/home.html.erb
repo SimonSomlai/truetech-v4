@@ -176,8 +176,13 @@
             <% @articles.each do |article| %>
             <a href="<%=articles_show_path(article) %>">
               <div class="article-div">
+                <% if I18n.locale == :en %>
+                <h3 class="article-title"><%=article.en_title %></h3>
+                <p class="article-description"><%=article.en_description %></p>
+                <% else  %>
                 <h3 class="article-title"><%=article.title %></h3>
                 <p class="article-description"><%=article.description %></p>
+                  <% end %>
               </div>
             </a>
             <% end %>
