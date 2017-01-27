@@ -23,7 +23,7 @@ if(topic.length <= 1){
 	} else {
   sentence = " about the " + topic + "! "
 }
-$(".contactform").prepend("<div id='message-success' class='alert alert-success col-hidden contactform-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><i class='icon-thumbs-up'></i><strong>Thanks <%= @contact.name %></strong>, your email is sent! We'll respond as soon as possible to your message" + sentence + "Enjoy the rest of your <%= l(Time.now, format: '%A') %> :)!</div>") 
+$(".contactform").prepend("<div id='message-success' class='alert alert-success col-hidden contactform-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><i class='icon-thumbs-up'></i><strong>Thanks <%= @contact.name %></strong>, your email is sent! We'll respond as soon as possible to your message" + sentence + "Enjoy the rest of your <%= l(Time.now, format: '%A') %> :)!</div>")
 $(".contactform-success").slideDown(500)
 $('input[type="text"], input[type="email"], input[type="file"], textarea').val("")
  $('html,body').animate({

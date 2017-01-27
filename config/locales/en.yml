@@ -43,7 +43,8 @@ en:
       route: "Get directions"
       namefield: "Name"
       phonefield: "Phone"
-      subjectfield: "Subject"
+      subjectfield: "How did you find us?"
+      subjectexample: "Google, ad, referral, ..."
       messagefield: "Message"
       sendbutton: "Send Message!"
    # Contact form

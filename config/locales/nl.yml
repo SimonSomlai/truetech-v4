@@ -45,7 +45,8 @@ nl:
       route: "Wegbeschrijving"
       namefield: "Naam"
       phonefield: "Telefoon/GSM"
-      subjectfield: "Onderwerp"
+      subjectfield: "Hoe heeft u ons gevonden?"
+      subjectexample: "Google, advertentie, kennis, ..."
       messagefield: "Bericht"
       sendbutton: "Verstuur Bericht!"
   # Contact form
