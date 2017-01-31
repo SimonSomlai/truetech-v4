@@ -89,7 +89,16 @@
                <div id="comments" class="clearfix">
                   <h3 id="comments-title" class="bottommargin"><%= t "articles.comments" %></h3>
                   <div id="disqus_thread"></div>
-                  <script>var disqus_config=function (){this.page.url='http://www.truetech.be/<%=@article.title.downcase.gsub(' ','-') %>'; this.page.identifier='<%=@article.title.downcase.gsub(' ','-') %>';}; (function(){var d=document, s=d.createElement('script'); s.src='//truetech-1.disqus.com/embed.js'; s.setAttribute('data-timestamp', +new Date()); (d.head || d.body).appendChild(s);})(); </script>
+                  <script>var disqus_config=function (){
+                    this.page.url='<%= request.original_url %>';
+                    this.page.identifier='<%= @article.id %>';};
+
+                     (function(){
+                       var d=document, s=d.createElement('script');
+                        s.src='//truetech-1.disqus.com/embed.js';
+                         s.setAttribute('data-timestamp', +new Date());
+                       (d.head || d.body).appendChild(s);})();
+                    </script>
                </div>
             </div>
             <%= image_tag("unicorn.png", :class => "unicorn hidden-xs") %>
