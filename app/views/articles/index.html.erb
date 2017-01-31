@@ -44,7 +44,7 @@
                                         <td>
                                           <!-- Link to en locale when technical article  -->
                                         <% if article.category.downcase == "coding" %>
-                                            <%= link_to articles_show_path(article, article: article.slug_en, locale: :en)  do %>
+                                            <%= link_to articles_show_path(article.slug_en, article: article.slug_en, locale: :en)  do %>
                                             <i class="fa fa-cogs"></i>
                                             <%= article.en_title %>
                                             <% end %>
@@ -55,7 +55,7 @@
                                             </a>
                                         <% end %>
                                         </td>
-                                        <td class="hidden-xs"><%= article.description %></td>
+                                        <td class="hidden-xs"><%= article.description != "" ? article.description : article.en_description %></td>
                                         <td class="hidden-xs"><%= article.category %></td>
                                         <td class="hidden-xs">
                                             <% if !article.image.url.nil? %>
