@@ -95,7 +95,7 @@
             <%= image_tag("unicorn.png", :class => "unicorn hidden-xs") %>
             <div id="<%=@article.category.downcase %>-cat" class="line"></div>
             <h3 class="center bottommargin"><%= t "articles.related" %><span><%= t "articles.articles" %></span></h3>
-            <div id="oc-posts" class="bottommargin owl-latest-news owl-carousel posts-carousel carousel-widget owl-loaded owl-drag" data-margin="15" data-loop="false" data-nav="true" data-pagi="false" data-items-xxs="1" data-items-xs="2" data-items-sm="3" data-items-md="3" data-items-lg="3">
+            <div id="oc-posts" class="article-show-related bottommargin owl-latest-news owl-carousel posts-carousel carousel-widget owl-loaded owl-drag" data-margin="15" data-loop="false" data-nav="true" data-pagi="false" data-items-xxs="1" data-items-xs="2" data-items-sm="3" data-items-md="3" data-items-lg="3">
                <% @relatedarticles.each do |article| %>
                <div class="oc-item">
                   <div class="ipost clearfix">
