@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'routes/redirect'
-  get '/sitemap.xml.gz', to: redirect("https://#{ENV['S3_BUCKET_NAME']}.s3.amazonaws.com/sitemaps/sitemap.xml.gz"), as: :sitemap
+  get '/sitemap.xml.gz', to: redirect("https://s3-eu-west-1.amazonaws.com/truetech-v4/sitemap.xml.gz"), as: :sitemap
 
   scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
   # Root to home_path
