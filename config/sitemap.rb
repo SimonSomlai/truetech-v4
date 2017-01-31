@@ -1,6 +1,6 @@
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = "http://www.truetech.be"
-SitemapGenerator::Sitemap.public_path = 'tmp'
+SitemapGenerator::Sitemap.public_path = 'tmp/sitemap'
 SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(
 aws_access_key_id: ENV["S3_ACCESS_KEY"],
 aws_secret_access_key: ENV["S3_SECRET_KEY"],
