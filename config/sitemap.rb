@@ -12,8 +12,9 @@ SitemapGenerator::Sitemap.sitemaps_host = "https://truetech-v4.s3.amazonaws.com"
 
 SitemapGenerator::Sitemap.create do
     Article.find_each do |article|
-     add articles_show_path(article, article: article.slug_en, locale: :en)
-     add articles_show_path(article, article: article.slug_nl, locale: :nl)
+     add article_path(article, locale: :en)
+     add article_path(article, locale: :nl)
+
     end
     Project.find_each do |project|
      add project_path(project, locale: :en)
