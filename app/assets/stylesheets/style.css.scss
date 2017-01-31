@@ -320,6 +320,7 @@ h1.main-logo{
 	margin-bottom: 0;
 	display: inline;}
 
+// Content
 .entry-content-blog-single{
   font-size: 1.05rem !important;
   margin-top: 5px;}
@@ -377,6 +378,10 @@ article img{
 img.side{
   max-width: 55%;
   margin: 25px;
+}
+
+#blog-article .entry-content.entry-content-blog-single > p{
+  font-size: 14px;
 }
 
 

@@ -3547,7 +3547,6 @@ footer.entry-meta {
 }
 
 .page-content,
-.entry-content,
 .entry-summary {
     margin: 1.5em 0 0;
     -ms-word-wrap: break-word;
@@ -10145,11 +10144,11 @@ blockquote p {
 button,
 .button,
 input[type="submit"] {
-display: inline-block; 
-    padding: 6px 12px; 
-    margin-bottom: 0; 
-    font-size: 14px; 
-    font-weight: 400; 
+display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
     line-height: 0.75;
     font-size: 14px;
 }

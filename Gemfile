@@ -17,7 +17,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'unicorn'
 gem "pry"
 gem 'carrierwave', '~> 0.11.2'
-gem 'fog', '~> 1.38'
+gem 'fog-aws'
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 gem 'faker', '~> 1.6', '>= 1.6.5'
 gem 'friendly_id', '~> 5.1.0'

@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class ProjectImagesUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   process :optimize
@@ -13,7 +11,7 @@ class ProjectImagesUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
-  
+
   def optimize
     manipulate! do |img|
       img.combine_options do |c|
