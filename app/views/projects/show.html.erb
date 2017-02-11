@@ -43,7 +43,7 @@
           <li><span><i class="icon-user"></i><%= t("projects.author") %></span> <%=@user %></li>
           <li><span><i class="icon-calendar3"></i><%= t("projects.date") %></span> <%=@project.created_at.strftime("%d/%m/%Y") %></li>
           <li><span><i class="icon-lightbulb"></i><%= t("projects.skills") %></span> <%=@project.skills %></li>
-          <li><span><i class="icon-link"></i>Client:</span> <a target="_blank" href="<%=@project.link %>"><%=@project.title %></a></li>
+          <li><span><i class="icon-link"></i>Link:</span> <a target="_blank" href="<%=@project.link %>"><%=@project.title %></a></li>
         </ul>
         <div class="fancy-title title-bottom-border">
           <h2 class="portfolio-single-title"><%= t("projects.descr") %></h2>

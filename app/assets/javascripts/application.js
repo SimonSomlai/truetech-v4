@@ -13,5 +13,5 @@
 //= require jquery_ujs
 //= require plugins
 //= require functions
+//= require magnific-popup
 //= require script
-

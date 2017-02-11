@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'routes/redirect'
   get '/sitemap.xml.gz', to: redirect("https://s3-eu-west-1.amazonaws.com/truetech-v4/sitemap.xml.gz"), as: :sitemap
 
-  scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
+  scope ":locale", locale: /en|nl/ do
   # Root to home_path
   root "static_pages#home", as: "home"
 

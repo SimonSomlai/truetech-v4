@@ -27,6 +27,7 @@ gem 'ahoy_matey'
 gem "rails-i18n"
 gem 'htmlbeautifier'
 gem 'sitemap_generator'
+gem 'magnific-popup-rails', '~> 1.1.0'
 
 # Caching
 gem 'rack-cache'
