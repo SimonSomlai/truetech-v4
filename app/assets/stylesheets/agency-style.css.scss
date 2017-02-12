@@ -4382,6 +4382,7 @@ body:not(.device-touch) .portfolio {
 .portfolio-item .portfolio-image,
 .portfolio-item .portfolio-image a,
 .portfolio-item .portfolio-image img {
+
     display: block;
     width: 100%;
     height: auto;
@@ -5655,7 +5656,7 @@ body.device-touch.device-xxs .portfolio-notitle .portfolio-overlay {
     color: #666;
 }
 
-@media only screen and (max-width: 768px){  
+@media only screen and (max-width: 768px){
     .portfolio-meta li{
         margin: 0;
       }
@@ -12783,6 +12784,10 @@ blockquote.pull-right {
     width: 100%;
     -webkit-transform-style: preserve-3d;
 }
+
+.owl-carousel .owl-item .portfolio-image img {
+    min-height: 241px;
+  }
 
 #slider .owl-carousel .owl-item img {
     -webkit-transform-style: preserve-3d;
