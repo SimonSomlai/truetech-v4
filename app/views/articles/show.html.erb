@@ -1,15 +1,16 @@
-<!-- OPEN GRAPH TAGS & STYLING -->
-<% content_for :title, @article.title  %>
-<% content_for :description, @article.description %>
-<% content_for :ogtitle, @article.title %>
-<% content_for :ogdescription, @article.description %>
+<% content_for :title, meta_title + " | TrueTech - Webdesign Mechelen" %><% content_for :description, meta_description %>
+<% content_for :ogtitle, meta_title %>
+<% content_for :ogdescription, meta_description %>
 <% content_for :ogtype, "article" %>
 <% content_for :ogimage, image_url(@article.image) %>
 <% content_for :css do %>
-  <%=stylesheet_link_tag  %>
+  <% if @article.category.downcase == "coding" %>
+    <%= stylesheet_link_tag "highlight.min" %>
+  <% end %>
+  <%=stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" %>
+  <%=stylesheet_link_tag "application", "flatsome.min" %>
 <% end %>
-
-<!-- CONTENT -->
+<script type='text/javascript' data-cfasync='false' src='//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js' data-shr-siteid='78a00e326c876797bb56cf834491d702' async='async'></script>
 <body class="stretched">
    <div id="wrapper" class="clearfix">
    <header id="header" class="sticky-style-2">
@@ -91,7 +92,6 @@
                   <script>var disqus_config=function (){
                     this.page.url='<%= request.original_url %>';
                     this.page.identifier='<%= @article.id %>';};
-
                      (function(){
                        var d=document, s=d.createElement('script');
                         s.src='//truetech-1.disqus.com/embed.js';
@@ -161,8 +161,16 @@
          </div>
       </div>
    </div>
-
-
-   <!-- SCRIPTS -->
-
+   <%=render "shared/footer" %>
+   <div id="gotoTop" class="icon-angle-up"></div>
+   <% content_for :js do %>
+   <%=javascript_include_tag "application" %>
+   <% content_for :js do %>
+     <% if @article.category.downcase == "coding" %>
+     <%=javascript_include_tag "highlight.min" %>
+    <% end %>
+   <% end %>
+   <script>autoScroll(); showOptions(); unleash_unicorn();
+   Prism.highlightElement($('#code')[0]);
+   </script> <% end %>
 </body>
