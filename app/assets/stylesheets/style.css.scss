@@ -1,11 +1,4 @@
-/*----
-@extend .message; - copies css from .message element
-@include transition(3s); - include transition from mixin
-&:hover - nested action on hover of the element
-@import 'reset'; - includes the reset.scss in current sheet
-%bg-image{CODE}; - includes an element that can be extended from, but will not be included in final css
-background-color:lighten($color,10%); - Lightens color (good for hovers!)
------*/
+
 /* Mixin Functions */
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
@@ -52,6 +45,15 @@ background-color:lighten($color,10%); - Lightens color (good for hovers!)
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;}
+
+// This is the incredibly messy stylesheet for truetech.be (meaning all the customization I've made over time live and fester in this file.)
+// Table of contents;
+// - STRUCTURE & GENERAL (headers, footers, multi-purpose classes)
+// - ADMIN PAGE
+// - HOME PAGE
+// - BLOG SHOW
+// - PORTFOLIO SHOW
+// - SERVICE PAGES
 /*---------------------*/
 /* STRUCTURE & GENERAL */
 /*---------------------*/
@@ -101,6 +103,10 @@ a {
 
 .en{
   background-position: 0 -100%;}
+
+.posts-carousel .entry-image img{
+  height: 175px;
+}
 
 .coding-article{
   display: none;
@@ -587,6 +593,3 @@ $high3: 7deg;
     padding: 20px 25px;
   }
 }
-/*---------------------*/
-/* 		FOOTER 		   */
-/*---------------------*/

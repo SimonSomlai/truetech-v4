@@ -29,7 +29,6 @@ class ArticlesController < ApplicationController
     @articles = Article.all
     @article = Article.new(article_params)
     @article.update_attribute(:user_id, current_user.id)
-    set_slugs_for_article # Sets slug_en & slug_nl for article
     if @article.save
       if @article.posted?
         flash[:success] = "Article succesfully posted!"
@@ -53,9 +52,7 @@ class ArticlesController < ApplicationController
   def update
     @action = "Edit"
     @articles = Article.all
-    # Add new, updated slugs to article_params
-    updated_article_params = update_slugs_for_article(article_params)
-    if @article.update(updated_article_params)
+    if @article.update(article_params)
       flash[:success] = "Article succesfully updated!"
       render :index
     else

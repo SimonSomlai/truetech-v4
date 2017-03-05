@@ -145,6 +145,18 @@
                                     <%= f.text_area :en_description, :class => "form-control col-md-7 col-xs-12" %>
                                 </div>
                             </div>
+                            <div class="form-group locale-field">
+                                <%= f.label :slug_nl, "NL Url", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <%= f.text_field :slug_nl, :class => "form-control col-md-7 col-xs-12", placeholder: "mijn-coole-url" %>
+                                </div>
+                            </div>
+                            <div class="form-group locale-field col-hidden">
+                                <%= f.label :slug_en, "EN Url", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <%= f.text_field :slug_en, :class => "form-control col-md-7 col-xs-12", placeholder: "my-cool-url" %>
+                                </div>
+                            </div>
                             <div class="form-group locale-field locale-nl">
                                 <div class="col-md-12 col-sm-12 col-xs-12">
                                     <textarea id="editor"></textarea>

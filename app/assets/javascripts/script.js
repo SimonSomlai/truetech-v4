@@ -206,7 +206,7 @@ function closeForm() {
 }
 
 function getText() {
-    $(".locale-nl").find(".trumbowyg-editor").on("input", function() {
+    $(".locale-nl").find(".trumbowyg-editor").on("input DOMSubtreeModified click", function() {
         value = $(".locale-nl").find(".trumbowyg-editor").html();
         $(".form-nl #article_body").val(value);
     })
@@ -214,7 +214,7 @@ function getText() {
 }
 
 function getText2() {
-    $(".locale-en").find(".trumbowyg-editor").on("input", function() {
+    $(".locale-en").find(".trumbowyg-editor").on("input DOMSubtreeModified click", function() {
         value = $(".locale-en").find(".trumbowyg-editor").html();
         $(".form-en #article_en_body").val(value);
     })
@@ -222,7 +222,7 @@ function getText2() {
 }
 
 function getText3() {
-    $(".locale-nl").find(".trumbowyg-editor").on("input", function() {
+    $(".locale-nl").find(".trumbowyg-editor").on("input DOMSubtreeModified click", function() {
         console.log('changing')
         value = $(".locale-nl").find(".trumbowyg-editor").html();
         $(".form-nl #page_body").val(value);
@@ -289,7 +289,7 @@ function changeLocale() {
 function loadArticle() {
     var text_nl = $(".form-nl #article_body").val()
     $(".locale-nl").find(".trumbowyg-editor").html(text_nl)
-    
+
     var text_en = $(".form-en #article_en_body").val()
     $(".locale-en").find(".trumbowyg-editor").html(text_en)
 }

@@ -4,6 +4,7 @@ class Article < ActiveRecord::Base
 
   # Validations
   validates :category, presence: true
+
   # Don't validate nl locale when it's a technical_article
   with_options unless: :technical_article? do
     validates :title, presence: true
