@@ -15,15 +15,15 @@
          <% end %>
       </div>
       <div id="header-wrap">
-         <% content_for :menu do %> 
+         <% content_for :menu do %>
          <li> <%=link_to("Home", home_path) %> </li>
          <li>
-            <%=link_to "#", class: "contact-special home-menu-item" do %> 
+            <%=link_to "#", class: "contact-special home-menu-item" do %>
             <div>Contact</div>
-            <% end %> 
+            <% end %>
          </li>
          <%= render "shared/locale" %>
-         <% end %> <%=render "shared/menu" %> 
+         <% end %> <%=render "shared/menu" %>
       </div>
    </header>
    <div class="container cf">
@@ -114,45 +114,45 @@
          </div>
       </div>
       <div class="col-md-8 col-sm-12 col-centered bottommargin contactform">
-               <%= form_for(@contact, remote: true, :html=>{:class=> "website-analyse nobottommargin col-centered", :name=> "template-contactform", :id=> "template-contactform", :multipart=> true }) do |f| %> <%=render "shared/error_messages", object: f.object %> 
-               <div class="col_full"> 
-                  <%=f.label :name do %> 
-                  <%= t "home.contact.namefield" %><small>*</small> <% end %> 
-                  <%=f.text_field :name, required: true, id: "template-contactform-name", placeholder: t('analyse.name'), :class=> "sm-form-control required" %> 
+               <%= form_for(@contact, remote: true, :html=>{:class=> "website-analyse nobottommargin col-centered", :name=> "template-contactform", :id=> "template-contactform", :multipart=> true }) do |f| %> <%=render "shared/error_messages", object: f.object %>
+               <div class="col_full">
+                  <%=f.label :name do %>
+                  <%= t "home.contact.namefield" %><small>*</small> <% end %>
+                  <%=f.text_field :name, required: true, id: "template-contactform-name", placeholder: t('analyse.name'), :class=> "sm-form-control required" %>
                </div>
-               <div class="col_full"> 
-                  <%=f.label :subject do %> 
+               <div class="col_full">
+                  <%=f.label :website do %>
                   <%= t "analyse.site" %><small>*</small>
-                  <% end %> 
-                  <%=f.text_field :subject, required: true, id: "template-contactform-company", placeholder: t('analyse.website'), :class=> "sm-form-control required" %> 
+                  <% end %>
+                  <%=f.text_field :website, required: true, id: "template-contactform-company", placeholder: t('analyse.website'), :class=> "sm-form-control required" %>
                </div>
                <div class="clear"></div>
-               <div class="col_full"> 
-                  <%=f.label :email do %> 
-                  <%= t "analyse.email" %><small>*</small> 
-                  <% end %> 
-                  <%=f.email_field :email, required: true, id: "template-contactform-email", placeholder: t('analyse.emaill'), :class=> "required email sm-form-control" %> 
+               <div class="col_full">
+                  <%=f.label :email do %>
+                  <%= t "analyse.email" %><small>*</small>
+                  <% end %>
+                  <%=f.email_field :email, required: true, id: "template-contactform-email", placeholder: t('analyse.emaill'), :class=> "required email sm-form-control" %>
                </div>
                <div class="clear"></div>
-               <div class="col_full"> 
-                  <%=f.label :phone do %> 
+               <div class="col_full">
+                  <%=f.label :phone do %>
                   <%= t "home.contact.phonefield" %><small>*</small>
                   <% end %>
-                  <%=f.text_field :phone, required: true, id: "template-contactform-phone", placeholder: t('analyse.phone'), :class=> "sm-form-control" %> 
+                  <%=f.text_field :phone, required: true, id: "template-contactform-phone", placeholder: t('analyse.phone'), :class=> "sm-form-control" %>
                </div>
                <div class="col_full hidden"> <%=f.label :message do %> <%= t("contact.message") %><small>*</small> <% end %> <%=f.text_area :message, id: "template-contactform-message", :class=> "required sm-form-control", rows: 6, cols: 30 %> </div>
                <div class="col_full hidden"> <%=f.text_field :botcheck, id: "template-contactform-botcheck", :class=> "sm-form-control" %> </div>
-               <div class="col_full"> 
-               <%= f.submit t("analyse.send"), id: "template-contactform-submit", class: "button button-3d nomargin site-analyse" %> 
+               <div class="col_full">
+               <%= f.submit t("analyse.send"), id: "template-contactform-submit", class: "button button-3d nomargin site-analyse" %>
                   </div>
                <strong><span><%= t('analyse.conditions') %></span></strong><br/>
                <span><%= t('analyse.condition1') %></span><br/>
                <span><%= t('analyse.condition2') %></span>
-               <% end %> 
+               <% end %>
             </div>
    </div>
-   <%= render "shared/footer" %> 
+   <%= render "shared/footer" %>
    <div id="gotoTop" class="icon-angle-up"></div>
-   <% content_for :js do %> <%= javascript_include_tag "application", "jquery.remotipart" %> 
+   <% content_for :js do %> <%= javascript_include_tag "application", "jquery.remotipart" %>
    <script>autoScroll(); showOptions(); </script> <% end %>
 </body>
