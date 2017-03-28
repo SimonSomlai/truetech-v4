@@ -32,7 +32,7 @@ module StaticPagesHelper
       referrers = response.rows.collect{|r| {referrer: r[0], landing: r[1], visitors: r[2], pageviews: r[3]}}
       top_content = referrers.collect{|a| {page: a[:landing], pageviews: a[:pageviews]}}
 
-      @visit = Visit.where(date: day).first_or_create(visitors: visitors, pageviews: pageviews, referrers: referrers, top_content: top_content, date: Time.zone.now.strftime("%Y-%m-%d"))
+      @visit = Visit.where(date: day).first_or_create(visitors: visitors, pageviews: pageviews, referrers: referrers, top_content: top_content, date: day.strftime("%Y-%m-%d"))
       @visit.update_attributes(visitors: visitors, pageviews: pageviews, referrers: referrers, top_content: top_content, date: day)
       count += 1
     end
