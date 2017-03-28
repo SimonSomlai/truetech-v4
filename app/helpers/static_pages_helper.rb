@@ -22,7 +22,7 @@ module StaticPagesHelper
     count = 0
     30.times do
       day = Time.zone.now
-      day = day - count
+      day = day - count.days
       response = service.get_ga_data("ga:141996448",day.strftime("%Y-%m-%d"),day.strftime("%Y-%m-%d"),'ga:users,ga:pageviews', {
         dimensions: "ga:fullReferrer,ga:pagePath", sort: "-ga:pageviews"
       })
