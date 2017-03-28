@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2017-03-27
+  visitors: 1
+  pageviews: 1
+  referrers: MyText
+  keywords: MyText
+  top_content: MyText
+
+two:
+  date: 2017-03-27
+  visitors: 1
+  pageviews: 1
+  referrers: MyText
+  keywords: MyText
+  top_content: MyText

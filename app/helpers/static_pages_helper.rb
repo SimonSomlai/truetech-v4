@@ -1,5 +1,11 @@
-# frozen_string_literal: true
+require "oauth2"
+require 'google/apis/analytics_v3'
+require 'google/apis/webmasters_v3'
+require "json"
+require "rest-client"
+
 module StaticPagesHelper
+
   def active?(page)
     'current_page' if current_page?("/#{page}")
   end
@@ -12,61 +18,105 @@ module StaticPagesHelper
     'col-hidden' if @action != 'Edit'
   end
 
-  def get_referrals
-    # Get the referrers from this week and push them to an array
-    @weekly_referrers = Visit.where(started_at: time_range(0, 'weeks'), user_id: nil).map(&:referrer)
-    @weekly_hash = Hash.new(0)
-    # Count the duplicates and push them to a hash
-    @weekly_referrers.each do |v|
-      @weekly_hash[v] += 1
-    end
-    # Remove empty counts
-    @weekly_hash = @weekly_hash.except!(nil).sort_by { |k, v| -v }[0..9]
-    # Get the referrers from this day and push them to an array
-    @daily_referrers = Visit.where(started_at: time_range(0, 'days'), user_id: nil).map(&:referrer)
-    @daily_hash = Hash.new(0)
-    # Count the duplicates and push them to a hash
-    @daily_referrers.each do |v|
-      @daily_hash[v] += 1
-    end
-    # Remove empty counts
-    @daily_hash = @daily_hash.except!(nil).sort_by { |k, v| -v }[0..9]
+  def get_statistics(service)
+    day = Time.zone.now
 
-    # Get the top 20 most used keywords to reach my site
-    @keywords = Visit.where(user_id: nil).map(&:search_keyword)
-    @keyword_hash = Hash.new(0)
-    # Count the duplicates and push them to a hash
-    @keywords.each do |v|
-      @keyword_hash[v] += 1
+    response = service.get_ga_data("ga:141996448",day.strftime("%Y-%m-%d"),day.strftime("%Y-%m-%d"),'ga:users,ga:pageviews', {
+      dimensions: "ga:fullReferrer,ga:pagePath", sort: "-ga:pageviews"
+    })
+
+    visitors = response.totals_for_all_results["ga:users"]
+    pageviews = response.totals_for_all_results["ga:pageviews"]
+    referrers = response.rows.collect{|r| {referrer: r[0], landing: r[1], visitors: r[2], pageviews: r[3]}}
+    top_content = referrers.collect{|a| {page: a[:landing], pageviews: a[:pageviews]}}
+
+    @visit = Visit.where(date: day).first_or_create(visitors: visitors, pageviews: pageviews, referrers: referrers, top_content: top_content, date: Time.zone.now.strftime("%Y-%m-%d"))
+    @visit.update_attributes(visitors: visitors, pageviews: pageviews, referrers: referrers, top_content: top_content, date: day)
+
+    @this_year = Visit.all.order("date ASC").limit(360) # Get all Visit objects from the last 12 months, oldest to new
+    @this_week = @this_year[-7..-1] # Get all Visit objects from the last 7 days
+    @today = @visit # Get the Visit object for today
+
+    # TOTAL VISITS & PAGEVIEWS
+    # This Week
+    @week_array = @this_week.collect{|visit| [visit.pageviews,visit.visitors] }
+    # This Year
+    @year_array = []
+    @this_year.each_slice(30) do |array|
+      @year_array << array.collect{|visit| [visit.pageviews,visit.visitors] }.transpose.map {|array| array.reduce(:+)}
     end
-    # Remove empty counts, sort by highest value, only the first 20 results
-    @keyword_hash = @keyword_hash.except!(nil).sort_by { |k, v| -v }[0..19]
+
+    # TOP REFERRERS
+    # This Week
+    @weekly_referrers = @this_week.collect(&:referrers).flatten.group_by{ |hash| hash.values_at(:referrer, :landing) }
+    referrer_array = []
+    @weekly_referrers.each do |array|
+      referrer_array << (array[0] + @weekly_referrers[array[0]].collect{|hash| [hash[:visitors].to_i, hash[:pageviews].to_i]}.transpose.map {|array| array.reduce(:+)})
+    end
+    @weekly_referrers = referrer_array.sort_by{|array| -array[2]}[0..20]
+
+    # TOP CONTENT
+    # Today
+    @top_content_today = @today.top_content.sort_by{|k,v| k[:pageviews]} # Get the top_content from today
+    # This Week
+    @top_content = @this_week.collect(&:referrers).flatten.group_by{ |hash| hash.values_at(:landing) }
+    top_content_array = []
+    @top_content.each do |array|
+      top_content_array << (array[0] + @top_content[array[0]].collect{|hash| [hash[:visitors].to_i, hash[:pageviews].to_i]}.transpose.map {|array| array.reduce(:+)})
+    end
+    @top_content_this_week = top_content_array.sort_by{|array| -array[2]}[0..15] # Get the top 10 pages this week
   end
 
-  def get_pageviews
-    # Map all projects & articles by title
-    @projects = Project.all.map(&:title)
-    @articles = Article.all.map(&:title)
-    @pages = ['Webapplicatie', 'Website Op Maat', 'Starters Website', 'Single Page', 'Homepage'] + @articles + @projects
-    @events = Ahoy::Event.where(user_id: nil)
-    @totalpageviews = {}
-    @pageviews = {}
-    # For each page on the website
-    @pages.each do |page|
-      # Get the daily pageviews
-      @count = @events.select { |event| event[:properties]['title'] == page && time_range(0, 'days').cover?(event.time) }
-      @count = @count.count
-      # Push them to a 10-item hash based on highest views
-      @pageviews[:"#{page}"] = @count
-      @pageviews = Hash[@pageviews.sort_by { |k, v| -v }[0..9]]
+  def authorize_google_analytics
+    access_token = Setting.find_by(key: "analytics_access_token")
+    refresh_token = Setting.find_by(key: "analytics_refresh_token")
 
-      # Get the total pageviews
-      @totalcount = @events.select { |event| event[:properties]['title'] == page }
-      @totalcount = @totalcount.count
-      # Push them to a 10-item hash based on highest views
-      @totalpageviews[:"#{page}"] = @totalcount
-      @totalpageviews = Hash[@totalpageviews.sort_by { |k, v| -v }[0..9]]
-    end
+    authorization = Signet::OAuth2::Client.new({
+      access_token: access_token.value,
+      refresh_token: refresh_token.value,
+      client_id: ENV["ANALYTICS_CLIENT_ID"],
+      client_secret: ENV["ANALYTICS_CLIENT_SECRET"]
+    })
+
+    authorization.expires_in = Time.now + 1_000_000
+    service = Google::Apis::AnalyticsV3::AnalyticsService.new
+    service.authorization = authorization
+    service
+  end
+
+  def set_new_tokens
+    client = OAuth2::Client.new(ENV["ANALYTICS_CLIENT_ID"], ENV["ANALYTICS_CLIENT_SECRET"], {
+      :authorize_url => 'https://accounts.google.com/o/oauth2/auth',
+      :token_url => 'https://accounts.google.com/o/oauth2/token'})
+
+    link = client.auth_code.authorize_url({
+      :scope => 'https://www.googleapis.com/auth/analytics.readonly',
+      :redirect_uri => 'http://truetech.be/callback',
+      approval_prompt: "force",
+      :access_type => 'offline' })
+
+    redirect_to link
+  end
+
+  def update_tokens(access_token, refresh_token)
+    @access_token = Setting.where(key: "analytics_access_token").first_or_create(key: "analytics_access_token", value: access_token)
+    @access_token.update_attribute("value",access_token)
+    @refresh_token = Setting.where(key: "analytics_refresh_token").first_or_create(key: "analytics_refresh_token", value: refresh_token)
+    @refresh_token.update_attribute("value",refresh_token)
+  end
+
+  def refresh_access_token(refresh_token)
+    data = {
+      :client_id => ENV["ANALYTICS_CLIENT_ID"],
+      :client_secret => ENV["ANALYTICS_CLIENT_SECRET"],
+      :refresh_token => refresh_token,
+      :grant_type => "refresh_token"
+    }
+
+    @response = ActiveSupport::JSON.decode(RestClient.post "https://accounts.google.com/o/oauth2/token", data)
+    access_token = @response["access_token"]
+
+    update_tokens(access_token,refresh_token)
   end
 
   def homepage_sql_caching

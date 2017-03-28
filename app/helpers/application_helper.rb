@@ -21,15 +21,7 @@ module ApplicationHelper
   end
 
   def visits(unit, timeunit)
-    Visit.where(started_at: time_range(unit, timeunit), user_id: nil).count
-  end
-
-  def views(unit, timeunit)
-    Ahoy::Event.where(time: time_range(unit, timeunit), user_id: nil).count
-  end
-
-  def its_simon?
-    current_visit != nil && current_visit.user_id == 1 ? true : false
+    Visit.where(date: time_range(unit, timeunit))
   end
 
   def category(project)

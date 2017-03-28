@@ -10,22 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161003143944) do
+ActiveRecord::Schema.define(version: 20170328143920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "ahoy_events", force: :cascade do |t|
-    t.integer  "visit_id"
-    t.integer  "user_id"
-    t.string   "name"
-    t.text     "properties"
-    t.datetime "time"
-    t.index ["name", "time"], name: "index_ahoy_events_on_name_and_time", using: :btree
-    t.index ["time"], name: "index_ahoy_events_on_time", using: :btree
-    t.index ["user_id", "name"], name: "index_ahoy_events_on_user_id_and_name", using: :btree
-    t.index ["visit_id", "name"], name: "index_ahoy_events_on_visit_id_and_name", using: :btree
-  end
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -94,6 +82,14 @@ ActiveRecord::Schema.define(version: 20161003143944) do
     t.index ["user_id"], name: "index_projects_on_user_id", using: :btree
   end
 
+  create_table "settings", force: :cascade do |t|
+    t.string   "key"
+    t.string   "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["key"], name: "index_settings_on_key", using: :btree
+  end
+
   create_table "testimonials", force: :cascade do |t|
     t.string   "name"
     t.string   "company"
@@ -116,35 +112,15 @@ ActiveRecord::Schema.define(version: 20161003143944) do
   end
 
   create_table "visits", force: :cascade do |t|
-    t.string   "visit_token"
-    t.string   "visitor_token"
-    t.string   "ip"
-    t.text     "user_agent"
-    t.text     "referrer"
-    t.text     "landing_page"
-    t.integer  "user_id"
-    t.string   "referring_domain"
-    t.string   "search_keyword"
-    t.string   "browser"
-    t.string   "os"
-    t.string   "device_type"
-    t.integer  "screen_height"
-    t.integer  "screen_width"
-    t.string   "country"
-    t.string   "region"
-    t.string   "city"
-    t.string   "postal_code"
-    t.decimal  "latitude"
-    t.decimal  "longitude"
-    t.string   "utm_source"
-    t.string   "utm_medium"
-    t.string   "utm_term"
-    t.string   "utm_content"
-    t.string   "utm_campaign"
-    t.datetime "started_at"
-    t.index ["started_at"], name: "index_visits_on_started_at", using: :btree
-    t.index ["user_id"], name: "index_visits_on_user_id", using: :btree
-    t.index ["visit_token"], name: "index_visits_on_visit_token", unique: true, using: :btree
+    t.date     "date"
+    t.integer  "visitors"
+    t.integer  "pageviews"
+    t.text     "referrers"
+    t.text     "keywords"
+    t.text     "top_content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["date"], name: "index_visits_on_date", using: :btree
   end
 
   add_foreign_key "articles", "users"

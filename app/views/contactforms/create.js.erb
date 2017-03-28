@@ -18,8 +18,7 @@ switch(page) {
     default:
     sentence = " over de " + topic + "! "
 }
-var message = "Bedankt <%= @contact.name %></strong>, je mail is verstuurd! We antwoorden zo snel mogelijk op jouw berichtje" + sentence + "Alvast nog een fijne <%= l(Time.now, format: '%A').downcase! %> gewenst! :) "
-
+var message = "Bedankt <%= @contact.name %></strong>, je mail is verstuurd! We antwoorden zo snel mogelijk op jouw berichtje" + sentence + "Alvast nog een fijne <%= l(Time.now, format: '%A').downcase %> gewenst! :) "
 <% else %>
 // Create a en message for the different pages
 switch(page) {
@@ -32,7 +31,7 @@ switch(page) {
     default:
     sentence = " about the " + topic + "! "
 }
-var message = "Thanks <%= @contact.name %></strong>, your email is sent! We'll respond as soon as possible to your message" + sentence + "Enjoy the rest of your <%= l(Time.now, format: '%A').downcase! %> :)!"
+var message = "Thanks <%= @contact.name %></strong>, your email is sent! We'll respond as soon as possible to your message" + sentence + "Enjoy the rest of your <%= l(Time.now, format: '%A').downcase %> :)!"
 <% end %>
 
 $(".contactform").prepend("<div id='message-success' class='alert alert-success col-hidden contactform-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><i class='icon-thumbs-up'></i><strong>"+ message +"</div>")

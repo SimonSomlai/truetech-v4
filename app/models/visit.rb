@@ -1,4 +1,5 @@
-class Visit < ActiveRecord::Base
-  has_many :ahoy_events, class_name: "Ahoy::Event"
-  belongs_to :user
+class Visit < ApplicationRecord
+  serialize :referrers
+  serialize :keywords
+  serialize :top_content
 end

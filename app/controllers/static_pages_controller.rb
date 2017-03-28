@@ -6,32 +6,59 @@ class StaticPagesController < ApplicationController
   before_action :setup
 
   def home
-    ahoy.track "Homepage views", title: "Homepage" unless its_simon?
   end
 
   def single_page
-    ahoy.track "Service views", title: "Single Page" unless its_simon?
   end
 
   def starters_website
-    ahoy.track "Service views", title: "Starters Website" unless its_simon?
   end
 
   def website_op_maat
-    ahoy.track "Service views", title: "Website Op Maat" unless its_simon?
   end
 
   def webapplicatie
-    ahoy.track "Service views", title: "Webapplicatie" unless its_simon?
   end
 
   def admin
-    get_referrals
-    get_pageviews
+    cookies['truetech_admin_cookie'] ||= {
+      :value => true,
+      :expires => 10.years.from_now
+    }
+
+    @refresh_token = Setting.find_by(key: "analytics_refresh_token")
+
+    if !@refresh_token
+      set_new_tokens
+    elsif @refresh_token && @refresh_token.updated_at > 2.days.ago
+      refresh_access_token(@refresh_token.value)
+    end
+
+    if (@refresh_token && @refresh_token.updated_at > 2.days.ago)
+      service = authorize_google_analytics
+      get_statistics(service)
+      render "admin"
+    end
+  end
+
+  def callback
+    client = OAuth2::Client.new(ENV["ANALYTICS_CLIENT_ID"], ENV["ANALYTICS_CLIENT_SECRET"], {
+      :authorize_url => 'https://accounts.google.com/o/oauth2/auth',
+      :token_url => 'https://accounts.google.com/o/oauth2/token'}
+    )
+    code = params[:code]
+
+    response = client.auth_code.get_token(code, :redirect_uri => 'http://truetech.be/callback')
+    access_token = response.token
+    refresh_token = response.refresh_token
+
+    update_tokens(access_token, refresh_token)
+
+    redirect_to "/admin"
   end
 
   def website_analyse
-    ahoy.track "Promo Views", title: "Website Analyse" unless its_simon?
+
   end
 
   def setup

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'routes/redirect'
   get '/sitemap.xml.gz', to: redirect("https://s3-eu-west-1.amazonaws.com/truetech-v4/sitemap.xml.gz"), as: :sitemap
 
-  scope ":locale", locale: /en|nl/ do
+  scope "(:locale)", locale: /en|nl/ do
   # Root to home_path
   root "static_pages#home", as: "home"
 
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get "webapplicatie" => "static_pages#webapplicatie"
   get "website-analyse" => "static_pages#website_analyse"
   get "admin" => "static_pages#admin"
+  get "callback" => "static_pages#callback"
 
   resources :users, :projects, :testimonials, :articles, :pages
 

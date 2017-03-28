@@ -22,7 +22,6 @@ class ArticlesController < ApplicationController
       @article = Article.friendly.find(params[:id])
     end
     @relatedarticles = Article.where(category: @article.category).uniq.limit(6).where.not(id: @article)
-    ahoy.track "Article Views", title: "#{@article.title}" unless its_simon?
   end
 
   def create

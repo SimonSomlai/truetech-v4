@@ -68,26 +68,3 @@ end
     posted: true,
   user_id: User.first.id)
 end
-
-
-1500.times do |n|
-  date = Faker::Date.between(365.days.ago, Date.today)
-  Visit.create!(
-    started_at: date,
-    referrer: "http://www.facebook.com"
-  )
-end
-
-@projects = Project.all.map(&:title)
-@articles = Article.all.map(&:title)
-@pages = ["Webapplicatie", "Website Op Maat", "Starters Website", "Single Page", "Homepage"] + @articles + @projects
-
-2500.times do |n|
-  date = Faker::Date.between(365.days.ago, Date.today)
-  Ahoy::Event.create!(
-    time: date,
-    properties: {
-      title: @pages.sample
-    }
-  )
-end

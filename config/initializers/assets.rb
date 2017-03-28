@@ -37,6 +37,5 @@ jquery.js
 jquery_ujs.js
 jquery.remotipart.js
 script.js
-ahoy.js
 highlight.min.js
  )
