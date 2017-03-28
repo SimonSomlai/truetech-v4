@@ -19,23 +19,20 @@ module StaticPagesHelper
   end
 
   def get_statistics(service)
-    count = 0
-    30.times do
-      day = Time.zone.now
-      day = day - count.days
-      response = service.get_ga_data("ga:141996448",day.strftime("%Y-%m-%d"),day.strftime("%Y-%m-%d"),'ga:users,ga:pageviews', {
-        dimensions: "ga:fullReferrer,ga:pagePath", sort: "-ga:pageviews"
-      })
+    day = Time.zone.now
 
-      visitors = response.totals_for_all_results["ga:users"]
-      pageviews = response.totals_for_all_results["ga:pageviews"]
-      referrers = response.rows.collect{|r| {referrer: r[0], landing: r[1], visitors: r[2], pageviews: r[3]}}
-      top_content = referrers.collect{|a| {page: a[:landing], pageviews: a[:pageviews]}}
+    response = service.get_ga_data("ga:141996448",day.strftime("%Y-%m-%d"),day.strftime("%Y-%m-%d"),'ga:users,ga:pageviews', {
+      dimensions: "ga:fullReferrer,ga:pagePath", sort: "-ga:pageviews"
+    })
 
-      @visit = Visit.where(date: day).first_or_create(visitors: visitors, pageviews: pageviews, referrers: referrers, top_content: top_content, date: day.strftime("%Y-%m-%d"))
-      @visit.update_attributes(visitors: visitors, pageviews: pageviews, referrers: referrers, top_content: top_content, date: day)
-      count += 1
-    end
+    visitors = response.totals_for_all_results["ga:users"]
+    pageviews = response.totals_for_all_results["ga:pageviews"]
+    referrers = response.rows.collect{|r| {referrer: r[0], landing: r[1], visitors: r[2], pageviews: r[3]}}
+    top_content = referrers.collect{|a| {page: a[:landing], pageviews: a[:pageviews]}}
+
+    @visit = Visit.where(date: day).first_or_create(visitors: visitors, pageviews: pageviews, referrers: referrers, top_content: top_content, date: day.strftime("%Y-%m-%d"))
+    @visit.update_attributes(visitors: visitors, pageviews: pageviews, referrers: referrers, top_content: top_content, date: day)
+
     @this_year = Visit.all.order("date ASC").limit(360) # Get all Visit objects from the last 12 months, oldest to new
     @this_week = @this_year[-7..-1] # Get all Visit objects from the last 7 days
     @today = @visit # Get the Visit object for today
