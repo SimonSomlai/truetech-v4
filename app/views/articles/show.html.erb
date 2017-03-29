@@ -8,7 +8,7 @@
     <%= stylesheet_link_tag "highlight.min" %>
   <% end %>
   <%=stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" %>
-  <%=stylesheet_link_tag "application", "flatsome.min" %>
+  <%=stylesheet_link_tag "application", "zoom", "flatsome.min" %>
 <% end %>
 <script type='text/javascript' data-cfasync='false' src='//dsms0mj1bbhn4.cloudfront.net/assets/pub/shareaholic.js' data-shr-siteid='78a00e326c876797bb56cf834491d702' async='async'></script>
 <body class="stretched">
@@ -54,7 +54,7 @@
                      </h1>
                      <div class="entry-meta center-block text-center"> <span class="posted-on"><%= t "articles.posted" %> <span><a class="contact-link" href="#<%=@article.category.downcase %>-cat"> <%=@article.category %></a><span class="byline"> <%= t "articles.by" %> <span class="meta-author vcard author"><%=author(@article) %></span></span> </div>
                   </header>
-                  <div class="entry-image"> <%=image_tag @article.image.url, alt: "#{@article.title} - Webdesign Mechelen", class: "attachment-large size-large wp-post-image" %> </div>
+                  <div class="entry-image"> <%= lazy_image_tag @article.image.url, alt: "#{@article.title} - Webdesign Mechelen", class: "attachment-large size-large wp-post-image" %> </div>
                   <div class="entry-content entry-content-blog-single">
                   <% if I18n.locale == :en %>
                       <%= raw @article.en_body %>
@@ -100,7 +100,7 @@
                     </script>
                </div>
             </div>
-            <%= image_tag("unicorn.png", :class => "unicorn hidden-xs") %>
+            <%= lazy_image_tag("unicorn.png", :class => "unicorn hidden-xs") %>
             <div id="<%=@article.category.downcase %>-cat" class="line"></div>
             <h3 class="center bottommargin"><%= t "articles.related" %><span><%= t "articles.articles" %></span></h3>
             <div id="oc-posts" class="article-show-related bottommargin owl-latest-news owl-carousel posts-carousel carousel-widget owl-loaded owl-drag" data-margin="15" data-loop="false" data-nav="true" data-pagi="false" data-items-xxs="1" data-items-xs="2" data-items-sm="3" data-items-md="3" data-items-lg="3">
@@ -109,7 +109,7 @@
                   <div class="ipost clearfix">
                      <div class="entry-image">
                         <a href="<%= articles_show_path(article) %>">
-                           <%= image_tag(article.image.small.url, alt: "#{article.title} - Webdesign Mechelen", class: "image-fade") %>
+                           <%= lazy_image_tag(article.image.small.url, alt: "#{article.title} - Webdesign Mechelen", class: "image-fade") %>
                         </a>
                      </div>
                      <div class="entry-title">
@@ -164,13 +164,14 @@
    <%=render "shared/footer" %>
    <div id="gotoTop" class="icon-angle-up"></div>
    <% content_for :js do %>
-   <%=javascript_include_tag "application" %>
-   <% content_for :js do %>
+     <%=javascript_include_tag "zoom", "application" %>
+
      <% if @article.category.downcase == "coding" %>
-     <%=javascript_include_tag "highlight.min" %>
+       <%=javascript_include_tag "highlight.min" %>
+        <script>Prism.highlightElement($('#code')[0]);</script>
     <% end %>
-   <% end %>
-   <script>autoScroll(); showOptions(); unleash_unicorn();
-   Prism.highlightElement($('#code')[0]);
-   </script> <% end %>
+
+     <script>autoScroll(); showOptions(); unleash_unicorn();
+</script>
+  <% end %>
 </body>

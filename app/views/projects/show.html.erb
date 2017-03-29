@@ -23,10 +23,10 @@
     </header>
     <div class="container clearfix">
       <div class="col_three_fifth portfolio-single-image nobottommargin" data-lightbox="gallery">
-        <a href="#"><%=image_tag @project.project_images.first.images_url, alt: "#{@project.title} - Webdesign Mechelen", class: "main" %></a>
+        <a href="#"><%=lazy_image_tag @project.project_images.first.images_url, alt: "#{@project.title} - Webdesign Mechelen", class: "main" %></a>
         <ol class="flex-control-nav hidden-xs">
           <% @project.project_images.each do |image| %>
-            <li> <a href="<%=image.images_url %>" data-lightbox="gallery-item"> <%=image_tag image.images_url, alt: "#{@project.title} - Webdesign Mechelen" %> </a> </li>
+            <li> <a href="<%=image.images_url %>" data-lightbox="gallery-item"> <%=lazy_image_tag image.images_url, alt: "#{@project.title} - Webdesign Mechelen" %> </a> </li>
           <% end %>
         </ol>
       </div>
@@ -71,7 +71,7 @@
             <div class="iportfolio">
               <div class="portfolio-image">
                 <%=link_to(project_path(project)) do %>
-                  <%=image_tag project.project_images.first.images_url, alt: "#{project.title} - Webdesign Mechelen" %>
+                  <%=lazy_image_tag project.project_images.first.images_url, alt: "#{project.title} - Webdesign Mechelen" %>
                 <% end %>
                 <div class="portfolio-overlay">
                   <%=link_to(project.project_images.first.images_url, class: "left-icon", data:{lightbox: "image"}) do %>

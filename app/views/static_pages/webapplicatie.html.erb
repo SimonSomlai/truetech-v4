@@ -33,7 +33,7 @@
       </div>
    </div>
    <div class="container cf">
-      <div class="col_half bottommargin hidden-xs"> <%=image_tag("application.png", alt: "Webapplicatie - Webdesign Mechelen", class: "center-block fadeInLeftBig animated hidden-xs", :data=>{animate: "fadeInLeftBig"}) %> </div>
+      <div class="col_half bottommargin hidden-xs"> <%=lazy_image_tag("application.png", alt: "Webapplicatie - Webdesign Mechelen", class: "center-block fadeInLeftBig animated hidden-xs", :data=>{animate: "fadeInLeftBig"}) %> </div>
       <div class="col_half nobottommargin col_last">
          <div class="heading-block">
             <h3><%= t('app.heading2') %> <span><%= t('app.heading2_span') %></span> <%= t('app.heading2_second') %></h3>
@@ -52,7 +52,7 @@
          <p><%= t('app.heading3_descr3') %></p>
          <p><a class="contact-link" href="#learn"><%= t('app.learn') %></a></p>
       </div>
-      <div class="col_half bottommargin hidden-xs"> <%=image_tag("service-single-4-#{I18n.locale}", class: "center-block fadeInRightBig animated hidden-xs", :data=>{animate: "fadeInRightBig"}) %> </div>
+      <div class="col_half bottommargin hidden-xs"> <%=lazy_image_tag("service-single-4-#{I18n.locale}", class: "center-block fadeInRightBig animated hidden-xs", :data=>{animate: "fadeInRightBig"}) %> </div>
    </div>
    <div class="container cf">
       <div class="fancy-title title-border title-center bottommargin">

@@ -286,6 +286,8 @@ GEM
     unicorn (5.2.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
+    unveil-rails (0.2.2)
+      railties (> 4.1.0)
     web-console (3.4.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -338,6 +340,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (~> 3.1)
   unicorn (~> 5.2)
+  unveil-rails (~> 0.2.1)
   web-console (~> 3.4)
 
 RUBY VERSION

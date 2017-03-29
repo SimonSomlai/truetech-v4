@@ -30,6 +30,7 @@ gem 'magnific-popup-rails', '~> 1.1'
 gem 'oauth2', '~> 1.3'
 gem 'google-api-client', '~> 0.10'
 gem 'rest-client', "~> 2.0"
+gem 'unveil-rails', '~> 0.2.1'
 
 # Caching
 gem 'rack-cache', "~> 1.7"
