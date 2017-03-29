@@ -4131,6 +4131,10 @@ body.stretched .container-fullwidth .breadcrumb {
     background-color: #FFF;
 }
 
+#content.article-content{
+  overflow: initial;
+}
+
 #content p {
     line-height: 1.8;
 }
