@@ -27,13 +27,19 @@ module StaticPagesHelper
 
     visitors = response.totals_for_all_results["ga:users"]
     pageviews = response.totals_for_all_results["ga:pageviews"]
-    referrers = response.rows.collect{|r| {referrer: r[0], landing: r[1], visitors: r[2], pageviews: r[3]}}
-    top_content = referrers.collect{|a| {page: a[:landing], pageviews: a[:pageviews]}}
-
+    if response.rows
+      referrers = response.rows.collect{|r| {referrer: r[0], landing: r[1], visitors: r[2], pageviews: r[3]}}
+      top_content = referrers.collect{|a| {page: a[:landing], pageviews: a[:pageviews]}}
+    else
+      referrers, top_content = {referrer: "", landing: "", visitors: "0", pageviews: "0"}, {page: "", pageviews: "0"}
+    end
     @visit = Visit.where(date: day).first_or_create(visitors: visitors, pageviews: pageviews, referrers: referrers, top_content: top_content, date: day.strftime("%Y-%m-%d"))
     @visit.update_attributes(visitors: visitors, pageviews: pageviews, referrers: referrers, top_content: top_content, date: day)
 
-    @this_year = Visit.all.order("date ASC").limit(360) # Get all Visit objects from the last 12 months, oldest to new
+    # Get all Visit objects from the last 12 months, oldest to new
+    @this_year ||= Rails.cache.fetch('visits_this_year', expires_in: 1.years) do
+      Visit.all.order("date ASC").limit(360)
+    end
     @this_week = @this_year[-7..-1] # Get all Visit objects from the last 7 days
     @today = @visit # Get the Visit object for today
 
