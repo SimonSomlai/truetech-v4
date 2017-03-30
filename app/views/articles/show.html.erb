@@ -54,7 +54,7 @@
                      </h1>
                      <div class="entry-meta center-block text-center"> <span class="posted-on"><%= t "articles.posted" %> <span><a class="contact-link" href="#<%=@article.category.downcase %>-cat"> <%=@article.category %></a><span class="byline"> <%= t "articles.by" %> <span class="meta-author vcard author"><%=author(@article) %></span></span> </div>
                   </header>
-                  <div class="entry-image"> <%= lazy_image_tag @article.image.url, alt: "#{@article.title} - Webdesign Mechelen", class: "attachment-large size-large wp-post-image" %> </div>
+                  <div class="entry-image"> <%= lazy_image_tag @article.image.url, alt: "#{@article.title} - Webdesign Mechelen", class: "attachment-large size-large wp-post-image" if @article.image.present? %> </div>
                   <div class="entry-content entry-content-blog-single">
                   <% if I18n.locale == :en %>
                       <%= raw @article.en_body %>

@@ -50,7 +50,7 @@ end
   title = Faker::Book.title
   description = Faker::Lorem.paragraph(2)
   body = Faker::Lorem.paragraph(15)
-  en_title = Faker::Book.title
+  en_title = title + " English"
   en_description = Faker::Lorem.paragraph(2)
   en_body = Faker::Lorem.paragraph(15)
   category = ["business", "technology"].sample
@@ -62,9 +62,10 @@ end
     remote_image_url: url,
     body: body,
     en_title: en_title,
+    slug_en: title.parameterize + "-english",
     en_description: en_description,
     en_body: en_body,
     category: category,
     posted: true,
-  user_id: User.first.id)
+    user_id: User.first.id)
 end

@@ -1,173 +1,196 @@
 <% content_for :title, "Projects"  %>
 <% content_for :description, "This is the meta description" %>
 <% content_for :css do %>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<%= stylesheet_link_tag "admin", "magnific-popup", "font-icons", "jquery.tagsinput", "style"  %>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+  <%= stylesheet_link_tag "admin", "magnific-popup", "font-icons", "jquery.tagsinput", "style"  %>
 <% end %>
-
 <body class="nav-md">
-   <div class="container body admin-body">
-      <div class="main_container admin-body">
-         <%= render "shared/admin_menu" %>
-         <div class="right_col cf" role="main">
-            <div class="col-md-12 col-sm-12 col-xs-12 table-fade <%= table_hidden? %>">
-               <div class="x_panel">
-                  <div class="x_title">
-                     <h2><i class="fa fa-diamond"></i> Projects | <a onclick="createForm()" class="btn btn-sm btn-round btn-success"><i class="fa fa-plus"></i> <%= @action %> Project</a></h2>
-                     <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                     <table class="table table-hover table-striped">
-                        <thead>
-                           <tr>
-                              <th class="hidden-xs">#</th>
-                              <th>Title</th>
-                              <th class="hidden-xs">Description</th>
-                              <th class="hidden-xs">Features</th>
-                              <th class="hidden-xs">Link</th>
-                              <th class="hidden-xs">Type</th>
-                              <th class="hidden-xs">Skills</th>
-                              <th class="hidden-xs">Images</th>
-                              <th>Options</th>
-                           </tr>
-                        </thead>
-                        <tbody>
-                           <tr>
-                              <% @projects.each do |project| %>
-                              <th class="hidden-xs" scope="row"><%= project.id %></th>
-                              <td>
-                                 <i class="fa fa-search"></i> 
-                                 <%= link_to(project_path(project)) do %>  
-                                 <%= project.title %>
+  <div class="container body admin-body">
+    <div class="main_container admin-body">
+      <%= render "shared/admin_menu" %>
+      <div class="right_col cf" role="main">
+        <div class="col-md-12 col-sm-12 col-xs-12 table-fade <%= table_hidden? %>">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2><i class="fa fa-diamond"></i> Projects | <a onclick="createForm()" class="btn btn-sm btn-round btn-success"><i class="fa fa-plus"></i> <%= @action %> Project</a></h2>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <table class="table table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th class="hidden-xs">#</th>
+                    <th>Title</th>
+                    <th class="hidden-xs">Description</th>
+                    <th class="hidden-xs">Features</th>
+                    <th class="hidden-xs">Link</th>
+                    <th class="hidden-xs">Type</th>
+                    <th class="hidden-xs">Skills</th>
+                    <th class="hidden-xs">Images</th>
+                    <th>Options</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <% @projects.each do |project| %>
+                      <th class="hidden-xs" scope="row"><%= project.id %></th>
+                      <td>
+                        <i class="fa fa-search"></i>
+                        <%= link_to(project_path(project)) do %>
+                          <%= project.title %>
+                        <% end %>
+                      </td>
+                      <td class="hidden-xs"><%= project.description.first(120) %>... </td>
+                      <td class="hidden-xs"><%= project.features.gsub(/[{}]/,'').split(',').map{|h| h1,h2 = h.split('=>'); {h1 => h2}}.reduce(:merge).keys.join(", ") %> </td>
+                      <td class="hidden-xs"><a target="_blank" href="<%= project.link %>"><i class="fa fa-link"></i></a></td>
+                      <td class="hidden-xs"><%= project.service %></td>
+                      <td class="hidden-xs"><%= project.skills %></td>
+                      <td class="hidden-xs">
+                        <span data-lightbox="gallery">
+                          <% if project.project_images.any? %>
+                          <span data-lightbox="gallery">
+                            <% project.project_images.each_with_index do |image,i| %>
+                              <a href="<%= image.images_url %>" data-lightbox="gallery-item">
+                                <%= i + 1 %>,
+                               </a>
+                            <% end %><br/>
+                          </span>
+                          <% end %>
+                        </span>
+                      </td>
+                      <td>
+                        <%= link_to(edit_project_path(project), :class => "edit-link") do %>
+                          <i class="fa fa-pencil"></i>
+                          edit
                                  <% end %>
-                              </td>
-                              <td class="hidden-xs"><%= project.description.first(120) %>... </td>
-                              <td class="hidden-xs"><%= project.features.gsub(/[{}]/,'').split(',').map{|h| h1,h2 = h.split('=>'); {h1 => h2}}.reduce(:merge).keys.join(", ") %> </td>
-                              <td class="hidden-xs"><a target="_blank" href="<%= project.link %>"><i class="fa fa-link"></i></a></td>
-                              <td class="hidden-xs"><%= project.service %></td>
-                              <td class="hidden-xs"><%= project.skills %></td>
-                              <td class="hidden-xs">
-                                 <span data-lightbox="gallery">
-                                 <% if !project.project_images.nil? %>
-                                 <% x = 1 %>
-                                 <% project.project_images.each do |image| %>
-                                 <a href="<%= image.images_url %>" data-lightbox="gallery-item">
-                                 <%= x  %>,
-                                 </a>
-                                 <% x += 1  %>
-                                 <% end %>
-                                 <% end %>
-                                 </span>
-                              </td>
-                              <td>
-                                 <%= link_to(edit_project_path(project), :class => "edit-link") do %>
-                                 <i class="fa fa-pencil"></i> 
-                                 edit
-                                 <% end %> 
-                                 | 
+                        |
                                  <%= link_to project_path(project), :method => "delete", :data => {:confirm => 'Are you sure?'} do %>
-                                 <i class="fa fa-trash"></i> 
-                                 delete
+                          <i class="fa fa-trash"></i>
+                          delete
                                  <% end %>
-                              </td>
-                           </tr>
-                           <% end %>
-                        </tbody>
-                     </table>
-                  </div>
-               </div>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
             </div>
-            <div id="create-form" class="col-md-12 col-sm-12 col-xs-12 margin-top create-form <%= form_hidden? %>">
-               <div class="x_panel">
-                  <div class="x_title">
-                     <h2><i class="fa fa-diamond"></i> <%= @action %> Project <span class="<%= form_hidden? %>">|</span> <%= link_to("All Projects", projects_path, class: "open-form btn btn-sm btn-round btn-success #{form_hidden?}", :data => {:confirm => 'Your changes will not be saved - proceed?'}) %></h2>
-
-                       <ul class="nav navbar-right panel_toolbox"><li>
-        <%= link_to "#", :class => "change-locale" do %>
-            <div class="locale locale-menu <%= I18n.locale %>"></div>
-            <% end %>
-                      </li>
-                      </ul>
-                     <ul class="nav navbar-right panel_toolbox <%= table_hidden? %>">
-                        <li><a onclick="closeForm();" class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                     </ul>
-                     <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                     <br>
-                     <%= form_for(@project, :html => {:class => "form-horizontal form-label-left", :id => "demo-form2", :multipart => true }) do |f| %>
-                     <%= render "shared/error_messages", object: f.object %>
-                     <div class="form-group">
-                        <%= f.label :title, "Title", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                           <%= f.text_field :title, required: true, :class => "form-control col-md-7 col-xs-12" %>
-                        </div>
-                     </div>
-                     <div class="form-group locale-field nl-description">
-                        <%= f.label :description, "Description", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                           <%= f.text_area :description, :class => "form-control col-md-7 col-xs-12" %>
-                        </div>
-                     </div>
-                     <div class="form-group locale-field en-description col-hidden">
-                        <%= f.label :en_description, "English Description", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                           <%= f.text_area :en_description, :class => "form-control col-md-7 col-xs-12" %>
-                        </div>
-                     </div>
-                     <div class="form-group">
-                        <label  class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name" >Features <i class="icon-question-sign"></i><span class="required"></span>
-                        </label>
-                        <div class="col-md-6 col-sm-6 col-xs-12" data-toggle="tooltip" data-placement="top" data-original-title="" id="features-box">
-                           <input type="text" name="tags" id="tags" value="" />
-                        </div>
-                     </div>
-                     <div class="form-group">
-                        <%= f.hidden_field :features, html: {:class => "form-control col-md-7 col-xs-12", :id => "features"} %>
-                     </div>
-                     <div class="form-group">
-                        <%= f.label :link, "Link", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                           <%= f.text_field :link, required: true, :class => "form-control col-md-7 col-xs-12" %>
-                        </div>
-                     </div>
-                     <div class="form-group">
-                        <%= f.label :service, "Type", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                           <%= f.text_field :service, required: true, :class => "form-control col-md-7 col-xs-12" %>
-                        </div>
-                     </div>
-                     <div class="form-group">
-                        <%= f.label :skills, "Skills", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                           <%= f.text_field :skills, required: true, :class => "form-control col-md-7 col-xs-12" %>
-                        </div>
-                     </div>
-                     <div class="form-group">
-                        <%= f.label :project_images, class: "control-label col-md-3 col-sm-3 col-xs-12" %>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                           <%= f.file_field :project_images, :multiple => true, name: "project_images[images][]" %>
-                        </div>
-                     </div>
-                     <div class="form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                           <%= f.submit "#{@action} Project", class: "text-center btn btn-success" %>
-                        </div>
-                     </div>
-                     <% end %>
-                  </div>
-               </div>
+          </div>
+        </div>
+        <div id="create-form" class="col-md-12 col-sm-12 col-xs-12 margin-top create-form <%= form_hidden? %>">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2><i class="fa fa-diamond"></i> <%= @action %> Project <span class="<%= form_hidden? %>">|</span> <%= link_to("All Projects", projects_path, class: "open-form btn btn-sm btn-round btn-success #{form_hidden?}", :data => {:confirm => 'Your changes will not be saved - proceed?'}) %></h2>
+              <ul class="nav navbar-right panel_toolbox">
+                <li>
+                  <%= link_to "#", :class => "change-locale" do %>
+                    <div class="locale locale-menu <%= I18n.locale %>"></div>
+                  <% end %>
+                </li>
+              </ul>
+              <ul class="nav navbar-right panel_toolbox <%= table_hidden? %>">
+                <li><a onclick="closeForm();" class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+              </ul>
+              <div class="clearfix"></div>
             </div>
-         </div>
+            <div class="x_content">
+              <br>
+              <%= form_for(@project, :html => {:class => "form-horizontal form-label-left", :id => "demo-form2", :multipart => true }) do |f| %>
+                <%= render "shared/error_messages", object: f.object %>
+                <% if @project.id.present?  %>
+                  <div class="form-group locale-field">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">View project</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <%= link_to("View project (NL)", project_path(@project), target: "_blank", style: "vertical-align: -webkit-baseline-middle;") %>
+                    </div>
+                  </div>
+                  <div class="form-group locale-field col-hidden">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">View project</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                      <%= link_to("View project (EN)", project_path(@project, locale: :en), target: "_blank", style: "vertical-align: -webkit-baseline-middle;")  %>
+                    </div>
+                  </div>
+                <% end %>
+                <div class="form-group">
+                  <%= f.label :title, "Title", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <%= f.text_field :title, required: true, :class => "form-control col-md-7 col-xs-12" %>
+                  </div>
+                </div>
+                <div class="form-group locale-field nl-description">
+                  <%= f.label :description, "Description", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <%= f.text_area :description, :class => "form-control col-md-7 col-xs-12" %>
+                  </div>
+                </div>
+                <div class="form-group locale-field en-description col-hidden">
+                  <%= f.label :en_description, "English Description", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <%= f.text_area :en_description, :class => "form-control col-md-7 col-xs-12" %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label  class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name" >Features <i class="icon-question-sign"></i><span class="required"></span>
+                  </label>
+                  <div class="col-md-6 col-sm-6 col-xs-12" data-toggle="tooltip" data-placement="top" data-original-title="" id="features-box">
+                    <input type="text" name="tags" id="tags" value="" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= f.hidden_field :features, html: {:class => "form-control col-md-7 col-xs-12", :id => "features"} %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :link, "Link", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <%= f.text_field :link, required: true, :class => "form-control col-md-7 col-xs-12" %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= f.label :service, "Type", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <%= f.text_field :service, required: true, :class => "form-control col-md-7 col-xs-12" %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= f.label :skills, "Skills", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <%= f.text_field :skills, required: true, :class => "form-control col-md-7 col-xs-12" %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <%= f.label :project_images, class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <% if @project.project_images.any? %>
+                        <strong>Current</strong> (new images will be overwritten)<br/>
+                        <span data-lightbox="gallery">
+                          <% @project.project_images.each_with_index do |image,i| %>
+                            <a href="<%= image.images_url %>" data-lightbox="gallery-item">
+                              <%= i + 1 %>,
+                             </a>
+                          <% end %><br/>
+                        </span>
+                    <% end %><br/>
+                    <%= f.file_field :project_images, :multiple => true, name: "project_images[images][]" %>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                    <%= f.submit "#{@action} Project", class: "text-center btn btn-success" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
-   </div>
-   <% content_for :js do %>
-   <%= javascript_include_tag "custom", "jquery", "jquery_ujs", "jquery.tagsinput", "plugins", "functions", "script"  %>
-   <script>
+    </div>
+  </div>
+  <% content_for :js do %>
+    <%= javascript_include_tag "custom", "jquery", "jquery_ujs", "jquery.tagsinput", "plugins", "functions", "script"  %>
+    <script>
       $('#tags').tagsInput();
-      getTags();
-      changeLocale();
-   </script>
-   <% end %>
+            getTags();
+            changeLocale();
+    </script>
+  <% end %>
 </body>

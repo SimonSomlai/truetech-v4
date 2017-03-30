@@ -8,16 +8,15 @@ class PagesController < ApplicationController
     @pages = Page.all
     @action = "New"
     @page = Page.new
-
   end
 
   def create
     @page = Page.new(pages_params)
     if @page.save
-      p "Page was a success!"
+      flash[:success] = "Page was created succesfully!"
       redirect_to pages_path
     else
-      p "something went wrong"
+      flash[:danger] = "something went wrong"
       render :index
     end
   end
@@ -35,20 +34,18 @@ class PagesController < ApplicationController
     @action = "Edit"
     if @page.update(pages_params)
       flash[:success] = "Page succesfully updated!"
-      render :index
     else
       flash[:danger] = "Something went wrong!"
-      render :index
     end
+    render :index
   end
 
   def destroy
     if @page.destroy
-      redirect_to pages_path
       flash[:success] = "Page succesfully deleted!"
     else
       flash[:danger] = "Something went wrong"
-      redirect_to pages_path
     end
+    redirect_to pages_path
   end
 end

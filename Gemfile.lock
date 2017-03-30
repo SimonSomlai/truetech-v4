@@ -189,6 +189,7 @@ GEM
       rack (>= 0.9.1)
     rack-test (0.6.3)
       rack (>= 1.0)
+    railroady (1.5.2)
     rails (5.0.2)
       actioncable (= 5.0.2)
       actionmailer (= 5.0.2)
@@ -324,6 +325,7 @@ DEPENDENCIES
   pg (~> 0.20)
   pry (~> 0.10)
   rack-cache (~> 1.7)
+  railroady
   rails (~> 5.0, >= 5.0.0.1)
   rails-i18n (~> 5.0)
   rails_12factor (~> 0.0)

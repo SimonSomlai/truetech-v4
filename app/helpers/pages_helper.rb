@@ -1,10 +1,10 @@
 module PagesHelper
-  def pages_params
-    params.require(:page).permit(:title, :description, :body, :slug)
+  def setup
+    @pages = Page.all
+    @page = Page.friendly.find(params[:id])
   end
 
-  def setup
-  	@pages = Page.all
-    @page = Page.friendly.find(params[:id])
+  def pages_params
+    params.require(:page).permit(:title, :description, :body, :slug)
   end
 end

@@ -9,10 +9,8 @@ class Contactform < MailForm::Base
   attribute :phone
 
   attribute :page, :validate => true
-  # Including attachments
-  attribute :file, :attachment => true
-  # Checking for bots
-  attribute :botcheck, :captcha => true
+  attribute :file, :attachment => true   # Including attachments
+  attribute :botcheck, :captcha => true   # if captcha is filled in, it's a bot
 
   def headers
     {

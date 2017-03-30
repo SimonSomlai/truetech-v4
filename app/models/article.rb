@@ -1,11 +1,11 @@
 class Article < ActiveRecord::Base
-  # Relationships
+  # Relationship to user
   belongs_to :user
 
   # Validations
   validates :category, presence: true
 
-  # Don't validate nl locale when it's a technical_article
+  # Don't validate nl locale when it's a technical_article (category = "coding")
   with_options unless: :technical_article? do
     validates :title, presence: true
     validates :body, presence: true
@@ -26,7 +26,7 @@ class Article < ActiveRecord::Base
   # Image uploading
   mount_uploader :image, ArticleImageUploader
 
-  # Friendly URL
+  # Friendly ID slugs, 2 languages (slug_en & slug_nl)
   extend FriendlyId
   friendly_id :title, :use => [:slugged, :simple_i18n]
 end

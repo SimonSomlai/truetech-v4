@@ -25,23 +25,23 @@ class StaticPagesController < ApplicationController
       :value => true,
       :expires => 10.years.from_now
     }
-
     @refresh_token = Setting.find_by(key: "analytics_refresh_token")
 
-    if !@refresh_token
-      set_new_tokens
-    elsif @refresh_token && @refresh_token.updated_at > 2.days.ago
-      refresh_access_token(@refresh_token.value)
+    if !@refresh_token # If there's no refresh token
+      set_new_tokens # Set it
+    elsif @refresh_token && @refresh_token.updated_at < 2.days.ago # It it's dated
+      refresh_access_token(@refresh_token.value) # refresh it
     end
 
-    if (@refresh_token && @refresh_token.updated_at > 2.days.ago)
-      service = authorize_google_analytics
-      get_statistics(service)
+    if @refresh_token && @refresh_token.updated_at > 2.days.ago
+      @refresh_token = Setting.find_by(key: "analytics_refresh_token")
+      service = authorize_google_analytics # Authorize GA
+      get_statistics(service) # Query it for dashboard
       render "admin"
     end
   end
 
-  def callback
+  def callback # Handle omniauth callback by parsing code & requesting tokens (access & refresh)
     client = OAuth2::Client.new(ENV["ANALYTICS_CLIENT_ID"], ENV["ANALYTICS_CLIENT_SECRET"], {
       :authorize_url => 'https://accounts.google.com/o/oauth2/auth',
       :token_url => 'https://accounts.google.com/o/oauth2/token'}

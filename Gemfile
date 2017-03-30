@@ -42,6 +42,7 @@ group :production do
 end
 
 group :development do
+  gem 'railroady'
   gem "better_errors", "~> 2.1"
   gem "meta_request", "~> 0.4"
   gem "binding_of_caller", "~> 0.7"

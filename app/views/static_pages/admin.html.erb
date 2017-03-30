@@ -158,7 +158,6 @@
                                 <thead>
                                   <tr>
                                     <th>Page name</th>
-                                    <th>Visitors</th>
                                     <th>Views</th>
                                   </tr>
                                 </thead>
@@ -166,7 +165,6 @@
                                   <% @top_content_today.each do |top_content| %>
                                     <tr>
                                       <td><%= top_content[:page]  %></td>
-                                      <td><%= top_content[:visitors]  %></td>
                                       <td><%= top_content[:pageviews] %></td>
                                     <tr>
                                   <% end %>

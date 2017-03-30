@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class ProjectsController < ApplicationController
   include ProjectsHelper
   before_action :setup, only: [:show, :edit, :update, :destroy]
@@ -5,8 +6,8 @@ class ProjectsController < ApplicationController
   before_filter :is_admin?, except: [:show]
 
   def index
-    @action = "New"
-    @projects = Project.all
+    @action = 'New'
+    @projects = Project.all.includes(:project_images)
     @project = Project.new
   end
 
@@ -18,49 +19,48 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
-      if params[:project_images] != nil
+      unless params[:project_images].nil?
         @project.update_attribute(:user_id, current_user.id)
-        params[:project_images]["images"].each do |a|
-          @project_image = @project.project_images.create!(:images => a)
+        params[:project_images]['images'].each do |image|
+          @project_image = @project.project_images.create!(images: image)
         end
       end
-      flash[:success] = "Project succesfully created!"
+      flash[:success] = 'Project succesfully created!'
       redirect_to projects_path
     else
-      flash[:danger] = "Something went wrong!"
+      flash[:danger] = 'Something went wrong!'
       render :index
     end
   end
 
   def edit
-    @projects = Project.all
-    @action = "Edit"
+    @projects = Project.all.includes(:project_images)
+    @action = 'Edit'
     render :index
   end
 
   def update
+    @action = 'Edit'
     if @project.update(project_params)
-      if params[:project_images] != nil
+      unless params[:project_images].nil?
         @project.project_images.destroy_all
-        params[:project_images]["images"].each do |a|
-          @project_image = @project.project_images.create!(:images => a)
+        params[:project_images]['images'].each do |image|
+          @project_image = @project.project_images.create!(images: image)
         end
       end
-      flash[:success] = "Project succesfully updated!"
-      redirect_to projects_path
+      flash[:success] = 'Project succesfully updated!'
     else
-      flash[:danger] = "Something went wrong!"
-      render :index
+      flash[:danger] = 'Something went wrong!'
     end
+    render :index
   end
 
   def destroy
     if @project.destroy
-      redirect_to projects_path
-      flash[:success] = "Project succesfully deleted!"
+      flash[:success] = 'Project succesfully deleted!'
     else
-      flash[:danger] = "Something went wrong"
-      redirect_to projects_path
+      flash[:danger] = 'Something went wrong'
     end
+    redirect_to projects_path
   end
 end

@@ -1,7 +1,0 @@
-<b>HomePage</b>
-
-http://www.basicgrowth.com/wp-content/uploads/2016/11/home.png
-
-<b>Backend</b>
-
-http://www.basicgrowth.com/wp-content/uploads/2016/11/backend.png
