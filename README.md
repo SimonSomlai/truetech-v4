@@ -28,4 +28,4 @@
 
 - No active to do-s
 
-Made with <3 by [TrueTech]("www.truetech.be/en")
+Made with <3 by [TrueTech]("http://www.truetech.be/en")
