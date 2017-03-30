@@ -28,4 +28,4 @@
 
 - No active to do-s
 
-Made with &lt;3 by <a href="http://www.truetech.be/en"> TrueTech</a>
+Made with &lt;3 by <a target="_blank" href="http://www.truetech.be/en"> TrueTech</a>
