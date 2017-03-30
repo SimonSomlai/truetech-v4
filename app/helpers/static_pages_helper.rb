@@ -140,7 +140,7 @@ module StaticPagesHelper
 
     # TOP CONTENT
     # Today
-    @top_content_today = @today.top_content.sort_by{|k,v| -k[:pageviews]} # Get the top_content from today
+    @top_content_today = @today.top_content.sort_by{|k,v| -k[:pageviews]}.reverse # Get the top_content from today
     # This Week
     @top_content = @this_week.collect(&:referrers).flatten.group_by{ |hash| hash.values_at(:landing) }
     top_content_array = []

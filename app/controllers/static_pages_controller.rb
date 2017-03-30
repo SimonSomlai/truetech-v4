@@ -27,17 +27,14 @@ class StaticPagesController < ApplicationController
     }
     @refresh_token = Setting.find_by(key: "analytics_refresh_token")
 
-    if !@refresh_token # If there's no refresh token
-      set_new_tokens # Set it
-    elsif @refresh_token && @refresh_token.updated_at < 2.days.ago # It it's dated
-      refresh_access_token(@refresh_token.value) # refresh it
-    end
-
-    if @refresh_token && @refresh_token.updated_at > 2.days.ago
-      @refresh_token = Setting.find_by(key: "analytics_refresh_token")
+    if @refresh_token # If there is a refresh token
+      refresh_access_token(@refresh_token.value) # Use it to renew the access token
+      @refresh_token = Setting.find_by(key: "analytics_refresh_token") # Get it
       service = authorize_google_analytics # Authorize GA
       get_statistics(service) # Query it for dashboard
       render "admin"
+    else
+      set_new_tokens # Set it
     end
   end
 
