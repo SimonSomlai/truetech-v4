@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
     else # Just for normal clicks on the homepage
       @article = Article.friendly.find(params[:id])
     end
-    @relatedarticles = Article.where(category: @article.category).uniq.limit(6).where.not(id: @article)
+    @relatedarticles = Article.where(category: @article.category, posted: true).where.not(id: @article).uniq.limit(6)
   end
 
   def create

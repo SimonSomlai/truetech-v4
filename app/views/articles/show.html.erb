@@ -109,7 +109,7 @@
                   <div class="ipost clearfix">
                      <div class="entry-image">
                         <a href="<%= articles_show_path(article) %>">
-                           <%= lazy_image_tag(article.image.small.url, alt: "#{article.title} - Webdesign Mechelen", class: "image-fade") %>
+                           <%= lazy_image_tag(article.image.small.url, alt: "#{article.title} - Webdesign Mechelen", class: "image-fade")  if article.image.present? %>
                         </a>
                      </div>
                      <div class="entry-title">
