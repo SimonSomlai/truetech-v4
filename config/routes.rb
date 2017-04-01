@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     get "website-op-maat" => "static_pages#website_op_maat"
     get "webapplicatie" => "static_pages#webapplicatie"
     get "website-analyse" => "static_pages#website_analyse"
+
+    get "all-projects" => "projects#all_projects" 
+
     get "admin" => "static_pages#admin"
     get "callback" => "static_pages#callback"
 

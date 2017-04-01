@@ -15,6 +15,7 @@ admin: true)
   user_id = User.find_by(name: "Simon").id
   service = ["starters website", "webapplicatie", "single page", "website op maat"].sample
   Project.create!(
+  follow_up: true,
     title: title,
     description: description,
     features: features,

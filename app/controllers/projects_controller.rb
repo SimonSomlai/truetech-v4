@@ -2,13 +2,17 @@
 class ProjectsController < ApplicationController
   include ProjectsHelper
   before_action :setup, only: [:show, :edit, :update, :destroy]
-  before_filter :logged_in_user?, except: [:show]
-  before_filter :is_admin?, except: [:show]
+  before_filter :logged_in_user?, except: [:show, :all_projects]
+  before_filter :is_admin?, except: [:show, :all_projects]
 
   def index
     @action = 'New'
     @projects = Project.all.includes(:project_images)
     @project = Project.new
+  end
+
+  def all_projects
+    @projects = Project.all.includes(:project_images).order("created_at desc")
   end
 
   def show

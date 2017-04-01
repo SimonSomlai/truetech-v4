@@ -26,17 +26,15 @@ module ApplicationHelper
 
   def category(project)
     if I18n.locale == :en
-      if project.service == "starters website"
-        "Starter Website"
-      elsif project.service == "website op maat"
-        "Custom Website"
-      elsif project.service == "webapplicatie"
-        "Web Application"
+      case project.service
+      when "starters website" then "Starter Website"
+      when "website op maat" then "Custom Website"
+      when "webapplicatie" then"Web Application"
       else
         "Single Page"
       end
     else
-      return project.service
+      project.service.capitalize
     end
   end
 end

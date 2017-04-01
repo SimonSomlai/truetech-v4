@@ -23,6 +23,7 @@ nl:
       service4_pretitle: "Dromen najagen?"
       service4_title: "Webapplicatie"
       service4_descr: "Meer efficiëntie nodig in jouw organisatie? Op zoek naar unieke/zeer specifieke functionaliteit? Een nieuw concept dat de wereld zal verbazen? Wij helpen het realiseren!"
+      all: "Alles"
    # Projecten sectie
     projects:
       title1: "Onze Laatste"
@@ -213,6 +214,7 @@ nl:
     descr: "Eigenschappen"
     share: "Deel"
     related: "Gerelateerde Projecten:"
+    all_projects: "Alle Projecten"
   articles:
     posted: "Gepost in"
     by: "door"

@@ -51,8 +51,11 @@
 // - STRUCTURE & GENERAL (headers, footers, multi-purpose classes)
 // - ADMIN PAGE
 // - HOME PAGE
-// - BLOG SHOW
-// - PORTFOLIO SHOW
+// - ARTICLE
+// -- article show
+// - PROJECT
+// -- project show
+// -- portfolio all
 // - SERVICE PAGES
 /*---------------------*/
 /* STRUCTURE & GENERAL */
@@ -314,7 +317,8 @@ h1.main-logo{
     -webkit-order: 2;
     order: 2;}}
 
-/*/ ------------------------------ BLOG SINGLE ------------------------------------/*/
+/*/ ------------------------------ ARTICLE ------------------------------------/*/
+// ARTICLE SHOW
 /* Share buttons */
 #share-buttons img:hover{
 	transition: all 0.35s ease-in-out;
@@ -487,7 +491,8 @@ $high3: 7deg;
     float: none !important;
     display: block;
     margin: 0 auto;}}
-/*/ ------------------------------ PORTFOLIO SINGLE ------------------------------------/*/
+/*/ ------------------------------ PROJECTS ------------------------------------/*/
+// PROJECT SHOW
 /* h2 title */
 .portfolio-single-title{
 	padding-top: 35px;}

@@ -21,6 +21,7 @@ en:
       service4_pretitle: "Chasing dreams?"
       service4_title: "Web Application"
       service4_descr: "Need more efficiency in your organization? Looking for something unique? We make your dream come true!"
+      all: "All"
     # Projecten sectie
     projects:
       title1: "Our Latest"
@@ -211,6 +212,7 @@ en:
     descr: "Features:"
     share: "Share"
     related: "Related Projects:"
+    all_projects: "All Projects"
   articles:
     posted: "Posted in"
     by: "by"

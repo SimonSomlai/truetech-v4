@@ -125,7 +125,8 @@
           </div>
           <div id="portfolio" class="line notopmargin"></div>
           <h3 class="center"><%= t "home.projects.title1"%>
-            <span><%= t "home.projects.title1_span"%></span>
+            <span><%= t "home.projects.title1_span"%> </span> <i class="hidden-xs" style="font-size: 23px;"> |</i>
+            <span><%= link_to t("projects.all_projects") + " »", all_projects_path, style:"font-size: 13px; vertical-align: middle;", class:"more-link" %></span>
           </h3>
           <div class="owl-carousel portfolio-carousel carousel-widget" data-margin="1" data-loop="false" data-nav="true" data-pagi="false" data-items-xxs="1" data-items-xs="2" data-items-sm="3" data-items-md="4" data-items-lg="4">
             <% @projects.each do |project| %>
