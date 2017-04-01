@@ -12,7 +12,9 @@ class ProjectsController < ApplicationController
   end
 
   def all_projects
-    @projects = Project.all.includes(:project_images).order("created_at desc")
+    @projects ||= Rails.cache.fetch('all_projects', expires_in: 1.days) do
+      Project.all.includes(:project_images).order("created_at desc")
+    end
   end
 
   def show
