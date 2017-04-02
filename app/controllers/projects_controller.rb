@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
 
   def index
     @action = 'New'
-    @projects = Project.all.includes(:project_images)
+    @projects = Project.all.includes(:project_images).order("created_at desc")
     @project = Project.new
   end
 
@@ -40,7 +40,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @projects = Project.all.includes(:project_images)
+    @projects = Project.all.includes(:project_images).order("created_at desc")
     @action = 'Edit'
     render :index
   end

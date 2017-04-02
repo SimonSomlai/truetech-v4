@@ -6,7 +6,7 @@ class ArticlesController < ApplicationController
 
   def index
     @action = "New"
-    @articles = Article.all
+    @articles = Article.all.order("created_at desc")
     @article  = Article.new
   end
 
@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @articles = Article.all
+    @articles = Article.all.order("created_at desc")
     @article = Article.new(article_params)
     @article.update_attribute(:user_id, current_user.id)
     if @article.save

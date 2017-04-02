@@ -1,6 +1,6 @@
 module ArticlesHelper
   def setup # General variable assigment
-    @articles = Article.all
+    @articles = Article.all.order("created_at desc")
     @article = Article.friendly.find(params[:id])
   end
 
