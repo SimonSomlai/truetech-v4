@@ -8,6 +8,7 @@ fog_provider: 'AWS',
 fog_directory: ENV["S3_BUCKET_NAME"],
 fog_region: ENV["S3_REGION"]
 )
+
 SitemapGenerator::Sitemap.sitemaps_host = "https://truetech-v4.s3.amazonaws.com"
 
 SitemapGenerator::Sitemap.create do
