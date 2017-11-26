@@ -18,6 +18,10 @@ module StaticPagesHelper
     'col-hidden' if @action != 'Edit'
   end
 
+  def is_personal? # returns true if website accessed is simonsomlai.com
+    !!request.env["SERVER_NAME"].match(/simonsomlai/)
+  end
+
   def homepage_sql_caching # Cache frequent queries to improve speed
     @projects ||= Rails.cache.fetch('homepage_project_queries', expires_in: 10.minutes) do
       Project.includes(:project_images).limit(6).order('created_at DESC')

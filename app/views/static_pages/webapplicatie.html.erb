@@ -6,14 +6,7 @@
 <body class="stretched">
    <div id="wrapper" class="cf">
    <header id="header" class="sticky-style-2">
-      <div class="container cf">
-         <%= link_to(home_path) do %>
-         <div id="logo" class="center-block text-center">
-            <h1 class="main-logo center-block text-center">TrueTech</h1>
-            <h2 class="logo-subtitle"><%= t('home.sub') %></h2>
-         </div>
-     <% end %>
-      </div>
+      <%= render 'shared/header' %>
       <div id="header-wrap">
          <% content_for :menu do %> 
          <li> <%=link_to("Home", home_path) %> </li>
@@ -39,7 +32,7 @@
             <h3><%= t('app.heading2') %> <span><%= t('app.heading2_span') %></span> <%= t('app.heading2_second') %></h3>
          </div>
          <p><%= t('app.heading2_descr') %><strong> <%= t('app.heading2_strong') %></strong> <%= t('app.heading2_descr2') %></p>
-         <p><%= t('app.heading2_descr3') %></p>
+         <p><%= t('app.heading2_descr3') %> <strong><%= t('app.heading2_descr4') %></strong><%= t('app.heading2_descr5') %></p>
          <p><a class="contact-link" href="#learn"><%= t('app.learn') %></a></p>
       </div>
    </div>

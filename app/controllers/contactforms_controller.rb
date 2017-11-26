@@ -1,6 +1,6 @@
 class ContactformsController < ApplicationController
   def create  # Sends an email based on the form on the page
-    page = request.referrer.split("/")[-1] # Passes in the current page based ob absolute url
+    page = request.referrer.split("/")[-1] # Passes in the current page based on absolute url
     # /nl & /en = home page & also when it doesn't contain /en || /nl
     page = "home" if page.size <= 2 || !((request.referrer.split("/") & ["nl","en"]).present?)
     params[:contactform].merge!(page: page)
