@@ -543,11 +543,11 @@ function onYouTubeIframeAPIReady(){ytp.YTAPIReady||(ytp.YTAPIReady=!0,jQuery(doc
         linkElement           :   '.animsition-link',
         // e.g. linkElement   :   'a:not([target="_blank"]):not([href^="#"])'
         loading               :    true,
-        loadingParentElement  :   'body', //animsition wrapper element
+        loadingParentElement  :   'html', //animsition wrapper element
         loadingClass          :   'animsition-loading',
-        loadingInner          :   '<div class="css3-spinner-bounce1"></div><div class="css3-spinner-bounce2"></div><div class="css3-spinner-bounce3"></div>', // e.g '<img src="loading.svg" />'
-        timeout               :   false,
-        timeoutCountdown      :   5000,
+        loadingInner          :   '', // e.g '<img src="loading.svg" />'
+        timeout               :   true,
+        timeoutCountdown      :   1500,
         onLoadEvent           :   true,
         browser               : [ 'animation-duration', '-webkit-animation-duration'],
         // "browser" option allows you to disable the "animsition" in case the css property in the array is not supported by your browser.
