@@ -724,6 +724,7 @@ var SEMICOLON = SEMICOLON || {};
 		},
 
 		lazyLoad: function() {
+			
 			var lazyLoadEl = $('[data-lazyload]');
 			if( lazyLoadEl.length > 0 ) {
 				lazyLoadEl.each( function(){

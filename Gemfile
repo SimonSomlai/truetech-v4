@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 ruby '2.3.1'
 
 gem 'rails', '~> 5.0', '>= 5.0.0.1'
-gem 'pg', '~> 0.20'
 gem 'sass-rails', '~> 5.0'
 gem 'sprockets-rails', '~> 2.3'
 gem 'uglifier', '~> 3.1'
@@ -37,6 +36,7 @@ gem 'will_paginate', '~> 3.0.6'
 gem 'rack-cache', "~> 1.7"
 gem "memcachier", "~> 0.0"
 gem 'dalli', "~> 2.7"
+gem 'pg', '~> 0.20'
 
 group :production do
   gem "rails_12factor", "~> 0.0"
