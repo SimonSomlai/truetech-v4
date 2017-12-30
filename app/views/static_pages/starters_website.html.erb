@@ -147,7 +147,7 @@
          <div class="col_half col_last"> <%=f.label :subject, t('contact.subject') %> <%=f.text_field :subject, id: "template-contactform-options", value: t('starter.heading1'), readonly: true, :class=> "sm-form-control required" %> </div>
          <div class="clear"></div>
          <div class="col_full"> <%=f.label :message do %> <%= t('contact.message') %><small>*</small> <% end %> <%=f.text_area :message, id: "template-contactform-message", :class=> "required sm-form-control", rows: 6, cols: 30 %> </div>
-         <div class="col_full hidden"> <%=f.text_field :botcheck, id: "template-contactform-botcheck", :class=> "sm-form-control" %> </div>
+         <div><%= f.invisible_captcha :firstname %></div>
          <div class="col_full"> <%=f.submit t('contact.send'), id: "template-contactform-submit", class: "button button-3d nomargin" %> </div>
          <% end %>
       </div>
