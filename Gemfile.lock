@@ -122,6 +122,8 @@ GEM
     httpclient (2.8.3)
     hurley (0.2)
     i18n (0.8.1)
+    invisible_captcha (0.9.3)
+      rails (>= 3.2.0)
     ipaddress (0.8.3)
     jbuilder (2.6.3)
       activesupport (>= 3.0.0, < 5.2)
@@ -314,6 +316,7 @@ DEPENDENCIES
   friendly_id (~> 5.1)
   google-api-client (~> 0.10)
   htmlbeautifier (~> 1.2)
+  invisible_captcha (~> 0.9.3)
   jbuilder (~> 2.6)
   jquery-rails (~> 4.3)
   listen (~> 3.0)
@@ -351,4 +354,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.13.7
+   1.15.4

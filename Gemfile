@@ -31,6 +31,7 @@ gem 'google-api-client', '~> 0.10'
 gem 'rest-client', "~> 2.0"
 gem 'unveil-rails', '~> 0.2.1'
 gem 'will_paginate', '~> 3.0.6'
+gem 'invisible_captcha', '~> 0.9.3'
 
 # Caching
 gem 'rack-cache', "~> 1.7"

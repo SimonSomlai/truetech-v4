@@ -19,6 +19,7 @@ module StaticPagesHelper
   end
 
   def is_personal? # returns true if website accessed is simonsomlai.com
+    return true
     !!request.env["SERVER_NAME"].match(/simonsomlai/)
   end
 

@@ -1,4 +1,6 @@
 class ContactformsController < ApplicationController
+  invisible_captcha only: [:create], honeypot: :firstname
+
   def create  # Sends an email based on the form on the page
     page = request.referrer.split("/")[-1] # Passes in the current page based on absolute url
     # /nl & /en = home page & also when it doesn't contain /en || /nl
