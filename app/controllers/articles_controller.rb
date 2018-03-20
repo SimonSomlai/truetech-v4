@@ -68,9 +68,14 @@ class ArticlesController < ApplicationController
   # Other
   # ======================================================
   def all_articles
-    @articles ||= Rails.cache.fetch('all_articles', expires_in: 1.days) do
-      Article.where(posted: true).order("created_at desc")
+    # Separate normal articles from technical articles (latter only shows on en locale)
+    @nl_articles ||= Rails.cache.fetch('nl_article_queries', expires_in: 10.minutes) do
+      Article.where.not(category: 'Coding').where(posted: true).order('created_at DESC')
     end
-    @categories = Article.all.map(&:category).uniq!
+    @en_articles ||= Rails.cache.fetch('en_article_queries', expires_in: 10.minutes) do
+      Article.where(posted: true).order('created_at DESC')
+    end
+    @en_categories = Article.all.map(&:category).uniq!
+    @nl_categories = @en_categories.reject{|i| /coding/i.match(i)}
   end
 end

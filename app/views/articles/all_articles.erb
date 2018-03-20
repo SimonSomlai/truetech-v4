@@ -20,8 +20,9 @@
       </div>
       <ul class="portfolio-filter clearfix" data-container="#portfolio">
         <li class="activeFilter"><a href="#" data-filter="*"><%= t("home.services.all") %></a></li>
+        <% I18n.locale == :nl ? (@categories = @nl_categories) : (@categories = @en_categories) %>
         <% @categories.each do |category| %>
-          <li><a href="#" data-filter=".pf-<%= category %>"><%= category.capitalize %></a></li>
+          <li><a href="#" data-filter=".pf-<%= category.downcase %>"><%= category.capitalize %></a></li>
         <% end %>
       </ul>
       <div class="portfolio-shuffle" data-container="#portfolio">
@@ -29,6 +30,7 @@
       </div>
       <div class="clear"></div>
       <div id="portfolio" class="bottommargin portfolio grid-container all-articles clearfix" data-layout="fitRows" style="position: relative; height: 888px;">
+        <% I18n.locale == :nl ? (@articles = @nl_articles) : (@articles = @en_articles) %>
         <% @articles.each do |article| %>
           <article class="portfolio-item pf-<%= article.category.downcase.parameterize %>">
             <div class="portfolio-image">
