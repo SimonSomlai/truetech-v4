@@ -1,9 +1,15 @@
 class ArticlesController < ApplicationController
+  # ======================================================
+  # Filters & Imports
+  # ======================================================
   include ArticlesHelper
   before_action :setup, only: [:edit, :update, :destroy]
-  before_filter :logged_in_user?, except: [:show]
-  before_filter :is_admin?, except: [:show]
+  before_filter :logged_in_user?, except: [:show, :all_articles]
+  before_filter :is_admin?, except: [:show, :all_articles]
 
+  # ======================================================
+  # CRUD
+  # ======================================================
   def index
     @action = "New"
     @articles = Article.all.order("created_at desc")
@@ -56,5 +62,15 @@ class ArticlesController < ApplicationController
       flash[:danger] = "Something went wrong"
     end
     redirect_to articles_path
+  end
+
+  # ======================================================
+  # Other
+  # ======================================================
+  def all_articles
+    @articles ||= Rails.cache.fetch('all_articles', expires_in: 1.days) do
+      Article.where(posted: true).order("created_at desc")
+    end
+    @categories = Article.all.map(&:category).uniq!
   end
 end

@@ -1,0 +1,64 @@
+<% content_for :css do %>
+  <%=stylesheet_link_tag "application" %>
+<% end %>
+
+<body class="stretched">
+  <div id="wrapper" class="clearfix">
+    <header id="header" class="sticky-style-2">
+      <%= render 'shared/header' %>
+      <div id="header-wrap">
+        <% content_for :menu do %>
+          <li> <%=link_to("Home", home_path) %> </li>
+          <%= render "shared/locale" %>
+        <% end %> 
+        <%=render "shared/menu" %>
+      </div>
+    </header>
+    <div class="container clearfix">
+      <div class="topmargin heading-block center">
+         <h2><i class="i-plain color col-hidden-md-down i-xlarge icon-diamond inline-block"></i><%= t("articles.all_articles") %></h2>
+      </div>
+      <ul class="portfolio-filter clearfix" data-container="#portfolio">
+        <li class="activeFilter"><a href="#" data-filter="*"><%= t("home.services.all") %></a></li>
+        <% @categories.each do |category| %>
+          <li><a href="#" data-filter=".pf-<%= category %>"><%= category.capitalize %></a></li>
+        <% end %>
+      </ul>
+      <div class="portfolio-shuffle" data-container="#portfolio">
+        <i class="icon-random"></i>
+      </div>
+      <div class="clear"></div>
+      <div id="portfolio" class="bottommargin portfolio grid-container all-articles clearfix" data-layout="fitRows" style="position: relative; height: 888px;">
+        <% @articles.each do |article| %>
+          <article class="portfolio-item pf-<%= article.category.downcase.parameterize %>">
+            <div class="portfolio-image">
+              <%= link_to articles_show_path(article) do %>
+                <%= image_tag article.image.url %>
+              <% end %>
+              <div class="portfolio-overlay">
+                <a href="<%= asset_path article.image.url %>" class="left-icon" data-lightbox="image">
+                  <i class="icon-line-image"></i>
+                </a>
+                <%= link_to articles_show_path(article), class: "right-icon" do  %>
+                  <i class="icon-line-open"></i>
+                <% end %>
+              </div>
+            </div>
+            <div class="portfolio-desc">
+               <% if I18n.locale == :en %>
+                 <h3><%=link_to(article.en_title, articles_show_path(article)) %></h3>
+               <% else  %>
+                 <h3><%=link_to(article.title, articles_show_path(article)) %></h3>
+               <% end %>
+            </div>
+          </article>
+        <% end %>
+      </div>
+      <!-- #portfolio end -->
+    </div>
+    <%=render "shared/footer" %>
+    <div id="gotoTop" class="icon-angle-up"></div>
+    <% content_for :js do %> <%=javascript_include_tag "plugins", "application" %> <script>
+        autoScroll(); showOptions();
+      </script> <% end %>
+  </body>

@@ -55,7 +55,6 @@ class StaticPagesController < ApplicationController
   end
 
   def website_analyse
-
   end
 
   def setup

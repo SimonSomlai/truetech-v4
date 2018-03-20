@@ -224,6 +224,7 @@ nl:
     comments: "Vragen/Aanvullingen?"
     related: "Gerelateerde "
     articles: " Artikels"
+    all_articles: "Alle Artikels"
   analyse:
     heading1_span: "Gratis"
     heading1: " Website Analyse"
@@ -278,7 +279,7 @@ nl:
     button: "Gratis Website Analyse!"
   # Footer
   footer:
-    disclaimer: "TrueTech - Copyright © 2016, Alle Rechten Voorbehouden."
+    disclaimer: "TrueTech - Copyright © %{year}, Alle Rechten Voorbehouden."
     faq: "Frequente vragen"
     subheader: "Blijf op de hoogte van nieuwe artikels!"
     submessage: "Jouw tijd en aandacht zijn kostbaar. Daarom sturen we jou enkel relevante en praktische informatie die je zelf kan selecteren."

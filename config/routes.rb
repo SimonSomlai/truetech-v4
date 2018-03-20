@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     post "login" => "sessions#create"
     delete "logout" => "sessions#destroy", as: "logout"
 
-    # Static routes
+    # Static routes (automatically generates controller#path_path)
     get "single-page" => "static_pages#single_page"
     get "starters-website" => "static_pages#starters_website"
     get "website-op-maat" => "static_pages#website_op_maat"
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     get "website-analyse" => "static_pages#website_analyse"
 
     get "all-projects" => "projects#all_projects" 
+    get "all-articles" => "articles#all_articles" 
 
     get "admin" => "static_pages#admin"
     get "callback" => "static_pages#callback"

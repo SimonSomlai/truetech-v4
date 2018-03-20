@@ -222,6 +222,7 @@ en:
     comments: "Questions/Suggestions?"
     related: "Related"
     articles: " Articles"
+    all_projects: "All Articles"
   analyse:
     heading1_span: "Free"
     heading1: " Website Analysis"
@@ -276,7 +277,7 @@ en:
     button: "Free Website Analysis!"
   # Footer
   footer:
-    disclaimer: "TrueTech - Copyright © 2016, All Rights Reserved."
+    disclaimer: "TrueTech - Copyright © %{year}, All Rights Reserved."
     faq: "FAQ"
     subheader: "Stay updated about new articles!"
     submessage: "Your time and attention are valuable. Therefore we only send out practical and relevant information you can choose yourself!"
