@@ -26,11 +26,8 @@ module StaticPagesHelper
     @projects ||= Rails.cache.fetch('homepage_project_queries', expires_in: 10.minutes) do
       Project.includes(:project_images).limit(6).order('created_at DESC')
     end
-    @testimonials ||= Rails.cache.fetch('homepage_testimonial_queries', expires_in: 10.minutes) do
-      Testimonial.limit(5)
-    end
     @testimonials ||= Rails.cache.fetch("homepage_testimonial_queries", :expires_in => 10.minutes) do
-      Testimonial.limit(5)
+      Testimonial.all.order('created_at DESC')
     end
     # Seperate normal articles from technical articles (latter only shows on en locale)
     @nl_articles ||= Rails.cache.fetch('homepage_nl_article_queries', expires_in: 10.minutes) do
