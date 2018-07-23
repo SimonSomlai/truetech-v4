@@ -37,7 +37,7 @@ gem 'nokogiri', "~> 1.7"
 gem 'nokogiri-styles', "~> 0.1"
 gem 'rtesseract', "~> 2.2"
 gem 'rmagick', "~> 2.16"
-gem 'phantomjs'
+gem 'phantomjs', "~> 2.1"
 
 # Caching
 gem 'rack-cache', "~> 1.7"

@@ -4,7 +4,7 @@ ruby '2.3.1'
 
 gem 'rails', '~> 5.0', '>= 5.0.0.1'
 gem 'sass-rails', '~> 5.0'
-gem 'sprockets-rails', '~> 3.7'
+gem 'sprockets-rails', '~> 2.3'
 gem 'uglifier', '~> 3.1'
 gem 'coffee-rails', '~> 4.1'
 gem 'therubyrhino', "~> 2.0"
@@ -17,7 +17,7 @@ gem 'unicorn', "~> 5.2"
 gem "pry", "~> 0.10"
 gem 'carrierwave', '~> 0.11'
 gem 'fog-aws', "~> 1.2"
-gem 'mini_magick', '~> 4.6', '>= 4.5.1'
+gem 'mini_magick', '~> 4.8', '>= 4.5.1'
 gem 'faker', '~> 1.7', '>= 1.6.5'
 gem 'friendly_id', '~> 5.1'
 gem 'mail_form', "~> 1.6"
@@ -33,7 +33,7 @@ gem 'unveil-rails', '~> 0.2'
 gem 'will_paginate', '~> 3.0'
 gem 'invisible_captcha', '~> 0.9'
 gem 'watir', "~> 6.11"
-gem 'nokogiri', "~> 1.7"
+gem 'nokogiri', "~> 1.8"
 gem 'nokogiri-styles', "~> 0.1"
 gem 'rtesseract', "~> 2.2"
 gem 'rmagick', "~> 2.16"
