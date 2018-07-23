@@ -4,7 +4,7 @@ ruby '2.3.1'
 
 gem 'rails', '~> 5.0', '>= 5.0.0.1'
 gem 'sass-rails', '~> 5.0'
-gem 'sprockets-rails', '~> 2.3'
+gem 'sprockets-rails', '~> 3.7'
 gem 'uglifier', '~> 3.1'
 gem 'coffee-rails', '~> 4.1'
 gem 'therubyrhino', "~> 2.0"
