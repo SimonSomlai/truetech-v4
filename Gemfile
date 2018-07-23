@@ -29,9 +29,15 @@ gem 'magnific-popup-rails', '~> 1.1'
 gem 'oauth2', '~> 1.3'
 gem 'google-api-client', '~> 0.10'
 gem 'rest-client', "~> 2.0"
-gem 'unveil-rails', '~> 0.2.1'
-gem 'will_paginate', '~> 3.0.6'
-gem 'invisible_captcha', '~> 0.9.3'
+gem 'unveil-rails', '~> 0.2'
+gem 'will_paginate', '~> 3.0'
+gem 'invisible_captcha', '~> 0.9'
+gem 'watir', "~> 6.11"
+gem 'nokogiri', "~> 1.7"
+gem 'nokogiri-styles', "~> 0.1"
+gem 'rtesseract', "~> 2.2"
+gem 'rmagick', "~> 2.16"
+gem 'phantomjs', "~> 2.1"
 
 # Caching
 gem 'rack-cache', "~> 1.7"
@@ -44,7 +50,7 @@ group :production do
 end
 
 group :development do
-  gem 'railroady'
+  gem 'railroady', "~> 1.5"
   gem "better_errors", "~> 2.1"
   gem "meta_request", "~> 0.4"
   gem "binding_of_caller", "~> 0.7"

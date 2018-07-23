@@ -2,7 +2,6 @@ require "time"
 
 desc "Sends follow up emails for projects"
 task :follow_up => :environment do
-  binding.pry
   @projects = Project.where(follow_up: true)
   @projects.each do |project|
     case
