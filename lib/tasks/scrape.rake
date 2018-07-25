@@ -71,14 +71,18 @@ task :scrape do
     end
 
     def get_price(link)
-      @browser.goto link
-      @browser.screenshot.save 'temp.png'
-      file = Tempfile.new(['image', 'temp.png'])
-      file.binmode
-      file.write open('temp.png').read
-      file.flush
-      image = RTesseract.new(file)
-      image.to_s_without_spaces[/([€$]{1}[ \s]?)(\d{1,6}([,.]\d{1,6})?)/]
+      begin 
+        @browser.goto link
+        @browser.screenshot.save 'temp.png'
+        file = Tempfile.new(['image', 'temp.png'],Rails.root.join('tmp'))
+        file.binmode
+        file.write open('temp.png').read
+        file.flush
+        image = RTesseract.new(file)
+        image.to_s_without_spaces[/([€$]{1}[ \s]?)(\d{1,6}([,.]\d{1,6})?)/]
+      rescue
+        binding.pry
+      end
     end
     # ======================================================
     # SCRAPING FUNCTIONS
