@@ -28,9 +28,7 @@ task :scrape do
       @sheet_id = ENV["SHEET_ID"]
       @sheet_name = ENV["SHEET_NAME"]
       @api_key = ENV["API_KEY"]
-      puts ENV 
-      puts $GOOGLE_CHROME_BIN
-      puts $GOOGLE_CHROME_SHIM 
+      binding.pry
       Selenium::WebDriver::Chrome.driver_path = $GOOGLE_CHROME_BIN
       @browser = Watir::Browser.new :chrome, :headless => true
       @data = []  
