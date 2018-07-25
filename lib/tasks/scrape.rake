@@ -21,10 +21,11 @@ task :scrape do
   # *************** CLASS **********************
   class HouseHunter 
     def initialize
+      binding.pry
       @client_id = ENV["CLIENT_ID"]
       @client_secret = ENV["CLIENT_SECRET"]
       @refresh_token = ENV["REFRESH_TOKEN"]
-      @access_token = ENV["ACCESS_TOKEN"]
+      @access_token = nil
       @sheet_id = ENV["SHEET_ID"]
       @sheet_name = ENV["SHEET_NAME"]
       @api_key = ENV["API_KEY"]
