@@ -8,7 +8,6 @@ require 'rmagick'
 require 'open-uri'
 require "mini_magick"
 require 'rest-client'
-require 'phantomjs'
 
 desc "Scrapes immoweb, zimmo and immoscoop for new listings"
 task :scrape do
