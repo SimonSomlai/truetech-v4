@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   include StaticPagesHelper
-  before_filter :logged_in_user?, only: [:admin], if: "User.any?"
-  before_filter :is_admin?, only: [:admin], if: "User.any?"
+  before_action :logged_in_user?, only: [:admin], if: -> { User.any? }
+  before_action :is_admin?, only: [:admin], if: -> { User.any? }
   before_action :homepage_sql_caching, only: [:home]
   before_action :setup
 

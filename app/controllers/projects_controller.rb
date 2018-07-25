@@ -2,8 +2,8 @@
 class ProjectsController < ApplicationController
   include ProjectsHelper
   before_action :setup, only: [:show, :edit, :update, :destroy]
-  before_filter :logged_in_user?, except: [:show, :all_projects]
-  before_filter :is_admin?, except: [:show, :all_projects]
+  before_action :logged_in_user?, except: [:show, :all_projects]
+  before_action :is_admin?, except: [:show, :all_projects]
 
   def index
     @action = 'New'

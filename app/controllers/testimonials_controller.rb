@@ -1,8 +1,8 @@
 class TestimonialsController < ApplicationController
   include TestimonialsHelper
   before_action :setup, only: [:edit, :update, :destroy]
-  before_filter :logged_in_user?
-  before_filter :is_admin?
+  before_action :logged_in_user?
+  before_action :is_admin?
 
   def index
     @action = "New"

@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   include UsersHelper
   before_action :setup, only: [:edit, :update, :destroy]
-  before_filter :logged_in_user?, if: "User.any?"
-  before_filter :is_admin?, if: "User.any?"
+  before_action :logged_in_user?, if: -> { User.any? } # Only allow user actions for users
+  before_action :is_admin?, if: -> { User.any? } # Only allow user actions for users who are admins
 
 
   def index
