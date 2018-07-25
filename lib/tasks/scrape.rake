@@ -80,7 +80,7 @@ task :scrape do
         file.flush
         image = RTesseract.new(file)
         image.to_s_without_spaces[/([€$]{1}[ \s]?)(\d{1,6}([,.]\d{1,6})?)/]
-      rescue
+      rescue => error
         binding.pry
       end
     end
