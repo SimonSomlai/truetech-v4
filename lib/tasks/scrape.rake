@@ -28,8 +28,11 @@ task :scrape do
       @sheet_id = ENV["SHEET_ID"]
       @sheet_name = ENV["SHEET_NAME"]
       @api_key = ENV["API_KEY"]
-      Selenium::WebDriver::Chrome.driver_path = ENV["GOOGLE_CHROME_SHIM"]
-      @browser = Watir::Browser.new :chrome, :headless => true
+      options = Selenium::WebDriver::Chrome::Options.new
+      chrome_bin_path = ENV.fetch('GOOGLE_CHROME_SHIM', nil)
+      options.binary = chrome_bin_path if chrome_bin_path # only use custom path on heroku
+      options.add_argument('--headless') # this may be optional
+      @browser = Watir::Browser.new :chrome, options: options
       @data = []  
       @current = []
     end
