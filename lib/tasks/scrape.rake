@@ -226,7 +226,8 @@ task :scrape do
           link = listing.css('a')[0].attr('href').gsub(@root,"")
           @browser.goto @root + link.gsub(@root,'')
           puts "checking #{link}"
-          sleep 2
+          sleep 1
+          (puts "reached error, page. Skipping this one"; next) if (Nokogiri::HTML(@browser.html).css("#newpropertypage .error-page").size > 0)
           if !!Nokogiri::HTML(@browser.html).text.strip.match("Even geduld, aub...")
             puts 'Session limit reached, refreshing'
             @browser.execute_script("sessionStorage.clear(); localStorage.clear()")
@@ -235,7 +236,8 @@ task :scrape do
             puts 'Error page reached, going to next'
             next
           else
-            until (Nokogiri::HTML(@browser.html).css("#newpropertypage #image-one").size > 0) do @browser.refresh; sleep 5; end
+            puts "Waiting for page load"
+            until (Nokogiri::HTML(@browser.html).css("#newpropertypage #image-one").size > 0) do (puts'refreshing'; @browser.refresh; sleep 5;) end
           end
           html = Nokogiri::HTML(@browser.html)
 
