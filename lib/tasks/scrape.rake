@@ -226,15 +226,16 @@ task :scrape do
           link = listing.css('a')[0].attr('href').gsub(@root,"")
           @browser.goto @root + link.gsub(@root,'')
           puts "checking #{link}"
-          sleep 1
-          html = Nokogiri::HTML(@browser.html)
-          if !!html.text.strip.match("Even geduld, aub...")
+          sleep 2
+          if !!Nokogiri::HTML(@browser.html).text.strip.match("Even geduld, aub...")
+            puts 'Session limit reached, refreshing'
             @browser.execute_script("sessionStorage.clear(); localStorage.clear()")
             while Nokogiri::HTML(@browser.html).text.strip.match("Even geduld, aub...") do @browser.refresh; sleep 5; end # wait until something appears
           elsif Nokogiri::HTML(@browser.html).css("#newpropertypage .error-page").size > 0
+            puts 'Error page reached, going to next'
             next
           else
-            until Nokogiri::HTML(@browser.html).css("#newpropertypage #image-one").size > 0 do @browser.refresh; sleep 5; end
+            until (Nokogiri::HTML(@browser.html).css("#newpropertypage #image-one").size > 0) do @browser.refresh; sleep 5; end
           end
           html = Nokogiri::HTML(@browser.html)
 
