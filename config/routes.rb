@@ -26,6 +26,12 @@ Rails.application.routes.draw do
 
     get "admin" => "static_pages#admin"
     get "callback" => "static_pages#callback"
+    mount Thredded::Engine => '/forum'
+    
+    get 'login' => 'sessions#new', :as => :new_user_session
+    post 'login' => 'sessions#create', :as => :user_session
+    delete 'logout' => 'sessions#destroy', :as => :destroy_user_session
+    
 
     resources :users, :projects, :testimonials, :articles, :pages
 

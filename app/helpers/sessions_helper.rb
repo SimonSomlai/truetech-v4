@@ -14,6 +14,7 @@ module SessionsHelper
   end
 
   def current_user
+    puts "calling current user"
     # If there's a session called user_id in the browser, set it to user_id
     if (user_id = session[:user_id])
       # See if there's a current user (object) variable matching a user_id session in the browser. If there is one, keep it.
@@ -41,6 +42,11 @@ module SessionsHelper
       flash[:danger] = "Only admins can do that"
       redirect_to home_path
     end
+  end
+
+  def new_user_session_path
+    binding.pry
+    '/login'
   end
 
 end
