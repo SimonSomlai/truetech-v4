@@ -315,7 +315,7 @@ task :scrape do
       @data.sort_by! {|i| -i[:status] } # sort by criteria 
       @data.uniq! {|i| i[:address] } # remove duplicates 
       @data.reject!{|i| i[:address].match(/\badres\b/)} # Remove everything that contains the word 'adres' ..op aanvraag, ..aan te vragen, ..
-      puts "END OF SCRAPE! DATA: #{data}"
+      puts "END OF SCRAPE! DATA: #{@data}"
       (puts ("Found #{@data.size} new houses! adding to sheet!"); add_to_sheet;) if @data.size > 0
     end
   end
