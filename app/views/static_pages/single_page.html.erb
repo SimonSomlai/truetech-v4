@@ -141,7 +141,8 @@
          </div>
       </div>
       <div class="col-sm-12 col-md-12 contactform">
-         <%=form_for(@contact, remote: true, :format=> 'js', :html=>{:class=> "nobottommargin", :name=> "template-contactform", :id=> "template-contactform", :multipart=> true}) do |f| %> <%=render "shared/error_messages", object: f.object %> 
+         <%=form_for(@contact, remote: true, :format=> 'js', :html=>{:class=> "nobottommargin", :name=> "template-contactform", :id=> "template-contactform", :multipart=> true}) do |f| %> 
+         <%=render "shared/error_messages", object: f.object %> 
          <div class="col_half"> <%=f.label :name do %><%= t "contact.name" %><small>*</small> <% end %> <%=f.text_field :name, required: true, id: "template-contactform-name", :class=> "sm-form-control required" %> </div>
          <div class="col_half col_last"> <%=f.label :email do %> Email<small>*</small> <% end %> <%=f.email_field :email, required: true, id: "template-contactform-email", :class=> "required email sm-form-control" %> </div>
          <div class="clear"></div>

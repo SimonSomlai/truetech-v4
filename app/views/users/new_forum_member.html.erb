@@ -1,0 +1,74 @@
+<% content_for :title, "Register"  %>
+  <% content_for :description, "No Description" %>
+    <% content_for :css do %>
+      <%= stylesheet_link_tag "agency-style", "agency", "responsive", "font-icons", "animate", "magnific-popup", "style"  %>
+        <% end %>
+
+          <body class="stretched">
+            <div id="wrapper" class="cf">
+              <header id="header" class="sticky-style-2">
+                <%= render 'shared/header' %>
+                <div id="header-wrap">
+                  <% content_for :menu do %>
+                    <li>
+                      <%= link_to("Home", home_path)  %>
+                    </li>
+                  <% end %>
+                  <%= render "shared/menu" %>
+                </div>
+              </header>
+              <div class="container clearfix topmargin bottommargin">
+                <div class="tabs divcenter nobottommargin clearfix ui-tabs ui-widget ui-widget-content ui-corner-all" id="tab-register-register"
+                  style="max-width: 500px;">
+                  <div class="tab-container">
+                    <div class="tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom" id="tab-register" aria-labelledby="ui-id-1"
+                      role="tabpanel" aria-hidden="false">
+                      <div class="panel panel-default nobottommargin">
+                        <div class="panel-body" style="padding: 40px;">
+                          <%= form_for(@user, url: create_forum_member_path, html: { id: "register-form", class: "nobottommargin", name: "register-form"}) do |f| %>
+                            <h3>Welcome To FI Belgium!</h3>
+                            <%=render "shared/error_messages", object: f.object %>
+                            <div class="col_ful">
+                              <%= f.label :name, "Name:" %>
+                              <%= f.text_field :name, :class => "form-control", id: "register-form-username" %>
+                            </div>
+                            <br/>
+                            <div class="col_ful">
+                              <%= f.label :email, "Email:" %>
+                              <%= f.email_field :email, :class => "form-control", id: "register-form-username" %>
+                            </div>
+                            <br/>
+                            <div class="col_ful">
+                              <%= f.label :password %>
+                              <%= f.password_field :password, class: "form-control", id: "register-form-password" %>
+                            </div>
+                            <br/>
+                            <div class="col_ful">
+                              <%= f.label :password, "Confirm Password" %>
+                              <%= f.password_field :password_confirmation, class: "form-control", id: "register-form-password" %>
+                            </div>
+                            <br/>
+                            <div class="col_ful">
+                              <%= f.label :password, "Profile Picture" %>
+                              <%= f.file_field :profile_picture, :options => {:class => "form-control col-md-7 col-xs-12", accept: "image/jpeg,image/gif,image/png"} %>    
+                            </div>
+                            <br/>
+                            <div class="col_full nobottommargin">
+                              <%= f.submit "register", class: "button button-3d nomargin", id: "register-form-submit" %>
+                            </div>
+                            <% end %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <%= render "shared/footer" %>
+                <div id="gotoTop" class="icon-angle-up"></div>
+                <% content_for :js do %>
+                  <%= javascript_include_tag "application" %>
+                    <script>
+                      autoScroll();
+                    </script>
+                    <% end %>
+          </body>

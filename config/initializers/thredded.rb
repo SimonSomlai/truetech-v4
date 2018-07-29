@@ -22,15 +22,16 @@ Thredded.user_name_column = :name
 # If the lambda returns nil, a span element is returned instead of a link; so
 # setting this to always return nil effectively disables all user links.
 Thredded.user_path = ->(user) {
-  user_path = :"#{Thredded.user_class_name.demodulize.underscore}_path"
-  main_app.respond_to?(user_path) ? main_app.send(user_path, user) : "/users/#{user.to_param}"
+  nil
+  # user_path = :"#{Thredded.user_class_name.demodulize.underscore}_path"
+  # main_app.respond_to?(user_path) ? main_app.send(user_path, user) : "/users/#{user.to_param}"
 }
 
 # This method is used by Thredded controllers and views to fetch the currently signed-in user
 Thredded.current_user_method = :"current_#{Thredded.user_class_name.demodulize.underscore}"
 
 # User avatar URL. rb-gravatar gem is used by default:
-Thredded.avatar_url = ->(user) { Gravatar.src(user.email, 156, 'mm') }
+Thredded.avatar_url = ->(user) { user.profile_picture.url || Gravatar.src(user.email, 156, 'mm') }
 
 # ==> Permissions Configuration
 # By default, thredded uses a simple permission model, where all the users can post to all message boards,
@@ -65,7 +66,7 @@ Thredded.currently_online_enabled = false
 Thredded.private_messaging_enabled = true
 
 # The number of topics to display per page.
-# Thredded.topics_per_page = 50
+Thredded.topics_per_page = 50
 
 # The number of posts to display per page in a topic.
 # Thredded.posts_per_page = 25
@@ -139,12 +140,13 @@ Thredded.layout = 'thredded/application'
 #
 #     $ grep view_hooks -R --include '*.html.erb' "$(bundle show thredded)"
 #
-# Rails.application.config.to_prepare do
-#   Thredded.view_hooks.post_form.content_text_area.config.before do |form:, **args|
-#     # This is called in the Thredded view context, so all Thredded helpers and URLs are accessible here directly.
-#     'hi'
-#   end
-# end
+Rails.application.config.to_prepare do
+  binding.pry
+  Thredded.view_hooks.post_form.content_text_area.config.before do |form:, **args|
+    # This is called in the Thredded view context, so all Thredded helpers and URLs are accessible here directly.
+    'hi'
+  end
+end
 
 # ==> Topic following
 #

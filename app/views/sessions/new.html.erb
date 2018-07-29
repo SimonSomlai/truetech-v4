@@ -22,8 +22,8 @@
             <div class="tab-content clearfix ui-tabs-panel ui-widget-content ui-corner-bottom" id="tab-login" aria-labelledby="ui-id-1" role="tabpanel" aria-hidden="false">
                <div class="panel panel-default nobottommargin">
                   <div class="panel-body" style="padding: 40px;">
-                     <%= form_for(:session, url: login_path, html: { id: "login-form", class: "nobottommargin", name: "login-form"}) do |f| %>
-                     <h3>Welcome back, Simon</h3>
+                     <%= form_for(:session, url: new_user_session_path, html: { id: "login-form", class: "nobottommargin", name: "login-form"}) do |f| %>
+                     <h3>Welcome back!</h3>
                      <div class="col_ful">
                         <%= f.label :email, "Email:" %>
                         <%= f.text_field :email, :class => "form-control", id: "login-form-username" %>

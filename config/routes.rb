@@ -10,10 +10,9 @@ Rails.application.routes.draw do
     root "static_pages#home", as: "home"
 
     # Session routing
-    get "login" => "sessions#new", as: "login"
+    get "login" => "sessions#new", route: "login", as: :new_user_session
     post "login" => "sessions#create"
-    delete "logout" => "sessions#destroy", as: "logout"
-
+    delete "logout" => "sessions#destroy", route: "logout", as: :destroy_user_session
     # Static routes (automatically generates controller#path_path)
     get "single-page" => "static_pages#single_page"
     get "starters-website" => "static_pages#starters_website"
@@ -26,14 +25,12 @@ Rails.application.routes.draw do
 
     get "admin" => "static_pages#admin"
     get "callback" => "static_pages#callback"
-    mount Thredded::Engine => '/forum'
-    
-    get 'login' => 'sessions#new', :as => :new_user_session
-    post 'login' => 'sessions#create', :as => :user_session
-    delete 'logout' => 'sessions#destroy', :as => :destroy_user_session
-    
-
     resources :users, :projects, :testimonials, :articles, :pages
+
+    mount Thredded::Engine => '/forum'
+    get "forum" => "messageboard#index", as: :forum
+    get "register" => "users#new_forum_member"
+    post "register" => "users#create_forum_member", as: :create_forum_member
 
     #  This routes pages and articles. First it searches for a matching article by slug (friendly id), then
     #  falls down to pages. Ex;

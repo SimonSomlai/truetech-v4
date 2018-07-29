@@ -33,7 +33,7 @@
     <nav>
       <div class="nav toggle"> <a id="menu_toggle"><i class="fa fa-bars"></i></a> </div>
       <ul class="nav navbar-nav navbar-right">
-        <li class=""> <%= link_to(logout_path, method: :delete) do %> <i class=" fa fa-md fa-power-off"></i> Logout <% end %> </li>
+        <li class=""> <%= link_to(destroy_user_session_path, method: :delete) do %> <i class=" fa fa-md fa-power-off"></i> Logout <% end %> </li>
       </ul>
     </li>
   </ul>

@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     # If the email matches one in the db and the password matches
     if user && user.authenticate(params[:session][:password])
       login user
-      redirect_to admin_path
+      user.admin ? (redirect_to admin_path) : (redirect_to forum_path)
       flash[:success] = "Welcome back #{user.name}!"
     else
       flash.now[:danger] = "Incorrect email or password"

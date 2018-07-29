@@ -8,15 +8,15 @@ class UsersControllerTest < ActionController::TestCase
   test "should redirect to home when creating, posting, editing, updating & deleting users w/o login" do
     # Trying to see users
     get :index
-    assert_redirected_to login_path
+    assert_redirected_to new_user_session_path
 
     # Trying to create
     get :create
-    assert_redirected_to login_path
+    assert_redirected_to new_user_session_path
 
     # Trying to edit
     get :edit, id: @simon
-    assert_redirected_to login_path
+    assert_redirected_to new_user_session_path
     assert_not flash.empty?
 
     # Trying to patch
@@ -25,14 +25,14 @@ class UsersControllerTest < ActionController::TestCase
       email: @simon.email,
       admin: true
     }
-    assert_redirected_to login_path
+    assert_redirected_to new_user_session_path
     assert_not flash.empty?
 
     # Trying to delete
     assert_no_difference "User.count" do
       delete :destroy, id: @simon
     end
-    assert_redirected_to login_path
+    assert_redirected_to new_user_session_path
   end
 
   test "should be able to crud when logged in as admin" do
