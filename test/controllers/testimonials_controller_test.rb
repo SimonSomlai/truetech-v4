@@ -9,29 +9,29 @@ class TestimonialsControllerTest < ActionController::TestCase
   test "should redirect to home when creating, posting, editing, updating & deleting testimonials w/o login" do
     # Trying to see testimonials
     get :index
-    assert_redirected_to login_path
+    assert_redirected_to new_user_session_path
 
     # Trying to create
     get :create
-    assert_redirected_to login_path
+    assert_redirected_to new_user_session_path
 
     # Trying to edit
     get :edit, id: @testimonial
-    assert_redirected_to login_path
+    assert_redirected_to new_user_session_path
     assert_not flash.empty?
 
     # Trying to patch
     patch :update, id: @testimonial, testimonial: {
       title: @testimonial.name
     }
-    assert_redirected_to login_path
+    assert_redirected_to new_user_session_path
     assert_not flash.empty?
 
     # Trying to delete
     assert_no_difference "Testimonial.count" do
       delete :destroy, id: @testimonial.id
     end
-    assert_redirected_to login_path
+    assert_redirected_to new_user_session_path
   end
 
   test "should be able to crud when logged in as admin" do

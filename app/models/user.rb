@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
   REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
   # Validations
-  validates :name, presence: true, uniqueness: true, length: {maximum: 50}
-  validates :email, presence: true, uniqueness: { case_sensitive: false }, length: {maximum: 150}, format: { with: REGEX }
-  validates :password, length: { minimum: 6 }
+  validates :name, uniqueness: true, presence: true, length: {maximum: 50}
+  validates :email, uniqueness: true, presence: true,  length: {maximum: 150}, format: { with: REGEX } 
+  validates :password_digest, presence: true,length: { minimum: 6 }
 
   # Adds virtual attributes password & password_confirmation to User and saves them as password_digest using BCrypt
   has_secure_password

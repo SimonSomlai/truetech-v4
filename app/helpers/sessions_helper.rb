@@ -30,17 +30,21 @@ module SessionsHelper
   # Is this a logged in user?
   def logged_in_user?
     unless logged_in?
-      redirect_to login_path
+      redirect_to new_user_session_path
       flash[:danger] = "Please login to do that action"
     end
   end
 
+  # Function that checks if the current logged in user is an admin -> returns boolean
+  def is_admin
+    current_user.admin?
+  end
+
   # before_action for authorization in controller
   def is_admin?
-    if !current_user.admin?
+    if !is_admin
       flash[:danger] = "Only admins can do that"
       redirect_to home_path
     end
   end
-
 end

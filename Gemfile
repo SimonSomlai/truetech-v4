@@ -42,11 +42,16 @@ gem 'rmagick', "~> 2.16"
 gem 'phantomjs', "~> 2.1"
 gem 'chromedriver-helper', "~> 1.2"
 
+# Thredded
+gem 'thredded', '~> 0.15.4'
+gem 'rails-ujs', '~> 5.1.0.beta1'
+
 # Caching
 gem 'rack-cache', "~> 1.8"
 gem "memcachier", "~> 0.0"
 gem 'dalli', "~> 2.7"
 gem 'pg', '~> 0.21'
+
 
 group :production do
   gem "rails_12factor", "~> 0.0"

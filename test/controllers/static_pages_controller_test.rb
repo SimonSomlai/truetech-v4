@@ -8,7 +8,7 @@ class StaticPagesControllerTest < ActionController::TestCase
   test "should redirect on admin when not logged in" do
     # Get edit
     get :admin, id: @user
-    assert_redirected_to login_path
+    assert_redirected_to new_user_session_path
     assert_not flash.empty?
   end
 
