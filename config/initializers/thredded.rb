@@ -118,7 +118,7 @@ Thredded.layout = 'thredded/application'
 # Thredded::ContentFormatter.whitelist[:elements] += %w(custom-element)
 
 # ==> User autocompletion (Private messages and @-mentions)
-# Thredded.autocomplete_min_length = 2 lower to 1 if have 1-letter names -- increase if you want
+Thredded.autocomplete_min_length = 2 # lower to 1 if have 1-letter names -- increase if you want
 
 # ==> Error Handling
 # By default Thredded just renders a flash alert on errors such as Topic not found, or Login required.
@@ -140,13 +140,13 @@ Thredded.layout = 'thredded/application'
 #
 #     $ grep view_hooks -R --include '*.html.erb' "$(bundle show thredded)"
 #
-Rails.application.config.to_prepare do
-  binding.pry
-  Thredded.view_hooks.post_form.content_text_area.config.before do |form:, **args|
-    # This is called in the Thredded view context, so all Thredded helpers and URLs are accessible here directly.
-    'hi'
-  end
-end
+# Rails.application.config.to_prepare do
+#   # Thredded.view_hooks.messageboards_index.container.config.before do |form:, **args|
+#     Thredded.view_hooks.post_form.content_text_area.config.before do |form:, **args|
+#     # This is called in the Thredded view context, so all Thredded helpers and URLs are accessible here directly.
+#     render "shared/hello", form: form
+#   end
+# end
 
 # ==> Topic following
 #

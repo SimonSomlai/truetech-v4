@@ -30,7 +30,7 @@ gem 'oauth2', '~> 1.4'
 gem 'google-api-client', '~> 0.23'
 gem 'rest-client', "~> 2.0"
 gem 'unveil-rails', '~> 0.2'
-gem 'will_paginate', '~> 3.1.6'
+gem 'will_paginate', '~> 3.0'
 gem 'invisible_captcha', '~> 0.9'
 
 # Scraper Gems
@@ -44,7 +44,7 @@ gem 'chromedriver-helper', "~> 1.2"
 
 # Thredded
 gem 'thredded', '~> 0.15.4'
-gem 'rails-ujs', '~> 5.0'
+gem 'rails-ujs', '~> 5.1.0.beta1'
 
 # Caching
 gem 'rack-cache', "~> 1.8"

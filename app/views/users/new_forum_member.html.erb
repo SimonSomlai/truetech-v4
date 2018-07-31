@@ -26,7 +26,7 @@
                       <div class="panel panel-default nobottommargin">
                         <div class="panel-body" style="padding: 40px;">
                           <%= form_for(@user, url: create_forum_member_path, html: { id: "register-form", class: "nobottommargin", name: "register-form"}) do |f| %>
-                            <h3>Welcome To FI Belgium!</h3>
+                            <h3>Welcome!</h3>
                             <%=render "shared/error_messages", object: f.object %>
                             <div class="col_ful">
                               <%= f.label :name, "Name:" %>
