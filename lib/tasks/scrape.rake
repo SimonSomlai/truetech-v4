@@ -28,6 +28,7 @@ task :scrape do
       @sheet_id = ENV["SHEET_ID"]
       @sheet_name = ENV["SHEET_NAME"]
       @api_key = ENV["API_KEY"]
+      @max_tries = 10
       options = Selenium::WebDriver::Chrome::Options.new
       chrome_bin_path = ENV.fetch('GOOGLE_CHROME_SHIM', nil)
       options.binary = chrome_bin_path if chrome_bin_path # only use custom path on heroku
@@ -94,7 +95,7 @@ task :scrape do
       while next_page != "#" do 
         puts "starting scrape for next page \n\n"
         @browser.goto @root + next_page
-        @browser.wait(3)
+        sleep 3
         html = Nokogiri::HTML(@browser.html)
         next_page = html.css('.pagination li:last-child a').attr('href').text
         listings = html.css('.search-result-position')
@@ -155,7 +156,7 @@ task :scrape do
       while next_page != "#" do 
         puts "starting scrape for next page \n\n"
         @browser.goto @root + next_page.gsub(@root,'')
-        @browser.wait(3)
+        sleep 3
         html = Nokogiri::HTML(@browser.html)
         next_page = html.css('.pagination li.last a').attr('href').text
         listings = html.css('.property-item')
@@ -222,23 +223,41 @@ task :scrape do
       listings.each do |listing|
         # GENERAL
         # begin
+          
           score = 0
           link = listing.css('a')[0].attr('href').gsub(@root,"")
           @browser.goto @root + link.gsub(@root,'')
           puts "checking #{link}"
-          sleep 2
+          sleep 1
+          @tries = 0
+
           if !!Nokogiri::HTML(@browser.html).text.strip.match("Even geduld, aub...")
             puts 'Session limit reached, refreshing'
             @browser.execute_script("sessionStorage.clear(); localStorage.clear()")
-            while Nokogiri::HTML(@browser.html).text.strip.match("Even geduld, aub...") do @browser.refresh; sleep 5; end # wait until something appears
+            # Keep refreshing until page loads correctly or max retries is reached
+            until (!Nokogiri::HTML(@browser.html).text.strip.match("Even geduld, aub...") || (@tries == @max_tries))
+              # wait until something appears
+              @tries += 1
+              puts "refreshing, tries = #{@tries}"; 
+              @browser.refresh; 
+              sleep 5; 
+            end 
           elsif Nokogiri::HTML(@browser.html).css("#newpropertypage .error-page").size > 0
-            puts 'Error page reached, going to next'
-            next
+            puts 'Error page reached, going to next';
+            next;
           else
-            until (Nokogiri::HTML(@browser.html).css("#newpropertypage #image-one").size > 0) do @browser.refresh; sleep 5; end
+            puts "Waiting for page load"
+            # Keep refreshing until page loads correctly or max retries is reached
+            until (Nokogiri::HTML(@browser.html).css("#newpropertypage #image-one").size > 0 || (@tries == @max_tries))
+              @tries += 1
+              puts "refreshing, tries = #{@tries}"; 
+              @browser.refresh; 
+              sleep 5;
+            end
           end
-          html = Nokogiri::HTML(@browser.html)
+          (puts "max retries reached!"; next;) if @tries == @max_tries
 
+          html = Nokogiri::HTML(@browser.html)
           puts "getting address"
           address = html.css('#propertyPage-title-address').text.gsub(/\s+/, " ").strip.downcase
           puts "checking matches"
@@ -296,6 +315,7 @@ task :scrape do
       @data.sort_by! {|i| -i[:status] } # sort by criteria 
       @data.uniq! {|i| i[:address] } # remove duplicates 
       @data.reject!{|i| i[:address].match(/\badres\b/)} # Remove everything that contains the word 'adres' ..op aanvraag, ..aan te vragen, ..
+      puts "END OF SCRAPE! DATA: #{@data}"
       (puts ("Found #{@data.size} new houses! adding to sheet!"); add_to_sheet;) if @data.size > 0
     end
   end
