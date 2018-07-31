@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     get "callback" => "static_pages#callback"
     resources :users, :projects, :testimonials, :articles, :pages
 
+    # Thredded Forum Routes
     mount Thredded::Engine => '/forum'
     get "forum" => "messageboard#index", as: :forum
     get "register" => "users#new_forum_member"
