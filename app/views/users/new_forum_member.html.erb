@@ -29,22 +29,22 @@
                             <h3>Welcome!</h3>
                             <%=render "shared/error_messages", object: f.object %>
                             <div class="col_ful">
-                              <%= f.label :name, "Name:" %>
-                              <%= f.text_field :name, :class => "form-control", id: "register-form-username" %>
+                              <%= f.label :name, "Username*" %>
+                              <%= f.text_field :name, :class => "form-control", id: "register-form-username", "data-toggle" => "tooltip", "data-placement" => "top", "data-original-title" => "This will be visible to all other forum members" %>
                             </div>
                             <br/>
                             <div class="col_ful">
-                              <%= f.label :email, "Email:" %>
-                              <%= f.email_field :email, :class => "form-control", id: "register-form-username" %>
+                              <%= f.label :email, "Email*" %>
+                              <%= f.email_field :email, :class => "form-control", id: "register-form-email", "data-toggle" => "tooltip", "data-placement" => "top", "data-original-title" => "This will not be visible to other users. We will not send you any emails." %>
                             </div>
                             <br/>
                             <div class="col_ful">
-                              <%= f.label :password %>
+                              <%= f.label :password, "Choose a Password*" %>
                               <%= f.password_field :password, class: "form-control", id: "register-form-password" %>
                             </div>
                             <br/>
                             <div class="col_ful">
-                              <%= f.label :password, "Confirm Password" %>
+                              <%= f.label :password, "Confirm Password*" %>
                               <%= f.password_field :password_confirmation, class: "form-control", id: "register-form-password" %>
                             </div>
                             <br/>
@@ -54,6 +54,7 @@
                             </div>
                             <br/>
                             <div class="col_full nobottommargin">
+                              <p>* = required</p>
                               <%= f.submit "register", class: "button button-3d nomargin", id: "register-form-submit" %>
                             </div>
                             <% end %>
@@ -69,6 +70,7 @@
                   <%= javascript_include_tag "application" %>
                     <script>
                       autoScroll();
-                    </script>
+                      showOptions();
+                    </showOptions
                     <% end %>
           </body>
