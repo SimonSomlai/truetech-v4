@@ -6,3 +6,4 @@
 Disallow: /admin
 Disallow: /admin/*
 Disallow: /login
+Disallow: /forum/*
