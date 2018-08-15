@@ -86,7 +86,7 @@ task :scrape do
       puts "SAVING PROGRESS! DATA: #{@data}"
       puts "Found #{@data.size} new houses! adding to sheet!"
       add_to_sheet if @data.size > 0
-      get_current
+      get_current 
     end
 
     def add_to_sheet
@@ -140,6 +140,7 @@ task :scrape do
           link = listing.css('.search-result-img-wrapper').attr('href').text
           puts "checking #{link}"
           address = listing.xpath("div[1]/div/div/div/div[2]/div/span[1]").inner_html.gsub('<br>',' ').downcase
+          next if !address
           street_matches = @current.find_all{|i| i.normalize.match(address.normalize.strip.downcase[/^\b\S+\b/])}.concat(@data.find_all{|i| i[:address].normalize.match(address.normalize.strip.downcase[/^\b\S+\b/])}) # Check if street name has already been scraped
           if street_matches.size > 0
             (puts "skipping, already scraped property"; next;) if street_matches.any? {|street| address[/\b\d{1,3}\b/] === street[/\b\d{1,3}\b/]} # Skip property if street & number matches
@@ -203,6 +204,7 @@ task :scrape do
           score = 0
           link = listing.css('.property-item_link').attr('href').text.strip
           address = listing.css('.property-item_address').text.gsub(/\s+/, " ").strip.downcase
+          next if !address
           street_matches = @current.find_all{|i| i.normalize.match(address.normalize.strip.downcase[/^\b\S+\b/])}.concat(@data.find_all{|i| i[:address].normalize.match(address.normalize.strip.downcase[/^\b\S+\b/])}) # Check if street name has already been scraped
           if street_matches.size > 0
             (puts "skipping, already scraped property"; next;) if street_matches.any? {|street| address[/\b\d{1,3}\b/] === street[/\b\d{1,3}\b/]} # Skip property if street & number matches
@@ -292,6 +294,7 @@ task :scrape do
         html = Nokogiri::HTML(@browser.html)
         puts "getting address"
         address = html.css('#propertyPage-title-address').text.gsub(/\s+/, " ").strip.downcase
+        next if !address
         puts "checking matches"
         begin
           street_matches = @current.find_all{|i| i.normalize.match(address.normalize.strip.downcase[/^\b\S+\b/])}.concat(@data.find_all{|i| i[:address].normalize.match(address.normalize.strip.downcase[/^\b\S+\b/])}) # Check if street name has already been scraped
@@ -436,6 +439,7 @@ task :scrape do
           html = Nokogiri::HTML(@browser.html)
           # ADDRESS
           address = html.at("h5:contains('Ligging') + a").text.strip.gsub(/\s+/, " ")
+          next if !address
           street_matches = @current.find_all{|i| i.normalize.match(address.normalize.strip.downcase[/^\b\S+\b/])}.concat(@data.find_all{|i| i[:address].normalize.match(address.normalize.strip.downcase[/^\b\S+\b/])}) # Check if street name has already been scraped
           if street_matches.size > 0
             (puts "skipping, already scraped property"; next;) if street_matches.any? {|street| address[/\b\d{1,3}\b/] === street[/\b\d{1,3}\b/]} # Skip property if street & number matches
