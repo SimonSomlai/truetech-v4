@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.5.1'
 
+# General
 gem 'rails', '~> 5.0.1'
 gem 'sass-rails', '~> 5.0'
 gem 'sprockets-rails', '~> 2.3'
@@ -39,7 +40,6 @@ gem 'nokogiri', "~> 1.8"
 gem 'nokogiri-styles', "~> 0.1"
 gem 'rtesseract', "~> 2.2"
 gem 'rmagick', "~> 2.16"
-gem 'phantomjs', "~> 2.1"
 gem 'chromedriver-helper', "~> 1.2"
 
 # Thredded
@@ -51,7 +51,6 @@ gem 'rack-cache', "~> 1.8"
 gem "memcachier", "~> 0.0"
 gem 'dalli', "~> 2.7"
 gem 'pg', '~> 0.21'
-
 
 group :production do
   gem "rails_12factor", "~> 0.0"

@@ -9,6 +9,12 @@ require 'open-uri'
 require "mini_magick"
 require 'rest-client'
 
+# Load ENV variables in this file in development
+unless Rails.env.production?
+  environment_variables = File.join(Rails.root, 'config', 'initializers', 'environment_variables.rb')
+  load(environment_variables) if File.exists?(environment_variables)
+end
+
 desc "Scrapes immoweb, zimmo and immoscoop for new listings"
 task :scrape do
   puts "starting scrape"
@@ -32,7 +38,7 @@ task :scrape do
       options = Selenium::WebDriver::Chrome::Options.new
       chrome_bin_path = ENV.fetch('GOOGLE_CHROME_SHIM', nil)
       options.binary = chrome_bin_path if chrome_bin_path # only use custom path on heroku
-      options.add_argument('--headless') # this may be optional
+      # options.add_argument('--headless') # this may be optional
       @browser = Watir::Browser.new :chrome, options: options
       @data = []  
       @current = []
@@ -63,6 +69,16 @@ task :scrape do
       @current = current.map{|i| i[0].downcase.split(" - ")[0]}
     end
 
+    def save_progress
+      @data.sort_by! {|i| -i[:status] } # sort by criteria 
+      @data.uniq! {|i| i[:address] } # remove duplicates 
+      @data.reject!{|i| i[:address].match(/\badres\b/)} # Remove everything that contains the word 'adres' ..op aanvraag, ..aan te vragen, ..
+      puts "SAVING PROGRESS! DATA: #{@data}"
+      puts "Found #{@data.size} new houses! adding to sheet!"
+      add_to_sheet if @data.size > 0
+      get_current
+    end
+
     def add_to_sheet
       payload = {
         values: @data.map{|i| i.values}
@@ -85,10 +101,10 @@ task :scrape do
         binding.pry
       end
     end
-    # ======================================================
-    # SCRAPING FUNCTIONS
+
     # ======================================================
     # Immoscoop
+    # ======================================================
     def scrape_immoscoop
       @root = "https://www.immoscoop.be"
       next_page = "/immo.php?min_price=0&max_price=300000&proptype=Sale&radio-1=on&radio-2=on&ajax=&distance=&country=&streetname=&livingareacondition=&livingarea=&plotareacondition=&plotarea=&yearcondition=&year=&province=&country=&bedroom=3&feature=&searchcity=&region=&category=Woning&order=price&s_postcode%5B%5D=158&s_postcode%5B%5D=56&s_postcode%5B%5D=57&s_postcode%5B%5D=58&s_postcode%5B%5D=1521"
@@ -101,6 +117,7 @@ task :scrape do
         listings = html.css('.search-result-position')
         scrape_immoscoop_listings(listings)
       end
+      save_progress if @data.size > 0
     end
 
     def scrape_immoscoop_listings(listings)
@@ -145,11 +162,13 @@ task :scrape do
         end
         # ADDING DATA
         puts "#{address}: BEDS: #{beds}, SIZE: #{size}, PRICE: #{price} => SCORE = #{score}"
-        @data << {address: address,beds: beds, baths: '', size: size, price: price, info: '', status: score, broker: broker, link: link, img: img, coördinates: ""}
+        @data << {address: address,beds: beds, baths: '', size: size, price: price, info: '', status: score, broker: broker, link: link, img: img, coördinates: "", date: Date.current.to_s}
       end
     end
 
+    # ======================================================
     # Zimmo
+    # ======================================================
     def scrape_zimmo
       @root = "https://www.zimmo.be"
       next_page = "/nl/panden/?status=1&type%5B0%5D=5&type%5B1%5D=4&subType%5B0%5D=46&subType%5B1%5D=13&subType%5B2%5D=49&subType%5B3%5D=72&subType%5B4%5D=73&subType%5B5%5D=74&subType%5B6%5D=75&subType%5B7%5D=76&subType%5B8%5D=78&subType%5B9%5D=81&subType%5B10%5D=82&subType%5B11%5D=83&subType%5B12%5D=84&subType%5B13%5D=85&subType%5B14%5D=86&subType%5B15%5D=89&subType%5B16%5D=90&subType%5B17%5D=91&subType%5B18%5D=92&subType%5B19%5D=93&subType%5B20%5D=94&subType%5B21%5D=98&subType%5B22%5D=100&subType%5B23%5D=101&subType%5B24%5D=105&subType%5B25%5D=113&subType%5B26%5D=115&subType%5B27%5D=120&hash=e552b7ef36442b14ffa6f615ca61aba6&priceMax=300000&priceIncludeUnknown=1&priceChangedOnly=0&bedroomsMin=3&bedroomsIncludeUnknown=1&bathroomsIncludeUnknown=1&constructionType%5B0%5D=3&constructionIncludeUnknown=1&livingAreaIncludeUnknown=1&landAreaIncludeUnknown=1&commercialAreaIncludeUnknown=1&yearOfConstructionMin=1900&yearOfConstructionIncludeUnknown=1&epcIncludeUnknown=1&newConstructionOnly=0&projectsOnly=0&queryCondition=and&includeNoPhotos=1&includeNoAddress=1&onlyRecent=0&onlyRecentlyUpdated=0&isPlus=0&region=polygon&path=sluwHqrzYbuDnvDx%7C%40chBfdAaNzx%40vI%60mA%60%5D%60GolB~Bc%60EifAslC%7DmBrUos%40_k%40uwAoc%40sd%40hmAyv%40pV_h%40d%7C%40aEbt%40Snz%40jBhjB%3F~M#gallery"
@@ -162,6 +181,7 @@ task :scrape do
         listings = html.css('.property-item')
         scrape_zimmo_listings(listings)
       end
+      save_progress if @data.size > 0
     end
 
     def scrape_zimmo_listings(listings)
@@ -188,7 +208,7 @@ task :scrape do
           beds = listing.css('span.bedroom-icon.property-item_icon').text.gsub(/\s+/, " ").strip.reverse[/\b\d{1,3}\b/]
           score += 1 if beds && Integer(beds) >= 3 # bonus point if 3 or more beds
           score += (1 * (Integer(beds) - 3)) if beds && Integer(beds) >= 3 # bonus point for every bedroom over 3
-          baths = html.at('strong:contains("Badkamers")+span') ? html.at('strong:contains("Badkamers")+span').text.strip : ""
+          baths = html.at('strong:contains("Badkamers")+span') ? html.at('strong:contains("Badkamers")+span').text.strip : nil
           # SIZE
           size = listing.css('span.opp-icon.property-item_icon').text[/\b\d{1,3}/]
           score += 1 if size && Integer(size) >= 200 # bonus point if more than 200m2
@@ -201,11 +221,13 @@ task :scrape do
         end
         # Adding Data
         puts "#{address}: BEDS: #{beds}, SIZE: #{size}, PRICE: #{price} => SCORE = #{score}"
-        @data << {address: address,beds: beds, baths: baths, size: size, price: price, info: '', status: score, broker: broker, link: @root + link, img: img, coördinates: ""}
+        @data << {address: address,beds: beds, baths: baths, size: size, price: price, info: '', status: score, broker: broker, link: @root + link, img: img, coördinates: "", date: Date.current.to_s}
       end
     end
 
+    # ======================================================
     # Immoweb
+    # ======================================================
     def scrape_immoweb
       @root = "https://www.immoweb.be"
       next_page = "/nl/zoek/huis/te-koop?zips=2000,2018,2020,2600,2610,2640&maxprice=300000&minroom=3"
@@ -217,6 +239,7 @@ task :scrape do
         listings = html.css('#result>div')
         scrape_immoweb_listings(listings)
       end
+      save_progress if @data.size > 0
     end
 
     def scrape_immoweb_listings(listings)
@@ -303,7 +326,73 @@ task :scrape do
         end
         # Adding Data
         puts "#{address}: BEDS: #{beds}, SIZE: #{size}, PRICE: #{price} => SCORE = #{score}"
-        @data << {address: address,beds: beds, baths: baths, size: size, price: price, info: '', status: score, broker: broker, link: @root + link, img: img, coördinates: ""}
+        @data << {address: address,beds: beds, baths: baths, size: size, price: price, info: '', status: score, broker: broker, link: @root + link, img: img, coördinates: "", date: Date.current.to_s}
+      end
+    end
+
+    # ======================================================
+    # Immovlan
+    # ======================================================
+    def scrape_immovlan
+      @root = "https://immo.vlan.be/"
+      next_page = "nl/Zoek/ALLE/ALLE/?city=(2000-Antwerpen)-(2018-Antwerpen)-(2020-Antwerpen)-(2600-Berchem)-(2610-Wilrijk)&country=Belgique&propertytype=(Huis)-(Opbrengstpand)&propertysubtype=(Huis)-(Villa)-(Bungalow)-(Chalet)-(Fermette)-(Herenhuis)-(Kasteel)-(Huis-gemengd-gebruik)-(Opbrengsteigendom)&transactiontype=(te-koop)-(in-openbare-verkoop)&SortOrder=DefaultAscending&MaxPrice=300000&MinBedrooms=2&IsBatch=Yes"
+      page = 1
+      while next_page != "#" do 
+        puts "starting scrape for next page \n\n"
+        @browser.goto @root + next_page.gsub(@root,'')
+        sleep 3
+        html = Nokogiri::HTML(@browser.html)
+        max_pages = html.css('.pager')[0].css('li a').size
+        next_page = (page + 1 > max_pages) ? "#" : (page+=1; "nl/Zoek/ALLE/ALLE/?Page=#{page}&city=(2000-Antwerpen)-(2018-Antwerpen)-(2020-Antwerpen)-(2600-Berchem)-(2610-Wilrijk)&country=Belgique&propertytype=(Huis)-(Opbrengstpand)&propertysubtype=(Huis)-(Villa)-(Bungalow)-(Chalet)-(Fermette)-(Herenhuis)-(Kasteel)-(Huis-gemengd-gebruik)-(Opbrengsteigendom)&transactiontype=(te-koop)-(in-openbare-verkoop)&SortOrder=DefaultAscending&MaxPrice=300000&MinBedrooms=2&IsBatch=Yes")
+        listings = html.css("div[data-view-type='list'] .property-item")
+        scrape_immovlan_listings(listings)
+      end
+      save_progress if @data.size > 0
+    end
+
+    def scrape_immovlan_listings(listings)
+      listings.each_with_index do |listing, index|
+        # GENERAL
+        begin
+          score = 0
+          link = listing.css('.u-url').attr("href") ? listing.css('.u-url').attr("href").text.strip : nil
+          next if !link
+          puts "checking #{link}"
+          @browser.goto @root + link
+          sleep 3
+          html = Nokogiri::HTML(@browser.html)
+          is_invalid = html.css("h3.text-center").size > 0 ? !!html.css("h3.text-center").first.text.match(/is niet langer online/) : false
+          (puts "skipping, is invalid"; next;) if is_invalid
+          address = html.css(".address-line").text.strip + " " + html.css(".city-line").text.strip
+          next if !address
+          street_matches = @current.find_all{|i| i.normalize.match(address.normalize.strip.downcase[/^\b\S+\b/])}.concat(@data.find_all{|i| i[:address].normalize.match(address.normalize.strip.downcase[/^\b\S+\b/])}) # Check if street name has already been scraped
+          if street_matches.size > 0
+            (puts "skipping, already scraped property"; next;) if street_matches.any? {|street| address[/\b\d{1,3}\b/] === street[/\b\d{1,3}\b/]} # Skip property if street & number matches
+          end
+          img = html.css(".carousel-item.active img").attr("src").text
+          # PRICE
+          price = html.css(".price").text.gsub!(/[€,.,' ',\s]/,"")
+          (puts "skipping, no price or invalid format"; next;) if price == nil || !is_numeric?(price)
+          score += 1 if Integer(price) < 250000 # bonus point if below 250K
+          score += (1 * ((250000 - Integer(price))/20000)) if Integer(price) < 250000 # bonus point for every 20k under 250K
+          # BEDS & BATHS
+          beds = html.at('div:contains("Slaapkamer(s)")+div') ? html.at('div:contains("Slaapkamer(s)")+div').text.gsub(/\s+/, " ").strip.reverse[/\b\d{1,3}\b/] : nil
+          score += 1 if beds && Integer(beds) >= 3 # bonus point if 3 or more beds
+          score += (1 * (Integer(beds) - 3)) if beds && Integer(beds) >= 3 # bonus point for every bedroom over 3
+          baths = html.at('div:contains("Badkamer(s)")+div') ? html.at('div:contains("Badkamer(s)")+div').text.strip : nil
+          # SIZE
+          size = html.at('div:contains("Oppervlakte leefruimte")+div') ? html.at('div:contains("Oppervlakte leefruimte")+div').text[/\b\d{1,3}/] : nil
+          score += 1 if size && Integer(size) >= 200 # bonus point if more than 200m2
+          score += 1 if size && Integer(price)/Integer(size) <= 1300 # bonus point for low m2/price ratio
+          # BROKER
+          broker =  html.css("a.to-dealer-website")[0] ? html.css("a.to-dealer-website")[0].text.gsub("Aangeboden door:","").strip : html.css(".phone-complete")[0].text.strip
+        rescue => error
+          (puts "\n #{error}")
+          binding.pry
+        end
+        # Adding Data
+        puts "#{address}: BEDS: #{beds}, SIZE: #{size}, PRICE: #{price} => SCORE = #{score}"
+        @data << {address: address,beds: beds, baths: baths, size: size, price: price, info: '', status: score, broker: broker, link: @root + link, img: img, coördinates: "", date: Date.current.to_s}
       end
     end
   
@@ -312,11 +401,9 @@ task :scrape do
       scrape_immoscoop
       scrape_zimmo
       scrape_immoweb
-      @data.sort_by! {|i| -i[:status] } # sort by criteria 
-      @data.uniq! {|i| i[:address] } # remove duplicates 
-      @data.reject!{|i| i[:address].match(/\badres\b/)} # Remove everything that contains the word 'adres' ..op aanvraag, ..aan te vragen, ..
-      puts "END OF SCRAPE! DATA: #{@data}"
-      (puts ("Found #{@data.size} new houses! adding to sheet!"); add_to_sheet;) if @data.size > 0
+      scrape_immovlan
+      # http://be.propenda.com/
+      # https://www.realo.be/nl/jan-van-rijswijcklaan-2020-antwerpen/1808995?l=1615559411
     end
   end
 
