@@ -17,7 +17,6 @@ end
 
 desc "Scrapes immoweb, zimmo and immoscoop for new listings"
 task :scrape do
-  puts "starting scrape"
   class String
     def normalize
       self.gsub(/[áàâä]/i, 'a').gsub(/[úùûü]/i, 'u').gsub(/[éèêë]/i, 'e').gsub(/[óòôö]/i, 'o').gsub(/[ïîìí]/i, 'i')
@@ -27,6 +26,8 @@ task :scrape do
   # *************** CLASS **********************
   class HouseHunter 
     def initialize
+      @scrapes = ["scrape_immoscoop","scrape_zimmo","scrape_immoweb","scrape_immovlan","scrape_propenda"]
+      @scrape_index = -1
       @client_id = ENV["CLIENT_ID"]
       @client_secret = ENV["CLIENT_SECRET"]
       @refresh_token = ENV["REFRESH_TOKEN"]
@@ -38,10 +39,19 @@ task :scrape do
       options = Selenium::WebDriver::Chrome::Options.new
       chrome_bin_path = ENV.fetch('GOOGLE_CHROME_SHIM', nil)
       options.binary = chrome_bin_path if chrome_bin_path # only use custom path on heroku
-      # options.add_argument('--headless') # this may be optional
+      options.add_argument('--headless') # this may be optional
       @browser = Watir::Browser.new :chrome, options: options
       @data = []  
       @current = []
+    end
+
+    def next_scrape
+      @scrape_index += 1
+      (puts "scrapes ended, shutting down"; abort;) if @scrape_index >= @scrapes.length 
+      puts "Starting scrape on #{@scrapes[@scrape_index].gsub('scrape_','')}"
+      self.send(@scrapes[@scrape_index])
+      # https://www.realo.be/nl/jan-van-rijswijcklaan-2020-antwerpen/1808995?l=1615559411
+      # habicom
     end
 
     # ======================================================
@@ -118,6 +128,7 @@ task :scrape do
         scrape_immoscoop_listings(listings)
       end
       save_progress if @data.size > 0
+      next_scrape
     end
 
     def scrape_immoscoop_listings(listings)
@@ -158,11 +169,11 @@ task :scrape do
           end
         rescue => error
           (puts "\n #{error}")
-          binding.pry
+          Rails.env.production? ? (puts "FATAL ERROR IN #{@scrapes[@scrape_index].upcase}, GOING TO NEXT"; next_scrape;) : binding.pry
         end
         # ADDING DATA
         puts "#{address}: BEDS: #{beds}, SIZE: #{size}, PRICE: #{price} => SCORE = #{score}"
-        @data << {address: address,beds: beds, baths: '', size: size, price: price, info: '', status: score, broker: broker, link: link, img: img, coördinates: "", date: Date.current.to_s}
+        @data << {address: address,beds: beds, baths: '', size: size, price: price, info: '', status: score, broker: broker, link: link, img: img, coördinates: "", date: Time.now.to_s}
       end
     end
 
@@ -182,6 +193,7 @@ task :scrape do
         scrape_zimmo_listings(listings)
       end
       save_progress if @data.size > 0
+      next_scrape
     end
 
     def scrape_zimmo_listings(listings)
@@ -217,11 +229,11 @@ task :scrape do
           broker =  html.css('.contact-logo img').size > 0 ? html.css('.contact-logo img').attr('alt').text : html.css('.phone-number-container').attr('data-mobile').text
         rescue => error
           (puts "\n #{error}")
-          binding.pry
+          Rails.env.production? ? (puts "FATAL ERROR IN #{@scrapes[@scrape_index].upcase}, GOING TO NEXT"; next_scrape;) : binding.pry
         end
         # Adding Data
         puts "#{address}: BEDS: #{beds}, SIZE: #{size}, PRICE: #{price} => SCORE = #{score}"
-        @data << {address: address,beds: beds, baths: baths, size: size, price: price, info: '', status: score, broker: broker, link: @root + link, img: img, coördinates: "", date: Date.current.to_s}
+        @data << {address: address,beds: beds, baths: baths, size: size, price: price, info: '', status: score, broker: broker, link: @root + link, img: img, coördinates: "", date: Time.now.to_s}
       end
     end
 
@@ -240,93 +252,89 @@ task :scrape do
         scrape_immoweb_listings(listings)
       end
       save_progress if @data.size > 0
+      next_scrape
     end
 
     def scrape_immoweb_listings(listings)
       listings.each do |listing|
         # GENERAL
-        # begin
-          
-          score = 0
-          link = listing.css('a')[0].attr('href').gsub(@root,"")
-          @browser.goto @root + link.gsub(@root,'')
-          puts "checking #{link}"
-          sleep 1
-          @tries = 0
-
-          if !!Nokogiri::HTML(@browser.html).text.strip.match("Even geduld, aub...")
-            puts 'Session limit reached, refreshing'
-            @browser.execute_script("sessionStorage.clear(); localStorage.clear()")
-            # Keep refreshing until page loads correctly or max retries is reached
-            until (!Nokogiri::HTML(@browser.html).text.strip.match("Even geduld, aub...") || (@tries == @max_tries))
-              # wait until something appears
-              @tries += 1
-              puts "refreshing, tries = #{@tries}"; 
-              @browser.refresh; 
-              sleep 5; 
-            end 
-          elsif Nokogiri::HTML(@browser.html).css("#newpropertypage .error-page").size > 0
-            puts 'Error page reached, going to next';
-            next;
-          else
-            puts "Waiting for page load"
-            # Keep refreshing until page loads correctly or max retries is reached
-            until (Nokogiri::HTML(@browser.html).css("#newpropertypage #image-one").size > 0 || (@tries == @max_tries))
-              @tries += 1
-              puts "refreshing, tries = #{@tries}"; 
-              @browser.refresh; 
-              sleep 5;
-            end
+        score = 0
+        link = listing.css('a')[0].attr('href').gsub(@root,"")
+        @browser.goto @root + link.gsub(@root,'')
+        puts "checking #{link}"
+        sleep 1
+        @tries = 0
+        if !!Nokogiri::HTML(@browser.html).text.strip.match("Even geduld, aub...")
+          puts 'Session limit reached, refreshing'
+          @browser.execute_script("sessionStorage.clear(); localStorage.clear()")
+          # Keep refreshing until page loads correctly or max retries is reached
+          until (!Nokogiri::HTML(@browser.html).text.strip.match("Even geduld, aub...") || (@tries == @max_tries))
+            # wait until something appears
+            @tries += 1
+            puts "refreshing, tries = #{@tries}"; 
+            @browser.refresh; 
+            sleep 5; 
+          end 
+        elsif Nokogiri::HTML(@browser.html).css("#newpropertypage .error-page").size > 0
+          puts 'Error page reached, going to next';
+          next;
+        else
+          puts "Waiting for page load"
+          # Keep refreshing until page loads correctly or max retries is reached
+          until (Nokogiri::HTML(@browser.html).css("#newpropertypage #image-one").size > 0 || (@tries == @max_tries))
+            @tries += 1
+            puts "refreshing, tries = #{@tries}"; 
+            @browser.refresh; 
+            sleep 5;
           end
-          (puts "max retries reached!"; next;) if @tries == @max_tries
+        end
+        (puts "max retries reached!"; next;) if @tries == @max_tries
+        html = Nokogiri::HTML(@browser.html)
+        puts "getting address"
+        address = html.css('#propertyPage-title-address').text.gsub(/\s+/, " ").strip.downcase
+        puts "checking matches"
+        begin
+          street_matches = @current.find_all{|i| i.normalize.match(address.normalize.strip.downcase[/^\b\S+\b/])}.concat(@data.find_all{|i| i[:address].normalize.match(address.normalize.strip.downcase[/^\b\S+\b/])}) # Check if street name has already been scraped
+        rescue
+          Rails.env.production? ? (puts "FATAL ERROR IN #{@scrapes[@scrape_index].upcase}, GOING TO NEXT"; next_scrape;) : binding.pry
+        end
+        if street_matches.size > 0
+          puts "matches found, digging deeper"
+          (puts "skipping, already scraped property"; next;) if street_matches.any? {|street| address[/\b\d{1,3}\b/] === street[/\b\d{1,3}\b/]} # Skip property if street & number matches
+        end
+        puts "getting image"
 
-          html = Nokogiri::HTML(@browser.html)
-          puts "getting address"
-          address = html.css('#propertyPage-title-address').text.gsub(/\s+/, " ").strip.downcase
-          puts "checking matches"
-
-          begin
-            street_matches = @current.find_all{|i| i.normalize.match(address.normalize.strip.downcase[/^\b\S+\b/])}.concat(@data.find_all{|i| i[:address].normalize.match(address.normalize.strip.downcase[/^\b\S+\b/])}) # Check if street name has already been scraped
-          rescue
-            binding.pry
-          end
-
-          if street_matches.size > 0
-            puts "matches found, digging deeper"
-            (puts "skipping, already scraped property"; next;) if street_matches.any? {|street| address[/\b\d{1,3}\b/] === street[/\b\d{1,3}\b/]} # Skip property if street & number matches
-          end
-          puts "getting image"
-          begin
-            img = html.css("#image-one.block a")[0].styles['background-image'].gsub(/[url(,),\s,'\\"']/,"")
-            # PRICE
-            puts "getting price"
-            price = html.css('.iw-propertypage-price-current-content h3').text.gsub(/[€,.,' ',\s]/,"") 
-            (puts "skipping, no price or invalid format"; next;) if price == nil || !is_numeric?(price.gsub(/[€,.,' ',\s]/,""))
-            score += 1 if Integer(price) < 250000 # bonus point if below 250K
-            score += (1 * ((250000 - Integer(price))/20000)) if Integer(price) < 250000 # bonus point for every 20k under 250K
-            # BEDS & BATHS
-            puts "getting beds"
-            beds = html.at('h3 span:contains("slaapkamers")+ span.blue') ? html.at('h3 span:contains("slaapkamers")+ span.blue').text : nil
-            score += 1 if beds && Integer(beds) >= 3 # bonus point if 3 or more beds
-            score += (1 * (Integer(beds) - 3)) if beds && Integer(beds) >= 3 # bonus point for every bedroom over 3
-            puts "getting baths"
-            baths = html.at('h3 span:contains("badkamer")+ span.blue') ? html.at('h3 span:contains("badkamer")+ span.blue').text : nil
-            # SIZE
-            puts "getting size"
-            size = html.at('h3 span:contains("bewoonbare opp.")+ span.blue') ? html.at('h3 span:contains("bewoonbare opp.")+ span.blue').text[/\d+/] : nil
-            score += 1 if size && Integer(size) >= 200 # bonus point if more than 200m2
-            score += 1 if size && Integer(price)/Integer(size) <= 1300 # bonus point for low m2/price ratio
-            # BROKER
-            puts "getting broker || contact info"
-            broker =  (html.css("#iw-propertypage-contactbox a.logo img").size > 0) ? (html.css("#iw-propertypage-contactbox a.logo img").attr('title').text.downcase) : (@browser.link(:text =>"Via telefoon contacteren").when_present.click)
-            broker = html.css(".phones .phone").map{|i| i.text.strip.gsub(/[\D,\s]/,"")}.join(", +")
+        begin
+          img = html.css("#image-one.block a")[0].styles['background-image'].gsub(/[url(,),\s,'\\"']/,"")
+          # PRICE
+          puts "getting price"
+          price = html.css('.iw-propertypage-price-current-content h3').text.gsub(/[€,.,' ',\s]/,"") 
+          (puts "skipping, no price or invalid format"; next;) if price == nil || !is_numeric?(price.gsub(/[€,.,' ',\s]/,""))
+          score += 1 if Integer(price) < 250000 # bonus point if below 250K
+          score += (1 * ((250000 - Integer(price))/20000)) if Integer(price) < 250000 # bonus point for every 20k under 250K
+          # BEDS & BATHS
+          puts "getting beds"
+          beds = html.at('h3 span:contains("slaapkamers")+ span.blue') ? html.at('h3 span:contains("slaapkamers")+ span.blue').text : nil
+          score += 1 if beds && Integer(beds) >= 3 # bonus point if 3 or more beds
+          score += (1 * (Integer(beds) - 3)) if beds && Integer(beds) >= 3 # bonus point for every bedroom over 3
+          puts "getting baths"
+          baths = html.at('h3 span:contains("badkamer")+ span.blue') ? html.at('h3 span:contains("badkamer")+ span.blue').text : nil
+          # SIZE
+          puts "getting size"
+          size = html.at('h3 span:contains("bewoonbare opp.")+ span.blue') ? html.at('h3 span:contains("bewoonbare opp.")+ span.blue').text[/\d+/] : nil
+          score += 1 if size && Integer(size) >= 200 # bonus point if more than 200m2
+          score += 1 if size && Integer(price)/Integer(size) <= 1300 # bonus point for low m2/price ratio
+          # BROKER
+          puts "getting broker || contact info"
+          broker =  (html.css("#iw-propertypage-contactbox a.logo img").size > 0) ? (html.css("#iw-propertypage-contactbox a.logo img").attr('title').text.downcase) : (@browser.link(:text =>"Via telefoon contacteren").when_present.click)
+          broker = html.css(".phones .phone").map{|i| i.text.strip.gsub(/[\D,\s]/,"")}.join(", +")
         rescue => error
            (puts "\n #{error}")
-           binding.pry
+           Rails.env.production? ? (puts "FATAL ERROR IN #{@scrapes[@scrape_index].upcase}, GOING TO NEXT"; next_scrape;) : binding.pry
         end
         # Adding Data
         puts "#{address}: BEDS: #{beds}, SIZE: #{size}, PRICE: #{price} => SCORE = #{score}"
-        @data << {address: address,beds: beds, baths: baths, size: size, price: price, info: '', status: score, broker: broker, link: @root + link, img: img, coördinates: "", date: Date.current.to_s}
+        @data << {address: address,beds: beds, baths: baths, size: size, price: price, info: '', status: score, broker: broker, link: @root + link, img: img, coördinates: "", date: Time.now.to_s}
       end
     end
 
@@ -348,6 +356,7 @@ task :scrape do
         scrape_immovlan_listings(listings)
       end
       save_progress if @data.size > 0
+      next_scrape
     end
 
     def scrape_immovlan_listings(listings)
@@ -388,35 +397,90 @@ task :scrape do
           broker =  html.css("a.to-dealer-website")[0] ? html.css("a.to-dealer-website")[0].text.gsub("Aangeboden door:","").strip : html.css(".phone-complete")[0].text.strip
         rescue => error
           (puts "\n #{error}")
-          binding.pry
+          Rails.env.production? ? (puts "FATAL ERROR IN #{@scrapes[@scrape_index].upcase}, GOING TO NEXT"; next_scrape;) : binding.pry
         end
         # Adding Data
         puts "#{address}: BEDS: #{beds}, SIZE: #{size}, PRICE: #{price} => SCORE = #{score}"
-        @data << {address: address,beds: beds, baths: baths, size: size, price: price, info: '', status: score, broker: broker, link: @root + link, img: img, coördinates: "", date: Date.current.to_s}
+        @data << {address: address,beds: beds, baths: baths, size: size, price: price, info: '', status: score, broker: broker, link: @root + link, img: img, coördinates: "", date: Time.now.to_s}
       end
     end
-  
 
-    def start_scraper
-      scrape_immoscoop
-      scrape_zimmo
-      scrape_immoweb
-      scrape_immovlan
-      # http://be.propenda.com/
-      # https://www.realo.be/nl/jan-van-rijswijcklaan-2020-antwerpen/1808995?l=1615559411
+    # ======================================================
+    # Propenda
+    # ======================================================
+    def scrape_propenda
+      @root = "http://be.propenda.com/realty"
+      next_page = "/?type=advanced&section=sale&realty_type=House&location=2000+Antwerpen%2C2018+Antwerpen%2C2020+Antwerpen%2C2600+Berchem%2C2610+Wilrijk%2C2640+Mortsel&address=&min_price=&max_price=300000&min_bedrooms=2&max_bedrooms=&min_livable=&min_livable=&min_surface=&max_surface=&unknown_bedrooms=on&unknown_livable=on&text="
+      while next_page != "/#" do 
+        puts "starting scrape for next page \n\n"
+        @browser.goto @root + next_page.gsub(@root,'')
+        sleep 3
+        html = Nokogiri::HTML(@browser.html)
+        next_page = "/" + html.css(".pagination li:last-child a").attr('href').text
+        listings = html.css('.desktop_view .container')
+        scrape_propenda_listings(listings)
+      end
+      save_progress if @data.size > 0
+      next_scrape
+    end
+
+    def scrape_propenda_listings(listings)
+      listings.each do |listing|
+        # GENERAL
+        begin
+          score = 0
+          link = listing.css(".skin-text").attr('href').text.strip.split(",")[0].gsub(/javascript:goToUrl\(|'|\/realty/,"").strip
+          @browser.goto @root + link
+          puts "checking #{link}"
+          sleep 3
+          html = Nokogiri::HTML(@browser.html)
+          # ADDRESS
+          address = html.at("h5:contains('Ligging') + a").text.strip.gsub(/\s+/, " ")
+          street_matches = @current.find_all{|i| i.normalize.match(address.normalize.strip.downcase[/^\b\S+\b/])}.concat(@data.find_all{|i| i[:address].normalize.match(address.normalize.strip.downcase[/^\b\S+\b/])}) # Check if street name has already been scraped
+          if street_matches.size > 0
+            (puts "skipping, already scraped property"; next;) if street_matches.any? {|street| address[/\b\d{1,3}\b/] === street[/\b\d{1,3}\b/]} # Skip property if street & number matches
+          end
+          @browser.element(css: "#immo-photos a").click
+          html = Nokogiri::HTML(@browser.html)
+          img = html.css(".slides .slide img")[0].attr('src')
+          # PRICE
+          table = @browser.table(css: '.offer-data__list').hashes
+          price = table.find{|h| h["Type vastgoed"]  == "Prijs"} ? table.find{|h| h["Type vastgoed"] == "Prijs"}["Huis"].gsub!(/[€,.,' ',\s]/,"") : nil
+          (puts "skipping, no price or invalid format"; next;) if price == nil || !is_numeric?(price)
+          score += 1 if Integer(price) < 250000 # bonus point if below 250K
+          score += (1 * ((250000 - Integer(price))/20000)) if Integer(price) < 250000 # bonus point for every 20k under 250K
+          # BEDS & BATHS
+          beds = table.find{|h| h["Type vastgoed"]  == "Aantal slaapkamers"} ? table.find{|h| h["Type vastgoed"] == "Aantal slaapkamers"}["Huis"].gsub(/\s+/, " ").strip.reverse[/\b\d{1,3}\b/] : nil
+          score += 1 if beds && Integer(beds) >= 3 # bonus point if 3 or more beds
+          score += (1 * (Integer(beds) - 3)) if beds && Integer(beds) >= 3 # bonus point for every bedroom over 3
+          baths = table.find{|h| h["Type vastgoed"]  == "Aantal badkamers"} ? table.find{|h| h["Type vastgoed"]  == "Aantal badkamers"}["Huis"] : nil
+          # SIZE
+          size = table.find{|h| h["Type vastgoed"]  == "Bewoonbare opp."} ? table.find{|h| h["Type vastgoed"]  == "Bewoonbare opp."}["Huis"][/\b\d{1,3}/] : nil
+          score += 1 if size && Integer(size) >= 200 # bonus point if more than 200m2
+          score += 1 if size && Integer(price)/Integer(size) <= 1300 # bonus point for low m2/price ratio
+          # BROKER
+          broker =  html.css('#left_menu_details').text.match(/www?[\S]+|https?:\/\/[\S]+/) ? (html.css('#left_menu_details').text.match(/www?[\S]+|https?:\/\/[\S]+/)[0] + ", original:" + html.css('#real_offer_link').text) : nil
+        rescue => error
+          (puts "\n #{error}")
+          Rails.env.production? ? (puts "FATAL ERROR IN #{@scrapes[@scrape_index].upcase}, GOING TO NEXT"; next_scrape;) : binding.pry
+        end
+        # Adding Data
+        puts "#{address}: BEDS: #{beds}, SIZE: #{size}, PRICE: #{price} => SCORE = #{score}"
+        @data << {address: address,beds: beds, baths: baths, size: size, price: price, info: '', status: score, broker: broker, link: @root + link, img: img, coördinates: "", date: Time.now.to_s}
+      end
     end
   end
 
   # ======================================================
   # INIT
   # ======================================================
-  # begin 
-  hunter = HouseHunter.new
-  hunter.refresh_token
-  hunter.get_current
-  hunter.start_scraper
-  # rescue => error
-    # (puts "\n #{error}")
-    # binding.pry
-  # end
+  begin 
+    hunter = HouseHunter.new
+    hunter.refresh_token
+    hunter.get_current
+    hunter.next_scrape
+  rescue => error
+    (puts "\n #{error}")
+    Rails.env.production? ? (puts "FATAL ERROR IN #{@scrapes[@scrape_index].upcase}, GOING TO NEXT"; next_scrape;) : binding.pry
+  end
 end
