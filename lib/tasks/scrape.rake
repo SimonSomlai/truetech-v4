@@ -146,7 +146,7 @@ task :scrape do
           if street_matches.size > 0
             (puts "skipping, already scraped property"; next;) if street_matches.any? {|street| address[/\b\d{1,3}\b/] === street[/\b\d{1,3}\b/]} # Skip property if street & number matches
           end
-          img = listing.xpath('div[1]/div/div/div/div[1]/a')[0].styles['background-image'].gsub(/[url(,)]/,"")
+          img = listing.xpath('div[1]/div/div/div/div[1]/a')[0].styles['background-image'].gsub(/[url(,)]/,"").gsub('begie','belgie').gsub('s3-e-west','s3-eu-west')
           # PRICE
           price = get_price(link)
           (puts "skipping, no price or invalid format"; next;) if price == nil || !is_numeric?(price.gsub!(/[€,.,' ',\s]/,""))
