@@ -37,6 +37,7 @@ class ProjectsController < ApplicationController
       flash[:danger] = 'Something went wrong!'
       render :index
     end
+    system "rake jobs:workoff"
   end
 
   def edit
@@ -59,6 +60,7 @@ class ProjectsController < ApplicationController
       flash[:danger] = 'Something went wrong!'
     end
     render :index
+    system "rake jobs:workoff"
   end
 
   def destroy

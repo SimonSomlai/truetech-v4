@@ -70,3 +70,5 @@ end
     posted: true,
     user_id: User.first.id)
 end
+
+Rake::Task['workoff'].invoke

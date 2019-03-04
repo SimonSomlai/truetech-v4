@@ -5,6 +5,11 @@ module ProjectsHelper
     end
   end
 
+  def is_video(item)
+    url = item.images_url
+    !!url.match(/.mp4/)
+  end
+
   def features # Convert serialized string to usable hash, (I know I should've used regular hash lol)
     @project.features.gsub(/[{}]/,'').split(',').map{|h| h1,h2 = h.split('=>'); {h1 => h2}}.reduce(:merge)
   end

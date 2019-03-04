@@ -64,7 +64,7 @@ module StaticPagesHelper
 
     link = client.auth_code.authorize_url({
       :scope => 'https://www.googleapis.com/auth/analytics.readonly',
-      :redirect_uri => 'http://truetech.be/callback',
+      :redirect_uri => "#{ENV["REDIRECT_URI"]}/callback",
       approval_prompt: "force",
       :access_type => 'offline' })
 

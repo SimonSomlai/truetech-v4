@@ -38,6 +38,7 @@ class ArticlesController < ApplicationController
       flash[:danger] = "Something went wrong!"
       render :index
     end
+    system "rake jobs:workoff"
   end
 
   def edit
@@ -52,6 +53,7 @@ class ArticlesController < ApplicationController
     else
       flash[:danger] = "Something went wrong!"
     end
+    system "rake jobs:workoff"
     render :index
   end
 

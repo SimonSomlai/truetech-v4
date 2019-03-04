@@ -19,6 +19,7 @@ class TestimonialsController < ApplicationController
       flash[:danger] = "Something went wrong!"
       render :index
     end
+    system "rake jobs:workoff"
   end
 
   def edit
@@ -35,6 +36,7 @@ class TestimonialsController < ApplicationController
       flash[:danger] = "Something went wrong!"
       render :index
     end
+    system "rake jobs:workoff"
   end
 
   def destroy

@@ -23,6 +23,7 @@ class UsersController < ApplicationController
       flash[:danger] = "Something went wrong!"
       render :index
     end
+    system "rake jobs:workoff"
   end
 
   def edit
@@ -38,6 +39,7 @@ class UsersController < ApplicationController
       flash[:danger] = "Something went wrong!"
       render :index
     end
+    system "rake jobs:workoff"
   end
 
   def destroy

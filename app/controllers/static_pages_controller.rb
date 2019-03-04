@@ -45,7 +45,7 @@ class StaticPagesController < ApplicationController
     )
     code = params[:code]
 
-    response = client.auth_code.get_token(code, :redirect_uri => 'http://truetech.be/callback')
+    response = client.auth_code.get_token(code, :redirect_uri => "#{ENV["REDIRECT_URI"]}/callback")
     access_token = response.token
     refresh_token = response.refresh_token
 
