@@ -36,6 +36,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'invisible_captcha', '~> 0.9'
 gem 'delayed_job_active_record', '~> 4.1'
 gem 'rb-readline', '~> 0.5.3'
+gem 'daemons', '~> 1.2', '>= 1.2.3'
 
 # Scraper Gems
 gem 'watir', "~> 6.11"
