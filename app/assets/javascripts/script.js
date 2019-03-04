@@ -223,7 +223,6 @@ function getText2() {
 
 function getText3() {
     $(".locale-nl").find(".trumbowyg-editor").on("input DOMSubtreeModified click", function() {
-        console.log('changing')
         value = $(".locale-nl").find(".trumbowyg-editor").html();
         $(".form-nl #page_body").val(value);
     })
@@ -246,16 +245,22 @@ function getTags() {
         "webshop": "icon-shopping-cart",
         "mobile": "icon-line2-screen-smartphone",
         "responsive": "icon-resize-horizontal",
-        "rails_app": "icon-diamond2",
+        "rails_app": "icon-diamond",
         "slider": "icon-stack3",
         "video": "icon-line-video",
         "wordpress": "icon-wordpress",
         "cms": "icon-folder-open",
         "fonts": "icon-font",
+        "html": "icon-html52",
+        "css": "icon-css3",
         "lightbox": "icon-lightbulb",
         "bootstrap": "icon-bold",
         "parallax": "icon-line2-mouse",
-        "email_capture": "icon-line-mail"
+        "email_capture": "icon-line-mail",
+        "react": "icon-atom",
+        "graphql": "icon-exchange",
+        'video': "icon-video",
+        "static": "icon-line2-speedometer"
     }
     var tooltip = "Opties: " + Object.keys(options).toString().replace(/\W+/g, ', ')
     $("#features-box").attr("data-original-title", tooltip)
