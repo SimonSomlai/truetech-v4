@@ -7,6 +7,11 @@ module ApplicationHelper
     time = arg.months.ago.strftime("%B")
   end
 
+  def is_video(item)
+    url = item.images_url
+    !!url.match(/.mp4/)
+  end
+
   # Gets time range for x number time ago
   def time_range(unit, timeunit = nil)
     if timeunit == "weeks"

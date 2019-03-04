@@ -50,7 +50,7 @@
                           <% if project.project_images.any? %>
                           <span data-lightbox="gallery">
                             <% project.project_images.each_with_index do |image,i| %>
-                              <a href="<%= image.images_url %>" data-lightbox="gallery-item">
+                              <a href="<%= image.images_url %>" data-lightbox="gallery-item" class="<%= 'mfp-iframe' if is_video(image) %>">
                                 <%= i + 1 %>,
                                </a>
                             <% end %><br/>
@@ -164,7 +164,7 @@
                         <strong>Current</strong> (new images will be overwritten)<br/>
                         <span data-lightbox="gallery">
                           <% @project.project_images.each_with_index do |image,i| %>
-                            <a href="<%= image.images_url %>" data-lightbox="gallery-item">
+                            <a href="<%= image.images_url %>" data-lightbox="gallery-item" class="<%= 'mfp-iframe' if is_video(image) %>">
                               <%= i + 1 %>,
                              </a>
                           <% end %><br/>
