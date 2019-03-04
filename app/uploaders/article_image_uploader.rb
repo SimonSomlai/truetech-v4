@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 class ArticleImageUploader < CarrierWave::Uploader::Base
+  include ::CarrierWave::Backgrounder::Delay
   include CarrierWave::MiniMagick
   process :optimize
   # Choose what kind of storage to use for this uploader:
@@ -8,6 +9,10 @@ class ArticleImageUploader < CarrierWave::Uploader::Base
 
   def extension_white_list
     %w(jpg jpeg gif png)
+  end
+
+  def default_url
+    ""
   end
 
   version :small do

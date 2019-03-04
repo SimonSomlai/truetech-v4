@@ -25,6 +25,8 @@ class Article < ActiveRecord::Base
 
   # Image uploading
   mount_uploader :image, ArticleImageUploader
+  process_in_background :image
+  store_in_background :image
 
   # Friendly ID slugs, 2 languages (slug_en & slug_nl)
   extend FriendlyId

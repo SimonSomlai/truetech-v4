@@ -1,4 +1,5 @@
 class ProjectImagesUploader < CarrierWave::Uploader::Base
+  include ::CarrierWave::Backgrounder::Delay
   include CarrierWave::MiniMagick
   process :optimize
   # Choose what kind of storage to use for this uploader:
@@ -26,6 +27,10 @@ class ProjectImagesUploader < CarrierWave::Uploader::Base
 
   version :small do
     process resize_to_fit: [400,300]
+  end
+
+  def default_url
+    ""
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

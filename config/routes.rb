@@ -27,12 +27,6 @@ Rails.application.routes.draw do
     get "callback" => "static_pages#callback"
     resources :users, :projects, :testimonials, :articles, :pages
 
-    # Thredded Forum Routes
-    mount Thredded::Engine => '/forum'
-    get "forum" => "messageboard#index", as: :forum
-    get "register" => "users#new_forum_member"
-    post "register" => "users#create_forum_member", as: :create_forum_member
-
     #  This routes pages and articles. First it searches for a matching article by slug (friendly id), then
     #  falls down to pages. Ex;
     #  www.mysite.com/this-is-the-title-of-the-article  (articles#show)

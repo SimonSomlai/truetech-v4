@@ -17,6 +17,7 @@ gem 'bcrypt', '~> 3.1'
 gem 'unicorn', "~> 5.4"
 gem "pry", "~> 0.11"
 gem 'carrierwave', '~> 0.11'
+gem 'carrierwave_backgrounder', '~> 0.4.2'
 gem 'fog-aws', "~> 1.4"
 gem 'mini_magick', '~> 4.8', '>= 4.5.1'
 gem 'faker', '~> 1.9', '>= 1.6.5'
@@ -33,6 +34,8 @@ gem 'rest-client', "~> 2.0"
 gem 'unveil-rails', '~> 0.2'
 gem 'will_paginate', '~> 3.0'
 gem 'invisible_captcha', '~> 0.9'
+gem 'delayed_job_active_record', '~> 4.1'
+gem 'rb-readline', '~> 0.5.3'
 
 # Scraper Gems
 gem 'watir', "~> 6.11"
@@ -41,10 +44,6 @@ gem 'nokogiri-styles', "~> 0.1"
 gem 'rtesseract', "~> 2.2"
 gem 'rmagick', "~> 2.16"
 gem 'chromedriver-helper', "~> 1.2"
-
-# Thredded
-gem 'thredded', '~> 0.15.4'
-gem 'rails-ujs', '~> 5.1.0.beta1'
 
 # Caching
 gem 'rack-cache', "~> 1.8"

@@ -1,4 +1,5 @@
 class ProfilePictureUploader < CarrierWave::Uploader::Base
+  include ::CarrierWave::Backgrounder::Delay
   include CarrierWave::MiniMagick
   process resize_to_limit: [150, 150]
   process :optimize
@@ -25,6 +26,10 @@ class ProfilePictureUploader < CarrierWave::Uploader::Base
       end
       img
     end
+  end
+
+  def default_url
+    ""
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
