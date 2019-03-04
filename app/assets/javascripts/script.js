@@ -253,6 +253,7 @@ function getTags() {
         "fonts": "icon-font",
         "html": "icon-html52",
         "css": "icon-css3",
+        "javascript": "icon-code",
         "lightbox": "icon-lightbulb",
         "bootstrap": "icon-bold",
         "parallax": "icon-line2-mouse",
