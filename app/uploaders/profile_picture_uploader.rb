@@ -6,8 +6,8 @@ class ProfilePictureUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   storage (Rails.env.production? ? :fog : :file)
 
- def extension_white_list
-    %w(jpg jpeg gif png)
+  def extension_white_list
+    %w(jpg jpeg gif png mp4)
   end
   
   # Override the directory where uploaded files will be stored.
