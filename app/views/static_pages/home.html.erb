@@ -123,13 +123,23 @@
             <span><%= t "home.projects.title1_span"%> </span> <i class="hidden-xs" style="font-size: 23px;"> |</i>
             <span><%= link_to t("projects.all_projects") + " »", all_projects_path, style:"font-size: 13px; vertical-align: middle;", class:"more-link" %></span>
           </h3>
-          <div class="owl-carousel portfolio-carousel carousel-widget" data-margin="1" data-loop="false" data-nav="true" data-pagi="false" data-items-xxs="1" data-items-xs="2" data-items-sm="3" data-items-md="4" data-items-lg="4">
+          <div class="owl-carousel portfolio-carousel carousel-widget" 
+          data-margin="1" 
+          data-loop="false" 
+          data-nav="true" 
+          data-pagi="false" 
+          data-items-xxs="1" 
+          data-items-xs="2" 
+          data-items-sm="3" 
+          data-items-md="4" 
+          data-items-lg="4"
+          >
             <% @projects.each do |project| %>
               <div class="oc-item">
                 <div class="iportfolio">
                   <div class="portfolio-image">
                     <%=link_to(project_path(project)) do %>
-                      <%= image_tag headerimage(project), alt: "Webdesign Mechelen - Portfolio" %>
+                      <%= image_tag headerimage(project), alt: "Webdesign Antwerpen - Portfolio" %>
                     <% end %>
                     <div class="portfolio-overlay">
                       <%=link_to(project.project_images.first.images_url, class: "left-icon", data:{lightbox: "image"}) do %>
@@ -156,13 +166,21 @@
           <div class="line"></div>
           <h3 class="center"><%= t "home.services.title1"%>
             <span><%= t "home.testimonials.title1_span"%></span>!</h3>
-          <div class="fslider testimonial testimonial-full noshadow noborder nopadding divcenter" data-animation="fade" data-arrows="false" style="max-width: 700px;">
+          <div 
+            class="fslider testimonial testimonial-full noshadow noborder nopadding divcenter" 
+            data-animation="fade" 
+            data-arrows="false" 
+            data-autoplay="8000"
+            data-speed="500"
+            data-loop="true" 
+            style="max-width: 700px;"
+          >
             <div class="flexslider">
               <div class="slider-wrap">
                 <% @testimonials.each do |testimonial| %>
                   <div class="slide">
                     <div class="testi-image">
-                      <a href="<%= testimonial.link || no-target %>"><%=image_tag testimonial.image.url, alt: "Webdesign Mechelen - Getuigenissen" %></a>
+                      <a href="<%= testimonial.link || no-target %>"><%=image_tag testimonial.image.url, alt: "Webdesign Antwerpen - Getuigenissen" %></a>
                     </div>
                     <div class="testi-content">
                       <% if I18n.locale == :nl %>
@@ -204,7 +222,7 @@
                 <div class="ipost clearfix">
                   <div class="entry-image">
                     <a href="<%= articles_show_path(article) %>">
-                      <%= image_tag article.image.small.url, alt: "Webdesign Mechelen - Nieuws", class: "image_fade" %>
+                      <%= image_tag article.image.small.url, alt: "Webdesign Antwerpen - Nieuws", class: "image_fade" %>
                     </a>
                   </div>
                   <div class="entry-title">
@@ -248,7 +266,7 @@
             <div class="col-md-6 bottommargin">
               <div class="team team-list clearfix">
                 <div class="team-image">
-                  <%= image_tag("me.jpg", class: "img img-responsive", alt: "Webdesign Mechelen - Contact") %>
+                  <%= image_tag("me.jpg", class: "img img-responsive", alt: "Webdesign Antwerpen - Contact") %>
                 </div>
                 <div class="team-desc">
                   <div class="team-title">

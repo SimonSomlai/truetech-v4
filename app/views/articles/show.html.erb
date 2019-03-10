@@ -1,4 +1,4 @@
-<% content_for :title, meta_title + " | TrueTech - Webdesign Mechelen" %><% content_for :description, meta_description %>
+<% content_for :title, meta_title + " | TrueTech - Webdesign Antwerpen" %><% content_for :description, meta_description %>
 <% content_for :ogtitle, meta_title %>
 <% content_for :ogdescription, meta_description %>
 <% content_for :ogtype, "article" %>
@@ -47,7 +47,7 @@
                      </h1>
                      <div class="entry-meta center-block text-center"> <span class="posted-on"><%= t "articles.posted" %> <span><a class="contact-link" href="#<%=@article.category.downcase %>-cat"> <%=@article.category %></a><span class="byline"> <%= t "articles.by" %> <span class="meta-author vcard author"><%=author(@article) %></span></span> </div>
                   </header>
-                  <div class="entry-image"> <%= lazy_image_tag @article.image.url, alt: "#{@article.title} - Webdesign Mechelen", class: "attachment-large size-large wp-post-image" if @article.image.present? %> </div>
+                  <div class="entry-image"> <%= lazy_image_tag @article.image.url, alt: "#{@article.title} - Webdesign Antwerpen", class: "attachment-large size-large wp-post-image" if @article.image.present? %> </div>
                   <div class="entry-content entry-content-blog-single">
                   <% if I18n.locale == :en %>
                       <%= raw @article.en_body %>
@@ -102,7 +102,7 @@
                   <div class="ipost clearfix">
                      <div class="entry-image">
                         <a href="<%= articles_show_path(article) %>">
-                           <%= lazy_image_tag(article.image.small.url, alt: "#{article.title} - Webdesign Mechelen", class: "image-fade")  if article.image.present? %>
+                           <%= lazy_image_tag(article.image.small.url, alt: "#{article.title} - Webdesign Antwerpen", class: "image-fade")  if article.image.present? %>
                         </a>
                      </div>
                      <div class="entry-title">
