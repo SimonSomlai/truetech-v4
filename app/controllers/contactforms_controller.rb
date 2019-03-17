@@ -1,5 +1,5 @@
 class ContactformsController < ApplicationController
-  invisible_captcha only: [:create], honeypot: :firstname
+  invisible_captcha only: [:create], honeypot: :a_password
 
   def create  # Sends an email based on the form on the page
     page = request.referrer.split("/")[-1] # Passes in the current page based on absolute url
@@ -11,7 +11,7 @@ class ContactformsController < ApplicationController
     if @contact.deliver
       respond_to do |format|
         format.html { redirect_to request.referrer }
-        format.js
+        format.js {render layout: false}
       end
     else
       flash.now[:error] = "Cannot send message"

@@ -50,6 +50,7 @@ nl:
       subjectexample: "Google, advertentie, kennis, ..."
       messagefield: "Bericht"
       sendbutton: "Verstuur Bericht!"
+      success: "Bedankt <strong> %{name}</strong>, je mail is verstuurd! We antwoorden zo snel mogelijk op jouw berichtje! Alvast nog een fijne %{day} gewenst! :) "
   # Contact form
   contact:
     heading1: "Contacteer Ons"

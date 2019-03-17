@@ -340,10 +340,10 @@
               </div>
             </div>
             <div class="col-sm-12 col-md-12 contactform">
-              <%=form_for(@contact, remote: true, :format=> 'js', :html=>{:class=> "nobottommargin", :name=> "template-contactform", :id=> "template-contactform", :multipart=> true}) do |f| %>
+              <%= form_for(@contact, remote: true, :format=> 'js', :html=> { data: {type: "script", lpignore: "true"}, autocomplete: "off" , :class=> "nobottommargin", :name=> "template-contactform", :id=> "template-contactform", :multipart=> true } ) do |f| %>
                 <%=render "shared/error_messages", object: f.object %>
                 <div>
-                  <%= f.invisible_captcha :firstname %>
+                  <%= f.invisible_captcha :a_password, visual_honeypots: false, timestamp_threshold: 3 %>
                 </div>
                 <div class="col_half">
                   <%=f.label :name do %>

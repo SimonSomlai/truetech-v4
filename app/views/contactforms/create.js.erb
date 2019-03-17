@@ -1,41 +1,11 @@
 
+console.log("FIRING SCRIPT!")
 $("#message-success").remove() // Remove previous messages
-var topic = $(".heading-block.center h2").text().toLowerCase(); // Grab page header if there is one
-var page = "<%= @contact.page %>" // Set the page variable to current url
-if (page.includes("webdesign")){
-  page = "home" // If we're on a "webdesign-" page, just use the message for /home
-}
 
-<% if I18n.locale == :nl %>
-// Create a nl message for the different pages
-switch(page) {
-    case "home":
-      sentence = "! "
-    break;
-    case "website-analyse":
-      sentence = " en gaan alvast aan de slag met '<%= @contact.website %>' te analyseren! "
-    break;
-    default:
-    sentence = " over de " + topic + "! "
-}
-var message = "Bedankt <%= @contact.name %></strong>, je mail is verstuurd! We antwoorden zo snel mogelijk op jouw berichtje" + sentence + "Alvast nog een fijne <%= l(Time.now, format: '%A').downcase %> gewenst! :) "
-<% else %>
-// Create a en message for the different pages
-switch(page) {
-    case "home":
-      sentence = "! "
-    break;
-    case "website-analyse":
-      sentence = " and will start analyzing '<%= @contact.website %>' in the meantime! "
-    break;
-    default:
-    sentence = " about the " + topic + "! "
-}
-var message = "Thanks <%= @contact.name %></strong>, your email is sent! We'll respond as soon as possible to your message" + sentence + "Enjoy the rest of your <%= l(Time.now, format: '%A').downcase %> :)!"
-<% end %>
-
-$(".contactform").prepend("<div id='message-success' class='alert alert-success col-hidden contactform-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><i class='icon-thumbs-up'></i><strong>"+ message +"</div>")
-$(".contactform-success").slideDown(500)
+var message = "<%= raw t('home.contact.success', name: @contact.name, day: l(Time.now, format: '%A').downcase ) %>"
+console.log(message)
+$(".contactform").prepend("<div id='message-success' class='alert alert-success col-hidden contactform-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><i class='icon-thumbs-up'></i>"+ message +"</div>")
+$("#message-success").slideDown(500)
 $('input[type="text"], input[type="email"], input[type="file"], textarea').val("")
 $('html,body').animate({
   scrollTop: $("#message-success").offset().top - 55
