@@ -1,5 +1,4 @@
 
-console.log("FIRING SCRIPT!")
 $("#message-success").remove() // Remove previous messages
 
 var message = "<%= raw t('home.contact.success', name: @contact.name, day: l(Time.now, format: '%A').downcase ) %>"
