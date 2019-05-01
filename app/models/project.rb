@@ -17,4 +17,6 @@ class Project < ActiveRecord::Base
   # Be able to search projects by their title attribute
   extend FriendlyId
   friendly_id :title, use: :slugged
+
+  enum status: [:finished, :in_progress]
 end

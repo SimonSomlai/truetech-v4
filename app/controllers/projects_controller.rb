@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
 
   def show
     @user = User.find_by(id: @project.user_id).name
-    @relatedprojects = Project.includes(:project_images).where(service: @project.service).where.not(id: @project).uniq.limit(6)
+    @relatedprojects = Project.includes(:project_images).where(service: @project.service).where.not(id: @project).order("created_at desc").uniq.limit(6)
   end
 
   def create
