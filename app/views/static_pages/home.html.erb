@@ -67,36 +67,6 @@
             <h3 class="services-heading center"><%= t "home.services.title1"%>
               <span><%= t "home.services.title1_span"%></span>
             </h3>
-            <%=link_to(single_page_path , class: "bob service-item-link", id: "last") do %>
-              <div class="col-md-3 center bottommargin">
-                <i class="i-plain color i-large icon-line2-energy inline-block" style="margin-bottom: 20px;"></i>
-                <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
-                  <span class="before-heading"><%= t "home.services.service1_pretitle"%></span>
-                  <h4><%= t "home.services.service1_title"%></h4>
-                </div>
-                <p><%= t "home.services.service1_descr"%></p>
-              </div>
-            <% end %>
-            <%=link_to(starters_website_path , class: "bob service-item-link" ) do %>
-              <div class="col-md-3 center bottommargin">
-                <i class="i-plain color i-large icon-line2-screen-desktop inline-block" style="margin-bottom: 20px;"></i>
-                <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
-                  <span class="before-heading"><%= t "home.services.service2_pretitle"%></span>
-                  <h4><%= t "home.services.service2_title"%></h4>
-                </div>
-                <p><%= t "home.services.service2_descr"%></p>
-              </div>
-            <% end %>
-            <%=link_to(website_op_maat_path , class: "bob service-item-link" ) do %>
-              <div class="col-md-3 center bottommargin">
-                <i class="i-plain color i-large icon-line2-rocket inline-block" style="margin-bottom: 20px;"></i>
-                <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
-                  <span class="before-heading"><%= t "home.services.service3_pretitle"%></span>
-                  <h4><%= t "home.services.service3_title"%></h4>
-                </div>
-                <p><%= t "home.services.service3_descr"%></p>
-              </div>
-            <% end %>
             <%=link_to(webapplicatie_path , class: "bob service-item-link" ) do %>
               <div class="col-md-3 center bottommargin">
                 <i class="i-plain color i-large icon-diamond inline-block" style="margin-bottom: 20px;"></i>
@@ -107,6 +77,30 @@
                 <p><%= t "home.services.service4_descr"%></p>
               </div>
             <% end %>
+              <div class="col-md-3 center bottommargin bob service-item-link service-item-link--disabled">
+                <i class="i-plain color i-large icon-line2-energy inline-block" style="margin-bottom: 20px;"></i>
+                <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
+                  <span class="before-heading"><%= t "home.services.service1_pretitle"%></span>
+                  <h4><%= t "home.services.service1_title"%></h4>
+                </div>
+                <p><%= t "home.services.service1_descr"%></p>
+              </div>
+              <div class="col-md-3 center bottommargin bob service-item-link service-item-link--disabled">
+                <i class="i-plain color i-large icon-line2-screen-desktop inline-block" style="margin-bottom: 20px;"></i>
+                <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
+                  <span class="before-heading"><%= t "home.services.service2_pretitle"%></span>
+                  <h4><%= t "home.services.service2_title"%></h4>
+                </div>
+                <p><%= t "home.services.service2_descr"%></p>
+              </div>
+              <div class="col-md-3 center bottommargin bob service-item-link service-item-link--disabled">
+                <i class="i-plain color i-large icon-line2-rocket inline-block" style="margin-bottom: 20px;"></i>
+                <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
+                  <span class="before-heading"><%= t "home.services.service3_pretitle"%></span>
+                  <h4><%= t "home.services.service3_title"%></h4>
+                </div>
+                <p><%= t "home.services.service3_descr"%></p>
+              </div>
           </div>
           <div class="promo promo-border promo-center bottommargin hidden">
             <h3><%= t "analyse.promo1" %>

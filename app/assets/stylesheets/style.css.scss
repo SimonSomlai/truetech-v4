@@ -226,6 +226,11 @@ body>div>div>div.right_col {
   color: #555;
 }
 
+.service-item-link--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 h1.main-logo {
   white-space: no-wrap;
   text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
@@ -416,14 +421,6 @@ h2.logo-subtitle {
     -ms-flex-align: start;
     -webkit-align-items: flex-start;
     align-items: flex-start;
-  }
-
-  .services-list #last {
-    -webkit-box-ordinal-group: 2;
-    -moz-box-ordinal-group: 2;
-    -ms-flex-order: 2;
-    -webkit-order: 2;
-    order: 2;
   }
 }
 
