@@ -9,6 +9,7 @@ require 'open-uri'
 require "mini_magick"
 require 'rest-client'
 require 'watir/extensions/element/screenshot'
+require 'webdrivers'
 
 # Load ENV variables in this file in development
 unless Rails.env.production?
@@ -44,7 +45,6 @@ task :scrape do
       puts "#{chrome_bin_path}"
       options.binary = chrome_bin_path if chrome_bin_path # only use custom path on heroku
       # options.add_argument('--headless') # this may be optional
-      
       @browser = Watir::Browser.new :chrome, options: options
       @data = []  
       @current = []

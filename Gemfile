@@ -45,7 +45,7 @@ gem 'nokogiri', "~> 1.8"
 gem 'nokogiri-styles', "~> 0.1"
 gem 'rtesseract', "~> 2.2"
 gem 'rmagick', "~> 2.16"
-gem 'chromedriver-helper', "~> 1.2"
+gem 'webdrivers', '~> 3.2'
 
 # Caching
 gem 'rack-cache', "~> 1.8"
