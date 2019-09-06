@@ -78,7 +78,6 @@ task :scrape do
     def get_current
       current = JSON.parse(RestClient.get("https://sheets.googleapis.com/v4/spreadsheets/#{@sheet_id}/values/#{@sheet_name}?valueRenderOption=FORMATTED_VALUE&access_token=#{@access_token}&key=#{@api_key}"))['values'] || []
       current.shift
-
       @current = current.map{|i| i[0].downcase.split(" - ")[0]}
     end
 
