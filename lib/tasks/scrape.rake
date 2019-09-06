@@ -46,7 +46,7 @@ task :scrape do
       @data = []  
       @current = []
       @max_price = 400000
-      
+
     end
 
     def next_scrape
@@ -97,7 +97,6 @@ task :scrape do
       payload = {
         values: @data.map{|i| i.values}
       }
-
       RestClient.post("https://sheets.googleapis.com/v4/spreadsheets/#{@sheet_id}/values/#{@sheet_name}!A1:K1:append?valueInputOption=RAW&access_token=#{@access_token}&key=#{@api_key}", payload.to_json, {content_type: :json, accept: :json})
     end
 
