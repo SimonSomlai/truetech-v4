@@ -46,6 +46,7 @@ task :scrape do
       @data = []  
       @current = []
       @max_price = 400000
+      
     end
 
     def next_scrape
