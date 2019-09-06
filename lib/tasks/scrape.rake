@@ -8,6 +8,7 @@ require 'rmagick'
 require 'open-uri'
 require "mini_magick"
 require 'rest-client'
+require 'watir/extensions/element/screenshot'
 
 # Load ENV variables in this file in development
 unless Rails.env.production?
@@ -40,7 +41,7 @@ task :scrape do
       options = Selenium::WebDriver::Chrome::Options.new
       chrome_bin_path = ENV.fetch('GOOGLE_CHROME_SHIM', nil)
       options.binary = chrome_bin_path if chrome_bin_path # only use custom path on heroku
-      options.add_argument('--headless') # this may be optional
+      # options.add_argument('--headless') # this may be optional
       @browser = Watir::Browser.new :chrome, options: options
       @data = []  
       @current = []
@@ -99,9 +100,8 @@ task :scrape do
       RestClient.post("https://sheets.googleapis.com/v4/spreadsheets/#{@sheet_id}/values/#{@sheet_name}!A1:K1:append?valueInputOption=RAW&access_token=#{@access_token}&key=#{@api_key}", payload.to_json, {content_type: :json, accept: :json})
     end
 
-    def get_price(link)
+    def get_price
       begin 
-        @browser.goto link
         @browser.element(:xpath => "/html/body/section[1]/div/div/div[2]/div/div/div[2]/strong").screenshot("price.png")
         file = Tempfile.new(['image', 'price.png'],Rails.root.join('tmp'))
         file.binmode
@@ -171,15 +171,19 @@ task :scrape do
           # GENERAL
           link = listing.css('.search-result-img-wrapper').attr('href').text
           puts "checking #{link}"
+          @browser.goto link
           address = get_address
-          next if !address
+          puts "address = #{address}"
+          (puts "skipping, no valid address found"; next;) if address === nil
+
           street_matches = @current.find_all{|i| i.normalize.match(address.normalize.strip.downcase[/^\b\S+\b/])}.concat(@data.find_all{|i| i[:address].normalize.match(address.normalize.strip.downcase[/^\b\S+\b/])}) # Check if street name has already been scraped
           if street_matches.size > 0
             (puts "skipping, already scraped property"; next;) if street_matches.any? {|street| address[/\b\d{1,3}\b/] === street[/\b\d{1,3}\b/]} # Skip property if street & number matches
           end
           img = listing.xpath('div[1]/div/div/div/div[1]/a')[0].styles['background-image'].gsub(/[url(,)]/,"").gsub('begie','belgie').gsub('s3-e-west','s3-eu-west')
           # PRICE
-          price = get_price(link)
+          price = get_price
+          puts "price = #{price}"
           (puts "skipping, no price or invalid format"; next;) if price == nil || !is_numeric?(price.gsub!(/[^0-9]/,""))
           price = price.ljust(6, "0") if !price.match('0') # Add zeroes until 6 numbers when the price doesnt contain zeroes (catches tesseract slips)
           score += 1 if Integer(price) < 250000 # bonus point if below 250K
