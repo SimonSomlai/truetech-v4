@@ -44,12 +44,12 @@ task :scrape do
       puts "#{ENV}"
       puts "#{chrome_bin_path}"
       options.binary = chrome_bin_path if chrome_bin_path # only use custom path on heroku
-      # options.add_argument('--headless') # this may be optional
+      options.add_argument('--headless') # this may be optional
       @browser = Watir::Browser.new :chrome, options: options
       @data = []  
       @current = []
       @max_price = 400000
-
+      # @browser.window.maximize()
     end
 
     def next_scrape
@@ -105,7 +105,7 @@ task :scrape do
     def get_price
       begin 
         @browser.element(:xpath => "/html/body/section[1]/div/div/div[2]/div/div/div[2]/strong").screenshot("price.png")
-        file = Tempfile.new(['image', 'price.png'],Rails.root.join('tmp'))
+        file = Tempfile.new(['image', '.png'],Rails.root.join('tmp'))
         file.binmode
         file.write open('price.png').read
         file.flush
@@ -118,8 +118,9 @@ task :scrape do
 
     def get_address
       begin
-        @browser.element(:xpath => "/html/body/section[1]/div/div/div[2]/div/div/div[1]/header/h1/span").screenshot("address.png")
-        file = Tempfile.new(['image', 'address.png'],Rails.root.join('tmp'))
+        @browser.element(:xpath => "/html/body/section[1]/div/div/div[2]/div/div/div[1]/header/h1/span").screenshot.png("address.png")
+        binding.pry
+        file = Tempfile.new(['image', '.png'],Rails.root.join('tmp'))
         file.binmode
         file.write open('address.png').read
         file.flush
@@ -472,6 +473,6 @@ task :scrape do
     hunter.next_scrape
   rescue => error
     (puts "\n #{error}")
-    Rails.env.production? ? (puts "FATAL ERROR IN #{@scrapes[@scrape_index].upcase}, GOING TO NEXT"; next_scrape;) : binding.pry
+    Rails.env.production? ? (puts "FATAL ERROR IN #{@scrapes[@scrape_index].upcase}, GOING TO NEXT"; hunter.next_scrape;) : hunter.next_scrape
   end
 end
