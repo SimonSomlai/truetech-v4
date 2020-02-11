@@ -31,10 +31,10 @@ module StaticPagesHelper
     end
     # Seperate normal articles from technical articles (latter only shows on en locale)
     @nl_articles ||= Rails.cache.fetch('homepage_nl_article_queries', expires_in: 10.minutes) do
-      Article.where.not(category: 'Coding').where(posted: true).limit(6).order('created_at DESC')
+      Article.where.not(category: 'Coding').where(posted: true).limit(5).order('created_at DESC')
     end
     @en_articles ||= Rails.cache.fetch('homepage_en_article_queries', expires_in: 10.minutes) do
-      Article.where(posted: true).limit(6).order('created_at DESC')
+      Article.where(posted: true).limit(5).order('created_at DESC')
     end
   end
 

@@ -9,7 +9,7 @@ nl:
       nieuws: "nieuws"
     # Diensten sectie
     services:
-      title1: "Onze"
+      title1: "Mijn"
       title1_span: "Diensten"
       service1_pretitle: "Pagina nodig?"
       service1_title: "Enkele Webpagina"
@@ -26,7 +26,7 @@ nl:
       all: "Alles"
    # Projecten sectie
     projects:
-      title1: "Onze Laatste"
+      title1: "Mijn Laatste"
       title1_span: "Projecten"
     # Getuigenissen sectie
     testimonials:
@@ -40,7 +40,7 @@ nl:
       title1_span: "Contacteer"
       title1: "Mij!"
       job: "Webontwikkelaar"
-      about: "Analytisch supersterk, one-man-army en een zelfverklaarde web-ninja! Mijn vrije tijd spendeer ik in het lezen van boeken, spelen van boardgames & fitness."
+      about: "Analytisch supersterk, one-man-army en een zelfverklaarde web-ninja! Mijn vrije tijd spendeer ik in het lezen van boeken, spelen van boardgames en kan je mij terugvinden in de fitness."
       call: "Bel Mij!"
       location: "Locatie"
       route: "Wegbeschrijving"
@@ -184,7 +184,7 @@ nl:
     heading3: "OP ZOEK NAAR IETS"
     heading3_span: " UNIEK?"
     heading3_descr: "Je hebt een uniek idee dat je graag zou willen realiseren maar beschikt niet over de nodige technische kennis om dit uit te werken? Ben je op zoek naar extra functionaliteit of hulp bij je bestaande"
-    heading3_strong: " React/Node/Ruby On Rails"
+    heading3_strong: " Javascript/Ruby On Rails"
     heading3_descr2: " applicatie? Geen nood! Wij helpen je hierbij!"
     heading3_descr3: "Wij bouwen handgemaakte webapplicaties waarbij je volledige inspraak krijgt over het ontwerp en functionaliteit. Kan je het bedenken? Wij kunnen het maken!"
     benefit2: "Gemakkelijk In Gebruik!"

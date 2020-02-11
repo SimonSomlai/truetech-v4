@@ -3,7 +3,7 @@
 <% content_for :ogdescription, t("app.meta") %>
 <% content_for :ogtype, "article" %>
 <% content_for :ogimage, image_url("service-single-4-#{I18n.locale}") %>
-<body class="stretched">
+<body class="stretched sticky-responsive-menu">
    <div id="wrapper" class="cf">
    <header id="header" class="sticky-style-2">
       <%= render 'shared/header' %>
@@ -144,13 +144,13 @@
       </div>
       <div class="col-sm-12 col-md-12 contactform">
          <%=form_for(@contact, remote: true, :format=> 'js', :html=>{:class=> "nobottommargin", :name=> "template-contactform", :id=> "template-contactform", :multipart=> true}) do |f| %> <%=render "shared/error_messages", object: f.object %> 
-         <div class="col_half"> <%=f.label :name do %><%= t "contact.name" %><small>*</small> <% end %> <%=f.text_field :name, required: true, id: "template-contactform-name", :class=> "sm-form-control required" %> </div>
-         <div class="col_half col_last"> <%=f.label :email do %> Email<small>*</small> <% end %> <%=f.email_field :email, required: true, id: "template-contactform-email", :class=> "required email sm-form-control" %> </div>
+         <div class="col_half"> <%=f.label :name do %><%= t "contact.name" %><small>*</small> <% end %> <%=f.text_field :name, required: true, id: "template-contactform-name", :class=> "sm-form-control required", placeholder: "John Smith" %> </div>
+         <div class="col_half col_last"> <%=f.label :email do %> Email<small>*</small> <% end %> <%=f.email_field :email, required: true, id: "template-contactform-email", :class=> "required email sm-form-control", placeholder: "john@email.com" %> </div>
          <div class="clear"></div>
-         <div class="col_half"> <%=f.label :phone, t("contact.phone") %> <%=f.text_field :phone, id: "template-contactform-phone", :class=> "sm-form-control" %> </div>
+         <div class="col_half"> <%=f.label :phone, t("contact.phone") %> <%=f.text_field :phone, id: "template-contactform-phone", :class=> "sm-form-control", placeholder: "+32 123 456" %> </div>
          <div class="col_half col_last"> <%=f.label :subject, t("contact.subject")  %> <%= f.text_field :subject, id: "template-contactform-options", readonly: true, :class=> "sm-form-control required", value: t("app.heading1") %> </div>
          <div class="clear"></div>
-         <div class="col_full"> <%=f.label :message do %> <%= t("contact.message") %><small>*</small> <% end %> <%=f.text_area :message, id: "template-contactform-message", :class=> "required sm-form-control", rows: 6, cols: 30 %> </div>
+         <div class="col_full"> <%=f.label :message do %> <%= t("contact.message") %><small>*</small> <% end %> <%=f.text_area :message, id: "template-contactform-message", :class=> "required sm-form-control", rows: 6, cols: 30, placeholder: "👋 Hello there!" %> </div>
          <div class="col_full"> <%=f.label :file, t("contact.file")  %> <%=f.file_field :file, id: "template-contactform-file", :class=> "sm-form-control" %> </div>
          <div><%= f.invisible_captcha :firstname %></div>
          <div class="col_full"> <%=f.submit t("contact.send") , id: "template-contactform-submit", class: "button button-3d nomargin" %> </div>

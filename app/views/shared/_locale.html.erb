@@ -1,11 +1,11 @@
 <li>
     <% if I18n.locale == :nl %>
         <%= link_to locale: "en" do %>
-            <div class="locale locale-menu <%= I18n.locale %>"></div>
+            EN/<b style="color: #1982AE;">NL</b>
         <% end %> 
     <% else  %>
         <%= link_to locale: "nl" do %>
-            <div class="locale locale-menu <%= I18n.locale %>"></div>
+            <b style="color: #1982AE;">EN</b>/NL
         <% end %> 
     <% end %>
 </li>

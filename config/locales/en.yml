@@ -7,7 +7,7 @@ en:
       diensten: "services"
       nieuws: "news"
     services:
-      title1: "Our"
+      title1: "My"
       title1_span: "Services"
       service1_pretitle: "Need a webpage?"
       service1_title: "Single Pages"
@@ -24,7 +24,7 @@ en:
       all: "All"
     # Projecten sectie
     projects:
-      title1: "Our Latest"
+      title1: "My Latest"
       title1_span: "Projects"
     # Getuigenissen sectie
     testimonials:
@@ -182,7 +182,7 @@ en:
     heading3: "Looking For Something"
     heading3_span: " Unique?"
     heading3_descr: "You have a unique business idea that you’d like to realize, but you don’t have enough technical knowledge to make this a reality? Or otherwise you’re looking for some help/additional functionality with your existing"
-    heading3_strong: " React/Node/Ruby On Rails"
+    heading3_strong: " Javascript/Ruby On Rails"
     heading3_descr2: " application? No worries! We can help you with this!"
     heading3_descr3: "We build handmade web applications where you get full say in the design and functionality. Can you imagine it? We can make it!"
     benefit2: "Easy To Use"

@@ -12,6 +12,9 @@ module ApplicationHelper
     !!url.match(/.mp4/)
   end
 
+  def comment
+  end
+
   # Gets time range for x number time ago
   def time_range(unit, timeunit = nil)
     if timeunit == "weeks"

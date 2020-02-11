@@ -5,7 +5,7 @@
 <% content_for :ogtype, "article" %>
 <% content_for :ogimage, image_url("logo.png") %>
 
-<body class="stretched">
+<body class="stretched sticky-responsive-menu sticky-responsive-menu">
   <div id="wrapper" class="clearfix">
     <header id="header" class="sticky-style-2">
       <%= render 'shared/header' %>
@@ -76,7 +76,7 @@
                 </div>
                 <p><%= t "home.services.service4_descr"%></p>
               </div>
-            <% end %>
+            <% end %>   
               <div class="col-md-3 center bottommargin bob service-item-link service-item-link--disabled hidden-xs">
                 <i class="i-plain color i-large icon-line2-energy inline-block" style="margin-bottom: 20px;"></i>
                 <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
@@ -101,6 +101,7 @@
                 </div>
                 <p><%= t "home.services.service3_descr"%></p>
               </div>
+              
           </div>
           <div class="promo promo-border promo-center bottommargin hidden">
             <h3><%= t "analyse.promo1" %>
@@ -306,11 +307,11 @@
                 <address>
                   <strong><%= t "home.contact.location"%></strong>
                   <br>
-                  Kerkhoflei 5,
+                  Jan Moorkensstraat 78,
                                     <br>
-                  2861, Onze-Lieve-Vrouw-Waver
+                  2600, Berchem
                                     <br>
-                  <a target="_blank" href="https://maps.google.com?saddr=Current+Location&daddr=Kerkhoflei+5-1,+2861+Sint-Katelijne-Waver,+Belgium"><%= t "home.contact.route"%></a>
+                  <a target="_blank" href="https://maps.google.com?saddr=Current+Location&daddr=Jan+Moorkensstraat+78-1,+2600+Berchem,+Belgium"><%= t "home.contact.route"%></a>
                   <br>
                 </address>
                 <abbr title="Phone Number">
@@ -344,18 +345,18 @@
                     <%= t "home.contact.namefield" %>
                     <small>*</small>
                   <% end %>
-                  <%=f.text_field :name, required: true, id: "template-contactform-name", :class=> "sm-form-control required" %>
+                  <%= f.text_field :name, required: true, id: "template-contactform-name", :class=> "sm-form-control required", placeholder: "John Smith" %>
                 </div>
                 <div class="col_half col_last">
                   <%=f.label :email do %>
                     Email<small>*</small>
                   <% end %>
-                  <%=f.email_field :email, required: true, id: "template-contactform-email", :class=> "required email sm-form-control" %>
+                  <%=f.email_field :email, required: true, id: "template-contactform-email", :class=> "required email sm-form-control",  placeholder: "john@email.com" %>
                 </div>
                 <div class="clear"></div>
                 <div class="col_half">
                   <%=f.label :phone, t("home.contact.phonefield") %>
-                  <%=f.text_field :phone, id: "template-contactform-phone", :class=> "sm-form-control" %>
+                  <%=f.text_field :phone, id: "template-contactform-phone", :class=> "sm-form-control", placeholder: "+32 123 456" %>
                 </div>
                 <div class="col_half col_last subject-home">
                   <%=f.label :referrer, t("home.contact.subjectfield") %>
@@ -367,7 +368,7 @@
                     <%= t "home.contact.messagefield"%>
                     <small>*</small>
                   <% end %>
-                  <%=f.text_area :message, id: "template-contactform-message", :class=> "required sm-form-control", rows: 6, cols: 30 %>
+                  <%=f.text_area :message, id: "template-contactform-message", :class=> "required sm-form-control", rows: 6, cols: 30, placeholder: "👋 Hello there!" %>
                 </div>
                 <div class="col_full">
                   <%=f.submit t("home.contact.sendbutton"), id: "template-contactform-submit", class: "button button-3d nomargin" %>
@@ -405,7 +406,7 @@
                                                               zoomControl: false,
                                                               scrollwheel: false,
                                                               zoom: 10,
-                                                              center: new google.maps.LatLng(51.06415080000001, 4.572420500000021),
+                                                              center: new google.maps.LatLng(51.188760, 4.433030),
                                                               mapTypeId: google.maps.MapTypeId.ROADMAP
                                                           };
                                                           map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
@@ -413,7 +414,7 @@
                                                               map: map,
                                                               position: new google.maps.LatLng(51.06415080000001, 4.572420500000021)
                                                           });
-                                                          infowindow = new google.maps.InfoWindow({content: '<strong>TrueTech</strong><br>kerkhoflei 5, 2861<br>'});
+                                                          infowindow = new google.maps.InfoWindow({content: '<strong>Simon Somlai</strong><br>Jan Moorkensstraat 78, 2600<br>'});
                                                           google.maps.event.addListener(marker, 'click', function () {
                                                               infowindow.open(map, marker);
                                                           });
