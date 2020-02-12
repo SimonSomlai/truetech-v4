@@ -11,48 +11,49 @@
       <%= render 'shared/header' %>
       <div id="header-wrap">
         <% content_for :menu do %>
-          <li>
-            <% if logged_in? && is_admin %>
-              <%=link_to(admin_path) do %>
-                <i class="icon-lg icon-cogs" aria-hidden="true"></i>
-              <% end %>
-            <% end %>
-          </li>
-          <li>
-            <%=link_to "#", class: "no-transition home-menu-item" do %>
-              <div><%= t "home.nav.diensten"%></div>
-            <% end %>
-          </li>
-          <li>
-            <%=link_to "#", class: "no-transition home-menu-item" do %>
-              <div>Portfolio</div>
-            <% end %>
-          </li>
-          <li>
-            <%=link_to "#", class: "no-transition home-menu-item" do %>
-              <div><%= t "home.nav.nieuws"%></div>
-            <% end %>
-          </li>
-          <li>
-            <%=link_to "#", class: "no-transition home-menu-item" do %>
-              <div>Contact</div>
-            <% end %>
-          </li>
-          <%= render "shared/locale" %>
-          <li>
-            <% if logged_in? && is_admin %>
-              <%=link_to(destroy_user_session_path, method: :delete) do %>
-                <i class="icon-lg icon-line-power" aria-hidden="true"></i>
-              <% end %>
-            <% end %>
-          </li>
+        <li>
+          <% if logged_in? && is_admin %>
+          <%=link_to(admin_path) do %>
+          <i class="icon-lg icon-cogs" aria-hidden="true"></i>
+          <% end %>
+          <% end %>
+        </li>
+        <li>
+          <%=link_to "#", class: "no-transition home-menu-item" do %>
+          <div><%= t "home.nav.diensten"%></div>
+          <% end %>
+        </li>
+        <li>
+          <%=link_to "#", class: "no-transition home-menu-item" do %>
+          <div>Portfolio</div>
+          <% end %>
+        </li>
+        <li>
+          <%=link_to "#", class: "no-transition home-menu-item" do %>
+          <div><%= t "home.nav.nieuws"%></div>
+          <% end %>
+        </li>
+        <li>
+          <%=link_to "#", class: "no-transition home-menu-item" do %>
+          <div>Contact</div>
+          <% end %>
+        </li>
+        <%= render "shared/locale" %>
+        <li>
+          <% if logged_in? && is_admin %>
+          <%=link_to(destroy_user_session_path, method: :delete) do %>
+          <i class="icon-lg icon-line-power" aria-hidden="true"></i>
+          <% end %>
+          <% end %>
+        </li>
         <% end %>
         <%=render "shared/menu" %>
       </div>
     </header>
     <section id="slider" class="boxed-slider">
       <div class="container clearfix">
-        <div id="oc-slider" class="owl-carousel carousel-widget" data-items="1" data-loop="false" data-nav="true" data-autoplay="5000" data-animate-in="fadeIn" data-animate-out="fadeOut" data-speed="800">
+        <div id="oc-slider" class="owl-carousel carousel-widget" data-items="1" data-loop="false" data-nav="true"
+          data-autoplay="5000" data-animate-in="fadeIn" data-animate-out="fadeOut" data-speed="800">
           <a href="#">
             <%= image_tag("slider1-#{I18n.locale}", alt: t("home.sub")) %>
           </a>
@@ -68,40 +69,40 @@
               <span><%= t "home.services.title1_span"%></span>
             </h3>
             <%=link_to(webapplicatie_path , class: "bob service-item-link" ) do %>
-              <div class="col-md-3 center bottommargin">
-                <i class="i-plain color i-large icon-diamond inline-block" style="margin-bottom: 20px;"></i>
-                <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
-                  <span class="before-heading"><%= t "home.services.service4_pretitle"%></span>
-                  <h4><%= t "home.services.service4_title"%></h4>
-                </div>
-                <p><%= t "home.services.service4_descr"%></p>
+            <div class="col-md-3 center bottommargin">
+              <i class="i-plain color i-large icon-diamond inline-block" style="margin-bottom: 20px;"></i>
+              <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
+                <span class="before-heading"><%= t "home.services.service4_pretitle"%></span>
+                <h4><%= t "home.services.service4_title"%></h4>
               </div>
-            <% end %>   
-              <div class="col-md-3 center bottommargin bob service-item-link service-item-link--disabled hidden-xs">
-                <i class="i-plain color i-large icon-line2-energy inline-block" style="margin-bottom: 20px;"></i>
-                <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
-                  <span class="before-heading"><%= t "home.services.service1_pretitle"%></span>
-                  <h4><%= t "home.services.service1_title"%></h4>
-                </div>
-                <p><%= t "home.services.service1_descr"%></p>
+              <p><%= t "home.services.service4_descr"%></p>
+            </div>
+            <% end %>
+            <div class="col-md-3 center bottommargin bob service-item-link service-item-link--disabled hidden-xs">
+              <i class="i-plain color i-large icon-line2-energy inline-block" style="margin-bottom: 20px;"></i>
+              <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
+                <span class="before-heading"><%= t "home.services.service1_pretitle"%></span>
+                <h4><%= t "home.services.service1_title"%></h4>
               </div>
-              <div class="col-md-3 center bottommargin bob service-item-link service-item-link--disabled hidden-xs">
-                <i class="i-plain color i-large icon-line2-screen-desktop inline-block" style="margin-bottom: 20px;"></i>
-                <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
-                  <span class="before-heading"><%= t "home.services.service2_pretitle"%></span>
-                  <h4><%= t "home.services.service2_title"%></h4>
-                </div>
-                <p><%= t "home.services.service2_descr"%></p>
+              <p><%= t "home.services.service1_descr"%></p>
+            </div>
+            <div class="col-md-3 center bottommargin bob service-item-link service-item-link--disabled hidden-xs">
+              <i class="i-plain color i-large icon-line2-screen-desktop inline-block" style="margin-bottom: 20px;"></i>
+              <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
+                <span class="before-heading"><%= t "home.services.service2_pretitle"%></span>
+                <h4><%= t "home.services.service2_title"%></h4>
               </div>
-              <div class="col-md-3 center bottommargin bob service-item-link service-item-link--disabled hidden-xs">
-                <i class="i-plain color i-large icon-line2-rocket inline-block" style="margin-bottom: 20px;"></i>
-                <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
-                  <span class="before-heading"><%= t "home.services.service3_pretitle"%></span>
-                  <h4><%= t "home.services.service3_title"%></h4>
-                </div>
-                <p><%= t "home.services.service3_descr"%></p>
+              <p><%= t "home.services.service2_descr"%></p>
+            </div>
+            <div class="col-md-3 center bottommargin bob service-item-link service-item-link--disabled hidden-xs">
+              <i class="i-plain color i-large icon-line2-rocket inline-block" style="margin-bottom: 20px;"></i>
+              <div class="heading-block nobottomborder" style="margin-bottom: 15px;">
+                <span class="before-heading"><%= t "home.services.service3_pretitle"%></span>
+                <h4><%= t "home.services.service3_title"%></h4>
               </div>
-              
+              <p><%= t "home.services.service3_descr"%></p>
+            </div>
+
           </div>
           <div class="promo promo-border promo-center bottommargin hidden">
             <h3><%= t "analyse.promo1" %>
@@ -109,8 +110,8 @@
               <%= t "analyse.promo1_second" %></h3>
             <span><%= t "analyse.promo1_third" %></span>
             <%= link_to(website_analyse_path, class: "button button-large button-circle") do %>
-              <i class="hidden-xs icon-cogs"></i>
-              <%= t "analyse.button" %>
+            <i class="hidden-xs icon-cogs"></i>
+            <%= t "analyse.button" %>
             <% end %>
           </div>
           <div id="portfolio" class="line notopmargin"></div>
@@ -118,77 +119,63 @@
             <span><%= t "home.projects.title1_span"%> </span> <i class="hidden-xs" style="font-size: 23px;"> |</i>
             <span><%= link_to t("projects.all_projects") + " »", all_projects_path, style:"font-size: 13px; vertical-align: middle;", class:"more-link" %></span>
           </h3>
-          <div class="owl-carousel portfolio-carousel carousel-widget" 
-          data-margin="1" 
-          data-loop="false" 
-          data-nav="true" 
-          data-pagi="false" 
-          data-items-xxs="1" 
-          data-items-xs="2" 
-          data-items-sm="3" 
-          data-items-md="4" 
-          data-items-lg="4"
-          >
+          <div class="owl-carousel portfolio-carousel carousel-widget" data-margin="1" data-loop="false" data-nav="true"
+            data-pagi="false" data-items-xxs="1" data-items-xs="2" data-items-sm="3" data-items-md="4"
+            data-items-lg="4">
             <% @projects.each do |project| %>
-              <div class="oc-item">
-                <div class="iportfolio">
-                  <div class="portfolio-image">
-                    <%=link_to(project_path(project)) do %>
-                      <%= image_tag headerimage(project), alt: "Webdesign Antwerpen - Portfolio" %>
+            <div class="oc-item">
+              <div class="iportfolio">
+                <div class="portfolio-image">
+                  <%=link_to(project_path(project)) do %>
+                  <%= image_tag headerimage(project), alt: "Webdesign Antwerpen - Portfolio" %>
+                  <% end %>
+                  <div class="portfolio-overlay">
+                    <%=link_to(project.project_images.first.images_url, class: "left-icon", data:{lightbox: "image"}) do %>
+                    <i class="icon-line-image"></i>
                     <% end %>
-                    <div class="portfolio-overlay">
-                      <%=link_to(project.project_images.first.images_url, class: "left-icon", data:{lightbox: "image"}) do %>
-                        <i class="icon-line-image"></i>
-                      <% end %>
-                      <%=link_to(project_path(project), class: "right-icon") do %>
-                        <i class="icon-line-open"></i>
-                      <% end %>
-                    </div>
-                  </div>
-                  <div class="portfolio-desc">
-                    <h3>
-                      <%=link_to(project.title, project_path(project)) %>
-                    </h3>
-                    <a class="portfolio-features" href="/<%=project.service.gsub(/ /, '-') %>">
-                      <span><%= category(project) %>
-                      </span>
-                    </a>
+                    <%=link_to(project_path(project), class: "right-icon") do %>
+                    <i class="icon-line-open"></i>
+                    <% end %>
                   </div>
                 </div>
+                <div class="portfolio-desc">
+                  <h3>
+                    <%=link_to(project.title, project_path(project)) %>
+                  </h3>
+                  <a class="portfolio-features" href="/<%=project.service.gsub(/ /, '-') %>">
+                    <span><%= category(project) %>
+                    </span>
+                  </a>
+                </div>
               </div>
+            </div>
             <% end %>
           </div>
           <div class="line"></div>
           <h3 class="center"><%= t "home.services.title1"%>
             <span><%= t "home.testimonials.title1_span"%></span>!</h3>
-          <div 
-            class="fslider testimonial testimonial-full noshadow noborder nopadding divcenter" 
-            data-animation="fade" 
-            data-arrows="false" 
-            data-autoplay="8000"
-            data-speed="500"
-            data-loop="true" 
-            style="max-width: 700px;"
-          >
+          <div class="fslider testimonial testimonial-full noshadow noborder nopadding divcenter" data-animation="fade"
+            data-arrows="false" data-autoplay="8000" data-speed="500" data-loop="true" style="max-width: 700px;">
             <div class="flexslider">
               <div class="slider-wrap">
                 <% @testimonials.each do |testimonial| %>
-                  <div class="slide">
-                    <div class="testi-image">
-                      <a href="<%= testimonial.link || no-target %>"><%=image_tag testimonial.image.url, alt: "Webdesign Antwerpen - Getuigenissen" %></a>
-                    </div>
-                    <div class="testi-content">
-                      <% if I18n.locale == :nl %>
-                        <p><%= testimonial.quote %></p>
-                      <% else %>
-                        <p><%=  testimonial.en_quote %></p>
-                      <% end %>
-                      <div class="testi-meta">
-                        <%=testimonial.name %>
-                        <span><%=testimonial.company %></span>
-                      </div>
+                <div class="slide">
+                  <div class="testi-image">
+                    <a
+                      href="<%= testimonial.link || no-target %>"><%=image_tag testimonial.image.url, alt: "Webdesign Antwerpen - Getuigenissen" %></a>
+                  </div>
+                  <div class="testi-content">
+                    <% if I18n.locale == :nl %>
+                    <p><%= testimonial.quote %></p>
+                    <% else %>
+                    <p><%=  testimonial.en_quote %></p>
+                    <% end %>
+                    <div class="testi-meta">
+                      <%=testimonial.name %>
+                      <span><%=testimonial.company %></span>
                     </div>
                   </div>
+                </div>
                 <% end %>
               </div>
             </div>
@@ -198,59 +185,49 @@
             <span><%= t "home.news.title1_span"%></span> <i class="hidden-xs" style="font-size: 23px;"> |</i>
             <span><%= link_to t("articles.all_articles") + " »", all_articles_path, style:"font-size: 13px; vertical-align: middle;", class:"more-link" %></span>
           </h3>
-          <div
-            id="oc-posts"
-            class="owl-latest-news owl-carousel posts-carousel carousel-widget owl-loaded owl-drag"
-            data-margin="15"
-            data-loop="false"
-            data-nav="true"
-            data-pagi="false"
-            data-items-xxs="1"
-            data-items-xs="2"
-            data-items-sm="3"
-            data-items-md="4"
-            data-items-lg="4"
-          >
+          <div id="oc-posts" class="owl-latest-news owl-carousel posts-carousel carousel-widget owl-loaded owl-drag"
+            data-margin="15" data-loop="false" data-nav="true" data-pagi="false" data-items-xxs="1" data-items-xs="2"
+            data-items-sm="3" data-items-md="4" data-items-lg="4">
             <% I18n.locale == :nl ? (@articles = @nl_articles) : (@articles = @en_articles) %>
             <% @articles.each do |article| %>
-              <div class="oc-item">
-                <div class="ipost clearfix">
-                  <div class="entry-image">
-                    <a href="<%= articles_show_path(article) %>">
-                      <%= image_tag article.image.small.url, alt: "Webdesign Antwerpen - Nieuws", class: "image_fade" %>
-                    </a>
-                  </div>
-                  <div class="entry-title">
-                    <% if I18n.locale == :en %>
-                      <h3><%=link_to(article.en_title, articles_show_path(article)) %></h3>
-                    <% else  %>
-                      <h3><%=link_to(article.title, articles_show_path(article)) %></h3>
-                    <% end %>
-                  </div>
-                  <div class="entry-content">
-                    <% if I18n.locale == :en %>
-                      <p><%=article.en_description %></p>
-                    <% else  %>
-                      <p><%=article.description %></p>
-                    <% end %>
-                  </div>
+            <div class="oc-item">
+              <div class="ipost clearfix">
+                <div class="entry-image">
+                  <a href="<%= articles_show_path(article) %>">
+                    <%= image_tag article.image.small.url, alt: "Webdesign Antwerpen - Nieuws", class: "image_fade" %>
+                  </a>
+                </div>
+                <div class="entry-title">
+                  <% if I18n.locale == :en %>
+                  <h3><%=link_to(article.en_title, articles_show_path(article)) %></h3>
+                  <% else  %>
+                  <h3><%=link_to(article.title, articles_show_path(article)) %></h3>
+                  <% end %>
+                </div>
+                <div class="entry-content">
+                  <% if I18n.locale == :en %>
+                  <p><%=article.en_description %></p>
+                  <% else  %>
+                  <p><%=article.description %></p>
+                  <% end %>
                 </div>
               </div>
+            </div>
             <% end %>
           </div>
           <div class="col-lg-12 col-hidden article-block">
             <% @articles.each do |article| %>
-              <a href="<%=articles_show_path(article) %>">
-                <div class="article-div">
-                  <% if I18n.locale == :en %>
-                    <h3 class="article-title"><%=article.en_title %></h3>
-                    <p class="article-description"><%=article.en_description %></p>
-                  <% else  %>
-                    <h3 class="article-title"><%=article.title %></h3>
-                    <p class="article-description"><%=article.description %></p>
-                  <% end %>
-                </div>
-              </a>
+            <a href="<%=articles_show_path(article) %>">
+              <div class="article-div">
+                <% if I18n.locale == :en %>
+                <h3 class="article-title"><%=article.en_title %></h3>
+                <p class="article-description"><%=article.en_description %></p>
+                <% else  %>
+                <h3 class="article-title"><%=article.title %></h3>
+                <p class="article-description"><%=article.description %></p>
+                <% end %>
+              </div>
+            </a>
             <% end %>
           </div>
           <div id="contact" class="line"></div>
@@ -265,33 +242,39 @@
                 </div>
                 <div class="team-desc">
                   <div class="team-title">
-                    <h4 >
+                    <h4>
                       Simon Somlai
-                                        </h4>
-                    <span><%= t "home.contact.job"%>
-                      |
-                                            <a target="_blank" href="https://www.visualcv.com/simon-somlai/pdf">
-                        <i class="icon-download"></i>
-                        CV
-                                            </a>
-                    </span>
+                    </h4>
+                    <span><%= t "home.contact.job"%></span>
                   </div>
                   <div class="team-content hidden-xs">
                     <p><%= t "home.contact.about"%></p>
                   </div>
-                  <a target="_blank" href="https://twitter.com/SSomlai" class="social-icon si-rounded si-small si-twitter">
-                      <i class="icon-twitter"></i>
-                      <i class="icon-twitter"></i>
-                    </a>
-                  <a target="_blank" href="https://www.linkedin.com/in/simon-somlai-27a4648a?trk=nav_responsive_tab_profile_pic" class="social-icon si-rounded si-small si-linkedin">
+                  <br/>
+                  <div>
+                    <%= link_to asset_path("cv.pdf"), target: "_blank" do %>
+                    <i class="icon-download"></i> <%= t "home.contact.cv"%>
+                    <% end %>
+                  </div>
+                  <a target="_blank" href="https://twitter.com/SSomlai"
+                    class="social-icon si-rounded si-small si-twitter">
+                    <i class="icon-twitter"></i>
+                    <i class="icon-twitter"></i>
+                  </a>
+                  <a target="_blank"
+                    href="https://www.linkedin.com/in/simon-somlai-27a4648a?trk=nav_responsive_tab_profile_pic"
+                    class="social-icon si-rounded si-small si-linkedin">
                     <i class="icon-linkedin"></i>
                     <i class="icon-linkedin"></i>
                   </a>
-                  <a target="_blank" href="https://github.com/SimonSomlai" class="social-icon si-rounded si-small si-github">
+                  <a target="_blank" href="https://github.com/SimonSomlai"
+                    class="social-icon si-rounded si-small si-github">
                     <i class="icon-github"></i>
                     <i class="icon-github"></i>
                   </a>
-                  <a target="_blank" href="https://www.youtube.com/channel/UCg9AnJ7AAVKkHZ4wQ0CXPAw/videos?view=0&sort=dd&shelf_id=0" class="social-icon si-rounded si-small si-youtube">
+                  <a target="_blank"
+                    href="https://www.youtube.com/channel/UCg9AnJ7AAVKkHZ4wQ0CXPAw/videos?view=0&sort=dd&shelf_id=0"
+                    class="social-icon si-rounded si-small si-youtube">
                     <i class="icon-youtube"></i>
                     <i class="icon-youtube"></i>
                   </a>
@@ -308,17 +291,18 @@
                   <strong><%= t "home.contact.location"%></strong>
                   <br>
                   Jan Moorkensstraat 78,
-                                    <br>
+                  <br>
                   2600, Berchem
-                                    <br>
-                  <a target="_blank" href="https://maps.google.com?saddr=Current+Location&daddr=Jan+Moorkensstraat+78-1,+2600+Berchem,+Belgium"><%= t "home.contact.route"%></a>
+                  <br>
+                  <a target="_blank"
+                    href="https://maps.google.com?saddr=Current+Location&daddr=Jan+Moorkensstraat+78-1,+2600+Berchem,+Belgium"><%= t "home.contact.route"%></a>
                   <br>
                 </address>
                 <abbr title="Phone Number">
                   <strong>GSM:</strong>
                 </abbr>
                 +32 496 42 75 59
-                                <br>
+                <br>
                 <abbr title="Email Address">
                   <strong>Email:</strong>
                 </abbr>
@@ -328,63 +312,66 @@
                   <strong>Skype:</strong>
                 </abbr>
                 SimonSomlai
-                            </div>
-              <div style='overflow: scroll; max-height: 350px;' class="col_three_fifth col_last hidden-sm hidden-xs hidden-md">
-                <a class="twitter-timeline" href="https://twitter.com/SSomlai?ref_src=twsrc%5Etfw">Tweets by SSomlai</a> 
+              </div>
+              <div style='overflow: scroll; max-height: 350px;'
+                class="col_three_fifth col_last hidden-sm hidden-xs hidden-md">
+                <a class="twitter-timeline" href="https://twitter.com/SSomlai?ref_src=twsrc%5Etfw">Tweets by SSomlai</a>
                 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
               </div>
             </div>
             <div class="col-sm-12 col-md-12 contactform">
               <%= form_for(@contact, remote: true, :format=> 'js', :html=> { data: {type: "script", lpignore: "true"}, autocomplete: "off" , :class=> "nobottommargin", :name=> "template-contactform", :id=> "template-contactform", :multipart=> true } ) do |f| %>
-                <%=render "shared/error_messages", object: f.object %>
-                <div>
-                  <%= f.invisible_captcha :a_password, visual_honeypots: false, timestamp_threshold: 3 %>
-                </div>
-                <div class="col_half">
-                  <%=f.label :name do %>
-                    <%= t "home.contact.namefield" %>
-                    <small>*</small>
-                  <% end %>
-                  <%= f.text_field :name, required: true, id: "template-contactform-name", :class=> "sm-form-control required", placeholder: "John Smith" %>
-                </div>
-                <div class="col_half col_last">
-                  <%=f.label :email do %>
-                    Email<small>*</small>
-                  <% end %>
-                  <%=f.email_field :email, required: true, id: "template-contactform-email", :class=> "required email sm-form-control",  placeholder: "john@email.com" %>
-                </div>
-                <div class="clear"></div>
-                <div class="col_half">
-                  <%=f.label :phone, t("home.contact.phonefield") %>
-                  <%=f.text_field :phone, id: "template-contactform-phone", :class=> "sm-form-control", placeholder: "+32 123 456" %>
-                </div>
-                <div class="col_half col_last subject-home">
-                  <%=f.label :referrer, t("home.contact.subjectfield") %>
-                  <%=f.text_field :referrer, id: "template-contactform-subject", :class=> "sm-form-control required", placeholder:  t("home.contact.subjectexample") %>
-                </div>
-                <div class="clear"></div>
-                <div class="col_full">
-                  <%=f.label :message do %>
-                    <%= t "home.contact.messagefield"%>
-                    <small>*</small>
-                  <% end %>
-                  <%=f.text_area :message, id: "template-contactform-message", :class=> "required sm-form-control", rows: 6, cols: 30, placeholder: "👋 Hello there!" %>
-                </div>
-                <div class="col_full">
-                  <%=f.submit t("home.contact.sendbutton"), id: "template-contactform-submit", class: "button button-3d nomargin" %>
-                </div>
+              <%=render "shared/error_messages", object: f.object %>
+              <div>
+                <%= f.invisible_captcha :a_password, visual_honeypots: false, timestamp_threshold: 3 %>
+              </div>
+              <div class="col_half">
+                <%=f.label :name do %>
+                <%= t "home.contact.namefield" %>
+                <small>*</small>
+                <% end %>
+                <%= f.text_field :name, required: true, id: "template-contactform-name", :class=> "sm-form-control required", placeholder: "John Smith" %>
+              </div>
+              <div class="col_half col_last">
+                <%=f.label :email do %>
+                Email<small>*</small>
+                <% end %>
+                <%=f.email_field :email, required: true, id: "template-contactform-email", :class=> "required email sm-form-control",  placeholder: "john@email.com" %>
+              </div>
+              <div class="clear"></div>
+              <div class="col_half">
+                <%=f.label :phone, t("home.contact.phonefield") %>
+                <%=f.text_field :phone, id: "template-contactform-phone", :class=> "sm-form-control", placeholder: "+32 123 456" %>
+              </div>
+              <div class="col_half col_last subject-home">
+                <%=f.label :referrer, t("home.contact.subjectfield") %>
+                <%=f.text_field :referrer, id: "template-contactform-subject", :class=> "sm-form-control required", placeholder:  t("home.contact.subjectexample") %>
+              </div>
+              <div class="clear"></div>
+              <div class="col_full">
+                <%=f.label :message do %>
+                <%= t "home.contact.messagefield"%>
+                <small>*</small>
+                <% end %>
+                <%=f.text_area :message, id: "template-contactform-message", :class=> "required sm-form-control", rows: 6, cols: 30, placeholder: "👋 Hello there!" %>
+              </div>
+              <div class="col_full">
+                <%=f.submit t("home.contact.sendbutton"), id: "template-contactform-submit", class: "button button-3d nomargin" %>
+              </div>
               <% end %>
             </div>
             <div class="col-md-12 bottommargin">
-              <section id="google-map" class="gmap" style="height: 240px; position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);">
-                <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCaWCpVtwDpwN-5Lm5zu0xx9FBMrfjuZ7M'></script>
+              <section id="google-map" class="gmap"
+                style="height: 240px; position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);">
+                <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCaWCpVtwDpwN-5Lm5zu0xx9FBMrfjuZ7M'>
+                </script>
                 <div style='overflow:hidden;height:240px;width:px;'>
                   <div id='gmap_canvas' style='height:240px;width:px;'></div>
                   <div>
                     <small>
                       <a href="http://embedgooglemaps.com">
                         embed google maps
-                                            </a>
+                      </a>
                     </small>
                   </div>
                   <div>
@@ -394,33 +381,35 @@
                   </div>
                   <style>
                     #gmap_canvas img {
-                                                                max-width: none!important;
-                                                                background: none!important;
-                                                            }
+                      max-width: none !important;
+                      background: none !important;
+                    }
                   </style>
                 </div>
                 <script type='text/javascript'>
                   function init_map() {
-                                                          var myOptions = {
-                                                              draggable: false,
-                                                              zoomControl: false,
-                                                              scrollwheel: false,
-                                                              zoom: 10,
-                                                              center: new google.maps.LatLng(51.188760, 4.433030),
-                                                              mapTypeId: google.maps.MapTypeId.ROADMAP
-                                                          };
-                                                          map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
-                                                          marker = new google.maps.Marker({
-                                                              map: map,
-                                                              position: new google.maps.LatLng(51.188760, 4.433030)
-                                                          });
-                                                          infowindow = new google.maps.InfoWindow({content: '<strong>Simon Somlai</strong><br>Jan Moorkensstraat 78, 2600<br>'});
-                                                          google.maps.event.addListener(marker, 'click', function () {
-                                                              infowindow.open(map, marker);
-                                                          });
-                                                          infowindow.open(map, marker);
-                                                      }
-                                                      google.maps.event.addDomListener(window, 'load', init_map);
+                    var myOptions = {
+                      draggable: false,
+                      zoomControl: false,
+                      scrollwheel: false,
+                      zoom: 10,
+                      center: new google.maps.LatLng(51.188760, 4.433030),
+                      mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+                    map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+                    marker = new google.maps.Marker({
+                      map: map,
+                      position: new google.maps.LatLng(51.188760, 4.433030)
+                    });
+                    infowindow = new google.maps.InfoWindow({
+                      content: '<strong>Simon Somlai</strong><br>Jan Moorkensstraat 78, 2600<br>'
+                    });
+                    google.maps.event.addListener(marker, 'click', function () {
+                      infowindow.open(map, marker);
+                    });
+                    infowindow.open(map, marker);
+                  }
+                  google.maps.event.addDomListener(window, 'load', init_map);
                 </script>
               </section>
             </div>
@@ -431,10 +420,10 @@
     <%=render "shared/footer" %>
     <div id="gotoTop" class="icon-angle-up"></div>
     <% content_for :js do %>
-      <%=javascript_include_tag "application" %>
-      <script>
-        autoScroll();
-                    showOptions();
-      </script>
+    <%=javascript_include_tag "application" %>
+    <script>
+      autoScroll();
+      showOptions();
+    </script>
     <% end %>
-  </body>
+</body>

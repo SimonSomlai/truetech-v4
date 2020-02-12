@@ -49,6 +49,7 @@ en:
       messagefield: "Message"
       sendbutton: "Send Message!"
       success: "Thanks <strong> %{name}</strong>, your email is sent! We'll respond as soon as possible to your message! Enjoy the rest of your %{day}! :)"
+      cv: Download resume
    # Contact form
   contact:
     heading1: "Contact "

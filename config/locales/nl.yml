@@ -51,6 +51,7 @@ nl:
       messagefield: "Bericht"
       sendbutton: "Verstuur Bericht!"
       success: "Bedankt <strong> %{name}</strong>, je mail is verstuurd! We antwoorden zo snel mogelijk op jouw berichtje! Alvast nog een fijne %{day} gewenst! :) "
+      cv: CV Downloaden
   # Contact form
   contact:
     heading1: "Contacteer Ons"
