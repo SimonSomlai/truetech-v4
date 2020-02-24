@@ -41,7 +41,7 @@ gem 'daemons', '~> 1.2', '>= 1.2.3'
 # Scraper Gems
 gem 'watir', "~> 6.11"
 gem 'watir-extensions-element-screenshot', "~> 0.0.3"
-gem 'nokogiri', "~> 1.8"
+gem 'nokogiri', "~> 1.10"
 gem 'nokogiri-styles', "~> 0.1"
 gem 'rtesseract', "~> 2.2"
 gem 'rmagick', "~> 2.16"
