@@ -7445,10 +7445,12 @@ function getTags() {
         "bootstrap": "icon-bold",
         "parallax": "icon-line2-mouse",
         "email_capture": "icon-line-mail",
-        "react": "icon-atom",
         "graphql": "icon-exchange",
         'video': "icon-video",
         "static": "icon-line2-speedometer",
+        "contentful": "contentful.png",
+        "react": "react.png",
+        "redux": "redux.png",
         "vue": "vue.png",
         "gatsby": "gatsby.png"
     }

@@ -58,7 +58,7 @@
               <div class="col_one_third nomargin cf">
                 <% if !!value.match(/.\.(png|jpeg|jpg|gif)$/) %>
                   <span class="<%=key.gsub(/[_]/, ' ') %>">
-                    <img style="width: 14px; height: 14px;" src="<%= asset_path(value) %>"/><%=key.gsub(/[_]/, ' ') %>
+                    <img style="width: 14px; height: 14px; margin-right: 8px;" src="<%= asset_path(value) %>"/><%=key.gsub(/[_]/, ' ') %>
                   </span> 
                 <% else %>
                   <span class="<%= key.gsub(/[_]/, ' ') %>">
