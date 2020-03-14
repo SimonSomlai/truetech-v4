@@ -7426,8 +7426,9 @@ var showOptions = function() {
     })
 }
 
+// https://www.debspecs.com/weltpixel-icons
 function getTags() {
-    options = {
+    var options = {
         "webshop": "icon-shopping-cart",
         "mobile": "icon-line2-screen-smartphone",
         "responsive": "icon-resize-horizontal",
@@ -7447,7 +7448,9 @@ function getTags() {
         "react": "icon-atom",
         "graphql": "icon-exchange",
         'video': "icon-video",
-        "static": "icon-line2-speedometer"
+        "static": "icon-line2-speedometer",
+        "vue": "vue.png",
+        "gatsby": "gatsby.png"
     }
     var tooltip = "Opties: " + Object.keys(options).toString().replace(/\W+/g, ', ')
     $("#features-box").attr("data-original-title", tooltip)

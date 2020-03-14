@@ -55,7 +55,17 @@
           <% features.each_slice(3).each do |group| %>
             <li class="cf">
               <% group.each do |key, value| %>
-                <div class="col_one_third nomargin cf"><span class="<%=key.gsub(/[_]/, ' ') %>"><i class="<%=value %>"></i><%=key.gsub(/[_]/, ' ') %></span> </div>
+              <div class="col_one_third nomargin cf">
+                <% if !!value.match(/.\.(png|jpeg|jpg|gif)$/) %>
+                  <span class="<%=key.gsub(/[_]/, ' ') %>">
+                    <img style="width: 14px; height: 14px;" src="<%= asset_path(value) %>"/><%=key.gsub(/[_]/, ' ') %>
+                  </span> 
+                <% else %>
+                  <span class="<%= key.gsub(/[_]/, ' ') %>">
+                    <i class="<%= value %>"></i><%= key.gsub(/[_]/, ' ') %>
+                  </span> 
+                <% end %>
+                </div>
               <% end %>
             </li>
           <% end %>
