@@ -104,16 +104,18 @@
             </div>
 
           </div>
-          <div class="promo promo-border promo-center bottommargin hidden">
-            <h3><%= t "analyse.promo1" %>
-              <span><%= t "analyse.promo_span" %></span>
-              <%= t "analyse.promo1_second" %></h3>
-            <span><%= t "analyse.promo1_third" %></span>
-            <%= link_to(website_analyse_path, class: "button button-large button-circle") do %>
-            <i class="hidden-xs icon-cogs"></i>
-            <%= t "analyse.button" %>
-            <% end %>
-          </div>
+          <% comment do %>
+            <div class="promo promo-border promo-center bottommargin hidden">
+              <h3><%= t "analyse.promo1" %>
+                <span><%= t "analyse.promo_span" %></span>
+                <%= t "analyse.promo1_second" %></h3>
+              <span><%= t "analyse.promo1_third" %></span>
+              <%= link_to(website_analyse_path, class: "button button-large button-circle") do %>
+              <i class="hidden-xs icon-cogs"></i>
+              <%= t "analyse.button" %>
+              <% end %>
+            </div>
+          <% end %>
           <div id="portfolio" class="line notopmargin"></div>
           <h3 class="center"><%= t "home.projects.title1"%>
             <span><%= t "home.projects.title1_span"%> </span> <i class="hidden-xs" style="font-size: 23px;"> |</i>

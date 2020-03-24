@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     get "starters-website" => "static_pages#starters_website"
     get "website-op-maat" => "static_pages#website_op_maat"
     get "webapplicatie" => "static_pages#webapplicatie"
-    get "website-analyse" => "static_pages#website_analyse"
+    # get "website-analyse" => "static_pages#website_analyse"
 
     get "all-projects" => "projects#all_projects" 
     get "all-articles" => "articles#all_articles" 
