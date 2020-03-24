@@ -359,8 +359,11 @@ h2.logo-subtitle {
 
 /* Small */
 @media only screen and (max-width: 560px) {
-  .owl-latest-news {
-    display: none !important;
+  .owl-latest-news, .portfolio-carousel {
+    .owl-nav .owl-next{
+      right: -18px;
+      opacity: 1;
+    }
   }
 
   .article-block {

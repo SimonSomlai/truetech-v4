@@ -122,7 +122,7 @@
             <span><%= link_to t("projects.all_projects") + " »", all_projects_path, style:"font-size: 13px; vertical-align: middle;", class:"more-link" %></span>
           </h3>
           <div class="owl-carousel portfolio-carousel carousel-widget" data-margin="1" data-loop="false" data-nav="true"
-            data-pagi="false" data-items-xxs="1" data-items-xs="2" data-items-sm="3" data-items-md="4"
+            data-pagi="false" data-items-xxs="1" data-items-xs="1" data-items-sm="3" data-items-md="4"
             data-items-lg="4">
             <% @projects.each do |project| %>
             <div class="oc-item">
@@ -188,7 +188,7 @@
             <span><%= link_to t("articles.all_articles") + " »", all_articles_path, style:"font-size: 13px; vertical-align: middle;", class:"more-link" %></span>
           </h3>
           <div id="oc-posts" class="owl-latest-news owl-carousel posts-carousel carousel-widget owl-loaded owl-drag"
-            data-margin="15" data-loop="false" data-nav="true" data-pagi="false" data-items-xxs="1" data-items-xs="2"
+            data-margin="15" data-loop="false" data-nav="true" data-pagi="false" data-items-xxs="1" data-items-xs="1"
             data-items-sm="3" data-items-md="4" data-items-lg="4">
             <% I18n.locale == :nl ? (@articles = @nl_articles) : (@articles = @en_articles) %>
             <% @articles.each do |article| %>
@@ -215,21 +215,6 @@
                 </div>
               </div>
             </div>
-            <% end %>
-          </div>
-          <div class="col-lg-12 col-hidden article-block">
-            <% @articles.each do |article| %>
-            <a href="<%=articles_show_path(article) %>">
-              <div class="article-div">
-                <% if I18n.locale == :en %>
-                <h3 class="article-title"><%=article.en_title %></h3>
-                <p class="article-description"><%=article.en_description %></p>
-                <% else  %>
-                <h3 class="article-title"><%=article.title %></h3>
-                <p class="article-description"><%=article.description %></p>
-                <% end %>
-              </div>
-            </a>
             <% end %>
           </div>
           <div id="contact" class="line"></div>
