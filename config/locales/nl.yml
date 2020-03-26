@@ -1,9 +1,8 @@
 nl:
   # Homepagina
   home:
-    meta:  "Welkom bij TrueTech! - Wij zijn een creatief webdesign bedrijf uit regio Antwerpen en bieden zaakvoerders webdesign op maat aan om meer klanten te genereren"
-    ogtitle: "Webdesign Antwerpen - TrueTech"
-    sub: "Webdesign Regio Antwerpen"
+    meta:  "Welkom bij Webdesign Antwerpen - Simon Somlai | Ik ben een freelance developer en bied zaakvoerders mijn expertise aan bij het uitbouwen van hun moderne applicaties"
+    ogtitle: "Webdesign Antwerpen - Simon Somlai"
     nav:
       diensten: "diensten"
       nieuws: "nieuws"
@@ -21,7 +20,7 @@ nl:
       service3_title: "Website Op Maat"
       service3_descr: "Op zoek naar een méér persoonlijke website die jouw huisstijl weergeeft? Uniek op het web en énkel gemaakt voor jou? Dan is dit jouw beste keuze!"
       service4_pretitle: "Dromen najagen?"
-      service4_title: "Webapplicatie"
+      service4_title: "Web Applicatie"
       service4_descr: "Meer efficiëntie nodig in jouw organisatie? Op zoek naar unieke/zeer specifieke functionaliteit? Een nieuw concept dat de wereld zal verbazen? Wij helpen het realiseren!"
       all: "Alles"
    # Projecten sectie
@@ -90,10 +89,10 @@ nl:
     process1: "ANALYSE VAN JOUW SITUATIE"
     process1_descr: "We zitten samen voor een vrijblijvend 1-op-1/skype-gesprek om jouw unieke situatie te analyseren. Op basis daarvan gaan we samen kijken welke opties mogelijk zijn. Als we een akkoord vinden dat werkt voor ons beiden, gaan we verder naar de volgende fase!"
     process2: "VOORONTWERP"
-    process2_descr1: "Als het ontwerp nog niet bepaald is, maken we een "
-    process2_descr2: " op en sturen deze door voor feedback "
+    process2_descr1: "Als het ontwerp nog niet bepaald is, maken we eerst een "
+    process2_descr2: " op en sturen deze door voor feedback. "
     process2_descr3: "of"
-    process2_descr4: " we doen een voorstel van een reeds bestaand design. Als het ontwerp bepaald is, gaan we direct verder naar de volgende stap."
+    process2_descr4: " Daarna werken we het design uit volgens jou voorkeuren. Als het ontwerp definitief is, gaan we direct verder naar de volgende stap."
     process3: "UITWERKING & FEEDBACK"
     process3_descr: "We bespreken samen een afleverdatum, waarna de pagina wordt uitgewerkt. We sturen deze door voor feedback en maken daarna nog de gewenste aanpassingen!"
     heading3_first: "Stel"
@@ -204,7 +203,7 @@ nl:
     process2_descr2: " uit te tekenen zodat we duidelijk kunnen visualiseren welke pagina's en functionaliteit noodzakelijk zijn."
     process3: "Ontwerp"
     process3_descr: "We maken op basis van het schema een uitgewerkte versie van de verschillende pagina's "
-    process3_descr2: " we doen een voorstel van een bestaand ontwerp. Deze sturen we door voor feedback & aanpassingen."
+    process3_descr2: " we doen een voorstel voor het ontwerp. Deze sturen we door voor feedback & aanpassingen."
     process4: "UITWERKING APPLICATIE & FEEDBACK"
     process4_descr: "We spreken samen een afleverdatum waarna de applicatie wordt uitgewerkt. De ontwikkeling kan je op de voet meevolgen via een tijdelijk webadres. Achteraf blijven we beschikbaar voor kleine aanpassingen."
     click: "Hoe Klinkt Dit?"
@@ -281,7 +280,7 @@ nl:
     button: "Gratis Website Analyse!"
   # Footer
   footer:
-    disclaimer: "TrueTech - Copyright © %{year}, Alle Rechten Voorbehouden."
+    disclaimer: "Simon Somlai - Copyright © %{year}, Alle Rechten Voorbehouden."
     faq: "Frequente vragen"
     subheader: "Blijf op de hoogte van nieuwe artikels!"
     submessage: "Jouw tijd en aandacht zijn kostbaar. Daarom sturen we jou enkel relevante en praktische informatie die je zelf kan selecteren."
@@ -291,7 +290,7 @@ nl:
     suboptions: "Van wat zou je graag op de hoogte blijven?"
     option1: "Business Artikels"
     option2: "Technology Artikels"
-    option3: "TrueTech Kortingen/Updates"
+    option3: "Algemene Artikels"
   date:
     day_names:
       - zondag

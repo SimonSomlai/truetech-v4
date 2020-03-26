@@ -616,14 +616,6 @@ span.middot {
     font-family: 'Lato', sans-serif;
 }
 
-.font-primary {
-    font-family: 'Raleway', sans-serif;
-}
-
-.font-secondary {
-    font-family: 'Crete Round', serif;
-}
-
 .bgicon {
     display: block;
     position: absolute;
@@ -4137,6 +4129,15 @@ body.stretched .container-fullwidth .breadcrumb {
 
 #content p {
     line-height: 1.8;
+}
+
+#content article .entry-content-blog-single{
+    p, a, ul, ol, li, table{
+        font-family: "Lora", "Times new roman", serif;
+        font-size: 1.25rem; // 33px
+        line-height: 1.65; // 33px
+        margin-bottom: 20px;
+    }
 }
 
 .content-wrap {

@@ -1,6 +1,6 @@
 <div class="col-md-3 left_col">
   <div class="left_col scroll-view">
-    <div class="navbar nav_title"> <%=link_to(home_path , class: "site_title") do %> <i class="fa fa-diamond"></i> <span>TrueTech</span></a> <% end %> </div>
+    <div class="navbar nav_title"> <%=link_to(home_path , class: "site_title") do %> <i class="fa fa-diamond"></i> <span>Simon Somlai</span></a> <% end %> </div>
   <div class="cf"></div>
   <div class="profile cf">
     <div class="profile_pic"> <% if logged_in? %> <%= image_tag(current_user.profile_picture.url, class: "img-circle profile_img") %> <% else %> <%=lazy_image_tag("user", class: "img-circle profile_img") %> <% end %> </div>

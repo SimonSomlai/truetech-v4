@@ -64,11 +64,10 @@ end
     body: body,
     en_title: en_title,
     slug_en: title.parameterize + "-english",
+    slug_nl: title.parameterize + "-dutch",
     en_description: en_description,
     en_body: en_body,
     category: category,
     posted: true,
     user_id: User.first.id)
 end
-
-Rake::Task['workoff'].invoke

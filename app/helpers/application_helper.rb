@@ -15,6 +15,16 @@ module ApplicationHelper
   def comment
   end
 
+  def production_only
+    Rails.env.production?
+  end
+
+  def show_svg(path)
+    File.open("app/assets/images/#{path}", "rb") do |file|
+      raw file.read
+    end
+  end
+
   # Gets time range for x number time ago
   def time_range(unit, timeunit = nil)
     if timeunit == "weeks"

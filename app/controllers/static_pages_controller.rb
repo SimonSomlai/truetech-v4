@@ -21,20 +21,24 @@ class StaticPagesController < ApplicationController
   end
 
   def admin
-    cookies['truetech_admin_cookie'] ||= {
-      :value => true,
-      :expires => 10.years.from_now
-    }
-    @refresh_token = Setting.find_by(key: "analytics_refresh_token")
+    if Rails.env.production?
+      cookies['truetech_admin_cookie'] ||= {
+        :value => true,
+        :expires => 10.years.from_now
+      }
+      @refresh_token = Setting.find_by(key: "analytics_refresh_token")
 
-    if @refresh_token # If there is a refresh token
-      refresh_access_token(@refresh_token.value) # Use it to renew the access token
-      @refresh_token = Setting.find_by(key: "analytics_refresh_token") # Get it
-      service = authorize_google_analytics # Authorize GA
-      get_statistics(service) # Query it for dashboard
-      render "admin"
+      if @refresh_token # If there is a refresh token
+        refresh_access_token(@refresh_token.value) # Use it to renew the access token
+        @refresh_token = Setting.find_by(key: "analytics_refresh_token") # Get it
+        service = authorize_google_analytics # Authorize GA
+        get_statistics(service) # Query it for dashboard
+        render "admin"
+      else
+        set_new_tokens # Set it
+      end
     else
-      set_new_tokens # Set it
+      render "admin"
     end
   end
 

@@ -1,4 +1,4 @@
-# TrueTech
+# Simon Somlai
 
 >Last version of my company website.
 
@@ -28,4 +28,4 @@
 
 - No active to do-s
 
-Made with &lt;3 by <a target="_blank" href="http://www.truetech.be/en"> TrueTech</a>
+Made with &lt;3 by <a target="_blank" href="https://simonsomlai.com/en"> Simon Somlai</a>

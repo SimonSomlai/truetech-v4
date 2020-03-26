@@ -1,4 +1,4 @@
-<% content_for :title, "Single Page | Truetech - Webdesign Antwerpen" %><% content_for :description, t("single.meta") %><% content_for :css do %><%=stylesheet_link_tag "application", "range-sliders" %><% end %>
+<% content_for :title, "Single Page | Webdesign Antwerpen - Simon Somlai" %><% content_for :description, t("single.meta") %><% content_for :css do %><%=stylesheet_link_tag "application", "range-sliders" %><% end %>
 <% content_for :ogtitle, t("single.ogtitle") %>
 <% content_for :ogdescription, t("single.meta") %>
 <% content_for :ogtype, "article" %>
@@ -82,21 +82,21 @@
          </div>
       </div>
       <div class="container cf">
-         <div class="col_one_third nobottommargin">
+         <div class="col_one_third">
             <div class="feature-box fbox-plain">
                <div class="hidden-xs fbox-icon"> <a href="#"><i class="i-alt">1.</i></a> </div>
                <h3><%= t "single.process1" %></h3>
                <p><%= t "single.process1_descr" %></p>
             </div>
          </div>
-         <div class="col_one_third nobottommargin">
+         <div class="col_one_third">
             <div class="feature-box fbox-plain">
                <div class="hidden-xs fbox-icon"> <a href="#"><i class="i-alt">2.</i></a> </div>
                <h3><%= t "single.process2" %></h3>
-               <p><%= t "single.process2_descr1" %> <span data-lightbox="gallery"><a data-lightbox="gallery-item" href="<%=image_path('wireframe.png') %>">'wireframe'</a></span><%= t "single.process2_descr2" %> <strong><%= t "single.process2_descr3" %></strong> <%= t "single.process2_descr4" %></p>
+               <p><%= t "single.process2_descr1" %> <span data-lightbox="gallery"><a data-lightbox="gallery-item" href="<%=image_path('wireframe.png') %>">'wireframe'</a></span><%= t "single.process2_descr2" %> <%= t "single.process2_descr4" %></p>
             </div>
          </div>
-         <div class="col_one_third nobottommargin col_last">
+         <div class="col_one_third col_last">
             <div class="feature-box fbox-plain">
                <div class="hidden-xs fbox-icon"> <a href="#"><i class="i-alt">3.</i></a> </div>
                <h3><%= t "single.process3" %></h3>
@@ -104,42 +104,43 @@
             </div>
          </div>
       </div>
-      <div class="fancy-title title-border title-center topmargin bottommargin">
-         <h2><%= t "single.heading3_first" %> <span><%= t "single.heading3_span" %></span> <%= t "single.heading3_second" %></h2>
-      </div>
-      <div class="pricing-box pricing-extended bottommargin clearfix">
-         <div class="pricing-desc">
-            <div class="pricing-title">
-               <h3><i class="icon-checkbox-checked"></i> <%= t "single.options" %></h3>
+      <% comment do %>
+         <div class="fancy-title title-border title-center topmargin bottommargin">
+            <h2><%= t "single.heading3_first" %> <span><%= t "single.heading3_span" %></span> <%= t "single.heading3_second" %></h2>
+         </div>
+         <div class="pricing-box pricing-extended bottommargin clearfix">
+            <div class="pricing-desc">
+               <div class="pricing-title">
+                  <h3><i class="icon-checkbox-checked"></i> <%= t "single.options" %></h3>
+               </div>
+               <div class="pricing-features">
+                  <ul class="clearfix page-selector">
+                     <li data-toggle="tooltip" data-placement="top" title="" data-original-title="<%= t 'single.responsive_descr' %>" data-item="bootstrap" class="col_one_third nomargin cf"> <i class="icon-resize-horizontal"></i><%= t "single.responsive" %></li>
+                     <li data-toggle="tooltip" data-placement="top" title="" data-original-title="<%= t 'single.optimized_descr' %>" data-item="mobile" class="col_one_third nomargin cf"> <i class="icon-line2-screen-smartphone"></i><%= t 'single.optimized' %></li>
+                     <li data-item="email capture" data-placement="top" title="" data-toggle="tooltip" data-original-title="<%= t 'single.email_descr' %>" class="col_one_third nomargin cf"> <i class="icon-line-mail" ></i><%= t 'single.email' %></li>
+                     <li data-item="slider" class="col_one_third nomargin cf"> <i class="icon-stack3"></i><%= t 'single.images' %></li>
+                     <li data-item="bg video" class="col_one_third nomargin cf"> <i class="icon-line-video"></i><%= t 'single.video' %></li>
+                     <li data-item="lightbox" class="col_one_third nomargin cf" data-placement="top" title="" data-toggle="tooltip" data-original-title="<%= t 'single.lightbox_descr' %>"> <i class="icon-lightbulb"></i><%= t 'single.lightbox' %></li>
+                     <li data-item="parallax" class="col_one_third nomargin cf" data-placement="top" title="" data-toggle="tooltip" data-original-title="<%= t 'single.scroll_descr' %>"> <i class="icon-line2-mouse"></i><%= t 'single.scroll' %></li>
+                     <li data-item="custom" class="col_one_third nomargin cf" data-placement="top" title="" data-toggle="tooltip" data-original-title="<%= t 'single.other_descr' %>"> <i class="icon-line2-magic-wand"></i><%= t 'single.other' %></li>
+                  </ul>
+               </div>
             </div>
-            <div class="pricing-features">
-               <ul class="clearfix page-selector">
-                  <li data-toggle="tooltip" data-placement="top" title="" data-original-title="<%= t 'single.responsive_descr' %>" data-item="bootstrap" class="col_one_third nomargin cf"> <i class="icon-resize-horizontal"></i><%= t "single.responsive" %></li>
-                  <li data-toggle="tooltip" data-placement="top" title="" data-original-title="<%= t 'single.optimized_descr' %>" data-item="mobile" class="col_one_third nomargin cf"> <i class="icon-line2-screen-smartphone"></i><%= t 'single.optimized' %></li>
-                  <li data-item="email capture" data-placement="top" title="" data-toggle="tooltip" data-original-title="<%= t 'single.email_descr' %>" class="col_one_third nomargin cf"> <i class="icon-line-mail" ></i><%= t 'single.email' %></li>
-                  <li data-item="slider" class="col_one_third nomargin cf"> <i class="icon-stack3"></i><%= t 'single.images' %></li>
-                  <li data-item="bg video" class="col_one_third nomargin cf"> <i class="icon-line-video"></i><%= t 'single.video' %></li>
-                  <li data-item="lightbox" class="col_one_third nomargin cf" data-placement="top" title="" data-toggle="tooltip" data-original-title="<%= t 'single.lightbox_descr' %>"> <i class="icon-lightbulb"></i><%= t 'single.lightbox' %></li>
-                  <li data-item="parallax" class="col_one_third nomargin cf" data-placement="top" title="" data-toggle="tooltip" data-original-title="<%= t 'single.scroll_descr' %>"> <i class="icon-line2-mouse"></i><%= t 'single.scroll' %></li>
-                  <li data-item="custom" class="col_one_third nomargin cf" data-placement="top" title="" data-toggle="tooltip" data-original-title="<%= t 'single.other_descr' %>"> <i class="icon-line2-magic-wand"></i><%= t 'single.other' %></li>
-               </ul>
+            <div class="col-md-4 col-sm-6 bottommargin-sm slider-box" style="height: 161px;">
+               <div class="white-section"> <label><%= t 'single.pagenum' %></label> <input class="range_01 " readonly=""> </div>
+            </div>
+            <div class="pricing-action-area" data-toggle="tooltip" data-placement="top" title="" data-original-title="<%= t 'single.pricemessage' %>">
+               <div class="pricing-meta"> <%= t 'single.pricehead' %><i class="icon-question-sign"></i> </div>
+               <div class="pricing-price"> <span class="price-unit"><%= t "single.pricevalue" %></span><span class="price price-special">79</span><span class="price-tenure"><%= t 'single.pricefooter' %></span> </div>
+               <div class="pricing-action"> <a href="#contact" class="button contact-link button-3d button-xlarge btn-block nomargin"><%= t 'single.pricebutton' %></a> </div>
             </div>
          </div>
-         <div class="col-md-4 col-sm-6 bottommargin-sm slider-box" style="height: 161px;">
-            <div class="white-section"> <label><%= t 'single.pagenum' %></label> <input class="range_01 " readonly=""> </div>
+      <% end %>
+         <div class="container cf">
+            <div class="fancy-title title-border title-center bottommargin">
+               <h2><%= t "contact.heading1" %><span> <%= t "contact.heading1_span" %></span>!</h2>
+            </div>
          </div>
-         <div class="pricing-action-area" data-toggle="tooltip" data-placement="top" title="" data-original-title="<%= t 'single.pricemessage' %>">
-            <div class="pricing-meta"> <%= t 'single.pricehead' %><i class="icon-question-sign"></i> </div>
-            <div class="pricing-price"> <span class="price-unit"><%= t "single.pricevalue" %></span><span class="price price-special">79</span><span class="price-tenure"><%= t 'single.pricefooter' %></span> </div>
-            <div class="pricing-action"> <a href="#contact" class="button contact-link button-3d button-xlarge btn-block nomargin"><%= t 'single.pricebutton' %></a> </div>
-         </div>
-      </div>
-      <div id="contact" class="line"></div>
-      <div class="container cf">
-         <div class="fancy-title title-border title-center bottommargin">
-            <h2><%= t "contact.heading1" %><span> <%= t "contact.heading1_span" %></span>!</h2>
-         </div>
-      </div>
       <div class="col-sm-12 col-md-12 contactform">
          <%=form_for(@contact, remote: true, :format=> 'js', :html=>{:class=> "nobottommargin", :name=> "template-contactform", :id=> "template-contactform", :multipart=> true}) do |f| %> 
          <%=render "shared/error_messages", object: f.object %> 

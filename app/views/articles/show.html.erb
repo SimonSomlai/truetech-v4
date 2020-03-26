@@ -1,4 +1,4 @@
-<% content_for :title, meta_title + " | TrueTech - Webdesign Antwerpen" %><% content_for :description, meta_description %>
+<% content_for :title, meta_title + " | Webdesign Antwerpen - Simon Somlai" %><% content_for :description, meta_description %>
 <% content_for :ogtitle, meta_title %>
 <% content_for :ogdescription, meta_description %>
 <% content_for :ogtype, "article" %>
@@ -19,15 +19,17 @@
          <% content_for :menu do %>
          <li> <%=link_to("Home", home_path) %> </li>
          <li class="<%= @article.category.downcase %>-article">
-        <% if I18n.locale == :nl %>
-            <%= link_to locale: "en", article: @article.slug_en do %>
-                <div class="locale locale-menu <%= I18n.locale %>"></div>
+         <li>
+            <% if I18n.locale == :nl %>
+               <%= link_to locale: "en" , article: @article.slug_en do %>
+                     EN/<b style="color: #1982AE;">NL</b>
+               <% end %> 
+            <% else  %>
+               <%= link_to locale: "nl", article: @article.slug_nl do %>
+                     <b style="color: #1982AE;">EN</b>/NL
+               <% end %> 
             <% end %>
-        <% else  %>
-            <%= link_to locale: "nl", article: @article.slug_nl do %>
-                <div class="locale locale-menu <%= I18n.locale %>"></div>
-            <% end %>
-        <% end %>
+         </li>
         </li>
          <% end %> <%=render "shared/menu" %>
       </div>

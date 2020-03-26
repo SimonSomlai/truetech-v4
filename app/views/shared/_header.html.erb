@@ -1,8 +1,9 @@
 <div class="container clearfix">
   <%= link_to(home_path) do %>
-    <div id="logo" class="center-block text-center">
-     <h1 class="main-logo center-block text-center">Simon Somlai</h1>
-     <h2 class="logo-subtitle"><%= t "home.sub"%></h2>
-    </div>
+  <div id="logo" class="center-block text-center">
+    <h1 class="main-logo center-block text-center">
+      <%= show_svg("logo.svg") %>
+    </h1>
+  </div>
   <% end %>
 </div>

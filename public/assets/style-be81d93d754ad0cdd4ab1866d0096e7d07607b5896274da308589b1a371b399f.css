@@ -184,11 +184,16 @@ body > div > div > div.right_col {
 /* line 235, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 h1.main-logo {
   white-space: no-wrap;
-  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
   margin-bottom: 0;
 }
+/* line 238, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+h1.main-logo svg {
+  height: 90px;
+  width: 90px;
+  color: #444444;
+}
 
-/* line 241, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 245, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 h2.logo-subtitle {
   letter-spacing: 3.4px;
   font-size: 17px;
@@ -237,7 +242,7 @@ h2.logo-subtitle {
     transform: translateY(-8px);
   }
 }
-/* line 297, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 301, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .service-item-link:hover i {
   -webkit-animation-name: hvr-bob-float, hvr-bob;
   animation-name: hvr-bob-float, hvr-bob;
@@ -255,12 +260,12 @@ h2.logo-subtitle {
   animation-direction: normal, alternate;
 }
 
-/* line 314, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 318, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .copyright-links {
   margin-bottom: 30px;
 }
 
-/* line 318, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 322, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 #copyrights .text-center strong,
 .blog-single-subscribe .text-center strong {
   font-size: 18px;
@@ -269,103 +274,103 @@ h2.logo-subtitle {
 /* Home page responsiveness */
 /* Medium*/
 @media only screen and (max-width: 992px) {
-  /* line 327, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 331, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   #logo {
     height: auto;
   }
-  /* line 329, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 333, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   #logo h1 {
     font-size: 40px;
     text-align: center;
   }
-  /* line 334, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 338, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   #logo h2.logo-subtitle {
     margin-bottom: 0;
   }
 }
 /* Medium */
 @media only screen and (max-width: 768px) {
-  /* line 342, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 346, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   .team .team-image img {
     float: left;
     width: 40%;
     margin-right: 3rem;
   }
 
-  /* line 348, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 352, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   .team-desc {
     top: -2rem;
   }
 
-  /* line 352, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 356, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   .container:not(.admin-body) {
     width: 95% !important;
   }
 
-  /* line 356, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 360, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   #wrapper > div > div:nth-child(5) {
     width: 100% !important;
   }
 }
 /* Small */
 @media only screen and (max-width: 560px) {
-  /* line 364, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 368, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   .owl-latest-news .owl-nav .owl-next, .portfolio-carousel .owl-nav .owl-next {
     right: -18px;
     opacity: 1;
   }
 
-  /* line 370, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 374, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   .article-block {
     display: block;
   }
 
-  /* line 374, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 378, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   .article-title {
     margin-bottom: 0;
   }
 
-  /* line 378, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 382, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   #services > div > div.container.clearfix > div.col-md-6.bottommargin {
     margin-bottom: 0 !important;
   }
 
-  /* line 382, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 386, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   .team .team-image img {
     float: none;
     width: 50%;
     margin: 0 auto 2rem auto;
   }
 
-  /* line 388, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 392, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   .team.team-list .team-desc {
     text-align: center;
   }
 
-  /* line 392, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 396, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   .social-icon {
     display: inline-block;
     float: none;
   }
 
-  /* line 397, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 401, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   .twitter-feed,
   .contactbutton,
   #google-map {
     display: none;
   }
 
-  /* line 403, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 407, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   #header > div.container.clearfix {
     height: auto;
   }
 
-  /* line 407, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 411, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   .services-heading {
     margin: 0 auto 30px auto;
   }
 
-  /* line 411, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 415, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   .services-list {
     display: -webkit-box;
     display: -moz-box;
@@ -387,13 +392,13 @@ h2.logo-subtitle {
 }
 /*/ ------------------------------ ARTICLE ------------------------------------/*/
 /* Share buttons */
-/* line 434, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 438, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 #share-buttons img:hover {
   transition: all 0.35s ease-in-out;
   opacity: 1;
 }
 
-/* line 439, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 443, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 #share-buttons img {
   opacity: 0.7;
   width: 45px;
@@ -402,86 +407,86 @@ h2.logo-subtitle {
   display: inline;
 }
 
-/* line 448, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 452, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .entry-content-blog-single {
   font-size: 1.05rem !important;
   margin-top: 5px;
 }
 
-/* line 453, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 457, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .entry-content-blog-single h1 {
   font-size: 2rem !important;
 }
 
-/* line 457, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 461, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .entry-content-blog-single h2 {
   font-size: 1.5rem !important;
 }
 
-/* line 461, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 465, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .entry-content-blog-single h3 {
   font-size: 1.2rem !important;
 }
 
-/* line 465, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 469, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 blockquote p {
   font-weight: bold;
   margin-bottom: 0;
   font-size: 1.15rem !important;
 }
 
-/* line 471, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 475, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .subscribe h5 {
   margin-bottom: 15px;
   text-align: center;
 }
 
-/* line 476, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 480, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .subscribe .btn:not(.index-subscribe) {
   text-transform: none !important;
   padding: 5px 12px !important;
 }
 
-/* line 481, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 485, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .subscribe.checkbox label {
   display: inline !important;
   text-transform: none;
 }
 
-/* line 486, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 490, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .subscribe.checkbox .checkbox {
   display: inline-block;
   position: static;
   margin: 0 !important;
 }
 
-/* line 492, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 496, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .blog-single-subscribe {
   margin-top: 30px !important;
 }
 
-/* line 496, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 500, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .posted-on .contact-link {
   text-transform: capitalize;
 }
 
-/* line 500, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 504, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 article img {
   border: 1px solid #d8d8d8;
 }
 
-/* line 504, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 508, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 img.side {
   max-width: 55%;
   margin: 25px;
 }
 
-/* line 509, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 513, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .article-show-related .entry-content-blog-single > p {
   font-size: 14px;
 }
 
-/* line 513, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 517, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .unicorn {
   width: 130px;
   position: fixed;
@@ -489,7 +494,7 @@ img.side {
   left: -10%;
 }
 
-/* line 520, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 524, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .unicorn.active {
   z-index: 500;
   animation: example 27s;
@@ -907,24 +912,38 @@ img.side {
     bottom: -100%;
   }
 }
+@media only screen and (max-width: 992px) {
+  /* line 784, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  h1.main-logo svg {
+    height: 30px;
+    width: 30px;
+  }
+}
 @media only screen and (max-width: 560px) {
-  /* line 780, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 793, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   .container.clearfix.blog-single {
     height: 7.7rem !important;
   }
 
-  /* line 784, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 797, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   #content,
   #blog-article.blog-single-content {
     width: 100% !important;
   }
 
-  /* line 789, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 803, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  #content article .entry-content-blog-single p, #content article .entry-content-blog-single a, #content article .entry-content-blog-single ul, #content article .entry-content-blog-single ol, #content article .entry-content-blog-single li, #content article .entry-content-blog-single table {
+    font-family: "Lora", "Times new roman", serif;
+    font-size: 1.05rem;
+    margin-bottom: 15px;
+  }
+
+  /* line 810, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   h1.entry-title {
     font-size: 24px;
   }
 
-  /* line 793, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 814, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   img.side {
     margin: 20px 0px;
     max-width: 80%;
@@ -933,45 +952,45 @@ img.side {
     margin: 0 auto;
   }
 }
-/* line 806, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 827, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .all-articles .portfolio-item .portfolio-image img {
   min-height: 184px;
 }
 
 /*/ ------------------------------ PROJECTS ------------------------------------/*/
 /* h2 title */
-/* line 816, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 837, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .portfolio-single-title {
   padding-top: 35px;
 }
 
-/* line 820, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 841, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .portfolio-features li span {
   font-weight: 500;
   color: #666;
 }
 
-/* line 825, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 846, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .portfolio-features li span i {
   color: #333;
 }
 
-/* line 829, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 850, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .portfolio-features div {
   margin: 0 !important;
 }
 
-/* line 833, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 854, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .portfolio-features span {
   text-transform: capitalize;
 }
 
-/* line 837, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 858, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .portfolio-features span.cms {
   text-transform: uppercase;
 }
 
-/* line 841, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 862, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .main {
   padding-top: 15px;
   -webkit-transition: all 0.35s ease-in-out;
@@ -980,7 +999,7 @@ img.side {
   transition: all 0.35s ease-in-out;
 }
 
-/* line 846, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 867, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .portfolio-single-image img:not(.main) {
   -webkit-transition: all 0.35s ease-in-out;
   -moz-transition: all 0.35s ease-in-out;
@@ -990,36 +1009,36 @@ img.side {
   max-height: 100% !important;
 }
 
-/* line 852, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 873, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .portfolio-single-image img:hover {
   opacity: 1;
 }
 
 /*/ ------------------------------ SERVICES SINGLE 1 ------------------------------------/*/
-/* line 857, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 878, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .slider-box {
   height: 70px !important;
 }
 
-/* line 861, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 882, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .page-selector li {
   cursor: pointer;
   width: 23% !important;
 }
 
-/* line 866, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 887, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .selected {
   color: #1982AE !important;
   font-weight: bold;
 }
 
-/* line 871, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 892, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .learn-more {
   width: 250px;
 }
 
 @media only screen and (max-width: 767px) {
-  /* line 877, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 898, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   .pricing-features .page-selector li {
     margin-bottom: 0 !important;
     width: 100% !important;
@@ -1027,20 +1046,20 @@ img.side {
 }
 /*/ ------------------------------ SERVICES SINGLE 4 ------------------------------------/*/
 @media only screen and (max-width: 995px) {
-  /* line 886, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 907, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   .col_one_fourth.nobottommargin {
     width: 80%;
     margin-bottom: 30px !important;
   }
 }
 /*/ ------------------------------ WEBSITE ANALYSE ------------------------------------/*/
-/* line 893, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 914, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .heading-block.website-analyse:after {
   content: none;
   border: none;
 }
 
-/* line 898, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 919, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .website-analyse#template-contactform {
   background-color: rgba(25, 130, 174, 0.5);
   padding: 50px 50px 25px;
@@ -1052,14 +1071,14 @@ img.side {
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-/* line 909, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 930, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .website-analyse#contact-form-overlay-mini {
   float: none;
   margin: 0 auto;
   width: 75%;
 }
 
-/* line 915, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 936, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 #template-contactform-submit.site-analyse {
   display: block;
   width: 80%;
@@ -1067,23 +1086,23 @@ img.side {
   background-color: #b73333;
 }
 
-/* line 922, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 943, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 #template-contactform-submit.button.site-analyse:hover {
   background-color: #D03939 !important;
 }
 
-/* line 926, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 947, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 #template-contactform label {
   font-size: 15px;
 }
 
-/* line 930, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+/* line 951, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
 .website-analyse-get h3 {
   font-size: 19px;
 }
 
 @media only screen and (max-width: 560px) {
-  /* line 935, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
+  /* line 956, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
   .website-analyse#template-contactform {
     padding: 20px 25px;
   }

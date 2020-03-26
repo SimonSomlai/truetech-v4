@@ -10,186 +10,188 @@
       <%= render "shared/admin_menu" %>
       <div class="right_col cf" role="main">
         <!-- top tiles -->
-        <div class="row tile_count">
-          <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-user"></i> Total Visitors</span>
-            <div class="count"><%= @today.visitors %></div>
-            <span>Today</span>
+        <% production_only do %>
+          <div class="row tile_count">
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-user"></i> Total Visitors</span>
+              <div class="count"><%= @today.visitors %></div>
+              <span>Today</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-eye"></i> Total Pageviews</span>
+              <div class="count"><%=  @today.pageviews %></div>
+              <span>Today</span>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-pencil"></i> Total Articles</span>
+              <div class="count"><%= Article.all.count %></div>
+            </div>
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-diamond"></i> Total Projects</span>
+              <div class="count"><%= Project.all.count %></div>
+            </div>
           </div>
-          <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-eye"></i> Total Pageviews</span>
-            <div class="count"><%=  @today.pageviews %></div>
-            <span>Today</span>
-          </div>
-          <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-pencil"></i> Total Articles</span>
-            <div class="count"><%= Article.all.count %></div>
-          </div>
-          <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-            <span class="count_top"><i class="fa fa-diamond"></i> Total Projects</span>
-            <div class="count"><%= Project.all.count %></div>
-          </div>
-        </div>
-        <div class="row tile_count">
-          <div class="col-md-10 col-sm-10 col-xs-12">
-            <div class="x_panel">
-              <div class="clearfix"></div>
-              <div class="x_content">
-                <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
-                  <div class="panel">
-                    <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      <h4 class="panel-title">Site Traffic</h4>
-                    </a>
-                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" aria-expanded="true">
-                      <div class="panel-body">
-                        <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                          <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Weekly <span class="hidden-xs">Stats</span></a>
-                            </li>
-                            <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Monthly <span class="hidden-xs">Stats</span></a>
-                            </li>
-                          </ul>
-                          <div id="myTabContent" class="tab-content">
-                            <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-                              <iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
-                              <canvas id="mybarChart" width="484" height="242" style="width: 484px; height: 242px;"></canvas>
-                            </div>
-                            <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-                              <iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
-                              <canvas id="mybarChart2" width="484" height="242" style="width: 484px; height: 242px;"></canvas>
+          <div class="row tile_count">
+            <div class="col-md-10 col-sm-10 col-xs-12">
+              <div class="x_panel">
+                <div class="clearfix"></div>
+                <div class="x_content">
+                  <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel">
+                      <a class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <h4 class="panel-title">Site Traffic</h4>
+                      </a>
+                      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" aria-expanded="true">
+                        <div class="panel-body">
+                          <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                              <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Weekly <span class="hidden-xs">Stats</span></a>
+                              </li>
+                              <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Monthly <span class="hidden-xs">Stats</span></a>
+                              </li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content">
+                              <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                                <iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
+                                <canvas id="mybarChart" width="484" height="242" style="width: 484px; height: 242px;"></canvas>
+                              </div>
+                              <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                                <iframe class="chartjs-hidden-iframe" style="width: 100%; display: block; border: 0px; height: 0px; margin: 0px; position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px;"></iframe>
+                                <canvas id="mybarChart2" width="484" height="242" style="width: 484px; height: 242px;"></canvas>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="panel">
-                    <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      <h4 class="panel-title">Site Referrals</h4>
-                    </a>
-                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false">
-                      <div class="panel-body">
-                        <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                          <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#tab_content3" id="weekly-referral-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="hidden-xs">Referrals</span> Today</a>
-                            </li>
-                            <li role="presentation" class=""><a href="#tab_content4" role="tab" id="monthly-referral-tab" data-toggle="tab" aria-expanded="false">Weekly <span class="hidden-xs">Referrals</span></a>
-                            </li>
-                            <li role="presentation" class=""><a href="#tab_contentfive" role="tab" id="keyword-tab" data-toggle="tab" aria-expanded="false">Keywords</a>
-                            </li>
-                          </ul>
-                          <div id="myTabContent2" class="tab-content">
-                            <div role="tabpanel" class="tab-pane active in" id="tab_content3" aria-labelledby="weekly-referral-tab">
-                              <table class="table table-hover table-striped">
-                                <thead>
-                                  <tr>
-                                    <th>Referrer</th>
-                                    <th>Landing</th>
-                                    <th>Visitors</th>
-                                    <th>Pageviews</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <% @today.referrers.each do |referrer| %>
+                    <div class="panel">
+                      <a class="panel-heading collapsed" role="tab" id="headingTwo" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <h4 class="panel-title">Site Referrals</h4>
+                      </a>
+                      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false">
+                        <div class="panel-body">
+                          <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                              <li role="presentation" class="active"><a href="#tab_content3" id="weekly-referral-tab" role="tab" data-toggle="tab" aria-expanded="true"><span class="hidden-xs">Referrals</span> Today</a>
+                              </li>
+                              <li role="presentation" class=""><a href="#tab_content4" role="tab" id="monthly-referral-tab" data-toggle="tab" aria-expanded="false">Weekly <span class="hidden-xs">Referrals</span></a>
+                              </li>
+                              <li role="presentation" class=""><a href="#tab_contentfive" role="tab" id="keyword-tab" data-toggle="tab" aria-expanded="false">Keywords</a>
+                              </li>
+                            </ul>
+                            <div id="myTabContent2" class="tab-content">
+                              <div role="tabpanel" class="tab-pane active in" id="tab_content3" aria-labelledby="weekly-referral-tab">
+                                <table class="table table-hover table-striped">
+                                  <thead>
                                     <tr>
-                                      <td><%= referrer[:referrer] %></td>
-                                      <td><%= referrer[:landing] %></td>
-                                      <td><%= referrer[:visitors] %></td>
-                                      <td><%= referrer[:pageviews] %></td>
+                                      <th>Referrer</th>
+                                      <th>Landing</th>
+                                      <th>Visitors</th>
+                                      <th>Pageviews</th>
                                     </tr>
-                                  <% end %>
-                                </tbody>
-                              </table>
-                            </div>
-                            <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="monthly-referral-tab">
-                              <table class="table table-hover table-striped">
-                                <thead>
-                                  <tr>
-                                    <th>Referrer</th>
-                                    <th>Landing</th>
-                                    <th>Visitors</th>
-                                    <th>Pageviews</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <% @weekly_referrers.each do |referrer| %>
-                                    <tr>
-                                      <td><%= referrer[0] %></td>
-                                      <td><%= referrer[1] %></td>
-                                      <td><%= referrer[2] %></td>
-                                      <td><%= referrer[3] %></td>
-                                    </tr>
-                                  <% end %>
-                                </tbody>
-                              </table>
-                            </div>
-                            <div role="tabpanel" class="tab-pane fade" id="tab_contentfive" aria-labelledby="keyword-tab">
-                              <table class="table table-hover table-striped">
-                                <thead>
-                                  <tr>
-                                    <th>Keywords</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="panel">
-                    <a class="panel-heading collapsed" role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      <h4 class="panel-title">Top Content</h4>
-                    </a>
-                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
-                      <div class="panel-body">
-                        <div class="" role="tabpanel" data-example-id="togglable-tabs">
-                          <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#tab_content5" id="weekly-referral-tab" role="tab" data-toggle="tab" aria-expanded="true">Today</a>
-                            </li>
-                            <li role="presentation" class=""><a href="#tab_content6" role="tab" id="monthly-referral-tab" data-toggle="tab" aria-expanded="false">This Week</a>
-                            </li>
-                          </ul>
-                          <div id="myTabContent2" class="tab-content">
-                            <div role="tabpanel" class="tab-pane active in" id="tab_content5" aria-labelledby="weekly-referral-tab">
-                              <table class="table table-hover table-striped">
-                                <thead>
-                                  <tr>
-                                    <th>Page name</th>
-                                    <th>Views</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <% @top_content_today.each do |top_content| %>
-                                    <tr>
-                                      <td><%= top_content[:page]  %></td>
-                                      <td><%= top_content[:pageviews] %></td>
-                                    <tr>
-                                  <% end %>
-                                    </tbody>
-                                  </table>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade" id="tab_content6" aria-labelledby="monthly-referral-tab">
-                                  <table class="table table-hover table-striped">
-                                    <thead>
+                                  </thead>
+                                  <tbody>
+                                    <% @today.referrers.each do |referrer| %>
                                       <tr>
-                                        <th>Page name</th>
-                                        <th>Visitors</th>
-                                        <th>Views</th>
+                                        <td><%= referrer[:referrer] %></td>
+                                        <td><%= referrer[:landing] %></td>
+                                        <td><%= referrer[:visitors] %></td>
+                                        <td><%= referrer[:pageviews] %></td>
                                       </tr>
-                                    </thead>
-                                    <tbody>
-                                      <% @top_content_this_week.each do |top_content| %>
+                                    <% end %>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div role="tabpanel" class="tab-pane fade" id="tab_content4" aria-labelledby="monthly-referral-tab">
+                                <table class="table table-hover table-striped">
+                                  <thead>
+                                    <tr>
+                                      <th>Referrer</th>
+                                      <th>Landing</th>
+                                      <th>Visitors</th>
+                                      <th>Pageviews</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <% @weekly_referrers.each do |referrer| %>
+                                      <tr>
+                                        <td><%= referrer[0] %></td>
+                                        <td><%= referrer[1] %></td>
+                                        <td><%= referrer[2] %></td>
+                                        <td><%= referrer[3] %></td>
+                                      </tr>
+                                    <% end %>
+                                  </tbody>
+                                </table>
+                              </div>
+                              <div role="tabpanel" class="tab-pane fade" id="tab_contentfive" aria-labelledby="keyword-tab">
+                                <table class="table table-hover table-striped">
+                                  <thead>
+                                    <tr>
+                                      <th>Keywords</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel">
+                      <a class="panel-heading collapsed" role="tab" id="headingThree" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <h4 class="panel-title">Top Content</h4>
+                      </a>
+                      <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
+                        <div class="panel-body">
+                          <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                              <li role="presentation" class="active"><a href="#tab_content5" id="weekly-referral-tab" role="tab" data-toggle="tab" aria-expanded="true">Today</a>
+                              </li>
+                              <li role="presentation" class=""><a href="#tab_content6" role="tab" id="monthly-referral-tab" data-toggle="tab" aria-expanded="false">This Week</a>
+                              </li>
+                            </ul>
+                            <div id="myTabContent2" class="tab-content">
+                              <div role="tabpanel" class="tab-pane active in" id="tab_content5" aria-labelledby="weekly-referral-tab">
+                                <table class="table table-hover table-striped">
+                                  <thead>
+                                    <tr>
+                                      <th>Page name</th>
+                                      <th>Views</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <% @top_content_today.each do |top_content| %>
+                                      <tr>
+                                        <td><%= top_content[:page]  %></td>
+                                        <td><%= top_content[:pageviews] %></td>
+                                      <tr>
+                                    <% end %>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                  <div role="tabpanel" class="tab-pane fade" id="tab_content6" aria-labelledby="monthly-referral-tab">
+                                    <table class="table table-hover table-striped">
+                                      <thead>
                                         <tr>
-                                          <td><%= top_content[0]  %></td>
-                                          <td><%= top_content[1]  %></td>
-                                          <td><%= top_content[2]  %></td>
+                                          <th>Page name</th>
+                                          <th>Visitors</th>
+                                          <th>Views</th>
                                         </tr>
-                                      <% end %>
-                                    </tbody>
-                                  </table>
+                                      </thead>
+                                      <tbody>
+                                        <% @top_content_this_week.each do |top_content| %>
+                                          <tr>
+                                            <td><%= top_content[0]  %></td>
+                                            <td><%= top_content[1]  %></td>
+                                            <td><%= top_content[2]  %></td>
+                                          </tr>
+                                        <% end %>
+                                      </tbody>
+                                    </table>
+                                  </div>
                                 </div>
                               </div>
                             </div>
@@ -202,11 +204,12 @@
               </div>
             </div>
           </div>
-        </div>
+        <% end %>
       </div>
       <% content_for :js do %>
         <%= javascript_include_tag "Chart.min", "jquery_ujs", "custom", "script" %>
         <script>
+          <% production_only do %>
           Chart.defaults.global.legend = {
                           enabled: false
                       };
@@ -264,6 +267,7 @@
               }
           }
       });
+      <% end %>
         </script>
 
       <% end %>

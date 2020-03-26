@@ -1,8 +1,7 @@
 en:
   home:
-    meta:  "Welcome to TrueTech – We’re a creative and modern web development company and offer business owners custom webdesign to attract and convert more visitors. "
-    ogtitle: "Professional Web Development - TrueTech"
-    sub: "Professional Web Development"
+    meta:  "Welcome to Web Design Antwerp - Simon Somlai | I'm a freelance developer and offer business owners my expertise in creating their modern applications"
+    ogtitle: "Home | Web Design Antwerp - Simon Somlai"
     nav:
       diensten: "services"
       nieuws: "news"
@@ -87,9 +86,9 @@ en:
     process1_descr: "We sit together for an informal one-on-one/skype interview to analyze your unique situation. If we’ve clarified exactly what you’ll need, I’ll propose the available options. If we’re able to find an agreement that works for the both of us, we go on to the next stage!"
     process2: "First Draft"
     process2_descr1: "If the design doesn't exist already, we'll make a  "
-    process2_descr2: " and forward this for feedback "
+    process2_descr2: " and forward this for feedback. "
     process2_descr3: "or"
-    process2_descr4: " we we make a proposal of an existing design. When the design has been determined, we proceed directly to the next step."
+    process2_descr4: " Then we finish the design based on your preferences. When the design has been finalized, we proceed directly to the next step."
     process3: "Development & FEEDBACK"
     process3_descr: "We'll discuss a delivery date, whereafter the page will be developed. We'll forward it for feedback and make adjustments as required."
     heading3_first: "Get A"
@@ -202,7 +201,7 @@ en:
     process2_descr2: " This way we can clearly see what pages and functionality are required."
     process3: "Design"
     process3_descr: "Based on this diagram, we start working on developing the individual pages offline"
-    process3_descr2: " we make a proposition of existing designs which can be used. During this fase we'll continuously forward the design for feedback and ajustments."
+    process3_descr2: " we make a proposition of designs which can be used. During this fase we'll continuously forward the design for feedback and ajustments."
     process4: "APP DEVELOPMENT & FEEDBACK"
     process4_descr: "We specify a delivery date together, whereafter the application is developed. The development can be followed closely on a temporary web address. On project completion, we remain available for minor adjustments."
     click: "How Does This Sound?"
@@ -279,7 +278,7 @@ en:
     button: "Free Website Analysis!"
   # Footer
   footer:
-    disclaimer: "TrueTech - Copyright © %{year}, All Rights Reserved."
+    disclaimer: "Simon Somlai - Copyright © %{year}, All Rights Reserved."
     faq: "FAQ"
     subheader: "Stay updated about new articles!"
     submessage: "Your time and attention are valuable. Therefore we only send out practical and relevant information you can choose yourself!"
@@ -289,4 +288,4 @@ en:
     suboptions: "What would you like to stay updated about?"
     option1: "Business Articles"
     option2: "Technology Articles"
-    option3: "TrueTech Discounts/Updates"
+    option3: "General Articles"
