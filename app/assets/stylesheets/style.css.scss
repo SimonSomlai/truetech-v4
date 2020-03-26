@@ -117,7 +117,6 @@ a {
   @include transition(0.35s);
   height: 25px;
   width: 25px;
-  background-image: url(asset_path("locale.png"));
   background-size: cover;
 }
 

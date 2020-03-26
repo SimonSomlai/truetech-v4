@@ -19,18 +19,16 @@
          <% content_for :menu do %>
          <li> <%=link_to("Home", home_path) %> </li>
          <li class="<%= @article.category.downcase %>-article">
-         <li>
             <% if I18n.locale == :nl %>
                <%= link_to locale: "en" , article: @article.slug_en do %>
-                     <div class="locale locale-menu">EN/<b style="color: #1982AE;">NL</b></div>
+                     EN/<b style="color: #1982AE;">NL</b>
                <% end %> 
             <% else  %>
                <%= link_to locale: "nl", article: @article.slug_nl do %>
-                     <div class="locale locale-menu"><b style="color: #1982AE;">EN</b>/NL</div>
+                     <b style="color: #1982AE;">EN</b>/NL
                <% end %> 
             <% end %>
-         </li>
-        </li>
+         </li>        
          <% end %> <%=render "shared/menu" %>
       </div>
    </header>
