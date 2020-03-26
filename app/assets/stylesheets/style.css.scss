@@ -799,10 +799,10 @@ $high3: 7deg;
   }
 
   #content article .entry-content-blog-single{
-    a{
+    a, li{
       font-family: "Lora", "Times new roman", serif;
     }
-    p, ul, ol, li, table{
+    p, ul, ol, table{
       font-family: "Lora", "Times new roman", serif;
       font-size: 1.05rem;
       margin-bottom: 15px;

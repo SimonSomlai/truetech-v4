@@ -4132,10 +4132,10 @@ body.stretched .container-fullwidth .breadcrumb {
 }
 
 #content article .entry-content-blog-single{
-    a{
+    a, li{
         font-family: "Lora", "Times new roman", serif;
     }
-    p, ul, ol, li, table{
+    p, ul, ol, table{
         font-family: "Lora", "Times new roman", serif;
         font-size: 1.25rem; // 33px
         line-height: 1.65; // 33px

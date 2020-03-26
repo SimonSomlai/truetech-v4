@@ -932,11 +932,11 @@ img.side {
   }
 
   /* line 803, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
-  #content article .entry-content-blog-single a {
+  #content article .entry-content-blog-single a, #content article .entry-content-blog-single li {
     font-family: "Lora", "Times new roman", serif;
   }
   /* line 806, /Users/simon/Desktop/Code/truetech-v4/app/assets/stylesheets/style.css.scss */
-  #content article .entry-content-blog-single p, #content article .entry-content-blog-single ul, #content article .entry-content-blog-single ol, #content article .entry-content-blog-single li, #content article .entry-content-blog-single table {
+  #content article .entry-content-blog-single p, #content article .entry-content-blog-single ul, #content article .entry-content-blog-single ol, #content article .entry-content-blog-single table {
     font-family: "Lora", "Times new roman", serif;
     font-size: 1.05rem;
     margin-bottom: 15px;
