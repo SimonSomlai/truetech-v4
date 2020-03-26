@@ -129,28 +129,6 @@
                </div>
                <% end %>
             </div>
-            <div class="col-lg-12 col-hidden article-block">
-               <% @relatedarticles.each do |article| %>
-               <a href="<%=articles_show_path(article) %>">
-                  <div class="article-div">
-                     <h3 class="article-title">
-                       <% if I18n.locale == :en %>
-                         <%= article.en_title %>
-                      <% else  %>
-                           <%=article.title %>
-                      <% end %>
-                     </h3>
-                     <p class="article-description">
-                       <% if I18n.locale == :en %>
-                        <%= article.en_description %>
-                      <% else %>
-                        <%= article.description %>
-                      <% end %>
-                     </p>
-                  </div>
-               </a>
-               <% end %>
-            </div>
          </div>
       </div>
    </div>
