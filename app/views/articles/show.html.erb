@@ -22,11 +22,11 @@
          <li>
             <% if I18n.locale == :nl %>
                <%= link_to locale: "en" , article: @article.slug_en do %>
-                     EN/<b style="color: #1982AE;">NL</b>
+                     <div class="locale locale-menu">EN/<b style="color: #1982AE;">NL</b></div>
                <% end %> 
             <% else  %>
                <%= link_to locale: "nl", article: @article.slug_nl do %>
-                     <b style="color: #1982AE;">EN</b>/NL
+                     <div class="locale locale-menu"><b style="color: #1982AE;">EN</b>/NL</div>
                <% end %> 
             <% end %>
          </li>
