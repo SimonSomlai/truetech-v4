@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -18,10 +20,9 @@ Rails.application.configure do
   # Deliver mails through test environment
   config.action_mailer.delivery_method = :test
   # Set default host variable
-  host = "localhost:3000"
-  # Set default url path for mailers 
-  config.action_mailer.default_url_options = {host: host}
-
+  host = 'localhost:3000'
+  # Set default url path for mailers
+  config.action_mailer.default_url_options = { host: host }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -37,8 +38,6 @@ Rails.application.configure do
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
-
-  
 
   config.assets.compress = true
   # Adds additional error checking when serving assets at runtime.

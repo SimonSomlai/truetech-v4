@@ -2,7 +2,6 @@
 $("#message-success").remove() // Remove previous messages
 
 var message = "<%= raw t('home.contact.success', name: @contact.name, day: l(Time.now, format: '%A').downcase ) %>"
-console.log(message)
 $(".contactform").prepend("<div id='message-success' class='alert alert-success col-hidden contactform-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button><i class='icon-thumbs-up'></i>"+ message +"</div>")
 $("#message-success").slideDown(500)
 $('input[type="text"], input[type="email"], input[type="file"], textarea').val("")

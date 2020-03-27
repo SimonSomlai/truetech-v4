@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -60,16 +62,16 @@ Rails.application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
 
-  config.action_mailer.default_url_options = { host: "https://truetech.herokuapp.com/"  }
+  config.action_mailer.default_url_options = { host: 'https://truetech.herokuapp.com/' }
   config.action_mailer.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
-    :user_name => ENV['SENDGRID_USERNAME'],
-    :password =>  ENV['SENDGRID_PASSWORD'],
-    :domain =>    'heroku.com',
-    :address =>   'smtp.sendgrid.net',
-    :port =>      587,
-    :authentication => :plain,
-    :enable_starttls_auto => true
+    user_name: ENV['SENDGRID_USERNAME'],
+    password: ENV['SENDGRID_PASSWORD'],
+    domain: 'heroku.com',
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
   }
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -81,18 +83,23 @@ Rails.application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 
-  client = Dalli::Client.new((ENV["MEMCACHIER_SERVERS"] || "").split(","),
-                             :username => ENV["MEMCACHIER_USERNAME"],
-                             :password => ENV["MEMCACHIER_PASSWORD"],
-                             :failover => true,
-                             :socket_timeout => 1.5,
-                             :socket_failure_delay => 0.2,
-                             :value_max_bytes => 10485760)
+  client = Dalli::Client.new((ENV['MEMCACHIER_SERVERS'] || '').split(','),
+                             username: ENV['MEMCACHIER_USERNAME'],
+                             password: ENV['MEMCACHIER_PASSWORD'],
+                             failover: true,
+                             socket_timeout: 1.5,
+                             socket_failure_delay: 0.2,
+                             value_max_bytes: 10_485_760)
+
   config.action_dispatch.rack_cache = {
-    :metastore    => client,
-    :entitystore  => client
+    metastore: client,
+    entitystore: client
   }
-  config.public_file_server.headers = { 'Cache-Control' => 'public, max-age=2592000' }
+
+  config.public_file_server.headers = {
+    'Cache-Control' => 'public, s-maxage=31536000, max-age=86400',
+    'Expires' => 1.day.from_now.httpdate.to_s
+  }
 
   config.action_dispatch.default_headers = {
     'X-Frame-Options' => 'ALLOWALL'
