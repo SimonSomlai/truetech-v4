@@ -97,7 +97,9 @@
               </div>
               <div class="portfolio-desc">
                 <h3> <%=link_to(project.title, project_path(project)) %> </h3>
-                <a class="portfolio-features" href="/<%=project.service.gsub(/ /, '-') %>"> <span><%= category(project) %> </span> </a>
+                <%= link_to project_path(project), class: "portfolio-features" do %>
+                  <span><%= category(project) %></span>
+                <% end %>
               </div>
             </div>
           </div>
