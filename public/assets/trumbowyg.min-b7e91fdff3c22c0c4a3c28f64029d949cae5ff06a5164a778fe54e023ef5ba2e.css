@@ -23,10 +23,12 @@
 
 .trumbowyg-box ul, .trumbowyg-box ol{
   padding-left: 20px;
+  font-size: 20px;
 }
 
 .trumbowyg-box li{
   list-style: disc;
+  font-size: 20px;
 }
 
 .trumbowyg-box a{
