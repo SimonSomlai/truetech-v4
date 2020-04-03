@@ -20,6 +20,14 @@
   font-size: 20px;
 }
 
+.trumbowyg-box ul, .trumbowyg-box ol{
+  padding-left: 20px;
+}
+
+.trumbowyg-box li{
+  list-style: disc;
+}
+
 .trumbowyg-box a{
   color: blue;
   text-decoration: underline;
