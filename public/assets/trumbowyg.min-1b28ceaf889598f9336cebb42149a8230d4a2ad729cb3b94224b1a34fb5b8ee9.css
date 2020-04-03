@@ -70,6 +70,13 @@
   padding-right: 20%;
 }
 
+@media screen and (max-width: 993px) {
+  .trumbowyg-editor{
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+
 .trumbowyg-box-blur .trumbowyg-editor *,
 .trumbowyg-box-blur .trumbowyg-editor::before {
   color: transparent !important;
