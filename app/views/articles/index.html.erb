@@ -121,50 +121,50 @@
               <%= form_for(@article, :html => {:class => "form-horizontal form-label-left", :id => "demo-form2", :multipart => true }) do |f| %>
                 <%= render "shared/error_messages", object: f.object %>
                   <% if @article.id.present?  %>
-                    <div class="form-group locale-field">
+                    <div class="form-group locale-field col-hidden">
                       <label class="control-label col-md-3 col-sm-3 col-xs-12">View article</label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
                         <%= link_to("View article (NL)", articles_show_path(@article.slug_nl, article: @article.slug_nl, locale: :nl), target: "_blank", style: "vertical-align: -webkit-baseline-middle;") %>
                       </div>
                     </div>
-                    <div class="form-group locale-field col-hidden">
+                    <div class="form-group locale-field">
                       <label class="control-label col-md-3 col-sm-3 col-xs-12">View article</label>
                       <div class="col-md-6 col-sm-6 col-xs-12">
                         <%= link_to("View article (EN)", articles_show_path(@article.slug_en, article: @article.slug_en, locale: :en), target: "_blank", style: "vertical-align: -webkit-baseline-middle;")  %>
                       </div>
                     </div>
                   <% end %>
-                <div class="form-group locale-field">
+                <div class="form-group locale-field col-hidden">
                   <%= f.label :title, "Title", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
                   <div class="col-md-6 col-sm-6 col-xs-12">
                     <%= f.text_field :title, :class => "form-control col-md-7 col-xs-12" %>
                   </div>
                 </div>
-                <div class="form-group locale-field col-hidden">
+                <div class="form-group locale-field">
                   <%= f.label :en_title, "English Title", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
                   <div class="col-md-6 col-sm-6 col-xs-12">
                     <%= f.text_field :en_title, :class => "form-control col-md-7 col-xs-12" %>
                   </div>
                 </div>
-                <div class="form-group locale-field">
+                <div class="form-group locale-field col-hidden">
                   <%= f.label :description, "Description", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
                   <div class="col-md-6 col-sm-6 col-xs-12">
                     <%= f.text_area :description, :class => "form-control col-md-7 col-xs-12" %>
                   </div>
                 </div>
-                <div class="form-group locale-field col-hidden">
+                <div class="form-group locale-field">
                   <%= f.label :en_description, "English Description", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
                   <div class="col-md-6 col-sm-6 col-xs-12">
                     <%= f.text_area :en_description, :class => "form-control col-md-7 col-xs-12" %>
                   </div>
                 </div>
-                <div class="form-group locale-field">
+                <div class="form-group locale-field col-hidden">
                   <%= f.label :slug_nl, "NL Url", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
                   <div class="col-md-6 col-sm-6 col-xs-12">
                     <%= f.text_field :slug_nl, :class => "form-control col-md-7 col-xs-12", placeholder: "mijn-coole-url" %>
                   </div>
                 </div>
-                <div class="form-group locale-field col-hidden">
+                <div class="form-group locale-field">
                   <%= f.label :slug_en, "EN Url", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
                   <div class="col-md-6 col-sm-6 col-xs-12">
                     <%= f.text_field :slug_en, :class => "form-control col-md-7 col-xs-12", placeholder: "my-cool-url" %>
@@ -182,7 +182,7 @@
                     </pre>
                   </div>
                 </div>
-                <div class="form-group locale-field locale-nl">
+                <div class="form-group locale-field locale-nl col-hidden">
                   <div class="col-md-12 col-sm-12 col-xs-12">
                     <textarea id="editor"></textarea>
                   </div>
@@ -190,7 +190,7 @@
                 <div class="form-group form-nl">
                   <%= f.hidden_field :body, html: {:class => "form-control col-md-7 col-xs-12", :id => "editorcontent"} %>
                 </div>
-                <div class="form-group locale-field locale-en col-hidden">
+                <div class="form-group locale-field locale-en">
                   <div class="col-md-12 col-sm-12 col-xs-12">
                     <textarea id="editor2"></textarea>
                   </div>
