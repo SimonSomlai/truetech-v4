@@ -805,9 +805,16 @@ $high3: 7deg;
   #content article .entry-content-blog-single {
 
     a,
-    li {
+    li,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       font-family: "Lora", "Times new roman", serif;
     }
+
 
     p,
     ul,
