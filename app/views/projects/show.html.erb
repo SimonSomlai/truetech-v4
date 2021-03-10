@@ -16,9 +16,13 @@
     </header>
     <div class="container clearfix">
       <div class="col_three_fifth portfolio-single-image nobottommargin" data-lightbox="gallery">
-        <a href="#"><%=lazy_image_tag @project.project_images.first.images_url, alt: "#{@project.title} - Webdesign Antwerpen", class: "main" %></a>
+        <a href="<%= @project.project_images.first.images_url %>" data-lightbox="gallery-item" style="cursor: zoom-in;">
+          <%=lazy_image_tag @project.project_images.first.images_url, alt: "#{@project.title} - Webdesign Antwerpen", class: "main" %>
+        </a>
         <ol class="flex-control-nav hidden-xs">
-          <% @project.project_images.each do |asset| %>
+          <% @project.project_images.each_with_index do |asset, index| %>
+          <%# Skip first image %>
+            <% if index > 0 %>
             <li> 
               <a href="<%= asset.images_url %>" data-lightbox="gallery-item" class="<%= 'mfp-iframe' if is_video(asset) %>"> 
                  <% if is_video(asset) %>
@@ -28,6 +32,7 @@
                  <% end %>
               </a> 
             </li>
+            <% end%>
           <% end %>
         </ol>
       </div>
