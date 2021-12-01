@@ -19,7 +19,7 @@ gem "pry", "~> 0.11"
 gem 'carrierwave', '~> 0.11'
 gem 'carrierwave_backgrounder', '~> 0.4.2'
 gem 'fog-aws', "~> 1.4"
-gem 'mini_magick', '~> 4.8', '>= 4.5.1'
+gem 'mini_magick', '~> 4.9'
 gem 'faker', '~> 1.9', '>= 1.6.5'
 gem 'friendly_id', '~> 5.2'
 gem 'mail_form', "~> 1.7"
