@@ -51,7 +51,7 @@ end
 
 group :development do
   gem 'railroady', "~> 1.5"
-  gem "better_errors", "~> 2.4"
+  gem "better_errors", "~> 2.8"
   gem "meta_request", "~> 0.6"
   gem "binding_of_caller", "~> 0.8"
   gem 'web-console', "~> 3.6"
