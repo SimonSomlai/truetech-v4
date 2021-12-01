@@ -139,7 +139,7 @@
 
      <% if @article.category.downcase == "coding" %>
        <%=javascript_include_tag "highlight.min" %>
-        <script>Prism.highlightElement($('#code')[0]);</script>
+        <script>Prism.highlightAll();</script>
     <% end %>
 
      <script>autoScroll(); showOptions(); unleash_unicorn();
