@@ -219,176 +219,174 @@
           <h3 class="center">
             <span><%= t "home.contact.title1_span"%></span>
             <%= t "home.contact.title1"%></h3>
-          <div class="container clearfix">
-            <div class="col-md-6 bottommargin">
-              <div class="team team-list clearfix">
-                <div class="team-image">
-                  <%= image_tag("me.jpg", class: "img img-responsive", alt: "Webdesign Antwerpen - Contact") %>
+          <div class="col-md-6 bottommargin">
+            <div class="team team-list clearfix">
+              <div class="team-image">
+                <%= image_tag("me.jpg", class: "img img-responsive", alt: "Webdesign Antwerpen - Contact") %>
+              </div>
+              <div class="team-desc">
+                <div class="team-title">
+                  <h4>
+                    Simon Somlai
+                  </h4>
+                  <span><%= t "home.contact.job"%></span>
                 </div>
-                <div class="team-desc">
-                  <div class="team-title">
-                    <h4>
-                      Simon Somlai
-                    </h4>
-                    <span><%= t "home.contact.job"%></span>
-                  </div>
-                  <div class="team-content hidden-xs">
-                    <p><%= t "home.contact.about"%></p>
-                  </div>
-                  <br />
-                  <div>
-                    <%= link_to asset_path("cv.pdf"), target: "_blank" do %>
-                      <i class="icon-download"></i> <%= t "home.contact.cv"%>
-                    <% end %>
-                  </div>
-                  <a target="_blank"
+                <div class="team-content hidden-xs">
+                  <p><%= t "home.contact.about"%></p>
+                </div>
+                <br />
+                <div>
+                  <%= link_to asset_path("cv.pdf"), target: "_blank" do %>
+                    <i class="icon-download"></i> <%= t "home.contact.cv"%>
+                  <% end %>
+                </div>
+                <a target="_blank"
                     href="https://www.linkedin.com/in/simon-somlai-27a4648a/"
                     class="social-icon si-rounded si-small si-linkedin">
-                    <i class="icon-linkedin"></i>
-                    <i class="icon-linkedin"></i>
-                  </a>
-                  <a target="_blank" href="https://github.com/SimonSomlai"
+                  <i class="icon-linkedin"></i>
+                  <i class="icon-linkedin"></i>
+                </a>
+                <a target="_blank" href="https://github.com/SimonSomlai"
                     class="social-icon si-rounded si-small si-github">
-                    <i class="icon-github"></i>
-                    <i class="icon-github"></i>
-                  </a>
-                  <a target="_blank"
+                  <i class="icon-github"></i>
+                  <i class="icon-github"></i>
+                </a>
+                <a target="_blank"
                     href="https://www.youtube.com/channel/UCg9AnJ7AAVKkHZ4wQ0CXPAw/videos?view=0&sort=dd&shelf_id=0"
                     class="social-icon si-rounded si-small si-youtube">
-                    <i class="icon-youtube"></i>
-                    <i class="icon-youtube"></i>
-                  </a>
-                </div>
+                  <i class="icon-youtube"></i>
+                  <i class="icon-youtube"></i>
+                </a>
               </div>
-              <a href="tel:+32496427559">
-                <div class="button button-3d center-block text-center col-hidden article-block">
-                  <i class="icon-phone3"></i><%= t "home.contact.call"%></div>
-              </a>
             </div>
-            <div class="col-md-6 cf">
-              <div class="col_two_fifth">
-                <address>
-                  <strong><%= t "home.contact.location"%></strong>
-                  <br>
-                  Jan Moorkensstraat 78,
-                  <br>
-                  2600, Berchem
-                  <br>
-                  <a target="_blank"
-                    href="https://maps.google.com?saddr=Current+Location&daddr=Jan+Moorkensstraat+78-1,+2600+Berchem,+Belgium"><%= t "home.contact.route"%></a>
-                  <br>
-                </address>
-                <b title="Email Address">
-                  <strong>Email:</strong>
-                </b>
-                <a href="mailto:info@truetech.be">info@truetech.be</a>
+            <a href="tel:+32496427559">
+              <div class="button button-3d center-block text-center col-hidden article-block">
+                <i class="icon-phone3"></i><%= t "home.contact.call"%></div>
+            </a>
+          </div>
+          <div class="col-md-6 cf">
+            <div class="col_two_fifth">
+              <address>
+                <strong><%= t "home.contact.location"%></strong>
                 <br>
-                <b title="Skype">
-                  <strong>Skype:</strong>
-                </b>
-                SimonSomlai
-              </div>
-              <% comment do %>
-                <div style='overflow: scroll; max-height: 350px;'
+                Jan Moorkensstraat 78,
+                <br>
+                2600, Berchem
+                <br>
+                <a target="_blank"
+                    href="https://maps.google.com?saddr=Current+Location&daddr=Jan+Moorkensstraat+78-1,+2600+Berchem,+Belgium"><%= t "home.contact.route"%></a>
+                <br>
+              </address>
+              <b title="Email Address">
+                <strong>Email:</strong>
+              </b>
+              <a href="mailto:info@truetech.be">info@truetech.be</a>
+              <br>
+              <b title="Skype">
+                <strong>Skype:</strong>
+              </b>
+              SimonSomlai
+            </div>
+            <% comment do %>
+              <div style='overflow: scroll; max-height: 350px;'
                 class="col_three_fifth col_last hidden-sm hidden-xs hidden-md">
-                  <a class="twitter-timeline" href="https://twitter.com/SSomlai?ref_src=twsrc%5Etfw">Tweets by SSomlai</a>
-                  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                </div>
-              <% end %>
-            </div>
-            <div class="col-sm-12 col-md-12 contactform">
-              <%= form_for(@contact, remote: true, :format=> 'js', :html=> { data: {type: "script", lpignore: "true"}, autocomplete: "off" , :class=> "nobottommargin", :name=> "template-contactform", :id=> "template-contactform", :multipart=> true } ) do |f| %>
-                <%=render "shared/error_messages", object: f.object %>
-                <div>
-                  <%= f.invisible_captcha :a_password, visual_honeypots: false, timestamp_threshold: 3 %>
-                </div>
-                <div class="col_half">
-                  <%=f.label :name do %>
-                    <%= t "home.contact.namefield" %>
-                    <small>*</small>
-                  <% end %>
-                  <%= f.text_field :name, required: true, id: "template-contactform-name", :class=> "sm-form-control required", placeholder: "John Smith" %>
-                </div>
-                <div class="col_half col_last">
-                  <%=f.label :email do %>
-                    Email<small>*</small>
-                  <% end %>
-                  <%=f.email_field :email, required: true, id: "template-contactform-email", :class=> "required email sm-form-control",  placeholder: "john@email.com" %>
-                </div>
-                <div class="clear"></div>
-                <div class="col_half">
-                  <%=f.label :phone, t("home.contact.phonefield") %>
-                  <%=f.text_field :phone, id: "template-contactform-phone", :class=> "sm-form-control", placeholder: "+32 123 456" %>
-                </div>
-                <div class="col_half col_last subject-home">
-                  <%=f.label :referrer, t("home.contact.subjectfield") %>
-                  <%=f.text_field :referrer, id: "template-contactform-subject", :class=> "sm-form-control required", placeholder:  t("home.contact.subjectexample") %>
-                </div>
-                <div class="clear"></div>
-                <div class="col_full">
-                  <%=f.label :message do %>
-                    <%= t "home.contact.messagefield"%>
-                    <small>*</small>
-                  <% end %>
-                  <%=f.text_area :message, id: "template-contactform-message", :class=> "required sm-form-control", rows: 6, cols: 30, placeholder: "👋 Hello there!" %>
-                </div>
-                <div class="col_full">
-                  <%=f.submit t("home.contact.sendbutton"), id: "template-contactform-submit", class: "button button-3d nomargin" %>
-                </div>
-              <% end %>
-            </div>
-            <div class="col-md-12 bottommargin">
-              <section id="google-map" class="gmap"
+                <a class="twitter-timeline" href="https://twitter.com/SSomlai?ref_src=twsrc%5Etfw">Tweets by SSomlai</a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-sm-12 col-md-12 contactform">
+            <%= form_for(@contact, remote: true, :format=> 'js', :html=> { data: {type: "script", lpignore: "true"}, autocomplete: "off" , :class=> "nobottommargin", :name=> "template-contactform", :id=> "template-contactform", :multipart=> true } ) do |f| %>
+              <%=render "shared/error_messages", object: f.object %>
+              <div>
+                <%= f.invisible_captcha :a_password, visual_honeypots: false, timestamp_threshold: 3 %>
+              </div>
+              <div class="col_half">
+                <%=f.label :name do %>
+                  <%= t "home.contact.namefield" %>
+                  <small>*</small>
+                <% end %>
+                <%= f.text_field :name, required: true, id: "template-contactform-name", :class=> "sm-form-control required", placeholder: "John Smith" %>
+              </div>
+              <div class="col_half col_last">
+                <%=f.label :email do %>
+                  Email<small>*</small>
+                <% end %>
+                <%=f.email_field :email, required: true, id: "template-contactform-email", :class=> "required email sm-form-control",  placeholder: "john@email.com" %>
+              </div>
+              <div class="clear"></div>
+              <div class="col_half">
+                <%=f.label :phone, t("home.contact.phonefield") %>
+                <%=f.text_field :phone, id: "template-contactform-phone", :class=> "sm-form-control", placeholder: "+32 123 456" %>
+              </div>
+              <div class="col_half col_last subject-home">
+                <%=f.label :referrer, t("home.contact.subjectfield") %>
+                <%=f.text_field :referrer, id: "template-contactform-subject", :class=> "sm-form-control required", placeholder:  t("home.contact.subjectexample") %>
+              </div>
+              <div class="clear"></div>
+              <div class="col_full">
+                <%=f.label :message do %>
+                  <%= t "home.contact.messagefield"%>
+                  <small>*</small>
+                <% end %>
+                <%=f.text_area :message, id: "template-contactform-message", :class=> "required sm-form-control", rows: 6, cols: 30, placeholder: "👋 Hello there!" %>
+              </div>
+              <div class="col_full">
+                <%=f.submit t("home.contact.sendbutton"), id: "template-contactform-submit", class: "button button-3d nomargin" %>
+              </div>
+            <% end %>
+          </div>
+          <div class="col-md-12 bottommargin">
+            <section id="google-map" class="gmap"
                 style="height: 240px; position: relative; overflow: hidden; transform: translateZ(0px); background-color: rgb(229, 227, 223);">
-                <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCaWCpVtwDpwN-5Lm5zu0xx9FBMrfjuZ7M'></script>
-                <div style='overflow:hidden;height:240px;width:px;'>
-                  <div id='gmap_canvas' style='height:240px;width:px;'></div>
-                  <div>
-                    <small>
-                      <a href="http://embedgooglemaps.com">
-                        embed google maps
-                      </a>
-                    </small>
-                  </div>
-                  <div>
-                    <small>
-                      <a href="https://privacypolicytemplate.net">privacy policy example</a>
-                    </small>
-                  </div>
-                  <style>
-                    #gmap_canvas img {
-                      max-width: none !important;
-                      background: none !important;
-                    }
-                  </style>
+              <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCaWCpVtwDpwN-5Lm5zu0xx9FBMrfjuZ7M'></script>
+              <div style='overflow:hidden;height:240px;width:px;'>
+                <div id='gmap_canvas' style='height:240px;width:px;'></div>
+                <div>
+                  <small>
+                    <a href="http://embedgooglemaps.com">
+                      embed google maps
+                    </a>
+                  </small>
                 </div>
-                <script type='text/javascript'>
-                  function init_map() {
-                    var myOptions = {
-                      draggable: false,
-                      zoomControl: false,
-                      scrollwheel: false,
-                      zoom: 10,
-                      center: new google.maps.LatLng(51.188760, 4.433030),
-                      mapTypeId: google.maps.MapTypeId.ROADMAP
-                    };
-                    map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
-                    marker = new google.maps.Marker({
-                      map: map,
-                      position: new google.maps.LatLng(51.188760, 4.433030)
-                    });
-                    infowindow = new google.maps.InfoWindow({
-                      content: '<strong>Simon Somlai</strong><br>Jan Moorkensstraat 78, 2600<br>'
-                    });
-                    google.maps.event.addListener(marker, 'click', function () {
-                      infowindow.open(map, marker);
-                    });
-                    infowindow.open(map, marker);
+                <div>
+                  <small>
+                    <a href="https://privacypolicytemplate.net">privacy policy example</a>
+                  </small>
+                </div>
+                <style>
+                  #gmap_canvas img {
+                    max-width: none !important;
+                    background: none !important;
                   }
-                  google.maps.event.addDomListener(window, 'load', init_map);
-                </script>
-              </section>
-            </div>
+                </style>
+              </div>
+              <script type='text/javascript'>
+                function init_map() {
+                  var myOptions = {
+                    draggable: false,
+                    zoomControl: false,
+                    scrollwheel: false,
+                    zoom: 10,
+                    center: new google.maps.LatLng(51.188760, 4.433030),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                  };
+                  map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+                  marker = new google.maps.Marker({
+                    map: map,
+                    position: new google.maps.LatLng(51.188760, 4.433030)
+                  });
+                  infowindow = new google.maps.InfoWindow({
+                    content: '<strong>Simon Somlai</strong><br>Jan Moorkensstraat 78, 2600<br>'
+                  });
+                  google.maps.event.addListener(marker, 'click', function () {
+                    infowindow.open(map, marker);
+                  });
+                  infowindow.open(map, marker);
+                }
+                google.maps.event.addDomListener(window, 'load', init_map);
+              </script>
+            </section>
           </div>
         </div>
       </div>
