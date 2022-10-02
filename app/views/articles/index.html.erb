@@ -54,7 +54,7 @@
                           </a>
                         <% end %>
                       </td>
-                      <td class="hidden-xs"><%= article.description != "" ? article.description : article.en_description %></td>
+                      <td class="hidden-xs"><%= article.description.blank? ? article.en_description : article.description %></td>
                       <td class="hidden-xs"><%= article.category %></td>
                       <td class="hidden-xs">
                         <% if !article.image.url.nil? %>
@@ -202,6 +202,7 @@
                   <%= f.label :category, "Category", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
                   <div class="col-md-6 col-sm-6 col-xs-12">
                     <%= f.text_field :category, :class => "form-control col-md-7 col-xs-12" %>
+                    <b>Current:</b> <%= categories.join(", ") %>
                   </div>
                 </div>
                 <div class="form-group">

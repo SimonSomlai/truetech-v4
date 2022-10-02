@@ -19,4 +19,8 @@ module ArticlesHelper
   def meta_description # Sets meta description according to locale
     I18n.locale == :nl ? "#{@article.description}" : "#{@article.en_description}"
   end
+
+  def categories
+    Article.all.map(&:category).uniq.map(&:capitalize)
+  end
 end
