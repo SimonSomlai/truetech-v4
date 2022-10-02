@@ -7,7 +7,7 @@
 - <b>Front:</b> HTML, CSS, JS
 - <b>JS Libraries:</b> lightgallery, lazyload, zoom, tags, trumbowyg, rangeslider & chart.js
 - <b>Back:</b> Ruby & RoR
-- <b>Gems:</b> fog-aws, carrierwave, rest-client, oauth2, google-api-client, dalli, friendly_id, mailform, unicorn & sitemap_generator
+- <b>Gems:</b> fog-aws, carrierwave, rest-client, oauth2, dalli, friendly_id, mailform, unicorn & sitemap_generator
 - <b>Db:</b> Postgresql
 
 ## Database

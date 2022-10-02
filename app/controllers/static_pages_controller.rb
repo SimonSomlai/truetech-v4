@@ -21,41 +21,7 @@ class StaticPagesController < ApplicationController
   end
 
   def admin
-    if Rails.env.production?
-      cookies['truetech_admin_cookie'] ||= {
-        :value => true,
-        :expires => 10.years.from_now
-      }
-      @refresh_token = Setting.find_by(key: "analytics_refresh_token")
-
-      if @refresh_token # If there is a refresh token
-        refresh_access_token(@refresh_token.value) # Use it to renew the access token
-        @refresh_token = Setting.find_by(key: "analytics_refresh_token") # Get it
-        service = authorize_google_analytics # Authorize GA
-        get_statistics(service) # Query it for dashboard
-        render "admin"
-      else
-        set_new_tokens # Set it
-      end
-    else
-      render "admin"
-    end
-  end
-
-  def callback # Handle omniauth callback by parsing code & requesting tokens (access & refresh)
-    client = OAuth2::Client.new(ENV["ANALYTICS_CLIENT_ID"], ENV["ANALYTICS_CLIENT_SECRET"], {
-      :authorize_url => 'https://accounts.google.com/o/oauth2/auth',
-      :token_url => 'https://accounts.google.com/o/oauth2/token'}
-    )
-    code = params[:code]
-
-    response = client.auth_code.get_token(code, :redirect_uri => "#{ENV["REDIRECT_URI"]}/callback")
-    access_token = response.token
-    refresh_token = response.refresh_token
-
-    update_tokens(access_token, refresh_token)
-
-    redirect_to "/admin"
+    render "admin"
   end
 
   def website_analyse

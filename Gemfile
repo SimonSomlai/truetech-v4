@@ -29,7 +29,6 @@ gem 'htmlbeautifier', "~> 1.3"
 gem 'sitemap_generator', "~> 5.3"
 gem 'magnific-popup-rails', '~> 1.1'
 gem 'oauth2', '~> 1.4'
-gem 'google-api-client', '~> 0.23'
 gem 'rest-client', "~> 2.0"
 gem 'unveil-rails', '~> 0.2'
 gem 'will_paginate', '~> 3.0'

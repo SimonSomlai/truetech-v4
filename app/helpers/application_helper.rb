@@ -39,10 +39,6 @@ module ApplicationHelper
     now - unit.send(timeunit)..now + 1.send(timeunit) - 1.seconds - unit.send(timeunit)
   end
 
-  def visits(unit, timeunit)
-    Visit.where(date: time_range(unit, timeunit))
-  end
-
   def category(project)
     if I18n.locale == :en
       case project.service
