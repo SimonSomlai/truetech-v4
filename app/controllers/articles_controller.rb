@@ -70,13 +70,8 @@ class ArticlesController < ApplicationController
   # Other
   # ======================================================
   def all_articles
-    # Separate normal articles from technical articles (latter only shows on en locale)
-    @nl_articles ||= Rails.cache.fetch('nl_article_queries', expires_in: 10.minutes) do
-      Article.where.not(title: "").where(posted: true).sort_by(&:created_at)
-    end
-    @en_articles ||= Rails.cache.fetch('en_article_queries', expires_in: 10.minutes) do
-      Article.where(title: "").where(posted: true).sort_by(&:created_at)
-    end
+    @nl_articles = Article.where.not(title: "").where(posted: true).sort_by(&:created_at)
+    @en_articles = Article.where(title: "").where(posted: true).sort_by(&:created_at)
     @en_categories = Article.all.map(&:category).uniq!
     @nl_categories = @en_categories.reject{|i| /coding/i.match(i)}
     I18n.locale == :nl ? (@articles = @nl_articles) : (@articles = @en_articles)
