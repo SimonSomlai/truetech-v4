@@ -4,7 +4,7 @@ ruby '3.1.2'
 
 # General
 gem 'rails', '~> 6.0'
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 6.0'
 gem 'sprockets-rails', '~> 2.3'
 gem 'uglifier', '~> 3.2'
 gem 'coffee-rails', '~> 4.2'
