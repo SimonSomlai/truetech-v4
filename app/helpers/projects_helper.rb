@@ -14,7 +14,7 @@ module ProjectsHelper
   end
 
   def setup
-    @projects = Project.all.includes(:project_images).sort_by(&:created_at)
+    @projects = Project.all.includes(:project_images).sort_by(&:created_at).reverse
     @project = Project.friendly.find(params[:id])
   end
 end

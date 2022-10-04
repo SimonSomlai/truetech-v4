@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
   # ======================================================
   def index
     @action = "New"
-    @articles = Article.all.sort_by(&:created_at)
+    @articles = Article.all.sort_by(&:created_at).reverse
     @article  = Article.new
   end
 
@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @articles = Article.all.sort_by(&:created_at)
+    @articles = Article.all.sort_by(&:created_at).reverse
     @article = Article.new(article_params)
     @article.update_attribute(:user_id, current_user.id)
     if @article.save
@@ -70,8 +70,8 @@ class ArticlesController < ApplicationController
   # Other
   # ======================================================
   def all_articles
-    @nl_articles = Article.where.not(title: "").where(posted: true).sort_by(&:created_at)
-    @en_articles = Article.where(title: "").where(posted: true).sort_by(&:created_at)
+    @nl_articles = Article.where.not(title: "").where(posted: true).sort_by(&:created_at).reverse
+    @en_articles = Article.where(title: "").where(posted: true).sort_by(&:created_at).reverse
     @en_categories = Article.all.map(&:category).uniq!
     @nl_categories = @en_categories.reject{|i| /coding/i.match(i)}
     I18n.locale == :nl ? (@articles = @nl_articles) : (@articles = @en_articles)
