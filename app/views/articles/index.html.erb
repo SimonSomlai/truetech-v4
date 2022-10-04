@@ -41,8 +41,8 @@
                     <tr>
                       <td scope="row" class="hidden-xs"><%= article.id %></td>
                       <td>
-                        <!-- Link to en locale when technical article  -->
-                        <% if article.category.downcase == "coding" %>
+                        <!-- Link to en locale when present  -->
+                        <% if article.en_title != "" %>
                           <%= link_to articles_show_path(article.slug_en, article: article.slug_en, locale: :en)  do %>
                             <i class="fa fa-cogs"></i>
                             <%= article.en_title %>

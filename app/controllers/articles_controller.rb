@@ -71,9 +71,9 @@ class ArticlesController < ApplicationController
   # ======================================================
   def all_articles
     @nl_articles = Article.where.not(title: "").where(posted: true).sort_by(&:created_at).reverse
-    @en_articles = Article.where(title: "").where(posted: true).sort_by(&:created_at).reverse
+    @en_articles = Article.where.not(en_title: "").where(posted: true).sort_by(&:created_at).reverse
     @en_categories = Article.all.map(&:category).uniq!
-    @nl_categories = @en_categories.reject{|i| /coding/i.match(i)}
+    @nl_categories = @en_categories
     I18n.locale == :nl ? (@articles = @nl_articles) : (@articles = @en_articles)
   end
 end
