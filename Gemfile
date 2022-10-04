@@ -39,6 +39,7 @@ gem 'daemons', '~> 1.2', '>= 1.2.3'
 gem "webrick", "~> 1.7"
 gem 'psych', '< 4'
 gem 'json', '2.3.1'
+gem 'net-smtp', require: false
 
 # Caching
 gem 'rack-cache', "~> 1.8"
