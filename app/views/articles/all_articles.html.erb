@@ -32,7 +32,6 @@
       </div>
       <div class="clear"></div>
       <div id="portfolio" class="bottommargin portfolio grid-container all-articles clearfix" data-layout="fitRows" style="position: relative; height: 888px;">
-        <% I18n.locale == :nl ? (@articles = @nl_articles) : (@articles = @en_articles) %>
         <% @articles.each do |article| %>
           <article class="portfolio-item pf-<%= article.category.downcase.parameterize %>">
             <div class="portfolio-image">

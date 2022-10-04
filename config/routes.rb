@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
   get 'routes/redirect'
   get '/sitemap.xml.gz', to: redirect('https://s3-eu-west-1.amazonaws.com/truetech-v4/sitemap.xml.gz'), as: :sitemap
@@ -69,4 +67,5 @@ Rails.application.routes.draw do
 
   match '*path', via: [:get], to: redirect("/#{I18n.default_locale}/%{path}")
   match '', via: [:get], to: redirect("/#{I18n.default_locale}")
+  # Fo details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

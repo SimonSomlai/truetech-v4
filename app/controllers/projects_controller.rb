@@ -7,19 +7,19 @@ class ProjectsController < ApplicationController
 
   def index
     @action = 'New'
-    @projects = Project.all.includes(:project_images).order("created_at desc")
+    @projects = Project.all.includes(:project_images).sort_by(&:created_at)
     @project = Project.new
   end
 
   def all_projects
     @projects ||= Rails.cache.fetch('all_projects', expires_in: 1.days) do
-      Project.all.includes(:project_images).order("created_at desc")
+      Project.all.includes(:project_images).sort_by(&:created_at)
     end
   end
 
   def show
     @user = User.find_by(id: @project.user_id).name
-    @relatedprojects = Project.includes(:project_images).where(service: @project.service).where.not(id: @project).order("created_at desc").uniq.limit(6)
+    @relatedprojects = Project.includes(:project_images).where(service: @project.service).where.not(id: @project).sort_by(&:created_at).uniq.take(6)
   end
 
   def create
@@ -41,7 +41,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @projects = Project.all.includes(:project_images).order("created_at desc")
+    @projects = Project.all.includes(:project_images).sort_by(&:created_at)
     @action = 'Edit'
     render :index
   end

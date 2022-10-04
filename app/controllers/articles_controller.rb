@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
   # ======================================================
   def index
     @action = "New"
-    @articles = Article.all.order("created_at desc")
+    @articles = Article.all.sort_by(&:created_at)
     @article  = Article.new
   end
 
@@ -24,11 +24,11 @@ class ArticlesController < ApplicationController
     else # Just for normal clicks on the homepage
       @article = Article.friendly.find(params[:id])
     end
-    @relatedarticles = Article.where(category: @article.category, posted: true).where.not(id: @article).uniq.limit(6)
+    @relatedarticles = Article.where(category: @article.category, posted: true).where.not(id: @article).uniq.take(6)
   end
 
   def create
-    @articles = Article.all.order("created_at desc")
+    @articles = Article.all.sort_by(&:created_at)
     @article = Article.new(article_params)
     @article.update_attribute(:user_id, current_user.id)
     if @article.save
@@ -72,12 +72,13 @@ class ArticlesController < ApplicationController
   def all_articles
     # Separate normal articles from technical articles (latter only shows on en locale)
     @nl_articles ||= Rails.cache.fetch('nl_article_queries', expires_in: 10.minutes) do
-      Article.where.not(title: "").where(posted: true).order('created_at DESC')
+      Article.where.not(title: "").where(posted: true).sort_by(&:created_at)
     end
     @en_articles ||= Rails.cache.fetch('en_article_queries', expires_in: 10.minutes) do
-      Article.where(title: "").where(posted: true).order('created_at DESC')
+      Article.where(title: "").where(posted: true).sort_by(&:created_at)
     end
     @en_categories = Article.all.map(&:category).uniq!
     @nl_categories = @en_categories.reject{|i| /coding/i.match(i)}
+    I18n.locale == :nl ? (@articles = @nl_articles) : (@articles = @en_articles)
   end
 end

@@ -17,7 +17,7 @@
     <div class="container clearfix">
       <div class="col_three_fifth portfolio-single-image nobottommargin" data-lightbox="gallery">
         <a href="<%= @project.project_images.first.images_url %>" data-lightbox="gallery-item" style="cursor: zoom-in;">
-          <%=lazy_image_tag @project.project_images.first.images_url, alt: "#{@project.title} - Webdesign Antwerpen", class: "main" %>
+          <%=image_tag @project.project_images.first.images_url, alt: "#{@project.title} - Webdesign Antwerpen", class: "main" %>
         </a>
         <ol class="flex-control-nav hidden-xs">
           <% @project.project_images.each_with_index do |asset, index| %>
@@ -28,7 +28,7 @@
                  <% if is_video(asset) %>
                   <%= video_tag(asset.images_url) %> 
                  <% else %>
-                  <%= lazy_image_tag asset.images_url, alt: "#{@project.title} - Webdesign Antwerpen" %> 
+                  <%= image_tag asset.images_url, alt: "#{@project.title} - Webdesign Antwerpen" %> 
                  <% end %>
               </a> 
             </li>
@@ -89,7 +89,7 @@
             <div class="iportfolio">
               <div class="portfolio-image">
                 <%=link_to(project_path(project)) do %>
-                  <%=lazy_image_tag project.project_images.first.images_url, alt: "#{project.title} - Webdesign Antwerpen" %>
+                  <%=image_tag project.project_images.first.images_url, alt: "#{project.title} - Webdesign Antwerpen" %>
                 <% end %>
                 <div class="portfolio-overlay">
                   <%=link_to(project.project_images.first.images_url, class: "left-icon", data:{lightbox: "image"}) do %>
