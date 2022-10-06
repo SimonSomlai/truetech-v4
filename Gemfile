@@ -42,6 +42,7 @@ gem 'json', '2.3.1'
 gem 'net-smtp', require: false
 gem 'net-imap', require: false
 gem 'net-pop', require: false
+gem 'webpacker', '~> 5.4.3'
 
 # Caching
 gem 'rack-cache', "~> 1.8"

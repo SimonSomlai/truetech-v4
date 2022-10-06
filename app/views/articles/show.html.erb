@@ -53,6 +53,17 @@
                         <%= raw @article.body %>
                       <% end %>
                   </div>
+                  
+
+                   <div class="entry-content entry-content-blog-single">
+                     <% if I18n.locale == :en && is_logged_in? %>
+                  --------------------------
+                         <%= @article.en_content %>
+                         <% else   %>
+                           <%= @article.content %>
+                         <% end %>
+                     </div>
+                  </div>
                   <div class="blog-share text-center">
                      <br/>
                      <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='25483125'></div>

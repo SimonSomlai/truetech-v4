@@ -1,6 +1,6 @@
 # Simon Somlai
 
->Last version of my company website.
+> Last version of my company website.
 
 # Tech Stack
 
@@ -26,6 +26,10 @@
 
 # To Do
 
-- No active to do-s
+- Write some generic smoke tests (visit all pages)
+- Finish/swap trix editor
+- Add linters/tests before pushing
+- Delete old junk (reduce bundle size)
+- Rails 7 + read docs
 
 Made with &lt;3 by <a target="_blank" href="https://simonsomlai.com/en"> Simon Somlai</a>

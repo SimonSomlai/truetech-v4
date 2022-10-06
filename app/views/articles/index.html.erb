@@ -2,7 +2,7 @@
 <% content_for :description, "This is the meta description for the article-admin menu" %>
 <% content_for :css do %>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-  <%= stylesheet_link_tag "admin", "magnific-popup", "font-icons", "trumbowyg.min", "style"  %>
+  <%= stylesheet_link_tag "admin", "magnific-popup", "font-icons", "trumbowyg.min", "style", "actiontext"  %>
 <% end %>
 <body class="nav-md">
   <div class="container body admin-body">
@@ -146,18 +146,33 @@
                     <%= f.text_field :en_title, :class => "form-control col-md-7 col-xs-12" %>
                   </div>
                 </div>
+                
                 <div class="form-group locale-field col-hidden">
                   <%= f.label :description, "Description", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
                   <div class="col-md-6 col-sm-6 col-xs-12">
                     <%= f.text_area :description, :class => "form-control col-md-7 col-xs-12" %>
                   </div>
                 </div>
+                   <div class="form-group locale-field col-hidden">
+                  <%= f.label :content, "NL rich text", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <%= f.rich_text_area :content %>
+                  </div>
+                </div>
+
                 <div class="form-group locale-field">
                   <%= f.label :en_description, "English Description", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
                   <div class="col-md-6 col-sm-6 col-xs-12">
                     <%= f.text_area :en_description, :class => "form-control col-md-7 col-xs-12" %>
                   </div>
                 </div>
+                <div class="form-group locale-field">
+                  <%= f.label :en_content, "EN rich text", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <%= f.rich_text_area :en_content %>
+                  </div>
+                </div>
+
                 <div class="form-group locale-field col-hidden">
                   <%= f.label :slug_nl, "NL Url", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
                   <div class="col-md-6 col-sm-6 col-xs-12">
@@ -240,7 +255,8 @@
     </div>
   </div>
 <% content_for :js do %>
-  <%= javascript_include_tag "custom", "jquery", "jquery_ujs", "plugins", "functions","trumbowyg.min", "script" %>
+  <%= javascript_include_tag  "custom", "jquery", "jquery_ujs", "plugins", "functions","trumbowyg.min", "script" %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   <script>
     $('#editor').trumbowyg();
       getText();

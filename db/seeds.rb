@@ -51,9 +51,6 @@ end
   title = Faker::Book.title
   description = Faker::Lorem.paragraph(2)
   body = Faker::Lorem.paragraph(15)
-  en_title = title + " English"
-  en_description = Faker::Lorem.paragraph(2)
-  en_body = Faker::Lorem.paragraph(15)
   category = ["business", "technology"].sample
   user_id = User.find_by(name: "Simon").id
   url = ["http://basicgrowth.com/files/seed/article1.jpg", "http://basicgrowth.com/files/seed/article2.jpg", "http://basicgrowth.com/files/seed/article3.jpg", "http://basicgrowth.com/files/seed/article4.jpg"].sample
@@ -65,6 +62,25 @@ end
     en_title: en_title,
     slug_en: title.parameterize + "-english",
     slug_nl: title.parameterize + "-dutch",
+    en_description: en_description,
+    en_body: en_body,
+    category: category,
+    posted: true,
+    user_id: User.first.id)
+end
+
+
+5.times do |n|
+  en_title = Faker::Book.title
+  en_description = Faker::Lorem.paragraph(2)
+  en_body =  Faker::Lorem.paragraph(15)
+  category = ["coding","business", "technology"].sample
+  user_id = User.find_by(name: "Simon").id
+  url = ["http://basicgrowth.com/files/seed/article1.jpg", "http://basicgrowth.com/files/seed/article2.jpg", "http://basicgrowth.com/files/seed/article3.jpg", "http://basicgrowth.com/files/seed/article4.jpg"].sample
+  Article.create!(
+    remote_image_url: url,
+    slug_en: en_title.parameterize + "-english",
+    en_title: en_title,
     en_description: en_description,
     en_body: en_body,
     category: category,

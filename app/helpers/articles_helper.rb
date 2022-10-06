@@ -5,7 +5,7 @@ module ArticlesHelper
   end
 
   def article_params
-    params.require(:article).permit(:title, :description, :body, :image, :user_id, :category, :posted, :slug_nl, :slug_en, :en_description, :en_body, :en_title)
+    params.require(:article).permit(:title, :description, :body, :image, :user_id, :category, :posted, :slug_nl, :slug_en, :en_description, :en_body, :en_title, :content, :en_content)
   end
 
   def author(article) # Find the author by article.user_id

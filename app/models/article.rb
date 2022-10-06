@@ -1,4 +1,6 @@
 class Article < ActiveRecord::Base
+  has_rich_text :en_content
+  has_rich_text :content
   # Relationship to user
   belongs_to :user
 

@@ -37,7 +37,7 @@
   background-clip: padding-box;
 }
 
-@mixin transition ($time) {
+@mixin transition($time) {
   -webkit-transition: all $time ease-in-out;
   -moz-transition: all $time ease-in-out;
   -o-transition: all $time ease-in-out;
@@ -157,22 +157,21 @@ a {
 }
 
 @media only screen and (max-width: 750px) {
-
-  #wrapper>div>div:nth-child(6) .col_one_third>.feature-box.fbox-plain,
-  #wrapper>div>div:nth-child(5) .col_one_third>.feature-box.fbox-plain {
+  #wrapper > div > div:nth-child(6) .col_one_third > .feature-box.fbox-plain,
+  #wrapper > div > div:nth-child(5) .col_one_third > .feature-box.fbox-plain {
     padding: 0 !important;
   }
 
-  #wrapper>div:nth-child(8) .col_one_fourth {
+  #wrapper > div:nth-child(8) .col_one_fourth {
     margin: 0 auto;
     width: inherit;
   }
 
-  #wrapper>div:nth-child(8) .col_one_fourth.col_last {
+  #wrapper > div:nth-child(8) .col_one_fourth.col_last {
     margin: 0 auto !important;
   }
 
-  #wrapper>div:nth-child(8) .col_one_fourth .feature-box {
+  #wrapper > div:nth-child(8) .col_one_fourth .feature-box {
     padding: 0 !important;
   }
 
@@ -193,7 +192,7 @@ a {
 /* 		CONTENT  	   */
 /*---------------------*/
 /*/ ------------------------------ ADMIN PAGE------------------------------------/*/
-body>div>div>div.right_col {
+body > div > div > div.right_col {
   padding-bottom: 25px !important;
   min-height: 100vh !important;
 }
@@ -205,7 +204,6 @@ body>div>div>div.right_col {
 
 // responsiveness admin panel
 @media only screen and (max-width: 765px) {
-
   .admin-body,
   .main_container {
     width: 100% !important;
@@ -301,10 +299,10 @@ h2.logo-subtitle {
 .service-item-link:hover i {
   -webkit-animation-name: hvr-bob-float, hvr-bob;
   animation-name: hvr-bob-float, hvr-bob;
-  -webkit-animation-duration: .3s, 1.5s;
-  animation-duration: .3s, 1.5s;
-  -webkit-animation-delay: 0s, .3s;
-  animation-delay: 0s, .3s;
+  -webkit-animation-duration: 0.3s, 1.5s;
+  animation-duration: 0.3s, 1.5s;
+  -webkit-animation-delay: 0s, 0.3s;
+  animation-delay: 0s, 0.3s;
   -webkit-animation-timing-function: ease-out, ease-in-out;
   animation-timing-function: ease-out, ease-in-out;
   -webkit-animation-iteration-count: 1, infinite;
@@ -358,14 +356,13 @@ h2.logo-subtitle {
     width: 95% !important;
   }
 
-  #wrapper>div>div:nth-child(5) {
+  #wrapper > div > div:nth-child(5) {
     width: 100% !important;
   }
 }
 
 /* Small */
 @media only screen and (max-width: 560px) {
-
   .owl-latest-news,
   .portfolio-carousel {
     .owl-nav .owl-next {
@@ -382,7 +379,7 @@ h2.logo-subtitle {
     margin-bottom: 0;
   }
 
-  #services>div>div.container.clearfix>div.col-md-6.bottommargin {
+  #services > div > div.container.clearfix > div.col-md-6.bottommargin {
     margin-bottom: 0 !important;
   }
 
@@ -407,7 +404,7 @@ h2.logo-subtitle {
     display: none;
   }
 
-  #header>div.container.clearfix {
+  #header > div.container.clearfix {
     height: auto;
   }
 
@@ -513,7 +510,7 @@ img.side {
   margin: 25px;
 }
 
-.article-show-related .entry-content-blog-single>p {
+.article-show-related .entry-content-blog-single > p {
   font-size: 14px;
 }
 
@@ -791,7 +788,7 @@ $high3: 7deg;
   }
 }
 
-//  Blog single resonsiveness
+//  Blog single responsiveness
 @media only screen and (max-width: 560px) {
   .container.clearfix.blog-single {
     height: 7.7rem !important;
@@ -803,7 +800,6 @@ $high3: 7deg;
   }
 
   #content article .entry-content-blog-single {
-
     a,
     li,
     h1,
@@ -814,7 +810,6 @@ $high3: 7deg;
     h6 {
       font-family: "Lora", "Times new roman", serif;
     }
-
 
     p,
     ul,
@@ -904,7 +899,7 @@ $high3: 7deg;
 }
 
 .selected {
-  color: #1982AE !important;
+  color: #1982ae !important;
   font-weight: bold;
 }
 
@@ -912,7 +907,7 @@ $high3: 7deg;
   width: 250px;
 }
 
-// Services single 1 resonsiveness
+// Services single 1 responsiveness
 @media only screen and (max-width: 767px) {
   .pricing-features .page-selector li {
     margin-bottom: 0 !important;
@@ -960,7 +955,7 @@ $high3: 7deg;
 }
 
 #template-contactform-submit.button.site-analyse:hover {
-  background-color: #D03939 !important;
+  background-color: #d03939 !important;
 }
 
 #template-contactform label {
@@ -975,4 +970,10 @@ $high3: 7deg;
   .website-analyse#template-contactform {
     padding: 20px 25px;
   }
+}
+
+// Custom editor
+#article_en_content {
+  height: 500px;
+  overflow-y: scroll;
 }

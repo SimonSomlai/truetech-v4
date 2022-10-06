@@ -26,6 +26,10 @@ module ApplicationHelper
     end
   end
 
+  def is_logged_in?
+    !session[:user_id].nil?
+  end
+
   # Gets time range for x number time ago
   def time_range(unit, timeunit = nil)
     now = if timeunit == 'weeks'
