@@ -1,8 +1,9 @@
 module ProjectsHelper
   def headerimage(project) # Set headerimage for object
     if project.project_images.any?
-      project.project_images.first.images_url(:small)
+      return project.project_images.first.images_url(:small)
     end
+    return ""
   end
 
   def features # Convert serialized string to usable hash, (I know I should've used regular hash lol)
@@ -10,7 +11,7 @@ module ProjectsHelper
   end
 
   def project_params
-    params.require(:project).permit(:title, :description, :en_description, :features, :link, :service, :follow_up, :skills, :slug, project_images_attributes: [:id, :post_id, :images])
+    params.require(:project).permit(:title, :description, :en_description, :features, :link, :service, :follow_up, :skills, :slug, project_images_attributes: [:id, :project_id, :images])
   end
 
   def setup

@@ -1,5 +1,4 @@
 class ProfilePictureUploader < CarrierWave::Uploader::Base
-  include ::CarrierWave::Backgrounder::Delay
   include CarrierWave::MiniMagick
   process resize_to_limit: [150, 150]
   process :optimize
@@ -7,7 +6,7 @@ class ProfilePictureUploader < CarrierWave::Uploader::Base
   storage (Rails.env.production? ? :fog : :file)
 
   def extension_white_list
-    %w(jpg jpeg gif png mp4)
+    %w(jpg jpeg gif png mp4 mov) 
   end
   
   # Override the directory where uploaded files will be stored.

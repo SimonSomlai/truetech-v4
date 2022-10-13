@@ -2,7 +2,7 @@
 <% content_for :ogtitle, @project.title %>
 <% content_for :ogdescription, @project.description %>
 <% content_for :ogtype, "article" %>
-<% content_for :ogimage, image_url(@project.project_images.first.images_url) %>
+<% content_for :ogimage, image_url(@project.project_images.first.images_url ) %>
 <body class="stretched sticky-responsive-menu">
   <div id="wrapper" class="clearfix">
     <header id="header" class="sticky-style-2">
@@ -16,8 +16,8 @@
     </header>
     <div class="container clearfix">
       <div class="col_three_fifth portfolio-single-image nobottommargin" data-lightbox="gallery">
-        <a href="<%= @project.project_images.first.images_url %>" data-lightbox="gallery-item" style="cursor: zoom-in;">
-          <%=image_tag @project.project_images.first.images_url, alt: "#{@project.title} - Webdesign Antwerpen", class: "main" %>
+        <a href="<%= @project.project_images.first.images_url  %>" data-lightbox="gallery-item" style="cursor: zoom-in;">
+          <%=image_tag @project.project_images.first.images_url , alt: "#{@project.title} - Webdesign Antwerpen", class: "main" %>
         </a>
         <ol class="flex-control-nav hidden-xs">
           <% @project.project_images.each_with_index do |asset, index| %>
@@ -89,10 +89,10 @@
             <div class="iportfolio">
               <div class="portfolio-image">
                 <%=link_to(project_path(project)) do %>
-                  <%=image_tag project.project_images.first.images_url, alt: "#{project.title} - Webdesign Antwerpen" %>
+                  <%=image_tag project.project_images.first.images_url , alt: "#{project.title} - Webdesign Antwerpen" %>
                 <% end %>
                 <div class="portfolio-overlay">
-                  <%=link_to(project.project_images.first.images_url, class: "left-icon", data:{lightbox: "image"}) do %>
+                  <%=link_to(project.project_images.first.images_url , class: "left-icon", data:{lightbox: "image"}) do %>
                     <i class="icon-line-image"></i>
                   <% end %>
                   <%=link_to(project_path(project), class: "right-icon") do %>

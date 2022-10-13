@@ -16,8 +16,8 @@ gem 'sdoc', '~> 2.4', group: :doc
 gem 'bcrypt', '~> 3.1'
 gem 'unicorn', "~> 5.4"
 gem "pry", "~> 0.11"
-gem 'carrierwave', '~> 0.11'
-gem 'carrierwave_backgrounder', '~> 0.4.2'
+gem 'carrierwave', '~> 1.3.2'
+gem 'ssrf_filter', '1.0.8'
 gem 'fog-aws', "~> 1.4"
 gem 'mini_magick', '~> 4.8', '>= 4.5.1'
 gem 'faker', '~> 1.9', '>= 1.6.5'

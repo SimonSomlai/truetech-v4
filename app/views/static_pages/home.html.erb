@@ -127,11 +127,11 @@
               <div class="oc-item">
                 <div class="iportfolio">
                   <div class="portfolio-image">
-                    <%=link_to(project_path(project)) do %>
+                    <%= link_to(project_path(project)) do %>
                       <%= image_tag headerimage(project), alt: "Webdesign Antwerpen - Portfolio" %>
                     <% end %>
                     <div class="portfolio-overlay">
-                      <%=link_to(project.project_images.first.images_url, class: "left-icon", data:{lightbox: "image"}) do %>
+                      <%=link_to(project.project_images.first.images_url , class: "left-icon", data:{lightbox: "image"}) do %>
                         <i class="icon-line-image"></i>
                       <% end %>
                       <%=link_to(project_path(project), class: "right-icon") do %>

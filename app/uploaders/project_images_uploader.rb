@@ -1,12 +1,11 @@
 class ProjectImagesUploader < CarrierWave::Uploader::Base
-  include ::CarrierWave::Backgrounder::Delay
   include CarrierWave::MiniMagick
   process :optimize
   # Choose what kind of storage to use for this uploader:
   storage (Rails.env.production? ? :fog : :file)
 
   def extension_white_list
-    %w(jpg jpeg gif png mp4)
+    %w(jpg jpeg gif png mp4 mov)
   end
 
   def store_dir

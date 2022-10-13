@@ -11,7 +11,7 @@ module ApplicationHelper
 
   def is_video(item)
     url = item.images_url
-    !!url.match(/.mp4/)
+    !!url.match(/.mp4|.mov/)
   end
 
   def comment; end

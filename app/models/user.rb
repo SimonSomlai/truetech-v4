@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
   # Carrierwave image uploading
   mount_uploader :profile_picture, ProfilePictureUploader
-  process_in_background :profile_picture
-  # store_in_background :profile_picture
 
   # Save emails as downcase to the db
   before_save { self.email = email.downcase }
