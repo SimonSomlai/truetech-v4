@@ -194,7 +194,7 @@
                 <div class="ipost clearfix">
                   <div class="entry-image">
                     <a href="<%= articles_show_path(article) %>">
-                      <%= image_tag article.image.small.url, alt: "Webdesign Antwerpen - Nieuws", class: "image_fade" %>
+                      <%= image_tag article.image_new.variant(resize_to_fit: [350,200]), alt: "Webdesign Antwerpen - Nieuws", class: "image_fade" if article.image_new.attached? %>
                     </a>
                   </div>
                   <div class="entry-title">

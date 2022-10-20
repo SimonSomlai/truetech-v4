@@ -63,12 +63,6 @@
                               <i class="fa fa-picture-o" aria-hidden="true"></i>
                             </a>
                           </span>
-                        <% elsif !article.image.url.nil? %>
-                          <span data-lightbox="gallery">
-                            <a data-lightbox="gallery-item" href="<%= article.image.url %>">
-                              <i class="fa fa-picture-o" aria-hidden="true"></i>
-                            </a>
-                          </span>
                         <% end %>
                       </td>
                       <td class="hidden-xs"><%= author(article) %></td>
@@ -241,7 +235,7 @@
                 <div class="form-group">
                   <%= f.label :image_new, class: "control-label col-md-3 col-sm-3 col-xs-12" %>
                   <div class="col-md-6 col-sm-6 col-xs-12"><br/>
-                   <% if @article.image_new.present? %>
+                   <% if @article.image_new.attached? %>
                       <strong>Current</strong>
                       <%= image_tag(@article.image_new, class: "img-responsive" )  %><br/>
                   <% end %>

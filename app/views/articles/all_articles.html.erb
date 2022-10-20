@@ -36,10 +36,10 @@
           <article class="portfolio-item pf-<%= article.category.downcase.parameterize %>">
             <div class="portfolio-image">
               <%= link_to articles_show_path(article) do %>
-                <%= image_tag article.image.url %>
+                <%= image_tag article.image_new if article.image_new.attached? %>
               <% end %>
               <div class="portfolio-overlay">
-                <a href="<%= asset_path article.image.url %>" class="left-icon" data-lightbox="image">
+                <a href="<%= url(article.image_new) %>" class="left-icon" data-lightbox="image">
                   <i class="icon-line-image"></i>
                 </a>
                 <%= link_to articles_show_path(article), class: "right-icon" do  %>

@@ -27,10 +27,11 @@
 # To Do
 
 - Write some generic smoke tests (visit all pages)
+- Move & migrate to active storage
+- Add free images uploader for embedding in articles
 - Finish/swap trix editor (fullscreen, html edit, divider, styling)
 - Add linters/tests before pushing
 - Delete old junk (reduce bundle size)
-- Fix gray footer in article detail
 - Rails 7 + read docs
 
 Made with &lt;3 by <a target="_blank" href="https://simonsomlai.com/en"> Simon Somlai</a>

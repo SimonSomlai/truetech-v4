@@ -2,7 +2,7 @@
 <% content_for :ogtitle, meta_title %>
 <% content_for :ogdescription, meta_description %>
 <% content_for :ogtype, "article" %>
-<% content_for :ogimage, @article.image_new.attached? ? url(@article.image_new) : image_url(@article.image) %>
+<% content_for :ogimage,  url(@article.image_new) %>
 <% content_for :css do %>
   <%= stylesheet_link_tag "highlight.min" %>
   <%=stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" %>
@@ -47,8 +47,6 @@
                   </header>
                   <% if @article.image_new.attached? %>
                      <div class="entry-image"> <%= image_tag @article.image_new, alt: "#{@article.title} - Webdesign Antwerpen", class: "attachment-large size-large wp-post-image" %> </div>
-                  <% else %>
-                     <div class="entry-image"> <%= image_tag @article.image.url, alt: "#{@article.title} - Webdesign Antwerpen", class: "attachment-large size-large wp-post-image" %> </div>
                   <% end %>
                   <div class="entry-content entry-content-blog-single">
                   <% if I18n.locale == :en %>
@@ -113,7 +111,7 @@
                   <div class="ipost clearfix">
                      <div class="entry-image">
                         <a href="<%= articles_show_path(article) %>">
-                           <%= image_tag(article.image.small.url, alt: "#{article.title} - Webdesign Antwerpen", class: "image-fade")  if article.image.present? %>
+                           <%= image_tag article.image_new.variant(resize_to_fit: [350,200]), alt: "#{article.title} - Webdesign Antwerpen", class: "image-fade" if article.image_new.attached? %>
                         </a>
                      </div>
                      <div class="entry-title">
