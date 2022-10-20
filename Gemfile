@@ -7,11 +7,10 @@ gem 'rails', '~> 6.0'
 gem 'sass-rails', '~> 5.0'
 gem 'sprockets-rails', '~> 2.3'
 gem 'uglifier', '~> 3.2'
-gem 'coffee-rails', '~> 4.2'
+gem 'coffee-rails', '~> 5.0'
 gem 'therubyrhino', "~> 2.0"
 gem 'jquery-rails', "~> 4.3"
 gem 'turbolinks', "~> 5.1"
-gem 'jbuilder', '~> 2.7'
 gem 'sdoc', '~> 2.4', group: :doc
 gem 'bcrypt', '~> 3.1'
 gem 'unicorn', "~> 5.4"
@@ -22,6 +21,8 @@ gem 'fog-aws', "~> 1.4"
 gem 'mini_magick', '~> 4.8', '>= 4.5.1'
 gem 'faker', '~> 1.9', '>= 1.6.5'
 gem 'friendly_id', '~> 5.2'
+gem 'jbuilder'
+gem 'image_processing', '~> 1.2'
 gem 'mail_form', "~> 1.7"
 gem 'remotipart', '~> 1.4'
 gem 'railties', '~> 6.0.1.rc1'
@@ -34,6 +35,7 @@ gem 'unveil-rails', '~> 0.2'
 gem 'will_paginate', '~> 3.0'
 gem 'invisible_captcha', '~> 0.9'
 gem 'delayed_job_active_record', '~> 4.1'
+gem "aws-sdk-s3", require: false
 gem 'rb-readline', '~> 0.5.3'
 gem 'daemons', '~> 1.2', '>= 1.2.3'
 gem "webrick", "~> 1.7"

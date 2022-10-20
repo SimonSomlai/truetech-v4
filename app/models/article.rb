@@ -9,6 +9,7 @@ class Article < ActiveRecord::Base
 
   # Image uploading
   mount_uploader :image, ArticleImageUploader
+  has_one_attached :image_new
 
   # Friendly ID slugs, 2 languages (slug_en & slug_nl)
   extend FriendlyId

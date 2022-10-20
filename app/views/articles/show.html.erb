@@ -2,7 +2,7 @@
 <% content_for :ogtitle, meta_title %>
 <% content_for :ogdescription, meta_description %>
 <% content_for :ogtype, "article" %>
-<% content_for :ogimage, image_url(@article.image) %>
+<% content_for :ogimage, @article.image_new.attached? ? url(@article.image_new) : image_url(@article.image) %>
 <% content_for :css do %>
   <%= stylesheet_link_tag "highlight.min" %>
   <%=stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" %>
@@ -45,7 +45,11 @@
                      </h1>
                      <div class="entry-meta center-block text-center"> <span class="posted-on"><%= t "articles.posted" %> <span><a class="contact-link" href="#<%=@article.category.downcase %>-cat"> <%=@article.category %></a><span class="byline"> <%= t "articles.by" %> <span class="meta-author vcard author"><%=author(@article) %></span></span> </div>
                   </header>
-                  <div class="entry-image"> <%= image_tag @article.image.url, alt: "#{@article.title} - Webdesign Antwerpen", class: "attachment-large size-large wp-post-image" if @article.image.present? %> </div>
+                  <% if @article.image_new.attached? %>
+                     <div class="entry-image"> <%= image_tag @article.image_new, alt: "#{@article.title} - Webdesign Antwerpen", class: "attachment-large size-large wp-post-image" %> </div>
+                  <% else %>
+                     <div class="entry-image"> <%= image_tag @article.image.url, alt: "#{@article.title} - Webdesign Antwerpen", class: "attachment-large size-large wp-post-image" %> </div>
+                  <% end %>
                   <div class="entry-content entry-content-blog-single">
                   <% if I18n.locale == :en %>
                       <%= raw @article.en_body %>
@@ -53,8 +57,6 @@
                         <%= raw @article.body %>
                       <% end %>
                   </div>
-                  
-
                    <div class="entry-content entry-content-blog-single">
                      <% if I18n.locale == :en && is_logged_in? %>
                   --------------------------

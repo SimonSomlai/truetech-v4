@@ -56,4 +56,9 @@ module ApplicationHelper
       project.service.capitalize
     end
   end
+
+  def url(attachment)
+    ActiveStorage::Current.host = request.base_url
+    ActiveStorage::Blob.service.url(attachment.key, disposition: 'inline', content_type: attachment.content_type, filename: attachment.filename, expires_in: 200_000)
+  end
 end

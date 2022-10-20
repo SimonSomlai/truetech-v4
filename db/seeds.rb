@@ -7,10 +7,10 @@ User.create!(
 admin: true)
 
 20.times do |n|
-  title = Faker::Book.title
-  description = Faker::Lorem.paragraph(2)
-  skills = Faker::Lorem.paragraph(1)
-  link = Faker::Internet.url
+  title = "Faker::Book.title"
+  description = "Faker::Lorem.paragraph(2)"
+  skills = "Faker::Lorem.paragraph(1)"
+  link = "Faker::Internet.url"
   features = "none=>none"
   user_id = User.find_by(name: "Simon").id
   service = ["starters website", "webapplicatie", "single page", "website op maat"].sample
@@ -34,10 +34,10 @@ Project.all.each do |project|
 end
 
 5.times do |n|
-  name = Faker::Name.name
-  quote = Faker::Lorem.paragraph(3)
-  company = Faker::Company.name
-  link = Faker::Internet.url
+  name = "Faker::Name.name"
+  quote = "Faker::Lorem.paragraph(3)"
+  company = "Faker::Company.name"
+  link = "Faker::Internet.url"
   url = ["http://basicgrowth.com/files/seed/person1.jpg", "http://basicgrowth.com/files/seed/person2.jpg", "http://basicgrowth.com/files/seed/person3.jpg", "http://basicgrowth.com/files/seed/person4.jpg"].sample
   Testimonial.create!(
     name: name,
@@ -48,9 +48,9 @@ end
 end
 
 5.times do |n|
-  title = Faker::Book.title
-  description = Faker::Lorem.paragraph(2)
-  body = Faker::Lorem.paragraph(15)
+  title = "Faker::Book.title"
+  description = "Faker::Lorem.paragraph(2)"
+  body = "Faker::Lorem.paragraph(15)"
   category = ["business", "technology"].sample
   user_id = User.find_by(name: "Simon").id
   url = ["http://basicgrowth.com/files/seed/article1.jpg", "http://basicgrowth.com/files/seed/article2.jpg", "http://basicgrowth.com/files/seed/article3.jpg", "http://basicgrowth.com/files/seed/article4.jpg"].sample
@@ -59,11 +59,8 @@ end
     description: description,
     remote_image_url: url,
     body: body,
-    en_title: en_title,
     slug_en: title.parameterize + "-english",
     slug_nl: title.parameterize + "-dutch",
-    en_description: en_description,
-    en_body: en_body,
     category: category,
     posted: true,
     user_id: User.first.id)
@@ -71,9 +68,9 @@ end
 
 
 5.times do |n|
-  en_title = Faker::Book.title
-  en_description = Faker::Lorem.paragraph(2)
-  en_body =  Faker::Lorem.paragraph(15)
+  en_title = "Faker::Book.title"
+  en_description = "Faker::Lorem.paragraph(2)"
+  en_body =  "Faker::Lorem.paragraph(15)"
   category = ["coding","business", "technology"].sample
   user_id = User.find_by(name: "Simon").id
   url = ["http://basicgrowth.com/files/seed/article1.jpg", "http://basicgrowth.com/files/seed/article2.jpg", "http://basicgrowth.com/files/seed/article3.jpg", "http://basicgrowth.com/files/seed/article4.jpg"].sample

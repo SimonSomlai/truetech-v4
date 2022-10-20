@@ -45,27 +45,28 @@ Rails.application.routes.draw do
 
     constraints(ArticleUrlConstrainer.new) do
       match '/:id', via: [:get], to: 'articles#show'
+      resources :articles, only: [:show], path: '', as: 'articles_show'
     end
 
     class PageUrlConstrainer
       def matches?(request)
         id = request.path.gsub('/', '')[2..-1]
-        @page = Page.friendly.find(id)
+        begin
+          @page = Page.friendly.find(id)
+        rescue
+          false
+        end
       end
     end
 
     constraints(PageUrlConstrainer.new) do
       match '/:id', via: [:get], to: 'pages#show'
+      resources :pages, only: [:show], path: '', as: 'pages_show'
     end
 
-    resources :articles, only: [:show], path: '', as: 'articles_show'
-    resources :pages, only: [:show], path: '', as: 'pages_show'
-
-    # Don't search deeper if assets weren't found
-    match '*path', via: [:get], to: 'locale#not_found'
-  end
-
-  match '*path', via: [:get], to: redirect("/#{I18n.default_locale}/%{path}")
-  match '', via: [:get], to: redirect("/#{I18n.default_locale}")
-  # Fo details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+    # Redirect not found pages to home, but allow active storage
+    get '*all', to: redirect("/#{I18n.default_locale}"), constraints: lambda { |req|
+      req.path.exclude? 'rails/active_storage' 
+    }
+  end 
 end
