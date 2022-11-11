@@ -7,17 +7,17 @@ class ProjectsController < ApplicationController
 
   def index
     @action = 'New'
-    @projects = Project.all.includes(:project_images).sort_by(&:created_at).reverse
+    @projects = Project.all.includes(:project_images_new_attachments).sort_by(&:created_at).reverse
     @project = Project.new
   end
 
   def all_projects
-    @projects = Project.all.includes(:project_images).sort_by(&:created_at).reverse
+    @projects = Project.all.includes(:project_images_new_attachments).sort_by(&:created_at).reverse
   end
 
   def show
     @user = User.find_by(id: @project.user_id).name
-    @relatedprojects = Project.includes(:project_images).where(service: @project.service).where.not(id: @project).sort_by(&:created_at).uniq.take(6).reverse
+    @relatedprojects = Project.includes(:project_images_new_attachments).where(service: @project.service).where.not(id: @project).sort_by(&:created_at).uniq.take(6).reverse
   end
 
   def create
@@ -35,7 +35,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @projects = Project.all.includes(:project_images).sort_by(&:created_at).reverse
+    @projects = Project.all.includes(:project_images_new_attachments).sort_by(&:created_at).reverse
     @action = 'Edit'
     render :index
   end
@@ -43,12 +43,6 @@ class ProjectsController < ApplicationController
   def update
     @action = 'Edit'
     if @project.update(project_params)
-      unless params[:project_images].nil?
-        @project.project_images.destroy_all
-        params[:project_images]['images'].each do |image|
-          @project_image = @project.project_images.create!(images: image)
-        end
-      end
       flash[:success] = 'Project succesfully updated!'
     else
       flash[:danger] = 'Something went wrong!'

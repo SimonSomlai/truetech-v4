@@ -47,10 +47,10 @@
                       <td class="hidden-xs"><%= project.skills %></td>
                       <td class="hidden-xs">
                         <span data-lightbox="gallery">
-                          <% if project.project_images.any? %>
+                          <% if project.project_images_new.attached? %>
                           <span data-lightbox="gallery">
-                            <% project.project_images.each_with_index do |image,i| %>
-                              <a href="<%= image.images_url %>" data-lightbox="gallery-item" class="<%= 'mfp-iframe' if is_video(image) %>">
+                            <% project.project_images_new.each_with_index do |image,i| %>
+                              <a href="<%= url(image) %>" data-lightbox="gallery-item" class="<%= 'mfp-iframe' if is_video(image) %>">
                                 <%= i + 1 %>,
                                </a>
                             <% end %><br/>
@@ -155,22 +155,6 @@
                   <%= f.label :skills, "Skills", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
                   <div class="col-md-6 col-sm-6 col-xs-12">
                     <%= f.text_field :skills, required: true, :class => "form-control col-md-7 col-xs-12" %>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <%= f.label :project_images, class: "control-label col-md-3 col-sm-3 col-xs-12" %>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <% if @project.project_images.any? %>
-                        <strong>Current</strong> (new images will be overwritten)<br/>
-                        <span data-lightbox="gallery">
-                          <% @project.project_images.each_with_index do |image,i| %>
-                            <a href="<%= image.images_url %>" data-lightbox="gallery-item" class="<%= 'mfp-iframe' if is_video(image) %>">
-                              <%= i + 1 %>,
-                             </a>
-                          <% end %><br/>
-                        </span>
-                    <% end %><br/>
-                    <%= f.file_field :project_images, :multiple => true, name: "project_images[images][]" %>
                   </div>
                 </div>
                  <div class="form-group">

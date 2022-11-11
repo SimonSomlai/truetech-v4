@@ -2,7 +2,7 @@
 <% content_for :ogtitle, @project.title %>
 <% content_for :ogdescription, @project.description %>
 <% content_for :ogtype, "article" %>
-<% content_for :ogimage, image_url(@project.project_images.first.images_url ) %>
+<% content_for :ogimage, url(@project.project_images_new.first) %>
 <body class="stretched sticky-responsive-menu">
   <div id="wrapper" class="clearfix">
     <header id="header" class="sticky-style-2">
@@ -16,19 +16,19 @@
     </header>
     <div class="container clearfix">
       <div class="col_three_fifth portfolio-single-image nobottommargin" data-lightbox="gallery">
-        <a href="<%= @project.project_images.first.images_url  %>" data-lightbox="gallery-item" style="cursor: zoom-in;">
-          <%=image_tag @project.project_images.first.images_url , alt: "#{@project.title} - Webdesign Antwerpen", class: "main" %>
+        <a href="<%= url(@project.project_images_new.first) if @project.project_images_new.attached?  %>" data-lightbox="gallery-item" style="cursor: zoom-in;">
+          <%=image_tag @project.project_images_new.first , alt: "#{@project.title} - Webdesign Antwerpen", class: "main" if @project.project_images_new.attached? %>
         </a>
         <ol class="flex-control-nav hidden-xs">
-          <% @project.project_images.each_with_index do |asset, index| %>
+          <% @project.project_images_new.each_with_index do |asset, index| %>
           <%# Skip first image %>
             <% if index > 0 %>
             <li> 
-              <a href="<%= asset.images_url %>" data-lightbox="gallery-item" class="<%= 'mfp-iframe' if is_video(asset) %>"> 
+              <a href="<%= url(asset) %>" data-lightbox="gallery-item" class="<%= 'mfp-iframe' if is_video(asset) %>"> 
                  <% if is_video(asset) %>
-                  <%= video_tag(asset.images_url) %> 
+                  <%= video_tag(url(asset)) %> 
                  <% else %>
-                  <%= image_tag asset.images_url, alt: "#{@project.title} - Webdesign Antwerpen" %> 
+                  <%= image_tag asset, alt: "#{@project.title} - Webdesign Antwerpen" %> 
                  <% end %>
               </a> 
             </li>
@@ -89,10 +89,10 @@
             <div class="iportfolio">
               <div class="portfolio-image">
                 <%=link_to(project_path(project)) do %>
-                  <%=image_tag project.project_images.first.images_url , alt: "#{project.title} - Webdesign Antwerpen" %>
+                  <%= image_tag project.project_images_new.first , alt: "#{project.title} - Webdesign Antwerpen" if project.project_images_new.attached?  %>
                 <% end %>
                 <div class="portfolio-overlay">
-                  <%=link_to(project.project_images.first.images_url , class: "left-icon", data:{lightbox: "image"}) do %>
+                  <%= link_to(url(project.project_images_new.first) , class: "left-icon", data:{lightbox: "image"}) do %>
                     <i class="icon-line-image"></i>
                   <% end %>
                   <%=link_to(project_path(project), class: "right-icon") do %>
