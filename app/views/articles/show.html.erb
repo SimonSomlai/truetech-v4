@@ -2,7 +2,7 @@
 <% content_for :ogtitle, meta_title %>
 <% content_for :ogdescription, meta_description %>
 <% content_for :ogtype, "article" %>
-<% content_for :ogimage,  url(@article.image_new) %>
+<% content_for :ogimage,  url(@article.image) %>
 <% content_for :css do %>
   <%= stylesheet_link_tag "highlight.min" %>
   <%=stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" %>
@@ -45,8 +45,8 @@
                      </h1>
                      <div class="entry-meta center-block text-center"> <span class="posted-on"><%= t "articles.posted" %> <span><a class="contact-link" href="#<%=@article.category.downcase %>-cat"> <%=@article.category %></a><span class="byline"> <%= t "articles.by" %> <span class="meta-author vcard author"><%=author(@article) %></span></span> </div>
                   </header>
-                  <% if @article.image_new.attached? %>
-                     <div class="entry-image"> <%= image_tag @article.image_new, alt: "#{@article.title} - Webdesign Antwerpen", class: "attachment-large size-large wp-post-image" %> </div>
+                  <% if @article.image.attached? %>
+                     <div class="entry-image"> <%= image_tag @article.image, alt: "#{@article.title} - Webdesign Antwerpen", class: "attachment-large size-large wp-post-image" %> </div>
                   <% end %>
                   <div class="entry-content entry-content-blog-single">
                   <% if I18n.locale == :en %>
@@ -111,7 +111,7 @@
                   <div class="ipost clearfix">
                      <div class="entry-image">
                         <a href="<%= articles_show_path(article) %>">
-                           <%= image_tag article.image_new.variant(resize_to_fit: [350,200]), alt: "#{article.title} - Webdesign Antwerpen", class: "image-fade" if article.image_new.attached? %>
+                           <%= image_tag article.image.variant(resize_to_fit: [350,200]), alt: "#{article.title} - Webdesign Antwerpen", class: "image-fade" if article.image.attached? %>
                         </a>
                      </div>
                      <div class="entry-title">

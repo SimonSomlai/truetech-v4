@@ -32,7 +32,7 @@ class ArticlesController < ApplicationController
     @articles = Article.all.sort_by(&:created_at).reverse
     @article = Article.new(article_params)
     @article.update_attribute(:user_id, current_user.id)
-    @article.image_new.attach(article_params[:image_new]) if article_params[:image_new]
+    @article.image.attach(article_params[:image]) if article_params[:image]
     if @article.save
       flash[:success] = @article.posted? ? "Article succesfully posted!" : "Draft succesfully saved!"
       redirect_to articles_path

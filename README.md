@@ -28,6 +28,7 @@
 
 - Write some generic smoke tests (visit all pages)
 - Move & migrate to active storage: articles, projects, testimonials
+<!-- https://stackoverflow.com/questions/52528623/migrating-carrierwave-to-activestorage -->
 - Add free images uploader for embedding in articles
 - Finish/swap trix editor (fullscreen, html edit, divider, styling)
 - Add linters/tests before pushing

@@ -8,7 +8,7 @@ class Article < ActiveRecord::Base
   validates :category, presence: true
 
   # Image uploading
-  has_one_attached :image_new
+  has_one_attached :image
 
   # Friendly ID slugs, 2 languages (slug_en & slug_nl)
   extend FriendlyId
