@@ -27,7 +27,7 @@
 # To Do
 
 - Write some generic smoke tests (visit all pages)
-- Move & migrate to active storage
+- Move & migrate to active storage: articles, projects, testimonials
 - Add free images uploader for embedding in articles
 - Finish/swap trix editor (fullscreen, html edit, divider, styling)
 - Add linters/tests before pushing
