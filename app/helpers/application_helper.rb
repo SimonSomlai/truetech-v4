@@ -12,8 +12,7 @@ module ApplicationHelper
   def is_video(item)
     return false if !item
 
-    video_url = url(item)
-    return !!video_url.match(/.mp4|.mov/)
+    return !!item.content_type.match(/video|mp4|mov/)
   end
 
   def comment; end
@@ -32,18 +31,6 @@ module ApplicationHelper
     !session[:user_id].nil?
   end
 
-  # Gets time range for x number time ago
-  def time_range(unit, timeunit = nil)
-    now = if timeunit == 'weeks'
-            Time.zone.now.beginning_of_week
-          elsif timeunit == 'months'
-            Time.zone.now.beginning_of_month
-          else
-            Time.zone.now.beginning_of_day
-          end
-    # Ex: time_range(0, "days") --> Get the time range for today  between the beginning of today and the beginning of tommorow - 1 second
-    now - unit.send(timeunit)..now + 1.send(timeunit) - 1.seconds - unit.send(timeunit)
-  end
 
   def category(project)
     if I18n.locale == :en
