@@ -11,6 +11,8 @@ class Project < ActiveRecord::Base
   has_many :project_images, dependent: :destroy
   accepts_nested_attributes_for :project_images
 
+  has_many_attached :project_images_new
+
   # Serialization of tags
   serialize :features
 

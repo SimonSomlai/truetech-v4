@@ -23,12 +23,8 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project[:user_id] = current_user.id
+    @article.project_images_new.attach(project_params[:project_images_new]) if project_params[:project_images_new]
     if @project.save
-      unless params[:project_images].nil?
-        params[:project_images]['images'].each do |image|
-          @project_image = @project.project_images.create!(images: image, project_id: @project.id)
-        end
-      end
       flash[:success] = 'Project succesfully created!'
       redirect_to projects_path
     else
