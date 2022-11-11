@@ -60,7 +60,7 @@ module ApplicationHelper
   def url(attachment)
     return "" if !attachment 
 
-    if attachment.attached?
+    if attachment.respond_to?(:key)
       ActiveStorage::Current.host = request.base_url
       ActiveStorage::Blob.service.url(attachment.key, disposition: 'inline', content_type: attachment.content_type, filename: attachment.filename, expires_in: 200_000)
     else
