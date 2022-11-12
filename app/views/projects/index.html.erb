@@ -47,9 +47,9 @@
                       <td class="hidden-xs"><%= project.skills %></td>
                       <td class="hidden-xs">
                         <span data-lightbox="gallery">
-                          <% if project.project_images_new.attached? %>
+                          <% if project.project_images.attached? %>
                           <span data-lightbox="gallery">
-                            <% project.project_images_new.each_with_index do |image,i| %>
+                            <% project.project_images.each_with_index do |image,i| %>
                               <a href="<%= url(image) %>" data-lightbox="gallery-item" class="<%= 'mfp-iframe' if is_video(image) %>">
                                 <%= i + 1 %>,
                                </a>
@@ -158,19 +158,19 @@
                   </div>
                 </div>
                  <div class="form-group">
-                  <%= f.label :project_images_new, class: "control-label col-md-3 col-sm-3 col-xs-12" %>
+                  <%= f.label :project_images, class: "control-label col-md-3 col-sm-3 col-xs-12" %>
                   <div class="col-md-6 col-sm-6 col-xs-12">
-                    <% if @project.project_images_new.attached? %>
+                    <% if @project.project_images.attached? %>
                         <strong>Current</strong> (new images will be overwritten)<br/>
                         <span data-lightbox="gallery">
-                          <% @project.project_images_new.each_with_index do |image,i| %>
+                          <% @project.project_images.each_with_index do |image,i| %>
                             <a href="<%= url(image) %>" data-lightbox="gallery-item">
                               <%= i + 1 %>,
                              </a>
                           <% end %><br/>
                         </span>
                     <% end %><br/>
-                    <%= f.file_field :project_images_new, :multiple => true %>
+                    <%= f.file_field :project_images, :multiple => true %>
                   </div>
                 </div>
                 <div class="form-group">

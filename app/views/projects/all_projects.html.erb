@@ -33,10 +33,10 @@
           <article class="portfolio-item pf-<%= project.service.downcase.parameterize %>">
             <div class="portfolio-image">
                 <%= link_to project_path(project) do %>
-                <%= image_tag project.project_images_new.first if project.project_images_new.attached?  %>
+                <%= image_tag project.project_images.first if project.project_images.attached?  %>
               <% end %>
               <div class="portfolio-overlay">
-                <a href="<%= url(project.project_images_new.first) if project.project_images_new.attached?  %>" class="left-icon" data-lightbox="image"><i class="icon-line-image"></i></a>
+                <a href="<%= url(project.project_images.first) if project.project_images.attached?  %>" class="left-icon" data-lightbox="image"><i class="icon-line-image"></i></a>
                 <%= link_to project_path(project), class: "right-icon" do  %>
                 <i class="icon-line-open"></i>
                 <% end %>

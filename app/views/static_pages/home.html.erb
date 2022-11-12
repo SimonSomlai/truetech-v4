@@ -131,7 +131,7 @@
                       <%= image_tag headerimage(project), alt: "Webdesign Antwerpen - Portfolio" %>
                     <% end %>
                     <div class="portfolio-overlay">
-                      <%=link_to(url(project.project_images_new.first) , class: "left-icon", data:{lightbox: "image"}) do %>
+                      <%=link_to(url(project.project_images.first) , class: "left-icon", data:{lightbox: "image"}) do %>
                         <i class="icon-line-image"></i>
                       <% end %>
                       <%=link_to(project_path(project), class: "right-icon") do %>

@@ -7,7 +7,7 @@ class Project < ActiveRecord::Base
   # Validations (thanks Rich ;))
   validates :title, :link,  :skills, :features, :service, presence: true
 
-  has_many_attached :project_images_new
+  has_many_attached :project_images
 
   # Serialization of tags
   serialize :features

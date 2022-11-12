@@ -2,7 +2,7 @@
 <% content_for :ogtitle, @project.title %>
 <% content_for :ogdescription, @project.description %>
 <% content_for :ogtype, "article" %>
-<% content_for :ogimage, url(@project.project_images_new.first) %>
+<% content_for :ogimage, url(@project.project_images.first) %>
 <body class="stretched sticky-responsive-menu">
   <div id="wrapper" class="clearfix">
     <header id="header" class="sticky-style-2">
@@ -16,11 +16,11 @@
     </header>
     <div class="container clearfix">
       <div class="col_three_fifth portfolio-single-image nobottommargin" data-lightbox="gallery">
-        <a href="<%= url(@project.project_images_new.first) if @project.project_images_new.attached?  %>" data-lightbox="gallery-item" style="cursor: zoom-in;">
-          <%=image_tag @project.project_images_new.first , alt: "#{@project.title} - Webdesign Antwerpen", class: "main" if @project.project_images_new.attached? %>
+        <a href="<%= url(@project.project_images.first) if @project.project_images.attached?  %>" data-lightbox="gallery-item" style="cursor: zoom-in;">
+          <%=image_tag @project.project_images.first , alt: "#{@project.title} - Webdesign Antwerpen", class: "main" if @project.project_images.attached? %>
         </a>
         <ol class="flex-control-nav hidden-xs">
-          <% @project.project_images_new.each_with_index do |asset, index| %>
+          <% @project.project_images.each_with_index do |asset, index| %>
           <%# Skip first image %>
             <% if index > 0 %>
             <li> 
@@ -89,10 +89,10 @@
             <div class="iportfolio">
               <div class="portfolio-image">
                 <%=link_to(project_path(project)) do %>
-                  <%= image_tag project.project_images_new.first , alt: "#{project.title} - Webdesign Antwerpen" if project.project_images_new.attached?  %>
+                  <%= image_tag project.project_images.first , alt: "#{project.title} - Webdesign Antwerpen" if project.project_images.attached?  %>
                 <% end %>
                 <div class="portfolio-overlay">
-                  <%= link_to(url(project.project_images_new.first) , class: "left-icon", data:{lightbox: "image"}) do %>
+                  <%= link_to(url(project.project_images.first) , class: "left-icon", data:{lightbox: "image"}) do %>
                     <i class="icon-line-image"></i>
                   <% end %>
                   <%=link_to(project_path(project), class: "right-icon") do %>
