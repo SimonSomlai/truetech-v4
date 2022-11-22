@@ -49,7 +49,7 @@ gem 'webpacker', '~> 5.4.3'
 # Caching
 gem 'rack-cache', "~> 1.8"
 gem "memcachier", "~> 0.0"
-gem 'dalli', "~> 2.7"
+gem 'dalli', "~> 3.2"
 gem 'pg', '~> 0.21'
 
 group :production do
