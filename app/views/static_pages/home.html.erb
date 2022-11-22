@@ -264,14 +264,9 @@
             <div class="col_two_fifth">
               <address>
                 <strong><%= t "home.contact.location"%></strong>
+                Antwerp, Belgium
                 <br>
-                Drakenhoflaan 76,
-                <br>
-                2100, Deurne
-                <br>
-                <a target="_blank"
-                    href="https://maps.google.com?saddr=Current+Location&daddr=Jan+Moorkensstraat+78-1,+2600+Berchem,+Belgium"><%= t "home.contact.route"%></a>
-                <br>
+               <br>
               </address>
               <b title="Email Address">
                 <strong>Email:</strong>
@@ -364,16 +359,16 @@
                     zoomControl: false,
                     scrollwheel: false,
                     zoom: 10,
-                    center: new google.maps.LatLng(51.195540, 4.459930),
+                    center: new google.maps.LatLng(51.196330, 4.459335),
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                   };
                   map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
                   marker = new google.maps.Marker({
                     map: map,
-                    position: new google.maps.LatLng(51.195540, 4.459930)
+                    position: new google.maps.LatLng(51.196330, 4.459335)
                   });
                   infowindow = new google.maps.InfoWindow({
-                    content: '<strong>Simon Somlai</strong><br>Drakenhoflaan 76, 2100 Deurne<br>'
+                    content: '<strong>Simon Somlai</strong><br>Deurne, Belgium<br>'
                   });
                   google.maps.event.addListener(marker, 'click', function () {
                     infowindow.open(map, marker);
