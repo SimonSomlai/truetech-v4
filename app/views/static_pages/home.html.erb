@@ -265,9 +265,9 @@
               <address>
                 <strong><%= t "home.contact.location"%></strong>
                 <br>
-                Jan Moorkensstraat 78,
+                Drakenhoflaan 76,
                 <br>
-                2600, Berchem
+                2100, Deurne
                 <br>
                 <a target="_blank"
                     href="https://maps.google.com?saddr=Current+Location&daddr=Jan+Moorkensstraat+78-1,+2600+Berchem,+Belgium"><%= t "home.contact.route"%></a>
@@ -364,16 +364,16 @@
                     zoomControl: false,
                     scrollwheel: false,
                     zoom: 10,
-                    center: new google.maps.LatLng(51.188760, 4.433030),
+                    center: new google.maps.LatLng(51.195540, 4.459930),
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                   };
                   map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
                   marker = new google.maps.Marker({
                     map: map,
-                    position: new google.maps.LatLng(51.188760, 4.433030)
+                    position: new google.maps.LatLng(51.195540, 4.459930)
                   });
                   infowindow = new google.maps.InfoWindow({
-                    content: '<strong>Simon Somlai</strong><br>Jan Moorkensstraat 78, 2600<br>'
+                    content: '<strong>Simon Somlai</strong><br>Drakenhoflaan 76, 2100 Deurne<br>'
                   });
                   google.maps.event.addListener(marker, 'click', function () {
                     infowindow.open(map, marker);
