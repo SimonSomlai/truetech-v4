@@ -42,7 +42,7 @@ class ProjectsController < ApplicationController
 
   def update
     @action = 'Edit'
-    ActiveStorage::Attachment.where(record_type: "Project", record_id: @project.id).destroy_all # Remove current attachments
+    ActiveStorage::Attachment.where(record_type: "Project", record_id: @project.id).destroy_all if project_params[:project_images] # Remove current attachments if new are selected
     if @project.update(project_params)
       flash[:success] = 'Project succesfully updated!'
     else

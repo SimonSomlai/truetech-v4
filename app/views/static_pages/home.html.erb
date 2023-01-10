@@ -144,7 +144,9 @@
                       <%=link_to(project.title, project_path(project)) %>
                     </h3>
                     <%= link_to project_path(project), class: "portfolio-features" do %>
-                      <span><%= category(project) %></span>
+                      <span>
+                        <%= tags(project) %>
+                      </span>
                     <% end %>
                   </div>
                 </div>

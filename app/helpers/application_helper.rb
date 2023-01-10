@@ -31,6 +31,17 @@ module ApplicationHelper
     !session[:user_id].nil?
   end
 
+  def tags(project)
+    begin
+      if(project.features && project.features != "none=>none")
+        project.features.gsub(/[{}]/,'').split(',').map{|h| h1,h2 = h.split('=>'); {h1 => h2}}.reduce(:merge).keys.map {|key| "##{key.downcase}" }.join(" ")
+      else 
+        category(project)
+      end
+    rescue => exception
+      category(project)
+    end
+  end
 
   def category(project)
     if I18n.locale == :en

@@ -4468,6 +4468,7 @@ body:not(.device-touch):not(.device-xs):not(.device-xxs)
 .portfolio-desc {
   z-index: 3;
   padding: 15px 5px 10px;
+  margin-top: auto;
 }
 
 .portfolio-desc h3 {
@@ -5464,6 +5465,7 @@ body:not(.device-touch):not(.device-xs):not(.device-xxs)
   z-index: 2;
   text-align: center;
   background-color: rgba(0, 0, 0, 0.5);
+  align-self: stretch;
 }
 
 body:not(.device-touch):not(.device-xs):not(.device-xxs) .portfolio-overlay {
@@ -5916,7 +5918,7 @@ body.device-touch.device-xxs .portfolio-notitle .portfolio-overlay {
 .iportfolio .portfolio-image img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 .iportfolio .portfolio-overlay {
@@ -12726,6 +12728,19 @@ blockquote.pull-right {
 .owl-carousel .owl-stage {
   position: relative;
   -ms-touch-action: pan-Y;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.owl-carousel .oc-item {
+  height: 100%;
+}
+
+.iportfolio {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .owl-carousel .owl-stage:after {
