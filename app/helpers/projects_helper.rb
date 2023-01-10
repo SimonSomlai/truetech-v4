@@ -11,7 +11,7 @@ module ProjectsHelper
   end
 
   def project_params
-    params.require(:project).permit(:title, :description, :en_description, :features, :link, :service, :follow_up, :skills, :slug, :project_images, project_images_attributes: [:id, :project_id, :images])
+    params.require(:project).permit(:title, :description, :en_description, :features, :link, :service, :follow_up, :skills, :slug, project_images: [], project_images_attributes: [:id, :project_id, :images])
   end
 
   def setup

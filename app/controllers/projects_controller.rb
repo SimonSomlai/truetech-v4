@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     @project[:user_id] = current_user.id
-    @article.project_images.attach(project_params[:project_images]) if project_params[:project_images]
+    @project.project_images.attach(project_params[:project_images]) if project_params[:project_images]
     if @project.save
       flash[:success] = 'Project succesfully created!'
       redirect_to projects_path
@@ -42,6 +42,7 @@ class ProjectsController < ApplicationController
 
   def update
     @action = 'Edit'
+    ActiveStorage::Attachment.where(record_type: "Project", record_id: @project.id).destroy_all # Remove current attachments
     if @project.update(project_params)
       flash[:success] = 'Project succesfully updated!'
     else
