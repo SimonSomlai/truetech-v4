@@ -18,3 +18,10 @@ production:
   database: d9oe24e5k3tnll
   username: cbattgdkindgrz
   password: <%= ENV['TRUETECH-V4_DATABASE_PASSWORD'] %>
+
+
+  # development:
+#   <<: *default
+#   database: dbfov55d72cedv
+#   username: yeqfvhpppqjuje
+#   password: <%= ENV['TRUETECH-V4_DATABASE_PASSWORD'] %>

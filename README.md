@@ -35,5 +35,10 @@
 - Delete old junk (reduce bundle size)
 - Rails 7 + read docs
 - Update external links from tt to ss
+- remove scrambler
+- timeline about
+- split about/contact
+- project tags better filter
+- make features easier to add
 
 Made with &lt;3 by <a target="_blank" href="https://simonsomlai.com/en"> Simon Somlai</a>
