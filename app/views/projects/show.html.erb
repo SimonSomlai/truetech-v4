@@ -57,7 +57,7 @@
             <li class="cf">
               <% group.each do |tag| %>
               <div class="col_one_third nomargin cf">
-                <% if !!tag.icon.match(/.\.(png|jpeg|jpg|gif)$/) %>
+                <% if tag.icon && !!tag.icon.match(/.\.(png|jpeg|jpg|gif|ico)$/) %>
                   <span class="<%=tag.name.gsub(/[_]/, ' ') %>">
                     <img style="width: 14px; height: 14px; margin-right: 8px;" src="<%= asset_path(tag.icon) %>"/><%=tag.name.gsub(/[_]/, ' ') %>
                   </span> 

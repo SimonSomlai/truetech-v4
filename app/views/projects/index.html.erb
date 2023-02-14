@@ -25,7 +25,6 @@
                     <th class="hidden-xs">Tags</th>
                     <th class="hidden-xs">Link</th>
                     <th class="hidden-xs">Type</th>
-                    <th class="hidden-xs">Skills</th>
                     <th class="hidden-xs">Images</th>
                     <th>Options</th>
                   </tr>
@@ -44,7 +43,6 @@
                       <td class="hidden-xs"><%= project.tags.map(&:name).join(", ") %> </td>
                       <td class="hidden-xs"><a target="_blank" href="<%= project.link %>"><i class="fa fa-link"></i></a></td>
                       <td class="hidden-xs"><%= project.service %></td>
-                      <td class="hidden-xs"><%= project.skills %></td>
                       <td class="hidden-xs">
                         <span data-lightbox="gallery">
                           <% if project.project_images.attached? %>
