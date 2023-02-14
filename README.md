@@ -26,6 +26,7 @@
 
 # To Do
 
+- cleanup tech
 - Write some generic smoke tests (visit all pages) + Add linters/tests before pushing
 - Move & migrate to active storage: ~~articles~~, ~~projects~~, testimonials, users/profiles
   <!-- https://stackoverflow.com/questions/52528623/migrating-carrierwave-to-activestorage -->
@@ -37,8 +38,5 @@
 - Update external links from tt to ss
 - remove scrambler
 - timeline about
-- split about/contact
-- project tags better filter
-- make features easier to add
 
 Made with &lt;3 by <a target="_blank" href="https://simonsomlai.com/en"> Simon Somlai</a>

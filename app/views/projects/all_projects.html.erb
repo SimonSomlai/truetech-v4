@@ -20,9 +20,9 @@
       </div>
       <ul class="portfolio-filter clearfix" data-container="#portfolio">
         <li class="activeFilter"><a href="#" data-filter="*"><%= t("home.services.all") %></a></li>
-        <li><a href="#" data-filter=".pf-starters-website"><%= t("home.services.service2_title") %></a></li>
-        <li><a href="#" data-filter=".pf-website-op-maat"><%= t("home.services.service3_title") %></a></li>
-        <li><a href="#" data-filter=".pf-webapplicatie"><%= t("home.services.service4_title") %></a></li>
+        <% @tags.each do |tag| %>
+          <li><a href="#" data-filter=".pf-<%= tag.name %>"><%= tag.name.humanize %></a></li>
+        <% end %>
       </ul>
       <div class="portfolio-shuffle" data-container="#portfolio">
         <i class="icon-random"></i>
@@ -30,7 +30,7 @@
       <div class="clear"></div>
       <div id="portfolio" class="bottommargin portfolio grid-container all-projects clearfix" data-layout="fitRows" style="position: relative; height: 888px;">
         <% @projects.each do |project| %>
-          <article class="portfolio-item pf-<%= project.service.downcase.parameterize %>">
+          <article class="portfolio-item <%= project.tags.map{|tag| "pf-#{tag.name}" }.join(" ") %>">
             <div class="portfolio-image">
                 <%= link_to project_path(project) do %>
                 <%= image_tag project.project_images.first if project.project_images.attached?  %>

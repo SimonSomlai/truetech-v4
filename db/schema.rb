@@ -10,9 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_11_174121) do
+ActiveRecord::Schema.define(version: 2023_02_14_160202) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "pg_stat_statements"
   enable_extension "plpgsql"
 
   create_table "action_text_rich_texts", force: :cascade do |t|
@@ -102,6 +103,13 @@ ActiveRecord::Schema.define(version: 2022_11_11_174121) do
     t.index ["slug"], name: "index_pages_on_slug", unique: true
   end
 
+  create_table "project_tags", force: :cascade do |t|
+    t.integer "project_id"
+    t.integer "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "projects", id: :serial, force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -120,6 +128,13 @@ ActiveRecord::Schema.define(version: 2022_11_11_174121) do
     t.index ["service"], name: "index_projects_on_service"
     t.index ["slug"], name: "index_projects_on_slug", unique: true
     t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.string "icon"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "testimonials", id: :serial, force: :cascade do |t|

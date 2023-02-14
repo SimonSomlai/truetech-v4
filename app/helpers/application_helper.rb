@@ -32,15 +32,7 @@ module ApplicationHelper
   end
 
   def tags(project)
-    begin
-      if(project.features && project.features != "none=>none")
-        project.features.gsub(/[{}]/,'').split(',').map{|h| h1,h2 = h.split('=>'); {h1 => h2}}.reduce(:merge).keys.sort_by {|value| value.downcase.match(/vue|react|node|rails|graphql|gatsby|redux|contentful/) ? 0 : 1  }.take(3).map {|key| "##{key.downcase}" }.join(" ")
-      else 
-        category(project)
-      end
-    rescue => exception
-      category(project)
-    end
+    project.tags.map(&:name).take(3).map {|key| "##{key.humanize.downcase}" }.join(" ")
   end
 
   def category(project)

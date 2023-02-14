@@ -36,3 +36,21 @@ require 'open-uri'
 # end
 
 
+
+      uniques = Project.all.map(&:features).map{|feature| feature.gsub(/[{}]/,'').split(',').map{|h| h1,h2 = h.split('=>'); {h1 => h2}}}.flatten.uniq { |p| p.keys }
+      uniques.each do |hash|
+        key = hash.keys[0]
+        value = hash.values[0]
+        Tag.create(name: key, icon: value)
+      end
+
+
+   tag_map.each_with_index do |arr, index|
+        arr.each do |tag|
+          project_id = project_ids[index]
+          match = Tag.find_by(name: tag)
+          puts project_id
+          puts match
+          ProjectTag.create(project_id: project_id, tag_id: match.id)
+        end
+      end

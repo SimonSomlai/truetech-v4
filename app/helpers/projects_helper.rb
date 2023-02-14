@@ -6,12 +6,8 @@ module ProjectsHelper
     return ""
   end
 
-  def features # Convert serialized string to usable hash, (I know I should've used regular hash lol)
-    @project.features.gsub(/[{}]/,'').split(',').map{|h| h1,h2 = h.split('=>'); {h1 => h2}}.reduce(:merge)
-  end
-
   def project_params
-    params.require(:project).permit(:title, :description, :en_description, :features, :link, :service, :follow_up, :skills, :slug, project_images: [], project_images_attributes: [:id, :project_id, :images])
+    params.require(:project).permit(:new_tags, :title, :description, :en_description, :features, :link, :service, :follow_up, :skills, :slug, project_images: [], project_images_attributes: [:id, :project_id, :images])
   end
 
   def setup

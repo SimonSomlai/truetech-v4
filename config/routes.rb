@@ -22,10 +22,12 @@ Rails.application.routes.draw do
 
     get 'all-projects' => 'projects#all_projects'
     get 'all-articles' => 'articles#all_articles'
+    get 'all-articles' => 'articles#all_articles'
 
     get 'admin' => 'static_pages#admin'
     get 'callback' => 'static_pages#callback'
     resources :users, :projects, :testimonials, :articles, :pages
+    get '/tags/autocomplete' => 'tags#autocomplete'
 
     #  This routes pages and articles. First it searches for a matching article by slug (friendly id), then
     #  falls down to pages. Ex;

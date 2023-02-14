@@ -1,16 +1,13 @@
 class Project < ActiveRecord::Base
   before_save { self.service = service.downcase }
 
-  # Relationship w user
+  # Relationships
   belongs_to :user
-
-  # Validations (thanks Rich ;))
-  validates :title, :link,  :skills, :features, :service, presence: true
-
+  has_many :project_tags
+  has_many :tags, :through => :project_tags
   has_many_attached :project_images
 
-  # Serialization of tags
-  serialize :features
+  validates :title, :link, presence: true
 
   # Be able to search projects by their title attribute
   extend FriendlyId

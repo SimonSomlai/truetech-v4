@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
       redirect_to_path(request.path) if is_old?
     else
       I18n.locale = I18n.default_locale
-      redirect_to_path "/#{I18n.locale}#{request.path}"
+      redirect_to_path "/#{I18n.locale}#{request.fullpath}"
     end
   end
 

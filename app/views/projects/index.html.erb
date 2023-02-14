@@ -22,7 +22,7 @@
                     <th class="hidden-xs">#</th>
                     <th>Title</th>
                     <th class="hidden-xs">Description</th>
-                    <th class="hidden-xs">Features</th>
+                    <th class="hidden-xs">Tags</th>
                     <th class="hidden-xs">Link</th>
                     <th class="hidden-xs">Type</th>
                     <th class="hidden-xs">Skills</th>
@@ -41,7 +41,7 @@
                         <% end %>
                       </td>
                       <td class="hidden-xs"><%= project.description.first(120) %>... </td>
-                      <td class="hidden-xs"><%= project.features.gsub(/[{}]/,'').split(',').map{|h| h1,h2 = h.split('=>'); {h1 => h2}}.reduce(:merge).keys.join(", ") %> </td>
+                      <td class="hidden-xs"><%= project.tags.map(&:name).join(", ") %> </td>
                       <td class="hidden-xs"><a target="_blank" href="<%= project.link %>"><i class="fa fa-link"></i></a></td>
                       <td class="hidden-xs"><%= project.service %></td>
                       <td class="hidden-xs"><%= project.skills %></td>
@@ -129,11 +129,11 @@
                     <%= f.text_area :en_description, :class => "form-control col-md-7 col-xs-12" %>
                   </div>
                 </div>
-                <div class="form-group">
-                  <label  class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name" >Features <i class="icon-question-sign"></i><span class="required"></span>
+                  <div class="form-group">
+                  <label  class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name" >Tags 
                   </label>
-                  <div class="col-md-6 col-sm-6 col-xs-12" data-toggle="tooltip" data-placement="top" data-original-title="" id="features-box">
-                    <input type="text" name="tags" id="tags" value="" />
+                  <div class="col-md-6 col-sm-6 col-xs-12" >
+                    <input type="text" name="new_tags" id="new_tags" value="" />
                   </div>
                 </div>
                 <div class="form-group">
@@ -143,18 +143,6 @@
                   <%= f.label :link, "Link", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
                   <div class="col-md-6 col-sm-6 col-xs-12">
                     <%= f.text_field :link, required: true, :class => "form-control col-md-7 col-xs-12" %>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <%= f.label :service, "Type", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <%= f.text_field :service, required: true, :class => "form-control col-md-7 col-xs-12" %>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <%= f.label :skills, "Skills", class: "control-label col-md-3 col-sm-3 col-xs-12" %>
-                  <div class="col-md-6 col-sm-6 col-xs-12">
-                    <%= f.text_field :skills, required: true, :class => "form-control col-md-7 col-xs-12" %>
                   </div>
                 </div>
                  <div class="form-group">
@@ -174,18 +162,6 @@
                   </div>
                 </div>
                 <div class="form-group">
-                   <%= f.label :follow_up, class: "control-label col-md-3 col-sm-3 col-xs-12" %>
-                   <div class="col-md-6 col-sm-6 col-xs-12">
-                      <div class="checkbox">
-                         <label class="">
-                            <div class="icheckbox_flat-green" style="position: relative;">
-                               <%= f.check_box :follow_up, :class => "flat" %>
-                            </div>
-                         </label>
-                      </div>
-                   </div>
-                </div>
-                <div class="form-group">
                   <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                     <%= f.submit "#{@action} Project", class: "text-center btn btn-success" %>
                   </div>
@@ -198,11 +174,13 @@
     </div>
   </div>
   <% content_for :js do %>
-    <%= javascript_include_tag "custom", "jquery", "jquery_ujs", "jquery.tagsinput", "plugins", "functions", "script"  %>
+    <%= javascript_include_tag "custom", "jquery", "jquery_ujs", "jquery.tagsinput","jquery.autocomplete", "plugins", "functions", "script"  %>
     <script>
-      $('#tags').tagsInput();
-            getTags();
-            changeLocale();
+      changeLocale();
+      $('#new_tags').tagsInput({
+        initialValues: "<%= @project.tags.map(&:name).join(",") %>",
+        autocomplete_url: "/tags/autocomplete",
+      });
     </script>
   <% end %>
 </body>
