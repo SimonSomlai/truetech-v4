@@ -32,7 +32,7 @@ module ApplicationHelper
   end
 
   def tags(project)
-    project.tags.map(&:name).take(3).map {|key| "##{key.humanize.downcase}" }.join(" ")
+    project.tags.map(&:name).sort_by {|value| value.downcase.match(/vue|react|node|javascript|wordpress|ruby|rails|graphql|gatsby|redux|contentful|static|next|bash|shell|quasar|electron|native|cordova|capacitor/) ? 0 : 1  }.take(3).map {|key| "##{key.humanize.downcase}" }.join(" ")
   end
 
   def category(project)
