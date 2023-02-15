@@ -59,7 +59,7 @@
               <div class="col_one_third nomargin cf">
                 <% if tag.icon && !!tag.icon.match(/.\.(png|jpeg|jpg|gif|ico)$/) %>
                   <span class="<%=tag.name.gsub(/[_]/, ' ') %>">
-                    <img style="width: 14px; height: 14px; margin-right: 8px;" src="<%= asset_path(tag.icon) %>"/><%=tag.name.gsub(/[_]/, ' ') %>
+                    <img style="width: 16px; height: 16px; margin-right: 8px;" src="<%= asset_path(tag.icon) %>"/><%=tag.name.gsub(/[_]/, ' ') %>
                   </span> 
                 <% else %>
                   <span class="<%= tag.name.gsub(/[_]/, ' ') %>">
