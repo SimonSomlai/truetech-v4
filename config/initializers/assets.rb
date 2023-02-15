@@ -18,3 +18,6 @@ Rails.application.config.assets.precompile << /\.(?:svg|eot|woff|ttf)\z/
 Rails.application.config.assets.precompile << Proc.new { |path, fn| fn =~ /vendor\/assets/ }
 Rails.application.config.assets.precompile << Proc.new { |path, fn| fn =~ /app\/assets/  }
 
+
+# Add node_modules folder to the asset load path.
+Rails.application.config.assets.paths << Rails.root.join("node_modules")
