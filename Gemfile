@@ -19,7 +19,7 @@ gem 'carrierwave', '~> 1.3.2'
 gem 'ssrf_filter', '1.0.8'
 gem 'fog-aws', "~> 1.4"
 gem 'mini_magick', '~> 4.8', '>= 4.5.1'
-gem 'faker', '~> 1.9', '>= 1.6.5'
+gem 'faker', '~> 3.2.0'
 gem 'friendly_id', '~> 5.2'
 gem 'jbuilder'
 gem 'image_processing', '~> 1.2'

@@ -15,18 +15,7 @@
       <%= render 'shared/header' %>
       <div id="header-wrap">
          <% content_for :menu do %>
-         <li> <%=link_to("Home", home_path) %> </li>
-         <li class="<%= @article.category.downcase %>-article">
-            <% if I18n.locale == :nl %>
-               <%= link_to locale: "en" , article: @article.slug_en do %>
-                     EN/<b style="color: #1982AE;">NL</b>
-               <% end %> 
-            <% else  %>
-               <%= link_to locale: "nl", article: @article.slug_nl do %>
-                     <b style="color: #1982AE;">EN</b>/NL
-               <% end %> 
-            <% end %>
-         </li>        
+         <li> <%=link_to("Home", home_path) %> </li>    
          <% end %> <%=render "shared/menu" %>
       </div>
    </header>
@@ -64,30 +53,15 @@
                          <% end %>
                      </div>
                   </div>
+                  <% comment do %>
                   <div class="blog-share text-center">
                      <br/>
                      <div class='shareaholic-canvas' data-app='share_buttons' data-app-id='25483125'></div>
                   </div>
-                  <div class="col-md-8 col-centered topmargin blog-single-subscribe subscribe" >
-                     <h5 class="text-center"><strong><%= t "articles.sub" %></strong></h5>
-                     <form action="//basicgrowth.us10.list-manage.com/subscribe/post?u=9977656e94f27f7aad886fc7d&amp;id=e4d5107bb1" method="post" id="widget-subscribe-form" name="mc-embedded-subscribe-form" class="nobottommargin subscribe" target="_blank" novalidate >
-                        <div class="input-group input-group-md divcenter" style="max-width:600px; margin-bottom: 15px;"> <span class="input-group-addon"><i class="icon-user4"></i></span> <input type="text" data-toggle="tooltip" data-placement="top" title="" data-original-title="<%= t 'footer.submessage' %>"  placeholder="<%= t 'footer.subname' %>" value="" name="FNAME" class="form-control required email" id="mce-FNAME"> </div>
-                        <div class="input-group input-group-md divcenter" style="max-width:600px;"> <span class="input-group-addon"><i class="icon-email2"></i></span> <input type="email" value="" name="EMAIL" class="form-control required email" id="mce-EMAIL"  placeholder="<%= t 'footer.subemail' %>"> <span class="input-group-btn"> <input type="submit" value="<%= t 'footer.subbutton' %>" name="subscribe" id="mc-embedded-subscribe" class="btn btn-default index-subscribe"> </span> </div>
-                        <div class="which-articles-wrapper col-hidden cf checkbox subscribe text-center">
-                           <h5><strong><%= t "footer.suboptions" %></strong></h5>
-                           <div class="col-md-12 subscribe checkbox text-center center-block"> <label for="mce-group[7933]-7933-0"><%= t "footer.option1" %></label> <input type="checkbox" value="1" name="group[7933][1]" id="mce-group[7933]-7933-0" class="flat inline checkbox"> </div>
-                           <div class="col-md-12 subscribe checkbox text-center center-block"> <label for="mce-group[7933]-7933-1"><%= t "footer.option2" %></label> <input type="checkbox" value="2" name="group[7933][2]" id="mce-group[7933]-7933-1" class="flat inline checkbox"> </div>
-                           <div class="col-md-12 subscribe checkbox text-center center-block"> <label for="mce-group[7933]-7933-2"><%= t "footer.option3" %></label> <input type="checkbox" value="4" name="group[7933][4]" id="mce-group[7933]-7933-2" class="flat inline checkbox"> </div>
-                           <div id="mce-responses" class="clear">
-                              <div class="response" id="mce-error-response" style="display:none"></div>
-                              <div class="response" id="mce-success-response" style="display:none"></div>
-                           </div>
-                           <div style="position: absolute; left: -5000px;" aria-hidden="true"> <input type="text" name="b_9977656e94f27f7aad886fc7d_e4d5107bb1" tabindex="-1" value=""> </div>
-                        </div>
-                     </form>
-                  </div>
                   <div class="line"></div>
+                  <% end %>
                </article>
+               <% comment do %>
                <div id="comments" class="clearfix">
                   <h3 id="comments-title" class="bottommargin"><%= t "articles.comments" %></h3>
                   <div id="disqus_thread"></div>
@@ -101,6 +75,7 @@
                        (d.head || d.body).appendChild(s);})();
                     </script>
                </div>
+               <% end %>
             </div>
             <%= image_tag("unicorn.png", :class => "unicorn hidden-xs") %>
             <div id="<%=@article.category.downcase %>-cat" class="line"></div>

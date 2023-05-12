@@ -37,7 +37,6 @@
               <div>Contact</div>
             <% end %>
           </li>
-          <%= render "shared/locale" %>
           <li>
             <% if logged_in? && is_admin %>
               <%=link_to(destroy_user_session_path, method: :delete) do %>
@@ -290,47 +289,6 @@
               <% end %>
               </div>
             </div>
-            <% end %>
-          </div>
-          <div class="col-sm-12 col-md-12 contactform">
-            <%= form_for(@contact, remote: true, :format=> 'js', :html=> { data: {type: "script", lpignore: "true"}, autocomplete: "off" , :class=> "nobottommargin", :name=> "template-contactform", :id=> "template-contactform", :multipart=> true } ) do |f| %>
-              <%=render "shared/error_messages", object: f.object %>
-              <div>
-                <%= f.invisible_captcha :a_password, visual_honeypots: false, timestamp_threshold: 3 %>
-              </div>
-              <div class="col_half">
-                <%=f.label :name do %>
-                  <%= t "home.contact.namefield" %>
-                  <small>*</small>
-                <% end %>
-                <%= f.text_field :name, required: true, id: "template-contactform-name", :class=> "sm-form-control required", placeholder: "John Smith" %>
-              </div>
-              <div class="col_half col_last">
-                <%=f.label :email do %>
-                  Email<small>*</small>
-                <% end %>
-                <%=f.email_field :email, required: true, id: "template-contactform-email", :class=> "required email sm-form-control",  placeholder: "john@email.com" %>
-              </div>
-              <div class="clear"></div>
-              <div class="col_half">
-                <%=f.label :phone, t("home.contact.phonefield") %>
-                <%=f.text_field :phone, id: "template-contactform-phone", :class=> "sm-form-control", placeholder: "+32 123 456" %>
-              </div>
-              <div class="col_half col_last subject-home">
-                <%=f.label :referrer, t("home.contact.subjectfield") %>
-                <%=f.text_field :referrer, id: "template-contactform-subject", :class=> "sm-form-control required", placeholder:  t("home.contact.subjectexample") %>
-              </div>
-              <div class="clear"></div>
-              <div class="col_full">
-                <%=f.label :message do %>
-                  <%= t "home.contact.messagefield"%>
-                  <small>*</small>
-                <% end %>
-                <%=f.text_area :message, id: "template-contactform-message", :class=> "required sm-form-control", rows: 6, cols: 30, placeholder: "👋 Hello there!" %>
-              </div>
-              <div class="col_full">
-                <%= f.submit t("home.contact.sendbutton"), id: "template-contactform-submit", class: "button button-3d nomargin" %>
-              </div>
             <% end %>
           </div>
           <div class="col-md-12 bottommargin">

@@ -16,7 +16,7 @@
                <div>Contact</div>
                <% end %>
             </li>
-            <%= render "shared/locale" %>
+            
             <% end %> <%=render "shared/menu" %>
          </div>
       </header>
@@ -173,6 +173,7 @@
                <h2><%= t "contact.heading1" %><span> <%= t 'contact.heading1_span' %></span>!</h2>
             </div>
          </div>
+         <% comment do %>
          <div class="col-sm-12 col-md-12 contactform">
             <%=form_for(@contact, remote: true, :format=> 'js', :html=>{:class=> "nobottommargin", :name=> "template-contactform", :id=> "template-contactform", :multipart=> true}) do |f| %>
             <%=render "shared/error_messages", object: f.object %>
@@ -198,6 +199,7 @@
             </div>
             <% end %>
          </div>
+         <% end %>
       </div>
       <%=render "shared/footer" %>
       <div id="gotoTop" class="icon-angle-up"></div>
