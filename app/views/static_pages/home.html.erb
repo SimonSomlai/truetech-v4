@@ -237,8 +237,8 @@
                 </div>
                 <br />
                 <%= link_to asset_path("cv.pdf"), target: "_blank", class: "button button-3d button-rounded nomargin button-small btn-block text-center" do %>
-                    <i class="icon-download"></i> 
-                    <span><%= t "home.contact.cv"%></span>
+                  <i class="icon-download"></i>
+                  <span><%= t "home.contact.cv"%></span>
                 <% end %>
                 <a target="_blank"
                     href="https://www.linkedin.com/in/simon-somlai-27a4648a/"
@@ -254,15 +254,14 @@
                 <a target="_blank"
                   href="https://stackoverflow.com/users/5079884/simon-somlai"
                   class="social-icon si-rounded si-small si-stackoverflow">
-                <i class="icon-stackoverflow"></i>
-                <i class="icon-stackoverflow"></i>
-                <a target="_blank"
+                  <i class="icon-stackoverflow"></i>
+                  <i class="icon-stackoverflow"></i>
+                  <a target="_blank"
                     href="https://www.youtube.com/channel/UCg9AnJ7AAVKkHZ4wQ0CXPAw/videos?view=0&sort=dd&shelf_id=0"
                     class="social-icon si-rounded si-small si-youtube">
-                  <i class="icon-youtube"></i>
-                  <i class="icon-youtube"></i>
-                </a>
-       
+                    <i class="icon-youtube"></i>
+                    <i class="icon-youtube"></i>
+                  </a>
                 </a>
               </div>
             </div>
@@ -273,7 +272,7 @@
                 <strong><%= t "home.contact.location"%></strong>
                 <br>
                 Antwerp, Belgium
-               <br>
+                <br>
               </address>
               <b title="Email Address">
                 <strong>Email:</strong>
@@ -282,13 +281,13 @@
               <br>
             </div>
             <% if @cloud.length != 0  %>
-            <div id="tags" class="hidden-xs hidden-sm" style="margin-bottom: 20px;">
-              <div class="tagcloud" style="display: flex; flex-wrap: wrap;">
-              <% @cloud.each do |key, value| %>
-                <a href="" onclick="event.preventDefault();" style="cursor: default; font-size: <%= 14.to_f + (12.to_f * (value.to_f / @max.to_f)) %>px !important;"><%= key %></a>
-              <% end %>
+              <div id="tags" class="hidden-xs hidden-sm" style="margin-bottom: 20px;">
+                <div class="tagcloud" style="display: flex; flex-wrap: wrap;">
+                  <% @cloud.each do |key, value| %>
+                    <a href="" onclick="event.preventDefault();" style="cursor: default; font-size: <%= 14.to_f + (12.to_f * (value.to_f / @max.to_f)) %>px !important;"><%= key %></a>
+                  <% end %>
+                </div>
               </div>
-            </div>
             <% end %>
           </div>
           <div class="col-md-12 bottommargin">

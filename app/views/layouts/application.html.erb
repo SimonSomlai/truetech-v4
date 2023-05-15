@@ -1,50 +1,39 @@
 <!DOCTYPE html>
-<!--
-  _____               _____         _
- |_   _| __ _   _  __|_   _|__  ___| |__
-   | || '__| | | |/ _ \| |/ _ \/ __| '_ \
-   | || |  | |_| |  __/| |  __/ (__| | | |
-   |_||_|   \__,_|\___||_|\___|\___|_| |_|
-   -->
 <html>
-	<head>
-		<title><%=yield :title %></title>
-		<html lang="<%= I18n.locale %>">
+  <head>
+    <title><%=yield :title %></title>
+    <html lang="<%= I18n.locale %>">
 		<meta name="description" content="<%=yield(:description) %>"/>
-		<meta name="author" content="Simon Somlai"/>
-		<link rel="shortcut icon" type="image/x-icon" href="<%= asset_path('favicon.ico') %>" />
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="google-site-verification" content="GzPxAybLkw-ZKpTLK34ALYTNpMtMK1xlR0vj6LL_6Q4" />
-		<meta property="og:title" content="<%= yield :ogtitle %>" />
-		<meta property="og:description" content="<%= yield :ogdescription %>"/>
-		<meta property="og:type" content="<%= yield :ogtype %>" />
-		<meta property="og:url" content="<%= request.original_url %>" />
-		<meta property="og:image" content="<%= yield :ogimage %>" />
-		<%= csrf_meta_tags %>
-		<%= stylesheet_link_tag "reset" %>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic|Lora:400,700" rel="stylesheet" type="text/css"/>
-		<%= yield :css %>
-		<!--[if lt IE 9]> <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
+    <meta name="author" content="Simon Somlai"/>
+    <link rel="shortcut icon" type="image/x-icon" href="<%= asset_path('favicon.ico') %>" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="GzPxAybLkw-ZKpTLK34ALYTNpMtMK1xlR0vj6LL_6Q4" />
+    <meta property="og:title" content="<%= yield :ogtitle %>" />
+    <meta property="og:description" content="<%= yield :ogdescription %>"/>
+    <meta property="og:type" content="<%= yield :ogtype %>" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= yield :ogimage %>" />
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag "reset" %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic|Lora:400,700" rel="stylesheet" type="text/css"/>
+    <%= yield :css %>
+		
     <%= javascript_pack_tag "application" %>
-	</head>
-
-	<% flash.each do |message_type, message| %>
-	<div class="alert alert-<%=message_type %>"><%=message %></div>
-	<% end %>
-
-	<%=yield %>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<%= render "shared/google" %>
-	<%=yield :js %>
-	<script>
-	$(document).ready(function() {
-		$("img").unveil();
-	});
-	</script>
-
+  </head>
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%=message_type %>"><%=message %></div>
+  <% end %>
+  <%=yield %>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <%= render "shared/google" %>
+  <%=yield :js %>
+  <script>
+    $(document).ready(function() {
+    	$("img").unveil();
+    });
+  </script>
 </html>

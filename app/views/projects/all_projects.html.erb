@@ -10,35 +10,31 @@
       <div id="header-wrap">
         <% content_for :menu do %>
           <li> <%=link_to("Home", home_path) %> </li>
-          
         <% end %> <%=render "shared/menu" %>
       </div>
     </header>
     <div class="container clearfix">
       <div class="topmargin heading-block center">
-         <h2><i class="i-plain color col-hidden-md-down i-xlarge icon-diamond inline-block"></i><%= t("projects.all_projects") %></h2>
+        <h2><i class="i-plain color col-hidden-md-down i-xlarge icon-diamond inline-block"></i><%= t("projects.all_projects") %></h2>
       </div>
-      <ul class="portfolio-filter clearfix" data-container="#portfolio">
+      <ul class="portfolio-filter" data-container="#portfolio">
         <li class="activeFilter"><a href="#" data-filter="*"><%= t("home.services.all") %></a></li>
         <% @tags.each do |tag| %>
           <li><a href="#" data-filter=".pf-<%= tag.name %>"><%= tag.name.humanize %></a></li>
         <% end %>
       </ul>
-      <div class="portfolio-shuffle" data-container="#portfolio">
-        <i class="icon-random"></i>
-      </div>
       <div class="clear"></div>
       <div id="portfolio" class="bottommargin portfolio grid-container all-projects clearfix" data-layout="fitRows" style="position: relative; height: 888px;">
         <% @projects.each do |project| %>
           <article class="portfolio-item <%= project.tags.map{|tag| "pf-#{tag.name}" }.join(" ") %>">
             <div class="portfolio-image">
-                <%= link_to project_path(project) do %>
+              <%= link_to project_path(project) do %>
                 <%= image_tag project.project_images.first if project.project_images.attached?  %>
               <% end %>
               <div class="portfolio-overlay">
                 <a href="<%= url(project.project_images.first) if project.project_images.attached?  %>" class="left-icon" data-lightbox="image"><i class="icon-line-image"></i></a>
                 <%= link_to project_path(project), class: "right-icon" do  %>
-                <i class="icon-line-open"></i>
+                  <i class="icon-line-open"></i>
                 <% end %>
               </div>
             </div>
