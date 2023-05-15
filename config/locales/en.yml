@@ -1,7 +1,7 @@
 en:
   home:
     sub: Home | Web Design Antwerp - Simon Somlai
-    meta:  "Welcome to Web Design Antwerp - Simon Somlai | I'm a freelance developer and offer business owners my expertise in creating their modern applications"
+    meta: "Welcome to Web Design Antwerp - Simon Somlai | I'm a freelance developer and offer business owners my expertise in creating their modern applications"
     ogtitle: "Home | Web Design Antwerp - Simon Somlai"
     nav:
       diensten: "services"
@@ -32,7 +32,7 @@ en:
     # Artikels sectie
     news:
       title1: "Latest"
-      title1_span: "News"
+      title1_span: "Articles"
     # Contact sectie
     contact:
       title1_span: "Contact"
@@ -50,7 +50,7 @@ en:
       sendbutton: "Send Message!"
       success: "Thanks <strong> %{name}</strong>, your email is sent! We'll respond as soon as possible to your message! Enjoy the rest of your %{day}! :)"
       cv: Download resume
-   # Contact form
+    # Contact form
   contact:
     heading1: "Contact "
     heading1_span: " Us"
@@ -118,7 +118,7 @@ en:
     pricevalue: "$"
     meta: "Looking for a professional landing page, sales page or the conversion of your design into HTML? Look no further!"
     ogtitle: "Looking for a webpage?"
-   # Starter Website
+    # Starter Website
   starter:
     descr: "Looking for a professional budget website? Or otherwise looking to update your current one? We can help!"
     ogtitle: "Need A New Website?"
@@ -148,7 +148,7 @@ en:
     options6_message: "These are extensions on the functionality of the website. The real price is determined by what specific plugins are required."
     inclusive1: "Inclusive:"
     inclusive2: " 1 Domain name, professional email adresses, 1 year free hosting &"
-    inclusive3:  " 60 days"
+    inclusive3: " 60 days"
     inclusive4: " money-back guarantee!"
     pricehead: "Your Website For About "
   # Custom Website
@@ -178,8 +178,8 @@ en:
     heading2_strong: " automate"
     heading2_descr2: "a lot of redundant work and thus lighten your workload and ultimately save much valuable time! This way you can focus on what really matters, like actually running your business!"
     heading2_descr3: "Think of software to "
-    heading2_descr4: " manage your clients, to schedule bookings, manage projects, automate your accounting and even offer video courses." 
-    heading2_descr5: " We got something for everyone!"  
+    heading2_descr4: " manage your clients, to schedule bookings, manage projects, automate your accounting and even offer video courses."
+    heading2_descr5: " We got something for everyone!"
     heading3: "Looking For Something"
     heading3_span: " Unique?"
     heading3_descr: "You have a unique business idea that you’d like to realize, but you don’t have enough technical knowledge to make this a reality? Or otherwise you’re looking for some help/additional functionality with your existing"
@@ -198,7 +198,7 @@ en:
     process1_descr: "We’ll arrange an informal one-on-one conversation or we meet up through skype to clarify what your specific needs are. Based on that analysis, I’ll propose the options best suited to what you need. If we find an agreement that works for the both of us, we proceed to the next step!"
     process2: "PAGES & FUNCTIONALITY"
     process2_descr: "We'll clarify together how the application will look from the perspective of the user and how he interacts with it. We visualize this by making a"
-    process2_span:  " 'user-flow' diagram."
+    process2_span: " 'user-flow' diagram."
     process2_descr2: " This way we can clearly see what pages and functionality are required."
     process3: "Design"
     process3_descr: "Based on this diagram, we start working on developing the individual pages offline"
@@ -212,7 +212,7 @@ en:
     info: "Info:"
     author: "Created by:"
     date: "Completion date:"
-    skills: 'Skills:'
+    skills: "Skills:"
     descr: "Features:"
     share: "Share"
     related: "Related Projects:"
@@ -283,7 +283,7 @@ en:
     faq: "FAQ"
     subheader: "Stay updated about new articles!"
     submessage: "Your time and attention are valuable. Therefore we only send out practical and relevant information you can choose yourself!"
-    subname: 'Your name..*'
+    subname: "Your name..*"
     subemail: "Your email..*"
     subbutton: "Send!"
     suboptions: "What would you like to stay updated about?"
