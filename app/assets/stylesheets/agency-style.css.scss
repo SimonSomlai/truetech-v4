@@ -4215,7 +4215,7 @@ body.stretched .container-fullwidth .breadcrumb {
 
 .content-wrap {
   position: relative;
-  padding: 80px 0px 0px 0px;
+  padding: 60px 0px 0px 0px;
 }
 
 #content .container {
@@ -4244,16 +4244,18 @@ body:not(.device-touch) .grid-container {
   position: relative;
   margin: 0 0 40px 0;
   list-style: none;
-  
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(100px,1fr));
-  border-top: 1px solid rgba(0, 0, 0, 0.07);
-  border-left: 1px solid rgba(0, 0, 0, 0.07);
-  border-radius: 4px;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-gap: 2px;
 }
 
 .portfolio-filter li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
+  border-left: 1px solid rgba(0, 0, 0, 0.07);
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);
   border-right: 1px solid rgba(0, 0, 0, 0.07);
   border-radius: 4px;
@@ -4281,12 +4283,13 @@ body:not(.device-touch) .grid-container {
   color: #1982ae;
 }
 
-.portfolio-filter li.activeFilter a {
-  color: #fff !important;
+.portfolio-filter li.activeFilter {
   background-color: #1982ae;
-  margin: -1px 0;
-  padding: 13px 18px;
   font-weight: bold;
+
+  a {
+    color: #fff !important;
+  }
 }
 
 .bothsidebar .portfolio-filter li a {

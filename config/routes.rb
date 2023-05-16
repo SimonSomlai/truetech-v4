@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # Contactform routing using mail_form gem
   resources :contactforms, only: [:create]
 
-  scope '(:locale)', locale: /en|nl/ do
+  scope '(:locale)', locale: /en/ do
     # Root to home_path
     root 'static_pages#home', as: 'home'
 

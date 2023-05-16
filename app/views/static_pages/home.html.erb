@@ -50,8 +50,7 @@
     </header>
     <section id="slider" class="boxed-slider">
       <div class="container clearfix">
-        <div id="oc-slider" class="owl-carousel carousel-widget" data-items="1" data-loop="false" data-nav="true"
-          data-autoplay="5000" data-animate-in="fadeIn" data-animate-out="fadeOut" data-speed="800">
+        <div id="oc-slider" class="owl-carousel carousel-widget" data-items="1" data-loop="false" data-nav="false" data-animate-in="fadeIn" data-animate-out="fadeOut" data-speed="800" data-disabled="true">
           <a href="#">
             <%= image_tag("slider1-#{I18n.locale}.jpg", alt: t("home.sub")) %>
           </a>
@@ -323,7 +322,7 @@
                     scrollwheel: false,
                     zoom: 10,
                     center: new google.maps.LatLng(51.196330, 4.459335),
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                    mapTypeId: google.maps.MapTypeId.ROADMAP,
                   };
                   map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
                   marker = new google.maps.Marker({
