@@ -113,9 +113,9 @@
             </div>
           <% end %>
           <div id="portfolio" class="line notopmargin"></div>
-          <h3 class="center"><%= t "home.projects.title1"%>
-            <span><%= t "home.projects.title1_span"%> </span> <i class="hidden-xs" style="font-size: 23px;"> |</i>
-            <span><%= link_to t("projects.all_projects") + " »", all_projects_path, style:"font-size: 13px; vertical-align: middle;", class:"more-link" %></span>
+          <h3 class="center" style="position: relative;"><%= t "home.projects.title1"%>
+            <span><%= t "home.projects.title1_span"%> </span>
+            <span class="hidden-xs"><%= link_to t("projects.all_projects") + " »", all_projects_path, style:"font-size: 13px; vertical-align: middle; text-transform: inherit; position: absolute; right: 0;", class:"more-link button button-mini button-circle" %></span>
           </h3>
           <div class="owl-carousel portfolio-carousel carousel-widget" data-margin="1" 
           data-loop="false" data-nav="true"
@@ -181,9 +181,9 @@
             </div>
           </div>
           <div id="<%= t 'home.nav.nieuws'%>" class="line"></div>
-          <h3 class="center"><%= t "home.news.title1"%>
-            <span><%= t "home.news.title1_span"%></span> <i class="hidden-xs" style="font-size: 23px;"> |</i>
-            <span><%= link_to t("articles.all_articles") + " »", all_articles_path, style:"font-size: 13px; vertical-align: middle;", class:"more-link" %></span>
+          <h3 class="center" style="position: relative;"><%= t "home.news.title1"%>
+            <span><%= t "home.news.title1_span"%></span>
+            <span class="hidden-xs"><%= link_to t("articles.all_articles") + " »", all_articles_path, style:"font-size: 13px; vertical-align: middle; text-transform: inherit; position: absolute; right: 0;", class:"more-link button button-mini button-circle" %></span>
           </h3>
           <div id="oc-posts" class="owl-latest-news owl-carousel posts-carousel carousel-widget owl-loaded owl-drag"
             data-margin="15" data-loop="false" data-nav="true" data-pagi="false" data-items-xxs="1" data-items-xs="1"
