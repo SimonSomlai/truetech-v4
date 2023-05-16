@@ -115,7 +115,7 @@
           <div id="portfolio" class="line notopmargin"></div>
           <h3 class="center" style="position: relative;"><%= t "home.projects.title1"%>
             <span><%= t "home.projects.title1_span"%> </span>
-            <span class="hidden-xs"><%= link_to t("projects.all_projects") + " »", all_projects_path, style:"font-size: 13px; vertical-align: middle; text-transform: inherit; position: absolute; right: 0;", class:"more-link button button-mini button-circle" %></span>
+            <span class="hidden-xs"><%= link_to t("projects.all_projects") + " »", all_projects_path, style:"font-size: 13px; vertical-align: middle; text-transform: inherit; position: absolute; right: 0;", class:"more-link button button-mini button-circle button-3d" %></span>
           </h3>
           <div class="owl-carousel portfolio-carousel carousel-widget" data-margin="1" 
           data-loop="false" data-nav="true"
@@ -151,6 +151,9 @@
               </div>
             <% end %>
           </div>
+          <%= link_to all_projects_path, target: "_blank", class: "margin-top button button-3d button-rounded button-small btn-block text-center visible-xs button-3d" do %>
+            <span ><%= t "projects.all_projects" + " »"%></span>
+          <% end %>
           <div class="line"></div>
           <h3 class="center"><%= t "home.services.title1"%>
             <span><%= t "home.testimonials.title1_span"%></span>!</h3>
@@ -183,7 +186,7 @@
           <div id="<%= t 'home.nav.nieuws'%>" class="line"></div>
           <h3 class="center" style="position: relative;"><%= t "home.news.title1"%>
             <span><%= t "home.news.title1_span"%></span>
-            <span class="hidden-xs"><%= link_to t("articles.all_articles") + " »", all_articles_path, style:"font-size: 13px; vertical-align: middle; text-transform: inherit; position: absolute; right: 0;", class:"more-link button button-mini button-circle" %></span>
+            <span class="hidden-xs"><%= link_to t("articles.all_articles") + " »", all_articles_path, style:"font-size: 13px; vertical-align: middle; text-transform: inherit; position: absolute; right: 0;", class:"more-link button button-mini button-circle button-3d" %></span>
           </h3>
           <div id="oc-posts" class="owl-latest-news owl-carousel posts-carousel carousel-widget owl-loaded owl-drag"
             data-margin="15" data-loop="false" data-nav="true" data-pagi="false" data-items-xxs="1" data-items-xs="1"
@@ -215,6 +218,9 @@
               </div>
             <% end %>
           </div>
+          <%= link_to all_articles_path, target: "_blank", class: "margin-top button button-3d button-rounded button-small btn-block text-center visible-xs button-3d" do %>
+            <span ><%= t "articles.all_articles" + " »"%></span>
+          <% end %>
           <div id="contact" class="line"></div>
           <h3 class="center">
             <span><%= t "home.contact.title1_span"%></span>
