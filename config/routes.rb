@@ -24,6 +24,10 @@ Rails.application.routes.draw do
     get 'all-articles' => 'articles#all_articles'
     get 'all-articles' => 'articles#all_articles'
 
+    get '/articles/list' => 'articles#list'
+    get '/testimonials/list' => 'testimonials#list'
+    get '/projects/list' => 'projects#list'
+
     get 'admin' => 'static_pages#admin'
     get 'callback' => 'static_pages#callback'
     resources :users, :projects, :testimonials, :articles, :pages
