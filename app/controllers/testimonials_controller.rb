@@ -10,6 +10,11 @@ class TestimonialsController < ApplicationController
     @testimonial = Testimonial.new
   end
 
+  def list
+    @testimonials = Testimonial.all
+    render json: @testimonials
+  end
+
   def create
     @testimonial = Testimonial.new(testimonial_params)
     if @testimonial.save

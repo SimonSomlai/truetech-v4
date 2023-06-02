@@ -16,6 +16,11 @@ class ProjectsController < ApplicationController
     @projects = Project.all.includes(:project_images_attachments).sort_by(&:created_at).reverse
   end
 
+  def list
+    @projects = Project.all.includes(:project_images_attachments).sort_by(&:created_at).reverse
+    render json: @projects
+  end
+
   def show
     @user = User.find_by(id: @project.user_id).name
     @relatedprojects = Project.includes(:project_images_attachments).where(service: @project.service).where.not(id: @project).sort_by(&:created_at).uniq.take(6).reverse

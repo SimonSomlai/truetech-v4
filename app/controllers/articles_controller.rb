@@ -10,6 +10,11 @@ class ArticlesController < ApplicationController
   # ======================================================
   # CRUD
   # ======================================================
+  def list
+      @articles = Article.all.sort_by(&:created_at).reverse
+      render json: @articles
+  end
+
   def index
     @action = "New"
     @articles = Article.all.sort_by(&:created_at).reverse
